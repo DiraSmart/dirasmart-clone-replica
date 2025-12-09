@@ -1,10 +1,13 @@
 import { Facebook, Instagram, Linkedin } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useTheme } from "next-themes";
 import dirasmartLogo from "@/assets/dirasmart-logo.png";
+import dirasmartLogoGrey from "@/assets/dirasmart-logo-grey.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const { t } = useLanguage();
+  const { resolvedTheme } = useTheme();
 
   const socialLinks = [
     { icon: Facebook, href: "#", label: "Facebook" },
