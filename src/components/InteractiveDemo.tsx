@@ -9,7 +9,7 @@ import {
   ChevronUp,
   ChevronDown,
   Square,
-  Sun
+  Lightbulb
 } from "lucide-react";
 import { Slider } from "@/components/ui/slider";
 
@@ -255,11 +255,11 @@ const InteractiveDemo = () => {
             </div>
           </div>
 
-          {/* Lights Control - LED Strip Style */}
+          {/* Lights Control - Light Bulb */}
           <div className="bg-card rounded-2xl p-6 border border-accent/20 hover:border-accent/40 transition-all shadow-card hover:shadow-card-hover flex flex-col">
             <div className="flex items-center gap-3 mb-6">
               <div className={`p-3 rounded-xl transition-colors ${lightOn ? 'bg-amber-500' : 'bg-muted'}`}>
-                <Sun className={`w-6 h-6 ${lightOn ? 'text-white' : 'text-muted-foreground'}`} />
+                <Lightbulb className={`w-6 h-6 ${lightOn ? 'text-white' : 'text-muted-foreground'}`} />
               </div>
               <div>
                 <h3 className="font-semibold text-foreground">Control de Luces</h3>
@@ -269,52 +269,51 @@ const InteractiveDemo = () => {
               </div>
             </div>
 
-            {/* LED Light Panel */}
-            <div className="relative flex justify-center flex-grow items-center py-8">
-              <div className="relative w-full max-w-[200px]">
+            {/* Light Bulb */}
+            <div className="relative flex justify-center flex-grow items-center py-4">
+              <div className="relative">
                 {/* Glow effect */}
                 {lightOn && (
                   <div 
-                    className="absolute inset-0 rounded-3xl blur-2xl transition-all duration-500"
+                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl transition-all duration-500 pointer-events-none"
                     style={{
-                      background: `radial-gradient(circle, rgba(251, 191, 36, ${brightness / 100}) 0%, transparent 70%)`,
-                      transform: 'scale(1.5)',
+                      width: `${120 + brightness}px`,
+                      height: `${120 + brightness}px`,
+                      background: `radial-gradient(circle, rgba(251, 191, 36, ${brightness / 150}) 0%, rgba(251, 191, 36, 0.1) 50%, transparent 70%)`,
                     }}
                   />
                 )}
                 
-                {/* Light Panel */}
-                <div 
-                  className={`relative w-full h-32 rounded-2xl border-4 transition-all duration-300 ${
-                    lightOn 
-                      ? 'border-amber-400 shadow-[0_0_30px_rgba(251,191,36,0.6)]' 
-                      : 'border-slate-500'
-                  }`}
-                  style={{
-                    background: lightOn 
-                      ? `linear-gradient(135deg, rgba(251, 191, 36, ${0.3 + brightness / 200}) 0%, rgba(255, 220, 100, ${0.2 + brightness / 250}) 50%, rgba(251, 191, 36, ${0.3 + brightness / 200}) 100%)`
-                      : 'linear-gradient(135deg, rgba(100, 100, 100, 0.2) 0%, rgba(80, 80, 80, 0.3) 100%)'
-                  }}
-                >
-                  {/* Light rays */}
-                  {lightOn && (
-                    <>
-                      <div className="absolute inset-4 rounded-xl bg-gradient-to-br from-white/40 to-transparent" />
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <Sun 
-                          className="w-12 h-12 text-amber-200 drop-shadow-lg" 
-                          style={{ 
-                            filter: `drop-shadow(0 0 ${brightness / 5}px rgba(255, 220, 100, 0.8))` 
-                          }}
-                        />
-                      </div>
-                    </>
-                  )}
-                  {!lightOn && (
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <Sun className="w-12 h-12 text-slate-500" />
-                    </div>
-                  )}
+                {/* Bulb */}
+                <div className="relative z-10">
+                  {/* Bulb glass */}
+                  <div 
+                    className={`w-24 h-28 rounded-t-full border-2 transition-all duration-300 ${
+                      lightOn 
+                        ? 'border-amber-400 bg-gradient-to-b from-amber-200 via-amber-300 to-amber-400' 
+                        : 'border-muted-foreground/30 bg-gradient-to-b from-muted/50 via-muted to-muted'
+                    }`}
+                    style={{
+                      boxShadow: lightOn 
+                        ? `inset 0 -20px 40px rgba(255, 255, 255, ${brightness / 200}), 0 0 ${brightness / 3}px rgba(251, 191, 36, 0.5)` 
+                        : 'none'
+                    }}
+                  >
+                    {/* Inner highlight */}
+                    {lightOn && (
+                      <div 
+                        className="absolute top-3 left-3 w-8 h-12 rounded-full bg-white/40 blur-sm"
+                      />
+                    )}
+                  </div>
+                  
+                  {/* Bulb base/screw */}
+                  <div className="flex flex-col items-center">
+                    <div className="w-16 h-3 bg-gradient-to-b from-zinc-400 to-zinc-500 dark:from-zinc-500 dark:to-zinc-600 rounded-sm" />
+                    <div className="w-14 h-2 bg-gradient-to-b from-zinc-500 to-zinc-600 dark:from-zinc-600 dark:to-zinc-700" />
+                    <div className="w-12 h-2 bg-gradient-to-b from-zinc-600 to-zinc-700 dark:from-zinc-700 dark:to-zinc-800" />
+                    <div className="w-10 h-3 bg-gradient-to-b from-zinc-700 to-zinc-800 dark:from-zinc-800 dark:to-zinc-900 rounded-b-lg" />
+                  </div>
                 </div>
               </div>
             </div>
