@@ -279,48 +279,43 @@ const InteractiveDemo = () => {
                     style={{
                       width: `${100 + brightness}px`,
                       height: `${100 + brightness}px`,
-                      background: `radial-gradient(circle, rgba(251, 191, 36, ${brightness / 150}) 0%, transparent 70%)`,
+                      background: `radial-gradient(circle, rgba(253, 224, 71, ${brightness / 120}) 0%, transparent 70%)`,
                     }}
                   />
                 )}
                 
-                {/* Light rays */}
-                {lightOn && (
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    {/* Top ray */}
-                    <div className="absolute -top-8 left-1/2 -translate-x-1/2 w-2 h-6 bg-yellow-400 rounded-full" />
-                    {/* Top-left ray */}
-                    <div className="absolute -top-4 -left-4 w-2 h-5 bg-yellow-400 rounded-full rotate-[-45deg]" />
-                    {/* Top-right ray */}
-                    <div className="absolute -top-4 -right-4 w-2 h-5 bg-yellow-400 rounded-full rotate-[45deg]" />
-                    {/* Left ray */}
-                    <div className="absolute top-6 -left-8 w-6 h-2 bg-yellow-400 rounded-full" />
-                    {/* Right ray */}
-                    <div className="absolute top-6 -right-8 w-6 h-2 bg-yellow-400 rounded-full" />
-                  </div>
-                )}
-                
                 {/* Bulb SVG */}
-                <svg width="80" height="110" viewBox="0 0 80 110" className="relative z-10">
-                  {/* Bulb body - teardrop shape */}
+                <svg width="80" height="120" viewBox="0 0 80 120" className="relative z-10">
+                  <defs>
+                    {/* Gradient for lit bulb */}
+                    <radialGradient id="bulbGlowOn" cx="50%" cy="40%" r="50%">
+                      <stop offset="0%" stopColor="#ffffff" />
+                      <stop offset="40%" stopColor="#fef9c3" />
+                      <stop offset="100%" stopColor="#fde047" />
+                    </radialGradient>
+                    {/* Gradient for off bulb */}
+                    <radialGradient id="bulbGlowOff" cx="50%" cy="40%" r="50%">
+                      <stop offset="0%" stopColor="#e5e7eb" />
+                      <stop offset="100%" stopColor="#9ca3af" />
+                    </radialGradient>
+                  </defs>
+                  
+                  {/* Bulb body - round top with narrowing bottom */}
                   <path 
-                    d="M40 8 C60 8, 72 28, 72 48 C72 68, 56 82, 48 86 L32 86 C24 82, 8 68, 8 48 C8 28, 20 8, 40 8"
-                    fill={lightOn ? '#f59e0b' : '#6b7280'}
+                    d="M40 6 C62 6, 76 24, 76 46 C76 68, 62 80, 52 86 L28 86 C18 80, 4 68, 4 46 C4 24, 18 6, 40 6 Z"
+                    fill={lightOn ? 'url(#bulbGlowOn)' : 'url(#bulbGlowOff)'}
+                    stroke="#374151"
+                    strokeWidth="2"
                     className="transition-all duration-300"
                   />
                   
-                  {/* Highlight reflection */}
-                  <path 
-                    d="M28 30 C32 24, 38 22, 42 28 C46 34, 42 44, 36 44 C30 44, 24 36, 28 30"
-                    fill={lightOn ? 'rgba(255,255,255,0.5)' : 'rgba(255,255,255,0.2)'}
-                    className="transition-all duration-300"
-                  />
-                  
-                  {/* Screw base segments */}
-                  <rect x="24" y="86" width="32" height="6" rx="1" fill="#6b7280" />
-                  <rect x="26" y="92" width="28" height="5" rx="1" fill="#64748b" />
-                  <rect x="28" y="97" width="24" height="5" rx="1" fill="#64748b" />
-                  <rect x="30" y="102" width="20" height="6" rx="3" fill="#4b5563" />
+                  {/* Screw base - striped pattern */}
+                  <path d="M28 86 L28 90 L52 90 L52 86 Z" fill="#9ca3af" stroke="#374151" strokeWidth="1.5" />
+                  <path d="M30 90 L30 94 L50 94 L50 90 Z" fill="#6b7280" stroke="#374151" strokeWidth="1.5" />
+                  <path d="M31 94 L31 98 L49 98 L49 94 Z" fill="#9ca3af" stroke="#374151" strokeWidth="1.5" />
+                  <path d="M32 98 L32 102 L48 102 L48 98 Z" fill="#6b7280" stroke="#374151" strokeWidth="1.5" />
+                  <path d="M33 102 L33 106 L47 106 L47 102 Z" fill="#9ca3af" stroke="#374151" strokeWidth="1.5" />
+                  <path d="M35 106 L35 112 C35 114, 45 114, 45 112 L45 106 Z" fill="#4b5563" stroke="#374151" strokeWidth="1.5" />
                 </svg>
               </div>
             </div>
