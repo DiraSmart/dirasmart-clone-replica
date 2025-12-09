@@ -1,21 +1,21 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
 import ThemeToggle from "./ThemeToggle";
+import LanguageSelector from "./LanguageSelector";
+import { useLanguage } from "@/contexts/LanguageContext";
 import dirasmartLogo from "@/assets/dirasmart-logo.png";
 import dirasmartLogoGrey from "@/assets/dirasmart-logo-grey.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { resolvedTheme } = useTheme();
+  const { t } = useLanguage();
 
   const navLinks = [
-    { name: "Home", href: "#home" },
-    { name: "Demo", href: "#demo" },
-    { name: "Características", href: "#features" },
-    { name: "Servicios", href: "#servicios" },
-    { name: "Testimonios", href: "#testimonios" },
+    { name: t("nav.home"), href: "#home" },
+    { name: t("nav.features"), href: "#features" },
+    { name: t("nav.services"), href: "#servicios" },
   ];
 
   const scrollToSection = (href: string) => {
@@ -43,18 +43,20 @@ const Header = () => {
           <nav className="hidden md:flex items-center gap-6">
             {navLinks.map((link) => (
               <button
-                key={link.name}
+                key={link.href}
                 onClick={() => scrollToSection(link.href)}
                 className="text-foreground/80 hover:text-accent transition-colors font-medium"
               >
                 {link.name}
               </button>
             ))}
+            <LanguageSelector />
             <ThemeToggle />
           </nav>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center gap-2">
+            <LanguageSelector />
             <ThemeToggle />
             <button
               className="p-2"
@@ -76,7 +78,7 @@ const Header = () => {
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
                 <button
-                  key={link.name}
+                  key={link.href}
                   onClick={() => scrollToSection(link.href)}
                   className="text-foreground/80 hover:text-accent transition-colors font-medium text-left py-2"
                 >
