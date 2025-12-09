@@ -5,8 +5,10 @@ import BrandLogos from "@/components/BrandLogos";
 import ServicesGrid from "@/components/ServicesGrid";
 import InteractiveDemo from "@/components/InteractiveDemo";
 import TestimonialsCarousel from "@/components/TestimonialsCarousel";
+import VideoSection from "@/components/VideoSection";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import AnimatedSection from "@/components/AnimatedSection";
 
 const Index = () => {
   return (
@@ -14,11 +16,30 @@ const Index = () => {
       <Header />
       <main>
         <HeroSection />
-        <InteractiveDemo />
-        <FeatureTabs />
-        <ServicesGrid />
-        <BrandLogos />
-        <TestimonialsCarousel />
+        
+        <AnimatedSection>
+          <InteractiveDemo />
+        </AnimatedSection>
+        
+        <AnimatedSection delay={0.1}>
+          <FeatureTabs />
+        </AnimatedSection>
+        
+        <AnimatedSection delay={0.1}>
+          <VideoSection />
+        </AnimatedSection>
+        
+        <AnimatedSection delay={0.1}>
+          <ServicesGrid />
+        </AnimatedSection>
+        
+        <AnimatedSection delay={0.1}>
+          <BrandLogos />
+        </AnimatedSection>
+        
+        <AnimatedSection delay={0.1}>
+          <TestimonialsCarousel />
+        </AnimatedSection>
       </main>
       <Footer />
       <WhatsAppButton />

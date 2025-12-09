@@ -15,7 +15,7 @@ const VideoSection = () => {
           <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl border-4 border-primary/30 hover:border-primary/50 transition-colors">
             <iframe
               className="w-full h-full"
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0"
+              src="https://www.youtube.com/embed/XduV8yZjGrE?rel=0"
               title="DiraSmart - Casa Inteligente"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
