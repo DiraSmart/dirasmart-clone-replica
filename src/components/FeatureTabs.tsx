@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Smartphone, Moon, Zap, Cpu, Lightbulb, Thermometer, Home, Clock, ChevronRight } from "lucide-react";
-import appMobileImage from "@/assets/app-mobile.png";
-import smartHomeImage from "@/assets/smart-home.png";
+import appMockupImage from "@/assets/app-mockup.png";
+import shabatModeImage from "@/assets/shabat-mode.png";
+import automationsImage from "@/assets/automations.png";
 
 const FeatureTabs = () => {
   const [activeTab, setActiveTab] = useState("app");
@@ -96,9 +97,9 @@ const FeatureTabs = () => {
                   <div className="relative">
                     <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full blur-3xl" />
                     <img 
-                      src={appMobileImage} 
+                      src={appMockupImage} 
                       alt="App DiraSmart" 
-                      className="relative w-64 md:w-72 drop-shadow-2xl"
+                      className="relative w-full max-w-md drop-shadow-2xl"
                     />
                   </div>
                 </div>
@@ -161,13 +162,11 @@ const FeatureTabs = () => {
                 <div className="flex justify-center">
                   <div className="relative">
                     <div className="absolute -inset-8 bg-gradient-to-r from-accent/20 to-primary/20 rounded-full blur-3xl" />
-                    <div className="relative bg-gradient-to-br from-card to-muted rounded-3xl p-12 border border-accent/20 shadow-2xl">
-                      <div className="w-32 h-32 bg-gradient-to-br from-accent to-accent/50 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                        <Moon className="w-16 h-16 text-accent-foreground" />
-                      </div>
-                      <p className="text-center text-xl font-bold text-foreground">Shabbat Mode</p>
-                      <p className="text-center text-sm text-muted-foreground mt-2">Tranquilidad total en días festivos</p>
-                    </div>
+                    <img 
+                      src={shabatModeImage} 
+                      alt="Modo Shabbat" 
+                      className="relative w-full max-w-md drop-shadow-2xl"
+                    />
                   </div>
                 </div>
               </div>
@@ -229,13 +228,11 @@ const FeatureTabs = () => {
                 <div className="flex justify-center">
                   <div className="relative">
                     <div className="absolute -inset-8 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full blur-3xl" />
-                    <div className="relative bg-gradient-to-br from-card to-muted rounded-3xl p-12 border border-primary/20 shadow-2xl">
-                      <div className="w-32 h-32 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                        <Zap className="w-16 h-16 text-primary-foreground" />
-                      </div>
-                      <p className="text-center text-xl font-bold text-foreground">Automatización Total</p>
-                      <p className="text-center text-sm text-muted-foreground mt-2">Tu hogar aprende de ti</p>
-                    </div>
+                    <img 
+                      src={automationsImage} 
+                      alt="Automatizaciones" 
+                      className="relative w-full max-w-md drop-shadow-2xl"
+                    />
                   </div>
                 </div>
               </div>
@@ -296,12 +293,36 @@ const FeatureTabs = () => {
                 
                 <div className="flex justify-center">
                   <div className="relative">
-                    <div className="absolute -inset-4 bg-gradient-to-r from-accent/20 to-primary/20 rounded-3xl blur-3xl" />
-                    <img 
-                      src={smartHomeImage} 
-                      alt="Dispositivos inteligentes" 
-                      className="relative w-80 rounded-3xl shadow-2xl border border-border"
-                    />
+                    <div className="absolute -inset-8 bg-gradient-to-r from-accent/20 to-primary/20 rounded-3xl blur-3xl" />
+                    <div className="relative bg-gradient-to-br from-card to-muted rounded-3xl p-8 border border-accent/20 shadow-2xl">
+                      <p className="text-center text-lg font-semibold text-foreground mb-6">Protocolos Soportados</p>
+                      <div className="grid grid-cols-2 gap-6">
+                        <div className="flex flex-col items-center gap-2 p-4 bg-background/50 rounded-xl border border-border">
+                          <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center">
+                            <span className="text-white font-bold text-xs">WiFi</span>
+                          </div>
+                          <span className="text-sm text-muted-foreground">WiFi</span>
+                        </div>
+                        <div className="flex flex-col items-center gap-2 p-4 bg-background/50 rounded-xl border border-border">
+                          <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center">
+                            <span className="text-white font-bold text-xs">Zigbee</span>
+                          </div>
+                          <span className="text-sm text-muted-foreground">Zigbee</span>
+                        </div>
+                        <div className="flex flex-col items-center gap-2 p-4 bg-background/50 rounded-xl border border-border">
+                          <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center">
+                            <span className="text-white font-bold text-xs">Z-Wave</span>
+                          </div>
+                          <span className="text-sm text-muted-foreground">Z-Wave</span>
+                        </div>
+                        <div className="flex flex-col items-center gap-2 p-4 bg-background/50 rounded-xl border border-border">
+                          <div className="w-16 h-16 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-full flex items-center justify-center">
+                            <span className="text-white font-bold text-xs">BLE</span>
+                          </div>
+                          <span className="text-sm text-muted-foreground">Bluetooth</span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
