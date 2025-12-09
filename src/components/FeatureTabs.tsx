@@ -1,18 +1,20 @@
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Smartphone, Moon, Zap, Cpu, Lightbulb, Thermometer, Home, Clock, ChevronRight, Calendar, Tablet, Monitor } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 import appMobileImage from "@/assets/app-mobile-main.webp";
 import shabatModeImage from "@/assets/shabat-mode.png";
 import automationsImage from "@/assets/automations-screen.jpg";
 
 const FeatureTabs = () => {
   const [activeTab, setActiveTab] = useState("app");
+  const { t } = useLanguage();
 
   const tabs = [
-    { id: "app", label: "App", icon: Smartphone },
-    { id: "automate", label: "Automatiza Tu Vida", icon: Zap },
-    { id: "shabbat", label: "Shabbat Mode", icon: Moon },
-    { id: "dispositivos", label: "Dispositivos", icon: Cpu },
+    { id: "app", labelKey: "features.tab.app", icon: Smartphone },
+    { id: "automate", labelKey: "features.tab.automate", icon: Zap },
+    { id: "shabbat", labelKey: "features.tab.shabbat", icon: Moon },
+    { id: "dispositivos", labelKey: "features.tab.devices", icon: Cpu },
   ];
 
   return (
@@ -20,10 +22,10 @@ const FeatureTabs = () => {
       <div className="container-custom">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Todo lo que necesitas en <span className="text-gradient">una app</span>
+            {t("features.title")} <span className="text-gradient">{t("features.titleHighlight")}</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Descubre las funcionalidades que hacen de DiraSmart la mejor opción para tu hogar inteligente
+            {t("features.subtitle")}
           </p>
         </div>
 
@@ -36,7 +38,7 @@ const FeatureTabs = () => {
                 className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-accent data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg px-6 py-3 rounded-full border-2 border-border data-[state=inactive]:bg-card data-[state=inactive]:hover:border-primary/50 transition-all"
               >
                 <tab.icon className="w-4 h-4 mr-2" />
-                {tab.label}
+                {t(tab.labelKey)}
               </TabsTrigger>
             ))}
           </TabsList>
@@ -47,13 +49,13 @@ const FeatureTabs = () => {
                 <div className="space-y-8">
                   <div>
                     <span className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-                      Control Total
+                      {t("features.app.badge")}
                     </span>
                     <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                      Casa Inteligente
+                      {t("features.app.title")}
                     </h3>
                     <p className="text-muted-foreground text-lg leading-relaxed">
-                      Controla todos los aspectos de tu hogar desde una única aplicación intuitiva y fácil de usar.
+                      {t("features.app.description")}
                     </p>
                   </div>
                   
@@ -63,8 +65,8 @@ const FeatureTabs = () => {
                         <Thermometer className="w-6 h-6 text-primary-foreground" />
                       </div>
                       <div className="flex-grow">
-                        <p className="font-semibold text-foreground">Aire Acondicionado</p>
-                        <p className="text-sm text-muted-foreground">Controla la temperatura de cada habitación</p>
+                        <p className="font-semibold text-foreground">{t("features.app.ac")}</p>
+                        <p className="text-sm text-muted-foreground">{t("features.app.acDesc")}</p>
                       </div>
                       <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
                     </div>
@@ -74,8 +76,8 @@ const FeatureTabs = () => {
                         <Home className="w-6 h-6 text-accent-foreground" />
                       </div>
                       <div className="flex-grow">
-                        <p className="font-semibold text-foreground">Persianas Motorizadas</p>
-                        <p className="text-sm text-muted-foreground">Programa horarios o controla manualmente</p>
+                        <p className="font-semibold text-foreground">{t("features.app.blinds")}</p>
+                        <p className="text-sm text-muted-foreground">{t("features.app.blindsDesc")}</p>
                       </div>
                       <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all" />
                     </div>
@@ -85,8 +87,8 @@ const FeatureTabs = () => {
                         <Lightbulb className="w-6 h-6 text-primary-foreground" />
                       </div>
                       <div className="flex-grow">
-                        <p className="font-semibold text-foreground">Iluminación Inteligente</p>
-                        <p className="text-sm text-muted-foreground">Ajusta intensidad y color en cada zona</p>
+                        <p className="font-semibold text-foreground">{t("features.app.lights")}</p>
+                        <p className="text-sm text-muted-foreground">{t("features.app.lightsDesc")}</p>
                       </div>
                       <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
                     </div>
@@ -113,13 +115,13 @@ const FeatureTabs = () => {
                 <div className="space-y-8">
                   <div>
                     <span className="inline-block px-4 py-1 rounded-full bg-accent/10 text-accent text-sm font-medium mb-4">
-                      Calendario Judío
+                      {t("features.shabbat.badge")}
                     </span>
                     <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                      Modo Shabbat
+                      {t("features.shabbat.title")}
                     </h3>
                     <p className="text-muted-foreground text-lg leading-relaxed">
-                      Sistema inteligente que se adapta al calendario judío, configurando automáticamente los días importantes con solo un par de clicks.
+                      {t("features.shabbat.description")}
                     </p>
                   </div>
                   
@@ -129,8 +131,8 @@ const FeatureTabs = () => {
                         <Calendar className="w-6 h-6 text-accent-foreground" />
                       </div>
                       <div className="flex-grow">
-                        <p className="font-semibold text-foreground">Reconoce Jaguim</p>
-                        <p className="text-sm text-muted-foreground">Detecta festividades incluso en días de semana</p>
+                        <p className="font-semibold text-foreground">{t("features.shabbat.holidays")}</p>
+                        <p className="text-sm text-muted-foreground">{t("features.shabbat.holidaysDesc")}</p>
                       </div>
                       <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all" />
                     </div>
@@ -140,8 +142,8 @@ const FeatureTabs = () => {
                         <Clock className="w-6 h-6 text-accent-foreground" />
                       </div>
                       <div className="flex-grow">
-                        <p className="font-semibold text-foreground">Configuración Rápida</p>
-                        <p className="text-sm text-muted-foreground">Todo automático con solo un par de clicks</p>
+                        <p className="font-semibold text-foreground">{t("features.shabbat.quick")}</p>
+                        <p className="text-sm text-muted-foreground">{t("features.shabbat.quickDesc")}</p>
                       </div>
                       <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all" />
                     </div>
@@ -151,8 +153,8 @@ const FeatureTabs = () => {
                         <Moon className="w-6 h-6 text-accent-foreground" />
                       </div>
                       <div className="flex-grow">
-                        <p className="font-semibold text-foreground">Modo Automático</p>
-                        <p className="text-sm text-muted-foreground">Tu hogar se prepara solo para cada ocasión</p>
+                        <p className="font-semibold text-foreground">{t("features.shabbat.auto")}</p>
+                        <p className="text-sm text-muted-foreground">{t("features.shabbat.autoDesc")}</p>
                       </div>
                       <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all" />
                     </div>
@@ -179,13 +181,13 @@ const FeatureTabs = () => {
                 <div className="space-y-8">
                   <div>
                     <span className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-                      Automatización
+                      {t("features.automate.badge")}
                     </span>
                     <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                      Automatiza Tu Vida
+                      {t("features.automate.title")}
                     </h3>
                     <p className="text-muted-foreground text-lg leading-relaxed">
-                      Crea escenas y rutinas personalizadas que se adaptan a tu estilo de vida.
+                      {t("features.automate.description")}
                     </p>
                   </div>
                   
@@ -195,8 +197,8 @@ const FeatureTabs = () => {
                         <Zap className="w-6 h-6 text-primary-foreground" />
                       </div>
                       <div className="flex-grow">
-                        <p className="font-semibold text-foreground">Escenas Personalizadas</p>
-                        <p className="text-sm text-muted-foreground">"Buenos días", "Cine en casa", "Hora de dormir"</p>
+                        <p className="font-semibold text-foreground">{t("features.automate.scenes")}</p>
+                        <p className="text-sm text-muted-foreground">{t("features.automate.scenesDesc")}</p>
                       </div>
                       <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
                     </div>
@@ -206,8 +208,8 @@ const FeatureTabs = () => {
                         <Clock className="w-6 h-6 text-accent-foreground" />
                       </div>
                       <div className="flex-grow">
-                        <p className="font-semibold text-foreground">Programación Horaria</p>
-                        <p className="text-sm text-muted-foreground">Automatiza según tu rutina diaria</p>
+                        <p className="font-semibold text-foreground">{t("features.automate.schedule")}</p>
+                        <p className="text-sm text-muted-foreground">{t("features.automate.scheduleDesc")}</p>
                       </div>
                       <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all" />
                     </div>
@@ -217,8 +219,8 @@ const FeatureTabs = () => {
                         <Home className="w-6 h-6 text-primary-foreground" />
                       </div>
                       <div className="flex-grow">
-                        <p className="font-semibold text-foreground">Detección de Presencia</p>
-                        <p className="text-sm text-muted-foreground">Activa escenas al llegar o salir de casa</p>
+                        <p className="font-semibold text-foreground">{t("features.automate.presence")}</p>
+                        <p className="text-sm text-muted-foreground">{t("features.automate.presenceDesc")}</p>
                       </div>
                       <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
                     </div>
@@ -245,13 +247,13 @@ const FeatureTabs = () => {
                 <div className="space-y-8">
                   <div>
                     <span className="inline-block px-4 py-1 rounded-full bg-accent/10 text-accent text-sm font-medium mb-4">
-                      Multiplataforma
+                      {t("features.devices.badge")}
                     </span>
                     <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                      Todos Tus Dispositivos
+                      {t("features.devices.title")}
                     </h3>
                     <p className="text-muted-foreground text-lg leading-relaxed">
-                      Accede a tu hogar inteligente desde cualquier dispositivo: celular, tablet, PC y más.
+                      {t("features.devices.description")}
                     </p>
                   </div>
                   
@@ -261,8 +263,8 @@ const FeatureTabs = () => {
                         <Smartphone className="w-6 h-6 text-primary-foreground" />
                       </div>
                       <div className="flex-grow">
-                        <p className="font-semibold text-foreground">Celular</p>
-                        <p className="text-sm text-muted-foreground">App nativa para iOS y Android</p>
+                        <p className="font-semibold text-foreground">{t("features.devices.phone")}</p>
+                        <p className="text-sm text-muted-foreground">{t("features.devices.phoneDesc")}</p>
                       </div>
                       <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
                     </div>
@@ -272,8 +274,8 @@ const FeatureTabs = () => {
                         <Tablet className="w-6 h-6 text-accent-foreground" />
                       </div>
                       <div className="flex-grow">
-                        <p className="font-semibold text-foreground">Tablet</p>
-                        <p className="text-sm text-muted-foreground">Interfaz optimizada para pantallas grandes</p>
+                        <p className="font-semibold text-foreground">{t("features.devices.tablet")}</p>
+                        <p className="text-sm text-muted-foreground">{t("features.devices.tabletDesc")}</p>
                       </div>
                       <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all" />
                     </div>
@@ -283,38 +285,26 @@ const FeatureTabs = () => {
                         <Monitor className="w-6 h-6 text-primary-foreground" />
                       </div>
                       <div className="flex-grow">
-                        <p className="font-semibold text-foreground">PC y Web</p>
-                        <p className="text-sm text-muted-foreground">Accede desde cualquier navegador</p>
+                        <p className="font-semibold text-foreground">{t("features.devices.pc")}</p>
+                        <p className="text-sm text-muted-foreground">{t("features.devices.pcDesc")}</p>
                       </div>
                       <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
                     </div>
                   </div>
                 </div>
                 
-                <div className="flex justify-center">
+                <div className="flex justify-center items-center">
                   <div className="relative">
-                    <div className="absolute -inset-8 bg-gradient-to-r from-accent/20 to-primary/20 rounded-3xl blur-3xl" />
-                    <div className="relative bg-gradient-to-br from-card to-muted rounded-3xl p-8 border border-accent/20 shadow-2xl">
-                      <p className="text-center text-lg font-semibold text-foreground mb-6">Disponible en</p>
-                      <div className="grid grid-cols-3 gap-6">
-                        <div className="flex flex-col items-center gap-2 p-4 bg-background/50 rounded-xl border border-border">
-                          <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/70 rounded-full flex items-center justify-center">
-                            <Smartphone className="w-8 h-8 text-primary-foreground" />
-                          </div>
-                          <span className="text-sm text-muted-foreground">Celular</span>
-                        </div>
-                        <div className="flex flex-col items-center gap-2 p-4 bg-background/50 rounded-xl border border-border">
-                          <div className="w-16 h-16 bg-gradient-to-br from-accent to-accent/70 rounded-full flex items-center justify-center">
-                            <Tablet className="w-8 h-8 text-accent-foreground" />
-                          </div>
-                          <span className="text-sm text-muted-foreground">Tablet</span>
-                        </div>
-                        <div className="flex flex-col items-center gap-2 p-4 bg-background/50 rounded-xl border border-border">
-                          <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/70 rounded-full flex items-center justify-center">
-                            <Monitor className="w-8 h-8 text-primary-foreground" />
-                          </div>
-                          <span className="text-sm text-muted-foreground">PC</span>
-                        </div>
+                    <div className="absolute -inset-4 bg-gradient-to-r from-accent/20 to-primary/20 rounded-full blur-3xl" />
+                    <div className="relative grid grid-cols-2 gap-6">
+                      <div className="bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl p-8 flex items-center justify-center border border-primary/20">
+                        <Smartphone className="w-16 h-16 text-primary" />
+                      </div>
+                      <div className="bg-gradient-to-br from-accent/20 to-accent/5 rounded-2xl p-8 flex items-center justify-center border border-accent/20">
+                        <Tablet className="w-16 h-16 text-accent" />
+                      </div>
+                      <div className="col-span-2 bg-gradient-to-br from-primary/20 to-accent/5 rounded-2xl p-8 flex items-center justify-center border border-primary/20">
+                        <Monitor className="w-20 h-20 text-primary" />
                       </div>
                     </div>
                   </div>

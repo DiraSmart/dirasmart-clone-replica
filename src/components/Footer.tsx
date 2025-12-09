@@ -1,8 +1,10 @@
 import { Facebook, Instagram, Linkedin } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 import dirasmartLogo from "@/assets/dirasmart-logo.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { t } = useLanguage();
 
   const socialLinks = [
     { icon: Facebook, href: "#", label: "Facebook" },
@@ -21,8 +23,7 @@ const Footer = () => {
           
           {/* Description */}
           <p className="text-secondary-foreground/70 max-w-lg mb-8">
-            Transformamos hogares ordinarios en espacios inteligentes y conectados. 
-            Tu comodidad y tranquilidad son nuestra prioridad.
+            {t("footer.description")}
           </p>
           
           {/* Social Links */}
@@ -41,7 +42,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-secondary-foreground/10 pt-6 text-center text-secondary-foreground/50">
-          <p>© {currentYear} DiraSmart. Todos los derechos reservados.</p>
+          <p>© {currentYear} DiraSmart. {t("footer.rights")}.</p>
         </div>
       </div>
     </footer>

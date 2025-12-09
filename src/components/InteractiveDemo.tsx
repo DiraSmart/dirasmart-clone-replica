@@ -12,6 +12,7 @@ import {
   Sun
 } from "lucide-react";
 import { Slider } from "@/components/ui/slider";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 type ACMode = 'off' | 'cool' | 'dry';
 type FanSpeed = 'auto' | 'min' | 'med' | 'high';
@@ -29,6 +30,7 @@ const InteractiveDemo = () => {
   const [animationDirection, setAnimationDirection] = useState<'up' | 'down' | null>(null);
   const animationRef = useRef<number | null>(null);
   const blindsLevelRef = useRef(blindsLevel);
+  const { t } = useLanguage();
 
   // Keep ref in sync with state
   useEffect(() => {
@@ -139,15 +141,32 @@ const InteractiveDemo = () => {
     }
   };
 
+  const getACStatus = () => {
+    switch (acMode) {
+      case 'cool':
+        return t("demo.ac.cooling");
+      case 'dry':
+        return t("demo.ac.drying");
+      default:
+        return t("demo.ac.off");
+    }
+  };
+
+  const getBlindsStatus = () => {
+    if (blindsLevel === 0) return t("demo.blinds.closed");
+    if (blindsLevel === 100) return t("demo.blinds.open");
+    return `${t("demo.blinds.partial")} · ${blindsLevel}%`;
+  };
+
   return (
     <section id="demo" className="section-padding section-divider bg-gradient-to-br from-primary/5 via-background to-accent/5">
       <div className="container-custom">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Prueba el <span className="text-gradient">Control Inteligente</span>
+            {t("demo.title")} <span className="text-gradient">{t("demo.titleHighlight")}</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Interactúa con nuestra demo y experimenta el control de tu hogar desde aquí
+            {t("demo.subtitle")}
           </p>
         </div>
 
@@ -160,9 +179,9 @@ const InteractiveDemo = () => {
                   {getACIcon()}
                 </div>
                 <div>
-                  <h3 className="font-semibold text-foreground">Aire Acondicionado</h3>
+                  <h3 className="font-semibold text-foreground">{t("demo.ac")}</h3>
                   <p className={`text-sm ${acMode === 'cool' ? 'text-primary' : acMode === 'dry' ? 'text-orange-500' : 'text-muted-foreground'}`}>
-                    {acMode === 'off' ? 'Apagado' : acMode === 'cool' ? 'Enfriando' : 'Secando'}
+                    {getACStatus()}
                   </p>
                 </div>
               </div>
@@ -183,7 +202,7 @@ const InteractiveDemo = () => {
             {/* Temperature display */}
             <div className="flex items-center justify-center gap-4 mb-6 flex-grow">
               <div className="flex flex-col items-center gap-2">
-                <span className="text-muted-foreground text-sm">Objetivo</span>
+                <span className="text-muted-foreground text-sm">{t("demo.target")}</span>
                 <div className="flex items-center gap-3">
                   <button 
                     className="h-10 w-10 rounded-xl bg-muted hover:bg-muted/80 flex items-center justify-center text-foreground font-bold transition-colors disabled:opacity-40 text-xl"
@@ -262,9 +281,9 @@ const InteractiveDemo = () => {
                 <Sun className={`w-6 h-6 ${lightOn ? 'text-white' : 'text-muted-foreground'}`} />
               </div>
               <div>
-                <h3 className="font-semibold text-foreground">Control de Luces</h3>
+                <h3 className="font-semibold text-foreground">{t("demo.lights")}</h3>
                 <p className="text-sm text-muted-foreground">
-                  {lightOn ? 'Encendida' : 'Apagada'}
+                  {lightOn ? t("demo.lights.on") : t("demo.lights.off")}
                 </p>
               </div>
             </div>
@@ -337,7 +356,7 @@ const InteractiveDemo = () => {
             {/* Brightness slider */}
             <div className="space-y-3">
               <div className="flex justify-between text-sm">
-                <span className="text-muted-foreground">Intensidad</span>
+                <span className="text-muted-foreground">{t("demo.intensity")}</span>
                 <span className="font-medium text-foreground">{brightness}%</span>
               </div>
               <Slider
@@ -360,9 +379,9 @@ const InteractiveDemo = () => {
                   <Blinds className="w-6 h-6 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-foreground">Cortinas</h3>
+                  <h3 className="font-semibold text-foreground">{t("demo.blinds")}</h3>
                   <p className="text-sm text-muted-foreground">
-                    {blindsLevel === 0 ? 'Cerradas' : blindsLevel === 100 ? 'Abiertas' : `Abierto · ${blindsLevel}%`}
+                    {getBlindsStatus()}
                   </p>
                 </div>
               </div>
@@ -405,11 +424,44 @@ const InteractiveDemo = () => {
               </div>
             </div>
 
+            {/* Controls - Up/Stop/Down buttons */}
+            <div className="flex justify-center gap-3 mb-4">
+              <button
+                onClick={() => animateBlinds('up')}
+                disabled={isAnimating && animationDirection !== 'up'}
+                className={`p-3 rounded-xl transition-all ${
+                  animationDirection === 'up'
+                    ? 'bg-primary text-primary-foreground'
+                    : 'bg-muted hover:bg-muted/80 text-foreground'
+                } disabled:opacity-40`}
+              >
+                <ChevronUp className="w-5 h-5" />
+              </button>
+              <button
+                onClick={stopBlinds}
+                disabled={!isAnimating}
+                className="p-3 rounded-xl bg-muted hover:bg-muted/80 text-foreground disabled:opacity-40 transition-all"
+              >
+                <Square className="w-5 h-5" />
+              </button>
+              <button
+                onClick={() => animateBlinds('down')}
+                disabled={isAnimating && animationDirection !== 'down'}
+                className={`p-3 rounded-xl transition-all ${
+                  animationDirection === 'down'
+                    ? 'bg-primary text-primary-foreground'
+                    : 'bg-muted hover:bg-muted/80 text-foreground'
+                } disabled:opacity-40`}
+              >
+                <ChevronDown className="w-5 h-5" />
+              </button>
+            </div>
+
             {/* Percentage slider */}
-            <div className="space-y-3 mb-4">
+            <div className="space-y-3">
               <div className="flex justify-between text-sm">
-                <span className="text-muted-foreground">Apertura</span>
-                <span className="font-medium text-primary">{blindsLevel}%</span>
+                <span className="text-muted-foreground">{t("demo.blinds.open")}</span>
+                <span className="font-medium text-foreground">{blindsLevel}%</span>
               </div>
               <Slider
                 value={[blindsLevel]}
@@ -418,54 +470,11 @@ const InteractiveDemo = () => {
                 max={100}
                 step={1}
                 disabled={isAnimating}
-                className="[&_[role=slider]]:bg-primary [&_[role=slider]]:border-primary [&_[role=slider]]:shadow-[0_0_10px_rgba(0,180,180,0.5)] [&_.relative]:bg-muted [&_[data-orientation=horizontal]>.absolute]:bg-gradient-to-r [&_[data-orientation=horizontal]>.absolute]:from-primary [&_[data-orientation=horizontal]>.absolute]:to-cyan-400"
+                className="[&_[role=slider]]:bg-primary [&_[role=slider]]:border-primary [&_.relative]:bg-muted [&_[data-orientation=horizontal]>.absolute]:bg-gradient-to-r [&_[data-orientation=horizontal]>.absolute]:from-primary [&_[data-orientation=horizontal]>.absolute]:to-accent"
               />
-            </div>
-
-            {/* Up/Stop/Down buttons */}
-            <div className="flex gap-2">
-              <button
-                onClick={() => animateBlinds('up')}
-                disabled={isAnimating || blindsLevel === 100}
-                className={`flex-1 flex items-center justify-center gap-1 py-3 px-3 rounded-xl font-medium transition-all shadow-lg hover:shadow-xl ${
-                  animationDirection === 'up' 
-                    ? 'bg-accent text-accent-foreground' 
-                    : 'bg-gradient-to-br from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground'
-                } disabled:opacity-40 disabled:cursor-not-allowed`}
-              >
-                <ChevronUp className="w-5 h-5" />
-                <span className="text-sm">Subir</span>
-              </button>
-              <button
-                onClick={stopBlinds}
-                disabled={!isAnimating}
-                className={`flex items-center justify-center gap-1 py-3 px-4 rounded-xl font-medium transition-all shadow-lg hover:shadow-xl ${
-                  isAnimating 
-                    ? 'bg-red-500 hover:bg-red-600 text-white cursor-pointer' 
-                    : 'bg-muted text-muted-foreground opacity-40 cursor-not-allowed'
-                }`}
-              >
-                <Square className="w-4 h-4" />
-              </button>
-              <button
-                onClick={() => animateBlinds('down')}
-                disabled={isAnimating || blindsLevel === 0}
-                className={`flex-1 flex items-center justify-center gap-1 py-3 px-3 rounded-xl font-medium transition-all shadow-lg hover:shadow-xl ${
-                  animationDirection === 'down' 
-                    ? 'bg-accent text-accent-foreground' 
-                    : 'bg-gradient-to-br from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground'
-                } disabled:opacity-40 disabled:cursor-not-allowed`}
-              >
-                <ChevronDown className="w-5 h-5" />
-                <span className="text-sm">Bajar</span>
-              </button>
             </div>
           </div>
         </div>
-
-        <p className="text-center text-muted-foreground text-sm mt-8">
-          ¡Haz clic en los controles para ver la magia de la automatización!
-        </p>
       </div>
     </section>
   );
