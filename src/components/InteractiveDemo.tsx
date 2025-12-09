@@ -1,11 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { 
   Thermometer, 
-  Lightbulb, 
   Blinds, 
   Power,
   Snowflake,
-  Sun,
   Wind,
   Droplets,
   ChevronUp,
@@ -51,7 +49,7 @@ const InteractiveDemo = () => {
           setIsAnimating(false);
           return targetLevel;
         }
-        animationRef.current = setTimeout(animate, 50);
+        animationRef.current = setTimeout(animate, 80);
         return newLevel;
       });
     };
@@ -101,31 +99,15 @@ const InteractiveDemo = () => {
               </div>
             </div>
 
-            {/* Futuristic sensors display */}
-            <div className="grid grid-cols-2 gap-3 mb-4">
-              <div className="relative p-4 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 overflow-hidden">
-                <div className="absolute top-0 right-0 w-12 h-12 bg-primary/10 rounded-full blur-xl" />
-                <div className="relative flex items-center gap-2">
-                  <div className="p-2 rounded-lg bg-primary/20">
-                    <Thermometer className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <span className="text-xs text-muted-foreground block">Temp.</span>
-                    <span className="text-xl font-bold text-foreground">{currentTemp}°</span>
-                  </div>
-                </div>
+            {/* Clean sensors display */}
+            <div className="flex justify-center gap-6 mb-4">
+              <div className="flex items-center gap-2">
+                <Thermometer className="w-5 h-5 text-primary" />
+                <span className="text-2xl font-bold text-foreground">{currentTemp}°</span>
               </div>
-              <div className="relative p-4 rounded-xl bg-gradient-to-br from-accent/10 to-accent/5 border border-accent/20 overflow-hidden">
-                <div className="absolute top-0 right-0 w-12 h-12 bg-accent/10 rounded-full blur-xl" />
-                <div className="relative flex items-center gap-2">
-                  <div className="p-2 rounded-lg bg-accent/20">
-                    <Droplets className="w-5 h-5 text-accent" />
-                  </div>
-                  <div>
-                    <span className="text-xs text-muted-foreground block">Humedad</span>
-                    <span className="text-xl font-bold text-foreground">{currentHumidity}%</span>
-                  </div>
-                </div>
+              <div className="flex items-center gap-2">
+                <Droplets className="w-5 h-5 text-accent" />
+                <span className="text-2xl font-bold text-foreground">{currentHumidity}%</span>
               </div>
             </div>
 
@@ -202,11 +184,13 @@ const InteractiveDemo = () => {
             </div>
           </div>
 
-          {/* Lights Control - Single Dimmer */}
+          {/* Lights Control with Real Bulb */}
           <div className="bg-card rounded-2xl p-6 border border-accent/20 hover:border-accent/40 transition-all shadow-card hover:shadow-card-hover">
             <div className="flex items-center gap-3 mb-6">
               <div className="p-3 rounded-xl bg-accent/20">
-                <Lightbulb className="w-6 h-6 text-accent" />
+                <svg className="w-6 h-6 text-accent" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9 21h6M12 3a6 6 0 0 0-6 6c0 2.22 1.21 4.16 3 5.19V17a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-2.81c1.79-1.03 3-2.97 3-5.19a6 6 0 0 0-6-6Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
               </div>
               <div>
                 <h3 className="font-semibold text-foreground">Control de Luces</h3>
@@ -216,23 +200,55 @@ const InteractiveDemo = () => {
               </div>
             </div>
 
-            {/* Light visual representation */}
+            {/* Realistic Light Bulb */}
             <div className="relative flex justify-center mb-6">
-              <div 
-                className={`w-32 h-32 rounded-full flex items-center justify-center transition-all duration-500 ${
-                  lightOn 
-                    ? 'bg-gradient-to-br from-amber-300 to-amber-500' 
-                    : 'bg-muted'
-                }`}
-                style={{
-                  boxShadow: lightOn 
-                    ? `0 0 ${brightness}px ${brightness / 2}px rgba(251, 191, 36, ${brightness / 200})` 
-                    : 'none'
-                }}
-              >
-                <Lightbulb 
-                  className={`w-16 h-16 transition-colors ${lightOn ? 'text-amber-900' : 'text-muted-foreground'}`} 
-                />
+              <div className="relative">
+                {/* Glow effect */}
+                {lightOn && (
+                  <div 
+                    className="absolute inset-0 rounded-full blur-3xl transition-opacity duration-500"
+                    style={{
+                      background: `radial-gradient(circle, rgba(251, 191, 36, ${brightness / 150}) 0%, transparent 70%)`,
+                      transform: 'scale(2)',
+                    }}
+                  />
+                )}
+                {/* Bulb SVG */}
+                <svg 
+                  className="w-32 h-32 relative z-10 transition-all duration-300"
+                  viewBox="0 0 100 120" 
+                  fill="none" 
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  {/* Bulb glass */}
+                  <ellipse 
+                    cx="50" 
+                    cy="40" 
+                    rx="35" 
+                    ry="38" 
+                    fill={lightOn ? `rgba(251, 191, 36, ${0.3 + brightness / 200})` : 'rgba(100, 100, 100, 0.2)'}
+                    stroke={lightOn ? '#fbbf24' : '#666'}
+                    strokeWidth="2"
+                  />
+                  {/* Inner glow */}
+                  {lightOn && (
+                    <ellipse 
+                      cx="50" 
+                      cy="40" 
+                      rx="20" 
+                      ry="22" 
+                      fill={`rgba(255, 255, 255, ${brightness / 200})`}
+                    />
+                  )}
+                  {/* Bulb base */}
+                  <rect x="35" y="75" width="30" height="8" fill="#888" rx="2"/>
+                  <rect x="38" y="83" width="24" height="6" fill="#666" rx="2"/>
+                  <rect x="40" y="89" width="20" height="6" fill="#555" rx="2"/>
+                  <rect x="42" y="95" width="16" height="10" fill="#444" rx="3"/>
+                  {/* Screw threads */}
+                  <path d="M38 83 L62 83" stroke="#555" strokeWidth="1"/>
+                  <path d="M40 86 L60 86" stroke="#444" strokeWidth="1"/>
+                </svg>
               </div>
             </div>
 
@@ -268,7 +284,7 @@ const InteractiveDemo = () => {
             </div>
           </div>
 
-          {/* Blinds Control with Animation */}
+          {/* Blinds Control with Window View */}
           <div className="bg-card rounded-2xl p-6 border border-primary/20 hover:border-primary/40 transition-all shadow-card hover:shadow-card-hover">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-3">
@@ -278,25 +294,41 @@ const InteractiveDemo = () => {
                 <div>
                   <h3 className="font-semibold text-foreground">Cortinas</h3>
                   <p className="text-sm text-muted-foreground">
-                    Abierto · {blindsLevel}%
+                    {blindsLevel === 0 ? 'Cerradas' : blindsLevel === 100 ? 'Abiertas' : `Abierto · ${blindsLevel}%`}
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Visual representation */}
-            <div className="relative h-32 bg-gradient-to-b from-sky-200 to-sky-100 rounded-xl overflow-hidden mb-4 border border-border">
-              <div className="absolute inset-x-0 top-0 flex justify-center">
-                <Sun className="w-6 h-6 text-yellow-500 mt-1" />
+            {/* Window with blinds visualization */}
+            <div className="relative h-36 rounded-xl overflow-hidden mb-4 border-4 border-slate-600">
+              {/* Window frame */}
+              <div className="absolute inset-0 border-2 border-slate-500 z-10 pointer-events-none">
+                <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-slate-500" />
+                <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-slate-500" />
               </div>
+              
+              {/* Outside view - sky and landscape */}
+              <div className="absolute inset-0 bg-gradient-to-b from-sky-400 via-sky-300 to-sky-200">
+                {/* Sun */}
+                <div className="absolute top-4 right-6 w-8 h-8 bg-yellow-300 rounded-full shadow-[0_0_20px_rgba(253,224,71,0.8)]" />
+                {/* Clouds */}
+                <div className="absolute top-6 left-4 w-12 h-4 bg-white/80 rounded-full blur-[1px]" />
+                <div className="absolute top-4 left-8 w-8 h-3 bg-white/60 rounded-full blur-[1px]" />
+                {/* Hills/Mountains */}
+                <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-green-600 to-green-500 rounded-t-full" />
+                <div className="absolute bottom-0 left-1/4 w-20 h-10 bg-green-700 rounded-t-full" />
+              </div>
+              
+              {/* Blinds overlay */}
               <div 
-                className="absolute inset-x-0 top-0 bg-gradient-to-b from-slate-400 to-slate-300 transition-all duration-200"
+                className="absolute inset-x-0 top-0 transition-all duration-300 z-20"
                 style={{ height: `${100 - blindsLevel}%` }}
               >
-                {Array.from({ length: Math.floor((100 - blindsLevel) / 12) }).map((_, i) => (
+                {Array.from({ length: Math.ceil((100 - blindsLevel) / 8) }).map((_, i) => (
                   <div 
                     key={i} 
-                    className="h-3 border-b border-slate-500/30 bg-slate-400"
+                    className="h-3 bg-gradient-to-b from-slate-300 to-slate-400 border-b border-slate-500/50 shadow-sm"
                   />
                 ))}
               </div>
@@ -319,22 +351,22 @@ const InteractiveDemo = () => {
               />
             </div>
 
-            {/* Up/Down buttons */}
+            {/* Improved Up/Down buttons */}
             <div className="flex gap-3">
               <button
                 onClick={() => animateBlinds('up')}
                 disabled={isAnimating || blindsLevel === 100}
-                className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl border-2 border-primary/30 bg-gradient-to-br from-primary/10 to-primary/5 hover:from-primary/20 hover:to-primary/10 hover:border-primary/50 text-foreground font-medium transition-all disabled:opacity-40 disabled:cursor-not-allowed group"
+                className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-gradient-to-br from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground font-medium transition-all disabled:opacity-40 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
               >
-                <ChevronUp className="w-5 h-5 text-primary group-hover:animate-bounce" />
+                <ChevronUp className="w-5 h-5" />
                 <span>Subir</span>
               </button>
               <button
                 onClick={() => animateBlinds('down')}
                 disabled={isAnimating || blindsLevel === 0}
-                className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl border-2 border-primary/30 bg-gradient-to-br from-primary/10 to-primary/5 hover:from-primary/20 hover:to-primary/10 hover:border-primary/50 text-foreground font-medium transition-all disabled:opacity-40 disabled:cursor-not-allowed group"
+                className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-gradient-to-br from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground font-medium transition-all disabled:opacity-40 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
               >
-                <ChevronDown className="w-5 h-5 text-primary group-hover:animate-bounce" />
+                <ChevronDown className="w-5 h-5" />
                 <span>Bajar</span>
               </button>
             </div>

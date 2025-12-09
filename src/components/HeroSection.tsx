@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
-import { Smartphone, Wifi, Lightbulb, Thermometer } from "lucide-react";
+import { Wifi, Lightbulb, Thermometer } from "lucide-react";
 import ParticleBackground from "./ParticleBackground";
 import AnimatedCounter from "./AnimatedCounter";
+import appMobileImage from "@/assets/app-mobile.png";
 
 const HeroSection = () => {
   const scrollToContact = () => {
@@ -83,88 +84,20 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Right Content - Phone Mockup */}
+          {/* Right Content - App Image */}
           <div className="relative flex justify-center lg:justify-end animate-fade-in-right">
             <div className="relative">
-              {/* Phone Frame */}
-              <div className="w-72 md:w-80 h-[580px] md:h-[640px] bg-secondary rounded-[3rem] p-3 shadow-2xl animate-float">
-                <div className="w-full h-full bg-background rounded-[2.5rem] overflow-hidden relative">
-                  {/* Phone Screen Content */}
-                  <div className="p-6 space-y-4">
-                    <div className="text-center pt-4">
-                      <h3 className="text-lg font-semibold text-secondary">Casa Inteligente</h3>
-                      <p className="text-sm text-muted-foreground">Bienvenido de vuelta</p>
-                    </div>
-
-                    {/* Room Cards */}
-                    <div className="space-y-3 pt-4">
-                      <div className="bg-muted rounded-2xl p-4 flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 bg-accent/20 rounded-full flex items-center justify-center">
-                            <Lightbulb className="w-5 h-5 text-accent" />
-                          </div>
-                          <div>
-                            <p className="font-medium text-sm">Sala de estar</p>
-                            <p className="text-xs text-muted-foreground">3 luces encendidas</p>
-                          </div>
-                        </div>
-                        <div className="w-12 h-6 bg-accent rounded-full" />
-                      </div>
-
-                      <div className="bg-muted rounded-2xl p-4 flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center">
-                            <Thermometer className="w-5 h-5 text-primary" />
-                          </div>
-                          <div>
-                            <p className="font-medium text-sm">Climatización</p>
-                            <p className="text-xs text-muted-foreground">23°C - Activo</p>
-                          </div>
-                        </div>
-                        <div className="w-12 h-6 bg-accent rounded-full" />
-                      </div>
-
-                      <div className="bg-muted rounded-2xl p-4 flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center">
-                            <Wifi className="w-5 h-5 text-secondary" />
-                          </div>
-                          <div>
-                            <p className="font-medium text-sm">Persianas</p>
-                            <p className="text-xs text-muted-foreground">Abiertas al 75%</p>
-                          </div>
-                        </div>
-                        <div className="w-12 h-6 bg-muted-foreground/30 rounded-full" />
-                      </div>
-                    </div>
-
-                    {/* Quick Actions */}
-                    <div className="pt-4">
-                      <p className="text-sm font-medium mb-3">Acciones rápidas</p>
-                      <div className="grid grid-cols-3 gap-2">
-                        <div className="bg-accent/10 rounded-xl p-3 text-center">
-                          <Lightbulb className="w-6 h-6 text-accent mx-auto" />
-                          <p className="text-xs mt-1">Luces</p>
-                        </div>
-                        <div className="bg-primary/10 rounded-xl p-3 text-center">
-                          <Thermometer className="w-6 h-6 text-primary mx-auto" />
-                          <p className="text-xs mt-1">Clima</p>
-                        </div>
-                        <div className="bg-accent/10 rounded-xl p-3 text-center">
-                          <Wifi className="w-6 h-6 text-accent mx-auto" />
-                          <p className="text-xs mt-1">Escenas</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <img 
+                src={appMobileImage} 
+                alt="DiraSmart App" 
+                className="w-72 md:w-96 animate-float drop-shadow-2xl"
+              />
 
               {/* Floating elements */}
               <div className="absolute -left-8 top-20 bg-card shadow-lg rounded-2xl p-4 animate-float" style={{ animationDelay: "0.5s" }}>
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-accent rounded-full flex items-center justify-center">
-                    <Smartphone className="w-5 h-5 text-accent-foreground" />
+                    <Lightbulb className="w-5 h-5 text-accent-foreground" />
                   </div>
                   <div>
                     <p className="text-sm font-medium">Control remoto</p>

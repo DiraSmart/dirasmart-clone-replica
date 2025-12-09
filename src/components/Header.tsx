@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Menu, X, Home } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ThemeToggle from "./ThemeToggle";
+import dirasmartLogo from "@/assets/dirasmart-logo.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -25,13 +26,8 @@ const Header = () => {
       <div className="container-custom">
         <div className="flex items-center justify-between h-16 md:h-20 px-4">
           {/* Logo */}
-          <a href="#home" className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
-              <Home className="w-6 h-6 text-primary-foreground" />
-            </div>
-            <span className="text-xl font-bold text-secondary">
-              DIRA<span className="text-gradient">SMART</span>
-            </span>
+          <a href="#home" className="flex items-center">
+            <img src={dirasmartLogo} alt="DiraSmart Logo" className="h-10 md:h-12" />
           </a>
 
           {/* Desktop Navigation */}
