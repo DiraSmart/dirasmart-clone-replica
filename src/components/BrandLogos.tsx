@@ -19,6 +19,9 @@ import hueLogo from "@/assets/brands/hue.png";
 import ecobeeLogo from "@/assets/brands/ecobee.png";
 import smartthingsLogo from "@/assets/brands/smartthings.png";
 import shellyLogo from "@/assets/brands/shelly.png";
+import bluetoothLogo from "@/assets/brands/bluetooth.jpg";
+import knxLogo from "@/assets/brands/knx.png";
+import wifiLogo from "@/assets/brands/wifi.png";
 
 const BrandLogos = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -43,8 +46,11 @@ const BrandLogos = () => {
   ];
 
   const protocols = [
+    { name: "WiFi", logo: wifiLogo },
     { name: "Zigbee", logo: zigbeeLogo },
     { name: "Z-Wave", logo: zwaveLogo },
+    { name: "Bluetooth", logo: bluetoothLogo },
+    { name: "KNX", logo: knxLogo },
   ];
 
   useEffect(() => {
@@ -106,16 +112,16 @@ const BrandLogos = () => {
         {/* Protocols Section */}
         <div>
           <h3 className="text-center text-lg font-semibold text-muted-foreground mb-6">{t("brands.protocols")}</h3>
-          <div className="flex flex-wrap justify-center gap-6">
+          <div className="grid grid-cols-5 gap-4 max-w-3xl mx-auto">
             {protocols.map((protocol) => (
               <div
                 key={protocol.name}
-                className="bg-card rounded-2xl p-6 flex flex-col items-center justify-center gap-3 border border-border shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 min-w-[140px]"
+                className="bg-card rounded-xl p-4 flex items-center justify-center border border-border shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
               >
                 <img 
                   src={protocol.logo} 
                   alt={protocol.name} 
-                  className="h-10 w-auto object-contain"
+                  className="h-8 sm:h-10 w-auto object-contain"
                 />
               </div>
             ))}
