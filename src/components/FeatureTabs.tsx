@@ -42,7 +42,7 @@ const FeatureTabs = () => {
           </TabsList>
 
           <TabsContent value="app" className="animate-fade-in">
-            <div className="bg-card rounded-3xl p-8 md:p-12 border border-border shadow-xl min-h-[500px]">
+            <div className="bg-card rounded-3xl p-8 md:p-12 border border-border shadow-xl h-[500px]">
               <div className="grid lg:grid-cols-2 gap-12 items-center h-full">
                 <div className="space-y-8">
                   <div>
@@ -93,13 +93,13 @@ const FeatureTabs = () => {
                   </div>
                 </div>
                 
-                <div className="flex justify-center items-center h-[320px]">
+                <div className="flex justify-center items-center h-full">
                   <div className="relative h-full flex items-center">
                     <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full blur-3xl" />
                     <img 
                       src={appMobileImage} 
                       alt="App DiraSmart" 
-                      className="relative h-full w-auto object-contain drop-shadow-2xl"
+                      className="relative max-h-full w-auto object-contain drop-shadow-2xl"
                     />
                   </div>
                 </div>
@@ -108,7 +108,7 @@ const FeatureTabs = () => {
           </TabsContent>
 
           <TabsContent value="shabbat" className="animate-fade-in">
-            <div className="bg-card rounded-3xl p-8 md:p-12 border border-border shadow-xl min-h-[500px]">
+            <div className="bg-card rounded-3xl p-8 md:p-12 border border-border shadow-xl h-[500px]">
               <div className="grid lg:grid-cols-2 gap-12 items-center h-full">
                 <div className="space-y-8">
                   <div>
@@ -159,13 +159,13 @@ const FeatureTabs = () => {
                   </div>
                 </div>
                 
-                <div className="flex justify-center items-center h-[320px]">
+                <div className="flex justify-center items-center h-full">
                   <div className="relative h-full flex items-center">
                     <div className="absolute -inset-4 bg-gradient-to-r from-accent/20 to-primary/20 rounded-full blur-3xl" />
                     <img 
                       src={shabatModeImage} 
                       alt="Modo Shabbat" 
-                      className="relative h-full w-auto object-contain drop-shadow-2xl"
+                      className="relative max-h-full w-auto object-contain drop-shadow-2xl"
                     />
                   </div>
                 </div>
@@ -174,7 +174,7 @@ const FeatureTabs = () => {
           </TabsContent>
 
           <TabsContent value="automate" className="animate-fade-in">
-            <div className="bg-card rounded-3xl p-8 md:p-12 border border-border shadow-xl min-h-[500px]">
+            <div className="bg-card rounded-3xl p-8 md:p-12 border border-border shadow-xl h-[500px]">
               <div className="grid lg:grid-cols-2 gap-12 items-center h-full">
                 <div className="space-y-8">
                   <div>
@@ -225,13 +225,13 @@ const FeatureTabs = () => {
                   </div>
                 </div>
                 
-                <div className="flex justify-center items-center h-[320px]">
+                <div className="flex justify-center items-center h-full">
                   <div className="relative h-full flex items-center">
                     <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full blur-3xl" />
                     <img 
                       src={automationsImage} 
                       alt="Automatizaciones" 
-                      className="relative h-full w-auto object-contain drop-shadow-2xl rounded-2xl"
+                      className="relative max-h-full w-auto object-contain drop-shadow-2xl rounded-2xl"
                     />
                   </div>
                 </div>
@@ -240,7 +240,7 @@ const FeatureTabs = () => {
           </TabsContent>
 
           <TabsContent value="dispositivos" className="animate-fade-in">
-            <div className="bg-card rounded-3xl p-8 md:p-12 border border-border shadow-xl min-h-[500px]">
+            <div className="bg-card rounded-3xl p-8 md:p-12 border border-border shadow-xl h-[500px]">
               <div className="grid lg:grid-cols-2 gap-12 items-center h-full">
                 <div className="space-y-8">
                   <div>
