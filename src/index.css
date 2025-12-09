@@ -136,10 +136,37 @@
 
 @layer components {
   .section-padding {
-    @apply py-16 md:py-24 px-4 md:px-8;
+    @apply py-20 md:py-28 px-4 md:px-8;
   }
 
   .container-custom {
     @apply max-w-7xl mx-auto;
+  }
+
+  /* Section backgrounds for alternating styles */
+  .section-light {
+    @apply bg-background;
+  }
+
+  .section-muted {
+    @apply bg-muted/30;
+  }
+
+  .section-gradient {
+    @apply bg-gradient-to-br from-primary/5 via-background to-accent/5;
+  }
+
+  .section-gradient-alt {
+    @apply bg-gradient-to-br from-muted/50 via-background to-muted/30;
+  }
+
+  /* Section divider */
+  .section-divider {
+    @apply relative;
+  }
+
+  .section-divider::before {
+    content: '';
+    @apply absolute top-0 left-1/2 -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-primary to-accent rounded-full;
   }
 }

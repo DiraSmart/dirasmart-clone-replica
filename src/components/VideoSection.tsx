@@ -1,6 +1,6 @@
 const VideoSection = () => {
   return (
-    <section className="section-padding bg-gradient-to-br from-muted/50 via-background to-muted/30">
+    <section className="section-padding bg-gradient-to-br from-secondary/5 via-background to-primary/5">
       <div className="container-custom">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
