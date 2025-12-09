@@ -3,10 +3,8 @@ import HeroSection from "@/components/HeroSection";
 import FeatureTabs from "@/components/FeatureTabs";
 import BrandLogos from "@/components/BrandLogos";
 import ServicesGrid from "@/components/ServicesGrid";
-import VideoSection from "@/components/VideoSection";
 import InteractiveDemo from "@/components/InteractiveDemo";
 import TestimonialsCarousel from "@/components/TestimonialsCarousel";
-import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
@@ -16,13 +14,11 @@ const Index = () => {
       <Header />
       <main>
         <HeroSection />
+        <InteractiveDemo />
         <FeatureTabs />
         <BrandLogos />
         <ServicesGrid />
-        <VideoSection />
-        <InteractiveDemo />
         <TestimonialsCarousel />
-        <ContactForm />
       </main>
       <Footer />
       <WhatsAppButton />
