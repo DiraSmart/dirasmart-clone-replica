@@ -12,8 +12,10 @@ const Header = () => {
 
   const navLinks = [
     { name: "Home", href: "#home" },
-    { name: "Sobre Nosotros", href: "#servicios" },
-    { name: "Información", href: "#features" },
+    { name: "Demo", href: "#demo" },
+    { name: "Características", href: "#features" },
+    { name: "Servicios", href: "#servicios" },
+    { name: "Testimonios", href: "#testimonios" },
   ];
 
   const scrollToSection = (href: string) => {
@@ -49,12 +51,6 @@ const Header = () => {
               </button>
             ))}
             <ThemeToggle />
-            <Button
-              onClick={() => scrollToSection("#contacto")}
-              className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground px-6"
-            >
-              Contacto
-            </Button>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -87,12 +83,6 @@ const Header = () => {
                   {link.name}
                 </button>
               ))}
-              <Button
-                onClick={() => scrollToSection("#contacto")}
-                className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground w-full"
-              >
-                Contacto
-              </Button>
             </div>
           </nav>
         )}
