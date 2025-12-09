@@ -85,26 +85,43 @@ const BrandLogos = () => {
           </p>
         </div>
 
-        {/* Brands Carousel */}
+        {/* Brands Carousel - 2 rows */}
         <div className="mb-12 -mx-4 md:-mx-8">
           <div 
             ref={scrollRef}
-            className="flex gap-6 overflow-hidden px-4"
+            className="flex flex-col gap-4 overflow-hidden px-4"
             style={{ scrollBehavior: 'auto' }}
           >
-            {/* Duplicate brands for infinite scroll effect */}
-            {[...brands, ...brands].map((brand, index) => (
-              <div
-                key={`${brand.name}-${index}`}
-                className="flex-shrink-0 bg-white rounded-2xl p-4 flex flex-col items-center justify-center gap-3 shadow-card hover:shadow-card-hover transition-all hover:-translate-y-1 border border-border min-w-[120px] h-[100px]"
-              >
-                <img 
-                  src={brand.logo} 
-                  alt={brand.name} 
-                  className="h-12 w-auto object-contain"
-                />
-              </div>
-            ))}
+            {/* Row 1 */}
+            <div className="flex gap-6">
+              {[...brands.slice(0, 8), ...brands.slice(0, 8)].map((brand, index) => (
+                <div
+                  key={`row1-${brand.name}-${index}`}
+                  className="flex-shrink-0 bg-white rounded-2xl p-4 flex flex-col items-center justify-center gap-3 shadow-card hover:shadow-card-hover transition-all hover:-translate-y-1 border border-border min-w-[120px] h-[100px]"
+                >
+                  <img 
+                    src={brand.logo} 
+                    alt={brand.name} 
+                    className="h-12 w-auto object-contain"
+                  />
+                </div>
+              ))}
+            </div>
+            {/* Row 2 */}
+            <div className="flex gap-6" style={{ marginLeft: '-60px' }}>
+              {[...brands.slice(8), ...brands.slice(8)].map((brand, index) => (
+                <div
+                  key={`row2-${brand.name}-${index}`}
+                  className="flex-shrink-0 bg-white rounded-2xl p-4 flex flex-col items-center justify-center gap-3 shadow-card hover:shadow-card-hover transition-all hover:-translate-y-1 border border-border min-w-[120px] h-[100px]"
+                >
+                  <img 
+                    src={brand.logo} 
+                    alt={brand.name} 
+                    className="h-12 w-auto object-contain"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
