@@ -21,8 +21,9 @@ const InteractiveDemo = () => {
   const [acMode, setAcMode] = useState<ACMode>('off');
   const [fanSpeed, setFanSpeed] = useState<FanSpeed>('med');
   const [acTemp, setAcTemp] = useState(24);
-  const [currentTemp] = useState(27);
+  const [currentTemp, setCurrentTemp] = useState(27);
   const [currentHumidity] = useState(65);
+  const ambientTemp = 27; // Ambient temperature when AC is off
   const [lightOn, setLightOn] = useState(true);
   const [brightness, setBrightness] = useState(75);
   const [blindsLevel, setBlindsLevel] = useState(70);
@@ -117,6 +118,31 @@ const InteractiveDemo = () => {
       }
     };
   }, []);
+
+  // Temperature simulation effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTemp(prev => {
+        if (acMode === 'cool') {
+          // Cooling: slowly decrease to target temperature
+          if (prev > acTemp) {
+            return Math.round((prev - 0.5) * 10) / 10;
+          }
+          return acTemp;
+        } else {
+          // Off or dry mode: slowly return to ambient (27°C)
+          if (prev < ambientTemp) {
+            return Math.round((prev + 0.5) * 10) / 10;
+          } else if (prev > ambientTemp) {
+            return Math.round((prev - 0.5) * 10) / 10;
+          }
+          return ambientTemp;
+        }
+      });
+    }, 1500); // Update every 1.5 seconds for smooth transition
+
+    return () => clearInterval(interval);
+  }, [acMode, acTemp, ambientTemp]);
 
   // Get AC icon based on mode
   const getACIcon = () => {
