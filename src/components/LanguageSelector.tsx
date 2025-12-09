@@ -17,7 +17,7 @@ const LanguageSelector = () => {
       className="flex items-center gap-1.5 text-foreground/80 hover:text-accent focus:bg-transparent active:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0"
     >
       <Globe className="w-4 h-4" />
-      <span className="text-sm font-medium uppercase">{language}</span>
+      <span className="text-sm font-medium uppercase">{language === "es" ? "en" : "es"}</span>
     </Button>
   );
 };
