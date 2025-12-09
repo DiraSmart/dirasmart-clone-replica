@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { Wifi, Lightbulb, Thermometer } from "lucide-react";
 import ParticleBackground from "./ParticleBackground";
 import AnimatedCounter from "./AnimatedCounter";
 import appMobileImage from "@/assets/app-mobile.png";
@@ -85,39 +84,12 @@ const HeroSection = () => {
           </div>
 
           {/* Right Content - App Image */}
-          <div className="relative flex justify-center lg:justify-end animate-fade-in-right">
-            <div className="relative">
-              <img 
-                src={appMobileImage} 
-                alt="DiraSmart App" 
-                className="w-72 md:w-96 animate-float drop-shadow-2xl"
-              />
-
-              {/* Floating elements */}
-              <div className="absolute -left-8 top-20 bg-card shadow-lg rounded-2xl p-4 animate-float" style={{ animationDelay: "0.5s" }}>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-accent rounded-full flex items-center justify-center">
-                    <Lightbulb className="w-5 h-5 text-accent-foreground" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium">Control remoto</p>
-                    <p className="text-xs text-muted-foreground">Desde cualquier lugar</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="absolute -right-8 bottom-32 bg-card shadow-lg rounded-2xl p-4 animate-float" style={{ animationDelay: "1s" }}>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-accent rounded-full flex items-center justify-center">
-                    <Wifi className="w-5 h-5 text-accent-foreground" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium">WiFi conectado</p>
-                    <p className="text-xs text-muted-foreground">100% seguro</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div className="relative flex justify-center animate-fade-in-right">
+            <img 
+              src={appMobileImage} 
+              alt="DiraSmart App" 
+              className="w-72 md:w-96 animate-float drop-shadow-2xl"
+            />
           </div>
         </div>
       </div>
