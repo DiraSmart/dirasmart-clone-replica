@@ -1,17 +1,17 @@
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Smartphone, Moon, Zap, Cpu, Lightbulb, Thermometer, Home, Clock, ChevronRight } from "lucide-react";
-import appMockupImage from "@/assets/app-mockup.png";
+import { Smartphone, Moon, Zap, Cpu, Lightbulb, Thermometer, Home, Clock, ChevronRight, Calendar, Tablet, Monitor } from "lucide-react";
+import appMobileImage from "@/assets/app-mobile-main.webp";
 import shabatModeImage from "@/assets/shabat-mode.png";
-import automationsImage from "@/assets/automations.png";
+import automationsImage from "@/assets/automations-screen.jpg";
 
 const FeatureTabs = () => {
   const [activeTab, setActiveTab] = useState("app");
 
   const tabs = [
     { id: "app", label: "App", icon: Smartphone },
-    { id: "shabbat", label: "Shabbat Mode", icon: Moon },
     { id: "automate", label: "Automatiza Tu Vida", icon: Zap },
+    { id: "shabbat", label: "Shabbat Mode", icon: Moon },
     { id: "dispositivos", label: "Dispositivos", icon: Cpu },
   ];
 
@@ -97,9 +97,9 @@ const FeatureTabs = () => {
                   <div className="relative">
                     <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full blur-3xl" />
                     <img 
-                      src={appMockupImage} 
+                      src={appMobileImage} 
                       alt="App DiraSmart" 
-                      className="relative w-full max-w-md drop-shadow-2xl"
+                      className="relative w-full max-w-xs drop-shadow-2xl"
                     />
                   </div>
                 </div>
@@ -113,35 +113,35 @@ const FeatureTabs = () => {
                 <div className="space-y-8">
                   <div>
                     <span className="inline-block px-4 py-1 rounded-full bg-accent/10 text-accent text-sm font-medium mb-4">
-                      Modo Especial
+                      Calendario Judío
                     </span>
                     <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
                       Modo Shabbat
                     </h3>
                     <p className="text-muted-foreground text-lg leading-relaxed">
-                      Programa automáticamente tu hogar para Shabbat y festividades judías sin preocupaciones.
+                      Sistema inteligente que se adapta al calendario judío, configurando automáticamente los días importantes con solo un par de clicks.
                     </p>
                   </div>
                   
                   <div className="space-y-4">
                     <div className="group flex items-center gap-4 p-4 rounded-2xl bg-gradient-to-r from-accent/5 to-transparent border border-accent/10 hover:border-accent/30 transition-all cursor-pointer">
                       <div className="w-12 h-12 bg-gradient-to-br from-accent to-accent/70 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                        <Clock className="w-6 h-6 text-accent-foreground" />
+                        <Calendar className="w-6 h-6 text-accent-foreground" />
                       </div>
                       <div className="flex-grow">
-                        <p className="font-semibold text-foreground">Programación Automática</p>
-                        <p className="text-sm text-muted-foreground">Se activa automáticamente según el calendario</p>
+                        <p className="font-semibold text-foreground">Reconoce Jaguim</p>
+                        <p className="text-sm text-muted-foreground">Detecta festividades incluso en días de semana</p>
                       </div>
                       <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all" />
                     </div>
                     
                     <div className="group flex items-center gap-4 p-4 rounded-2xl bg-gradient-to-r from-accent/5 to-transparent border border-accent/10 hover:border-accent/30 transition-all cursor-pointer">
                       <div className="w-12 h-12 bg-gradient-to-br from-accent to-accent/70 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                        <Lightbulb className="w-6 h-6 text-accent-foreground" />
+                        <Clock className="w-6 h-6 text-accent-foreground" />
                       </div>
                       <div className="flex-grow">
-                        <p className="font-semibold text-foreground">Control de Luces</p>
-                        <p className="text-sm text-muted-foreground">Enciende y apaga luces en horarios predefinidos</p>
+                        <p className="font-semibold text-foreground">Configuración Rápida</p>
+                        <p className="text-sm text-muted-foreground">Todo automático con solo un par de clicks</p>
                       </div>
                       <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all" />
                     </div>
@@ -151,8 +151,8 @@ const FeatureTabs = () => {
                         <Moon className="w-6 h-6 text-accent-foreground" />
                       </div>
                       <div className="flex-grow">
-                        <p className="font-semibold text-foreground">Modo Nocturno</p>
-                        <p className="text-sm text-muted-foreground">Transición suave a iluminación tenue</p>
+                        <p className="font-semibold text-foreground">Modo Automático</p>
+                        <p className="text-sm text-muted-foreground">Tu hogar se prepara solo para cada ocasión</p>
                       </div>
                       <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all" />
                     </div>
@@ -245,46 +245,46 @@ const FeatureTabs = () => {
                 <div className="space-y-8">
                   <div>
                     <span className="inline-block px-4 py-1 rounded-full bg-accent/10 text-accent text-sm font-medium mb-4">
-                      Compatibilidad
+                      Multiplataforma
                     </span>
                     <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                      Dispositivos Compatibles
+                      Todos Tus Dispositivos
                     </h3>
                     <p className="text-muted-foreground text-lg leading-relaxed">
-                      Integra una amplia gama de dispositivos inteligentes de las mejores marcas del mercado.
+                      Accede a tu hogar inteligente desde cualquier dispositivo: celular, tablet, PC y más.
                     </p>
                   </div>
                   
                   <div className="space-y-4">
                     <div className="group flex items-center gap-4 p-4 rounded-2xl bg-gradient-to-r from-primary/5 to-transparent border border-primary/10 hover:border-primary/30 transition-all cursor-pointer">
                       <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary/70 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                        <Cpu className="w-6 h-6 text-primary-foreground" />
+                        <Smartphone className="w-6 h-6 text-primary-foreground" />
                       </div>
                       <div className="flex-grow">
-                        <p className="font-semibold text-foreground">Múltiples Protocolos</p>
-                        <p className="text-sm text-muted-foreground">WiFi, Zigbee, Z-Wave, Bluetooth</p>
+                        <p className="font-semibold text-foreground">Celular</p>
+                        <p className="text-sm text-muted-foreground">App nativa para iOS y Android</p>
                       </div>
                       <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
                     </div>
                     
                     <div className="group flex items-center gap-4 p-4 rounded-2xl bg-gradient-to-r from-accent/5 to-transparent border border-accent/10 hover:border-accent/30 transition-all cursor-pointer">
                       <div className="w-12 h-12 bg-gradient-to-br from-accent to-accent/70 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                        <Home className="w-6 h-6 text-accent-foreground" />
+                        <Tablet className="w-6 h-6 text-accent-foreground" />
                       </div>
                       <div className="flex-grow">
-                        <p className="font-semibold text-foreground">Marcas Líderes</p>
-                        <p className="text-sm text-muted-foreground">Philips Hue, Sonos, Nest, y más</p>
+                        <p className="font-semibold text-foreground">Tablet</p>
+                        <p className="text-sm text-muted-foreground">Interfaz optimizada para pantallas grandes</p>
                       </div>
                       <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all" />
                     </div>
                     
                     <div className="group flex items-center gap-4 p-4 rounded-2xl bg-gradient-to-r from-primary/5 to-transparent border border-primary/10 hover:border-primary/30 transition-all cursor-pointer">
                       <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary/70 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                        <Zap className="w-6 h-6 text-primary-foreground" />
+                        <Monitor className="w-6 h-6 text-primary-foreground" />
                       </div>
                       <div className="flex-grow">
-                        <p className="font-semibold text-foreground">Fácil Integración</p>
-                        <p className="text-sm text-muted-foreground">Añade nuevos dispositivos en segundos</p>
+                        <p className="font-semibold text-foreground">PC y Web</p>
+                        <p className="text-sm text-muted-foreground">Accede desde cualquier navegador</p>
                       </div>
                       <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
                     </div>
@@ -295,31 +295,25 @@ const FeatureTabs = () => {
                   <div className="relative">
                     <div className="absolute -inset-8 bg-gradient-to-r from-accent/20 to-primary/20 rounded-3xl blur-3xl" />
                     <div className="relative bg-gradient-to-br from-card to-muted rounded-3xl p-8 border border-accent/20 shadow-2xl">
-                      <p className="text-center text-lg font-semibold text-foreground mb-6">Protocolos Soportados</p>
-                      <div className="grid grid-cols-2 gap-6">
+                      <p className="text-center text-lg font-semibold text-foreground mb-6">Disponible en</p>
+                      <div className="grid grid-cols-3 gap-6">
                         <div className="flex flex-col items-center gap-2 p-4 bg-background/50 rounded-xl border border-border">
-                          <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center">
-                            <span className="text-white font-bold text-xs">WiFi</span>
+                          <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/70 rounded-full flex items-center justify-center">
+                            <Smartphone className="w-8 h-8 text-primary-foreground" />
                           </div>
-                          <span className="text-sm text-muted-foreground">WiFi</span>
+                          <span className="text-sm text-muted-foreground">Celular</span>
                         </div>
                         <div className="flex flex-col items-center gap-2 p-4 bg-background/50 rounded-xl border border-border">
-                          <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center">
-                            <span className="text-white font-bold text-xs">Zigbee</span>
+                          <div className="w-16 h-16 bg-gradient-to-br from-accent to-accent/70 rounded-full flex items-center justify-center">
+                            <Tablet className="w-8 h-8 text-accent-foreground" />
                           </div>
-                          <span className="text-sm text-muted-foreground">Zigbee</span>
+                          <span className="text-sm text-muted-foreground">Tablet</span>
                         </div>
                         <div className="flex flex-col items-center gap-2 p-4 bg-background/50 rounded-xl border border-border">
-                          <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center">
-                            <span className="text-white font-bold text-xs">Z-Wave</span>
+                          <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/70 rounded-full flex items-center justify-center">
+                            <Monitor className="w-8 h-8 text-primary-foreground" />
                           </div>
-                          <span className="text-sm text-muted-foreground">Z-Wave</span>
-                        </div>
-                        <div className="flex flex-col items-center gap-2 p-4 bg-background/50 rounded-xl border border-border">
-                          <div className="w-16 h-16 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-full flex items-center justify-center">
-                            <span className="text-white font-bold text-xs">BLE</span>
-                          </div>
-                          <span className="text-sm text-muted-foreground">Bluetooth</span>
+                          <span className="text-sm text-muted-foreground">PC</span>
                         </div>
                       </div>
                     </div>
