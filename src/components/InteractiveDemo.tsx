@@ -7,7 +7,8 @@ import {
   Wind,
   Droplets,
   ChevronUp,
-  ChevronDown
+  ChevronDown,
+  Square
 } from "lucide-react";
 import { Slider } from "@/components/ui/slider";
 
@@ -34,6 +35,14 @@ const InteractiveDemo = () => {
     setFanSpeed(speed);
   };
 
+  const stopBlinds = () => {
+    if (animationRef.current) {
+      clearTimeout(animationRef.current);
+      animationRef.current = null;
+    }
+    setIsAnimating(false);
+  };
+
   const animateBlinds = (direction: 'up' | 'down') => {
     if (isAnimating) return;
     
@@ -49,7 +58,7 @@ const InteractiveDemo = () => {
           setIsAnimating(false);
           return targetLevel;
         }
-        animationRef.current = setTimeout(animate, 80);
+        animationRef.current = setTimeout(animate, 150);
         return newLevel;
       });
     };
@@ -82,10 +91,10 @@ const InteractiveDemo = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto items-stretch">
           {/* AC Control */}
-          <div className="bg-card rounded-2xl p-6 border border-primary/20 hover:border-primary/40 transition-all shadow-card hover:shadow-card-hover">
-            <div className="flex items-center justify-between mb-4">
+          <div className="bg-card rounded-2xl p-6 border border-primary/20 hover:border-primary/40 transition-all shadow-card hover:shadow-card-hover flex flex-col">
+            <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-3">
                 <div className={`p-3 rounded-xl ${acMode !== 'off' ? 'bg-primary' : 'bg-muted'} transition-colors`}>
                   <Snowflake className={`w-6 h-6 ${acMode !== 'off' ? 'text-primary-foreground' : 'text-muted-foreground'}`} />
@@ -100,36 +109,38 @@ const InteractiveDemo = () => {
             </div>
 
             {/* Clean sensors display */}
-            <div className="flex justify-center gap-6 mb-4">
+            <div className="flex justify-center gap-8 mb-6">
               <div className="flex items-center gap-2">
-                <Thermometer className="w-5 h-5 text-primary" />
-                <span className="text-2xl font-bold text-foreground">{currentTemp}°</span>
+                <Thermometer className="w-6 h-6 text-primary" />
+                <span className="text-3xl font-bold text-foreground">{currentTemp}°</span>
               </div>
               <div className="flex items-center gap-2">
-                <Droplets className="w-5 h-5 text-accent" />
-                <span className="text-2xl font-bold text-foreground">{currentHumidity}%</span>
+                <Droplets className="w-6 h-6 text-accent" />
+                <span className="text-3xl font-bold text-foreground">{currentHumidity}%</span>
               </div>
             </div>
 
             {/* Temperature display */}
-            <div className="flex items-center justify-center gap-4 mb-4">
-              <span className="text-muted-foreground text-sm">Objetivo:</span>
-              <div className="flex items-center gap-2">
-                <button 
-                  className="h-8 w-8 rounded-lg bg-muted hover:bg-muted/80 flex items-center justify-center text-foreground font-bold transition-colors disabled:opacity-40"
-                  onClick={() => setAcTemp(Math.max(16, acTemp - 1))}
-                  disabled={acMode === 'off'}
-                >
-                  -
-                </button>
-                <span className="text-2xl font-bold text-primary min-w-[60px] text-center">{acTemp}°C</span>
-                <button 
-                  className="h-8 w-8 rounded-lg bg-muted hover:bg-muted/80 flex items-center justify-center text-foreground font-bold transition-colors disabled:opacity-40"
-                  onClick={() => setAcTemp(Math.min(30, acTemp + 1))}
-                  disabled={acMode === 'off'}
-                >
-                  +
-                </button>
+            <div className="flex items-center justify-center gap-4 mb-6 flex-grow">
+              <div className="flex flex-col items-center gap-2">
+                <span className="text-muted-foreground text-sm">Objetivo</span>
+                <div className="flex items-center gap-3">
+                  <button 
+                    className="h-10 w-10 rounded-xl bg-muted hover:bg-muted/80 flex items-center justify-center text-foreground font-bold transition-colors disabled:opacity-40 text-xl"
+                    onClick={() => setAcTemp(Math.max(16, acTemp - 1))}
+                    disabled={acMode === 'off'}
+                  >
+                    -
+                  </button>
+                  <span className="text-4xl font-bold text-primary min-w-[80px] text-center">{acTemp}°C</span>
+                  <button 
+                    className="h-10 w-10 rounded-xl bg-muted hover:bg-muted/80 flex items-center justify-center text-foreground font-bold transition-colors disabled:opacity-40 text-xl"
+                    onClick={() => setAcTemp(Math.min(30, acTemp + 1))}
+                    disabled={acMode === 'off'}
+                  >
+                    +
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -137,29 +148,29 @@ const InteractiveDemo = () => {
             <div className="flex gap-2 mb-4">
               <button
                 onClick={() => setACMode('off')}
-                className={`flex-1 flex flex-col items-center gap-1 py-2 px-3 rounded-lg border transition-all ${
+                className={`flex-1 flex flex-col items-center gap-1 py-3 px-3 rounded-lg border transition-all ${
                   acMode === 'off' ? 'bg-muted border-muted-foreground/30' : 'bg-card border-border hover:bg-muted/50'
                 }`}
               >
-                <Power className="w-4 h-4" />
+                <Power className="w-5 h-5" />
                 <span className="text-xs">off</span>
               </button>
               <button
                 onClick={() => setACMode('cool')}
-                className={`flex-1 flex flex-col items-center gap-1 py-2 px-3 rounded-lg border transition-all ${
+                className={`flex-1 flex flex-col items-center gap-1 py-3 px-3 rounded-lg border transition-all ${
                   acMode === 'cool' ? 'bg-primary text-primary-foreground border-primary' : 'bg-card border-border hover:bg-muted/50'
                 }`}
               >
-                <Snowflake className="w-4 h-4" />
+                <Snowflake className="w-5 h-5" />
                 <span className="text-xs">cool</span>
               </button>
               <button
                 onClick={() => setACMode('dry')}
-                className={`flex-1 flex flex-col items-center gap-1 py-2 px-3 rounded-lg border transition-all ${
+                className={`flex-1 flex flex-col items-center gap-1 py-3 px-3 rounded-lg border transition-all ${
                   acMode === 'dry' ? 'bg-orange-500 text-white border-orange-500' : 'bg-card border-border hover:bg-muted/50'
                 }`}
               >
-                <Droplets className="w-4 h-4" />
+                <Droplets className="w-5 h-5" />
                 <span className="text-xs">dry</span>
               </button>
             </div>
@@ -184,12 +195,13 @@ const InteractiveDemo = () => {
             </div>
           </div>
 
-          {/* Lights Control with Real Bulb */}
-          <div className="bg-card rounded-2xl p-6 border border-accent/20 hover:border-accent/40 transition-all shadow-card hover:shadow-card-hover">
+          {/* Lights Control - Modern Ceiling Light */}
+          <div className="bg-card rounded-2xl p-6 border border-accent/20 hover:border-accent/40 transition-all shadow-card hover:shadow-card-hover flex flex-col">
             <div className="flex items-center gap-3 mb-6">
               <div className="p-3 rounded-xl bg-accent/20">
                 <svg className="w-6 h-6 text-accent" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M9 21h6M12 3a6 6 0 0 0-6 6c0 2.22 1.21 4.16 3 5.19V17a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-2.81c1.79-1.03 3-2.97 3-5.19a6 6 0 0 0-6-6Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <circle cx="12" cy="12" r="5" stroke="currentColor" strokeWidth="2"/>
+                  <path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
                 </svg>
               </div>
               <div>
@@ -200,55 +212,63 @@ const InteractiveDemo = () => {
               </div>
             </div>
 
-            {/* Realistic Light Bulb */}
-            <div className="relative flex justify-center mb-6">
+            {/* Modern Ceiling Light */}
+            <div className="relative flex justify-center flex-grow items-center">
               <div className="relative">
-                {/* Glow effect */}
-                {lightOn && (
-                  <div 
-                    className="absolute inset-0 rounded-full blur-3xl transition-opacity duration-500"
-                    style={{
-                      background: `radial-gradient(circle, rgba(251, 191, 36, ${brightness / 150}) 0%, transparent 70%)`,
-                      transform: 'scale(2)',
-                    }}
-                  />
-                )}
-                {/* Bulb SVG */}
-                <svg 
-                  className="w-32 h-32 relative z-10 transition-all duration-300"
-                  viewBox="0 0 100 120" 
-                  fill="none" 
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  {/* Bulb glass */}
-                  <ellipse 
-                    cx="50" 
-                    cy="40" 
-                    rx="35" 
-                    ry="38" 
-                    fill={lightOn ? `rgba(251, 191, 36, ${0.3 + brightness / 200})` : 'rgba(100, 100, 100, 0.2)'}
-                    stroke={lightOn ? '#fbbf24' : '#666'}
-                    strokeWidth="2"
-                  />
-                  {/* Inner glow */}
+                {/* Cord */}
+                <div className="absolute left-1/2 -translate-x-1/2 -top-8 w-0.5 h-8 bg-slate-400" />
+                
+                {/* Light Fixture */}
+                <div className="relative">
+                  {/* Glow effect */}
                   {lightOn && (
-                    <ellipse 
-                      cx="50" 
-                      cy="40" 
-                      rx="20" 
-                      ry="22" 
-                      fill={`rgba(255, 255, 255, ${brightness / 200})`}
+                    <div 
+                      className="absolute inset-0 rounded-full blur-3xl transition-opacity duration-500"
+                      style={{
+                        background: `radial-gradient(circle, rgba(251, 191, 36, ${brightness / 120}) 0%, transparent 60%)`,
+                        transform: 'scale(2.5) translateY(20%)',
+                      }}
                     />
                   )}
-                  {/* Bulb base */}
-                  <rect x="35" y="75" width="30" height="8" fill="#888" rx="2"/>
-                  <rect x="38" y="83" width="24" height="6" fill="#666" rx="2"/>
-                  <rect x="40" y="89" width="20" height="6" fill="#555" rx="2"/>
-                  <rect x="42" y="95" width="16" height="10" fill="#444" rx="3"/>
-                  {/* Screw threads */}
-                  <path d="M38 83 L62 83" stroke="#555" strokeWidth="1"/>
-                  <path d="M40 86 L60 86" stroke="#444" strokeWidth="1"/>
-                </svg>
+                  
+                  {/* Pendant fixture */}
+                  <svg 
+                    className="w-40 h-40 relative z-10 transition-all duration-300"
+                    viewBox="0 0 120 100" 
+                    fill="none" 
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    {/* Mount */}
+                    <rect x="55" y="0" width="10" height="8" fill="#666" rx="2"/>
+                    
+                    {/* Shade outer */}
+                    <path 
+                      d="M20 35 Q60 25 100 35 L95 75 Q60 85 25 75 Z" 
+                      fill={lightOn ? `rgba(251, 191, 36, ${0.15 + brightness / 300})` : 'rgba(80, 80, 80, 0.3)'}
+                      stroke={lightOn ? '#fbbf24' : '#555'}
+                      strokeWidth="2"
+                    />
+                    
+                    {/* Inner glow/light area */}
+                    {lightOn && (
+                      <ellipse 
+                        cx="60" 
+                        cy="75" 
+                        rx={25 + brightness / 10} 
+                        ry={15 + brightness / 15} 
+                        fill={`rgba(255, 255, 255, ${brightness / 250})`}
+                      />
+                    )}
+                    
+                    {/* Light cone effect */}
+                    {lightOn && (
+                      <path 
+                        d="M35 75 L15 100 L105 100 L85 75" 
+                        fill={`rgba(251, 191, 36, ${brightness / 400})`}
+                      />
+                    )}
+                  </svg>
+                </div>
               </div>
             </div>
 
@@ -285,7 +305,7 @@ const InteractiveDemo = () => {
           </div>
 
           {/* Blinds Control with Window View */}
-          <div className="bg-card rounded-2xl p-6 border border-primary/20 hover:border-primary/40 transition-all shadow-card hover:shadow-card-hover">
+          <div className="bg-card rounded-2xl p-6 border border-primary/20 hover:border-primary/40 transition-all shadow-card hover:shadow-card-hover flex flex-col">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-3">
                 <div className="p-3 rounded-xl bg-primary/20">
@@ -300,8 +320,8 @@ const InteractiveDemo = () => {
               </div>
             </div>
 
-            {/* Window with blinds visualization */}
-            <div className="relative h-36 rounded-xl overflow-hidden mb-4 border-4 border-slate-600">
+            {/* Window with blinds visualization - taller */}
+            <div className="relative flex-grow min-h-[180px] rounded-xl overflow-hidden mb-4 border-4 border-slate-600">
               {/* Window frame */}
               <div className="absolute inset-0 border-2 border-slate-500 z-10 pointer-events-none">
                 <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-slate-500" />
@@ -311,13 +331,15 @@ const InteractiveDemo = () => {
               {/* Outside view - sky and landscape */}
               <div className="absolute inset-0 bg-gradient-to-b from-sky-400 via-sky-300 to-sky-200">
                 {/* Sun */}
-                <div className="absolute top-4 right-6 w-8 h-8 bg-yellow-300 rounded-full shadow-[0_0_20px_rgba(253,224,71,0.8)]" />
+                <div className="absolute top-6 right-8 w-10 h-10 bg-yellow-300 rounded-full shadow-[0_0_30px_rgba(253,224,71,0.8)]" />
                 {/* Clouds */}
-                <div className="absolute top-6 left-4 w-12 h-4 bg-white/80 rounded-full blur-[1px]" />
-                <div className="absolute top-4 left-8 w-8 h-3 bg-white/60 rounded-full blur-[1px]" />
+                <div className="absolute top-8 left-6 w-16 h-5 bg-white/80 rounded-full blur-[1px]" />
+                <div className="absolute top-5 left-12 w-10 h-4 bg-white/60 rounded-full blur-[1px]" />
+                <div className="absolute top-12 right-20 w-12 h-4 bg-white/70 rounded-full blur-[1px]" />
                 {/* Hills/Mountains */}
-                <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-green-600 to-green-500 rounded-t-full" />
-                <div className="absolute bottom-0 left-1/4 w-20 h-10 bg-green-700 rounded-t-full" />
+                <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-green-600 to-green-500 rounded-t-full" />
+                <div className="absolute bottom-0 left-1/4 w-24 h-14 bg-green-700 rounded-t-full" />
+                <div className="absolute bottom-0 right-1/4 w-20 h-10 bg-green-600 rounded-t-full" />
               </div>
               
               {/* Blinds overlay */}
@@ -325,10 +347,10 @@ const InteractiveDemo = () => {
                 className="absolute inset-x-0 top-0 transition-all duration-300 z-20"
                 style={{ height: `${100 - blindsLevel}%` }}
               >
-                {Array.from({ length: Math.ceil((100 - blindsLevel) / 8) }).map((_, i) => (
+                {Array.from({ length: Math.ceil((100 - blindsLevel) / 6) }).map((_, i) => (
                   <div 
                     key={i} 
-                    className="h-3 bg-gradient-to-b from-slate-300 to-slate-400 border-b border-slate-500/50 shadow-sm"
+                    className="h-4 bg-gradient-to-b from-slate-300 to-slate-400 border-b border-slate-500/50 shadow-sm"
                   />
                 ))}
               </div>
@@ -351,23 +373,30 @@ const InteractiveDemo = () => {
               />
             </div>
 
-            {/* Improved Up/Down buttons */}
-            <div className="flex gap-3">
+            {/* Up/Stop/Down buttons */}
+            <div className="flex gap-2">
               <button
                 onClick={() => animateBlinds('up')}
                 disabled={isAnimating || blindsLevel === 100}
-                className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-gradient-to-br from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground font-medium transition-all disabled:opacity-40 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
+                className="flex-1 flex items-center justify-center gap-1 py-3 px-3 rounded-xl bg-gradient-to-br from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground font-medium transition-all disabled:opacity-40 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
               >
                 <ChevronUp className="w-5 h-5" />
-                <span>Subir</span>
+                <span className="text-sm">Subir</span>
+              </button>
+              <button
+                onClick={stopBlinds}
+                disabled={!isAnimating}
+                className="flex items-center justify-center gap-1 py-3 px-4 rounded-xl bg-gradient-to-br from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-medium transition-all disabled:opacity-40 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
+              >
+                <Square className="w-4 h-4" />
               </button>
               <button
                 onClick={() => animateBlinds('down')}
                 disabled={isAnimating || blindsLevel === 0}
-                className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-gradient-to-br from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground font-medium transition-all disabled:opacity-40 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
+                className="flex-1 flex items-center justify-center gap-1 py-3 px-3 rounded-xl bg-gradient-to-br from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground font-medium transition-all disabled:opacity-40 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
               >
                 <ChevronDown className="w-5 h-5" />
-                <span>Bajar</span>
+                <span className="text-sm">Bajar</span>
               </button>
             </div>
           </div>
