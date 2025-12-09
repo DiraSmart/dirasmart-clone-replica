@@ -1,9 +1,21 @@
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import ParticleBackground from "./ParticleBackground";
 import AnimatedCounter from "./AnimatedCounter";
 import appMobileImage from "@/assets/app-mobile.png";
+import appMobileImage2 from "@/assets/app-mobile-2.png";
 
 const HeroSection = () => {
+  const [currentImage, setCurrentImage] = useState(0);
+  const images = [appMobileImage, appMobileImage2];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % images.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [images.length]);
+
   const scrollToContact = () => {
     const element = document.querySelector("#contacto");
     if (element) {
@@ -85,11 +97,17 @@ const HeroSection = () => {
 
           {/* Right Content - App Image */}
           <div className="relative flex justify-center animate-fade-in-right">
-            <img 
-              src={appMobileImage} 
-              alt="DiraSmart App" 
-              className="w-72 md:w-96 animate-float drop-shadow-2xl"
-            />
+            {images.map((img, index) => (
+              <img 
+                key={index}
+                src={img} 
+                alt="DiraSmart App" 
+                className={`w-72 md:w-96 drop-shadow-2xl absolute transition-opacity duration-700 ${
+                  index === currentImage ? 'opacity-100' : 'opacity-0'
+                }`}
+                style={{ position: index === 0 ? 'relative' : 'absolute' }}
+              />
+            ))}
           </div>
         </div>
       </div>
