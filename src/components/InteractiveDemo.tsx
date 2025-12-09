@@ -9,7 +9,7 @@ import {
   ChevronUp,
   ChevronDown,
   Square,
-  Lightbulb
+  Sun
 } from "lucide-react";
 import { Slider } from "@/components/ui/slider";
 
@@ -258,8 +258,8 @@ const InteractiveDemo = () => {
           {/* Lights Control - Light Bulb */}
           <div className="bg-card rounded-2xl p-6 border border-accent/20 hover:border-accent/40 transition-all shadow-card hover:shadow-card-hover flex flex-col">
             <div className="flex items-center gap-3 mb-6">
-              <div className={`p-3 rounded-xl transition-colors ${lightOn ? 'bg-amber-500' : 'bg-muted'}`}>
-                <Lightbulb className={`w-6 h-6 ${lightOn ? 'text-white' : 'text-muted-foreground'}`} />
+            <div className={`p-3 rounded-xl transition-colors ${lightOn ? 'bg-amber-500' : 'bg-muted'}`}>
+                <Sun className={`w-6 h-6 ${lightOn ? 'text-white' : 'text-muted-foreground'}`} />
               </div>
               <div>
                 <h3 className="font-semibold text-foreground">Control de Luces</h3>

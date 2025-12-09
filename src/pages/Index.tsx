@@ -16,8 +16,8 @@ const Index = () => {
         <HeroSection />
         <InteractiveDemo />
         <FeatureTabs />
-        <BrandLogos />
         <ServicesGrid />
+        <BrandLogos />
         <TestimonialsCarousel />
       </main>
       <Footer />
