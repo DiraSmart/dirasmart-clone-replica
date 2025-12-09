@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
+import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const TestimonialsCarousel = () => {
@@ -79,12 +79,6 @@ const TestimonialsCarousel = () => {
               </div>
               
               <div className="relative z-10">
-                {/* Stars */}
-                <div className="flex gap-1 mb-6">
-                  {Array.from({ length: testimonials[currentIndex].rating }).map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
-                  ))}
-                </div>
 
                 {/* Quote text */}
                 <blockquote className="text-lg md:text-2xl text-foreground mb-8 leading-relaxed font-medium">
