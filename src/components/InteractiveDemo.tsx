@@ -8,7 +8,8 @@ import {
   Droplets,
   ChevronUp,
   ChevronDown,
-  Square
+  Square,
+  Sun
 } from "lucide-react";
 import { Slider } from "@/components/ui/slider";
 
@@ -25,7 +26,14 @@ const InteractiveDemo = () => {
   const [brightness, setBrightness] = useState(75);
   const [blindsLevel, setBlindsLevel] = useState(70);
   const [isAnimating, setIsAnimating] = useState(false);
-  const animationRef = useRef<NodeJS.Timeout | null>(null);
+  const [animationDirection, setAnimationDirection] = useState<'up' | 'down' | null>(null);
+  const animationRef = useRef<number | null>(null);
+  const blindsLevelRef = useRef(blindsLevel);
+
+  // Keep ref in sync with state
+  useEffect(() => {
+    blindsLevelRef.current = blindsLevel;
+  }, [blindsLevel]);
 
   const setACMode = (mode: ACMode) => {
     setAcMode(mode);
@@ -37,47 +45,99 @@ const InteractiveDemo = () => {
 
   const stopBlinds = () => {
     if (animationRef.current) {
-      clearTimeout(animationRef.current);
+      cancelAnimationFrame(animationRef.current);
       animationRef.current = null;
     }
     setIsAnimating(false);
+    setAnimationDirection(null);
   };
 
   const animateBlinds = (direction: 'up' | 'down') => {
     if (isAnimating) return;
     
     setIsAnimating(true);
-    const targetLevel = direction === 'up' ? 100 : 0;
-    const step = direction === 'up' ? 1 : -1;
+    setAnimationDirection(direction);
     
-    const animate = () => {
-      setBlindsLevel(prev => {
-        const newLevel = prev + step;
-        if ((direction === 'up' && newLevel >= targetLevel) || 
-            (direction === 'down' && newLevel <= targetLevel)) {
-          setIsAnimating(false);
-          return targetLevel;
+    const targetLevel = direction === 'up' ? 100 : 0;
+    const totalSteps = 100;
+    const duration = 8000; // 8 seconds
+    const stepDuration = duration / totalSteps;
+    let lastTime = performance.now();
+    let accumulated = 0;
+    
+    const animate = (currentTime: number) => {
+      const deltaTime = currentTime - lastTime;
+      accumulated += deltaTime;
+      lastTime = currentTime;
+      
+      if (accumulated >= stepDuration) {
+        const steps = Math.floor(accumulated / stepDuration);
+        accumulated = accumulated % stepDuration;
+        
+        const currentLevel = blindsLevelRef.current;
+        let newLevel: number;
+        
+        if (direction === 'up') {
+          newLevel = Math.min(currentLevel + steps, targetLevel);
+        } else {
+          newLevel = Math.max(currentLevel - steps, targetLevel);
         }
-        animationRef.current = setTimeout(animate, 150);
-        return newLevel;
-      });
+        
+        setBlindsLevel(newLevel);
+        
+        if (newLevel === targetLevel) {
+          setIsAnimating(false);
+          setAnimationDirection(null);
+          animationRef.current = null;
+          return;
+        }
+      }
+      
+      animationRef.current = requestAnimationFrame(animate);
     };
-    animate();
+    
+    animationRef.current = requestAnimationFrame(animate);
   };
 
   const setBlindsPercentage = (value: number[]) => {
-    if (animationRef.current) {
-      clearTimeout(animationRef.current);
-      setIsAnimating(false);
-    }
+    stopBlinds();
     setBlindsLevel(value[0]);
+  };
+
+  const toggleLight = () => {
+    setLightOn(prev => !prev);
   };
 
   useEffect(() => {
     return () => {
-      if (animationRef.current) clearTimeout(animationRef.current);
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
     };
   }, []);
+
+  // Get AC icon based on mode
+  const getACIcon = () => {
+    switch (acMode) {
+      case 'cool':
+        return <Snowflake className="w-6 h-6 text-primary-foreground" />;
+      case 'dry':
+        return <Droplets className="w-6 h-6 text-white" />;
+      default:
+        return <Power className="w-6 h-6 text-muted-foreground" />;
+    }
+  };
+
+  const getACIconBg = () => {
+    switch (acMode) {
+      case 'cool':
+        return 'bg-primary';
+      case 'dry':
+        return 'bg-orange-500';
+      default:
+        return 'bg-muted';
+    }
+  };
 
   return (
     <section className="section-padding bg-gradient-to-br from-muted via-background to-muted/50">
@@ -96,12 +156,12 @@ const InteractiveDemo = () => {
           <div className="bg-card rounded-2xl p-6 border border-primary/20 hover:border-primary/40 transition-all shadow-card hover:shadow-card-hover flex flex-col">
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-3">
-                <div className={`p-3 rounded-xl ${acMode !== 'off' ? 'bg-primary' : 'bg-muted'} transition-colors`}>
-                  <Snowflake className={`w-6 h-6 ${acMode !== 'off' ? 'text-primary-foreground' : 'text-muted-foreground'}`} />
+                <div className={`p-3 rounded-xl ${getACIconBg()} transition-colors`}>
+                  {getACIcon()}
                 </div>
                 <div>
                   <h3 className="font-semibold text-foreground">Aire Acondicionado</h3>
-                  <p className={`text-sm ${acMode !== 'off' ? 'text-primary' : 'text-muted-foreground'}`}>
+                  <p className={`text-sm ${acMode === 'cool' ? 'text-primary' : acMode === 'dry' ? 'text-orange-500' : 'text-muted-foreground'}`}>
                     {acMode === 'off' ? 'Apagado' : acMode === 'cool' ? 'Enfriando' : 'Secando'}
                   </p>
                 </div>
@@ -195,14 +255,11 @@ const InteractiveDemo = () => {
             </div>
           </div>
 
-          {/* Lights Control - Modern Ceiling Light */}
+          {/* Lights Control - LED Strip Style */}
           <div className="bg-card rounded-2xl p-6 border border-accent/20 hover:border-accent/40 transition-all shadow-card hover:shadow-card-hover flex flex-col">
             <div className="flex items-center gap-3 mb-6">
-              <div className="p-3 rounded-xl bg-accent/20">
-                <svg className="w-6 h-6 text-accent" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="12" cy="12" r="5" stroke="currentColor" strokeWidth="2"/>
-                  <path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                </svg>
+              <div className={`p-3 rounded-xl transition-colors ${lightOn ? 'bg-amber-500' : 'bg-muted'}`}>
+                <Sun className={`w-6 h-6 ${lightOn ? 'text-white' : 'text-muted-foreground'}`} />
               </div>
               <div>
                 <h3 className="font-semibold text-foreground">Control de Luces</h3>
@@ -212,62 +269,52 @@ const InteractiveDemo = () => {
               </div>
             </div>
 
-            {/* Modern Ceiling Light */}
-            <div className="relative flex justify-center flex-grow items-center">
-              <div className="relative">
-                {/* Cord */}
-                <div className="absolute left-1/2 -translate-x-1/2 -top-8 w-0.5 h-8 bg-slate-400" />
+            {/* LED Light Panel */}
+            <div className="relative flex justify-center flex-grow items-center py-8">
+              <div className="relative w-full max-w-[200px]">
+                {/* Glow effect */}
+                {lightOn && (
+                  <div 
+                    className="absolute inset-0 rounded-3xl blur-2xl transition-all duration-500"
+                    style={{
+                      background: `radial-gradient(circle, rgba(251, 191, 36, ${brightness / 100}) 0%, transparent 70%)`,
+                      transform: 'scale(1.5)',
+                    }}
+                  />
+                )}
                 
-                {/* Light Fixture */}
-                <div className="relative">
-                  {/* Glow effect */}
+                {/* Light Panel */}
+                <div 
+                  className={`relative w-full h-32 rounded-2xl border-4 transition-all duration-300 ${
+                    lightOn 
+                      ? 'border-amber-400 shadow-[0_0_30px_rgba(251,191,36,0.6)]' 
+                      : 'border-slate-500'
+                  }`}
+                  style={{
+                    background: lightOn 
+                      ? `linear-gradient(135deg, rgba(251, 191, 36, ${0.3 + brightness / 200}) 0%, rgba(255, 220, 100, ${0.2 + brightness / 250}) 50%, rgba(251, 191, 36, ${0.3 + brightness / 200}) 100%)`
+                      : 'linear-gradient(135deg, rgba(100, 100, 100, 0.2) 0%, rgba(80, 80, 80, 0.3) 100%)'
+                  }}
+                >
+                  {/* Light rays */}
                   {lightOn && (
-                    <div 
-                      className="absolute inset-0 rounded-full blur-3xl transition-opacity duration-500"
-                      style={{
-                        background: `radial-gradient(circle, rgba(251, 191, 36, ${brightness / 120}) 0%, transparent 60%)`,
-                        transform: 'scale(2.5) translateY(20%)',
-                      }}
-                    />
+                    <>
+                      <div className="absolute inset-4 rounded-xl bg-gradient-to-br from-white/40 to-transparent" />
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <Sun 
+                          className="w-12 h-12 text-amber-200 drop-shadow-lg" 
+                          style={{ 
+                            filter: `drop-shadow(0 0 ${brightness / 5}px rgba(255, 220, 100, 0.8))` 
+                          }}
+                        />
+                      </div>
+                    </>
                   )}
-                  
-                  {/* Pendant fixture */}
-                  <svg 
-                    className="w-40 h-40 relative z-10 transition-all duration-300"
-                    viewBox="0 0 120 100" 
-                    fill="none" 
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    {/* Mount */}
-                    <rect x="55" y="0" width="10" height="8" fill="#666" rx="2"/>
-                    
-                    {/* Shade outer */}
-                    <path 
-                      d="M20 35 Q60 25 100 35 L95 75 Q60 85 25 75 Z" 
-                      fill={lightOn ? `rgba(251, 191, 36, ${0.15 + brightness / 300})` : 'rgba(80, 80, 80, 0.3)'}
-                      stroke={lightOn ? '#fbbf24' : '#555'}
-                      strokeWidth="2"
-                    />
-                    
-                    {/* Inner glow/light area */}
-                    {lightOn && (
-                      <ellipse 
-                        cx="60" 
-                        cy="75" 
-                        rx={25 + brightness / 10} 
-                        ry={15 + brightness / 15} 
-                        fill={`rgba(255, 255, 255, ${brightness / 250})`}
-                      />
-                    )}
-                    
-                    {/* Light cone effect */}
-                    {lightOn && (
-                      <path 
-                        d="M35 75 L15 100 L105 100 L85 75" 
-                        fill={`rgba(251, 191, 36, ${brightness / 400})`}
-                      />
-                    )}
-                  </svg>
+                  {!lightOn && (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <Sun className="w-12 h-12 text-slate-500" />
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -275,10 +322,10 @@ const InteractiveDemo = () => {
             {/* Power toggle */}
             <div className="flex justify-center mb-6">
               <button
-                onClick={() => setLightOn(!lightOn)}
+                onClick={toggleLight}
                 className={`p-4 rounded-full transition-all ${
                   lightOn 
-                    ? 'bg-accent text-accent-foreground shadow-[0_0_20px_rgba(34,197,94,0.4)]' 
+                    ? 'bg-amber-500 text-white shadow-[0_0_20px_rgba(251,191,36,0.5)]' 
                     : 'bg-muted text-muted-foreground hover:bg-muted/80'
                 }`}
               >
@@ -344,7 +391,7 @@ const InteractiveDemo = () => {
               
               {/* Blinds overlay */}
               <div 
-                className="absolute inset-x-0 top-0 transition-all duration-300 z-20"
+                className="absolute inset-x-0 top-0 z-20"
                 style={{ height: `${100 - blindsLevel}%` }}
               >
                 {Array.from({ length: Math.ceil((100 - blindsLevel) / 6) }).map((_, i) => (
@@ -378,7 +425,11 @@ const InteractiveDemo = () => {
               <button
                 onClick={() => animateBlinds('up')}
                 disabled={isAnimating || blindsLevel === 100}
-                className="flex-1 flex items-center justify-center gap-1 py-3 px-3 rounded-xl bg-gradient-to-br from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground font-medium transition-all disabled:opacity-40 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
+                className={`flex-1 flex items-center justify-center gap-1 py-3 px-3 rounded-xl font-medium transition-all shadow-lg hover:shadow-xl ${
+                  animationDirection === 'up' 
+                    ? 'bg-accent text-accent-foreground' 
+                    : 'bg-gradient-to-br from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground'
+                } disabled:opacity-40 disabled:cursor-not-allowed`}
               >
                 <ChevronUp className="w-5 h-5" />
                 <span className="text-sm">Subir</span>
@@ -386,14 +437,22 @@ const InteractiveDemo = () => {
               <button
                 onClick={stopBlinds}
                 disabled={!isAnimating}
-                className="flex items-center justify-center gap-1 py-3 px-4 rounded-xl bg-gradient-to-br from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-medium transition-all disabled:opacity-40 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
+                className={`flex items-center justify-center gap-1 py-3 px-4 rounded-xl font-medium transition-all shadow-lg hover:shadow-xl ${
+                  isAnimating 
+                    ? 'bg-red-500 hover:bg-red-600 text-white cursor-pointer' 
+                    : 'bg-muted text-muted-foreground opacity-40 cursor-not-allowed'
+                }`}
               >
                 <Square className="w-4 h-4" />
               </button>
               <button
                 onClick={() => animateBlinds('down')}
                 disabled={isAnimating || blindsLevel === 0}
-                className="flex-1 flex items-center justify-center gap-1 py-3 px-3 rounded-xl bg-gradient-to-br from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground font-medium transition-all disabled:opacity-40 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
+                className={`flex-1 flex items-center justify-center gap-1 py-3 px-3 rounded-xl font-medium transition-all shadow-lg hover:shadow-xl ${
+                  animationDirection === 'down' 
+                    ? 'bg-accent text-accent-foreground' 
+                    : 'bg-gradient-to-br from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground'
+                } disabled:opacity-40 disabled:cursor-not-allowed`}
               >
                 <ChevronDown className="w-5 h-5" />
                 <span className="text-sm">Bajar</span>
