@@ -60,37 +60,37 @@ const FeatureTabs = () => {
                   </div>
                   
                   <div className="space-y-4">
-                    <div className="group flex items-center gap-4 p-4 rounded-2xl bg-gradient-to-r from-primary/5 to-transparent border border-primary/10 hover:border-primary/30 transition-all cursor-pointer">
-                      <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary/70 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                        <Thermometer className="w-6 h-6 text-primary-foreground" />
+                    <div className="group flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-2xl bg-gradient-to-r from-primary/5 to-transparent border border-primary/10 hover:border-primary/30 transition-all cursor-pointer">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-primary to-primary/70 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform shrink-0">
+                        <Thermometer className="w-5 h-5 sm:w-6 sm:h-6 text-primary-foreground" />
                       </div>
-                      <div className="flex-grow">
-                        <p className="font-semibold text-foreground">{t("features.app.ac")}</p>
-                        <p className="text-sm text-muted-foreground">{t("features.app.acDesc")}</p>
+                      <div className="flex-grow min-w-0">
+                        <p className="font-semibold text-foreground text-sm sm:text-base">{t("features.app.ac")}</p>
+                        <p className="text-xs sm:text-sm text-muted-foreground">{t("features.app.acDesc")}</p>
                       </div>
-                      <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
+                      <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all shrink-0" />
                     </div>
                     
-                    <div className="group flex items-center gap-4 p-4 rounded-2xl bg-gradient-to-r from-accent/5 to-transparent border border-accent/10 hover:border-accent/30 transition-all cursor-pointer">
-                      <div className="w-12 h-12 bg-gradient-to-br from-accent to-accent/70 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                        <Home className="w-6 h-6 text-accent-foreground" />
+                    <div className="group flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-2xl bg-gradient-to-r from-accent/5 to-transparent border border-accent/10 hover:border-accent/30 transition-all cursor-pointer">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-accent to-accent/70 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform shrink-0">
+                        <Home className="w-5 h-5 sm:w-6 sm:h-6 text-accent-foreground" />
                       </div>
-                      <div className="flex-grow">
-                        <p className="font-semibold text-foreground">{t("features.app.blinds")}</p>
-                        <p className="text-sm text-muted-foreground">{t("features.app.blindsDesc")}</p>
+                      <div className="flex-grow min-w-0">
+                        <p className="font-semibold text-foreground text-sm sm:text-base">{t("features.app.blinds")}</p>
+                        <p className="text-xs sm:text-sm text-muted-foreground">{t("features.app.blindsDesc")}</p>
                       </div>
-                      <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all" />
+                      <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all shrink-0" />
                     </div>
                     
-                    <div className="group flex items-center gap-4 p-4 rounded-2xl bg-gradient-to-r from-primary/5 to-transparent border border-primary/10 hover:border-primary/30 transition-all cursor-pointer">
-                      <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary/70 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                        <Lightbulb className="w-6 h-6 text-primary-foreground" />
+                    <div className="group flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-2xl bg-gradient-to-r from-primary/5 to-transparent border border-primary/10 hover:border-primary/30 transition-all cursor-pointer">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-primary to-primary/70 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform shrink-0">
+                        <Lightbulb className="w-5 h-5 sm:w-6 sm:h-6 text-primary-foreground" />
                       </div>
-                      <div className="flex-grow">
-                        <p className="font-semibold text-foreground">{t("features.app.lights")}</p>
-                        <p className="text-sm text-muted-foreground">{t("features.app.lightsDesc")}</p>
+                      <div className="flex-grow min-w-0">
+                        <p className="font-semibold text-foreground text-sm sm:text-base">{t("features.app.lights")}</p>
+                        <p className="text-xs sm:text-sm text-muted-foreground">{t("features.app.lightsDesc")}</p>
                       </div>
-                      <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
+                      <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all shrink-0" />
                     </div>
                   </div>
                 </div>
@@ -110,53 +110,53 @@ const FeatureTabs = () => {
           </TabsContent>
 
           <TabsContent value="shabbat" className="animate-fade-in">
-            <div className="bg-card rounded-3xl p-8 md:p-12 border border-border shadow-xl">
-              <div className="grid lg:grid-cols-2 gap-12 items-center">
-                <div className="space-y-8">
+            <div className="bg-card rounded-2xl sm:rounded-3xl p-4 sm:p-8 md:p-12 border border-border shadow-xl">
+              <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
+                <div className="space-y-6 sm:space-y-8">
                   <div>
-                    <span className="inline-block px-4 py-1 rounded-full bg-accent/10 text-accent text-sm font-medium mb-4">
+                    <span className="inline-block px-3 sm:px-4 py-1 rounded-full bg-accent/10 text-accent text-xs sm:text-sm font-medium mb-3 sm:mb-4">
                       {t("features.shabbat.badge")}
                     </span>
-                    <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4">
                       {t("features.shabbat.title")}
                     </h3>
-                    <p className="text-muted-foreground text-lg leading-relaxed">
+                    <p className="text-muted-foreground text-sm sm:text-base lg:text-lg leading-relaxed">
                       {t("features.shabbat.description")}
                     </p>
                   </div>
                   
                   <div className="space-y-4">
-                    <div className="group flex items-center gap-4 p-4 rounded-2xl bg-gradient-to-r from-accent/5 to-transparent border border-accent/10 hover:border-accent/30 transition-all cursor-pointer">
-                      <div className="w-12 h-12 bg-gradient-to-br from-accent to-accent/70 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                        <Calendar className="w-6 h-6 text-accent-foreground" />
+                    <div className="group flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-2xl bg-gradient-to-r from-accent/5 to-transparent border border-accent/10 hover:border-accent/30 transition-all cursor-pointer">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-accent to-accent/70 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform shrink-0">
+                        <Calendar className="w-5 h-5 sm:w-6 sm:h-6 text-accent-foreground" />
                       </div>
-                      <div className="flex-grow">
-                        <p className="font-semibold text-foreground">{t("features.shabbat.holidays")}</p>
-                        <p className="text-sm text-muted-foreground">{t("features.shabbat.holidaysDesc")}</p>
+                      <div className="flex-grow min-w-0">
+                        <p className="font-semibold text-foreground text-sm sm:text-base">{t("features.shabbat.holidays")}</p>
+                        <p className="text-xs sm:text-sm text-muted-foreground">{t("features.shabbat.holidaysDesc")}</p>
                       </div>
-                      <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all" />
+                      <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all shrink-0" />
                     </div>
                     
-                    <div className="group flex items-center gap-4 p-4 rounded-2xl bg-gradient-to-r from-accent/5 to-transparent border border-accent/10 hover:border-accent/30 transition-all cursor-pointer">
-                      <div className="w-12 h-12 bg-gradient-to-br from-accent to-accent/70 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                        <Clock className="w-6 h-6 text-accent-foreground" />
+                    <div className="group flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-2xl bg-gradient-to-r from-accent/5 to-transparent border border-accent/10 hover:border-accent/30 transition-all cursor-pointer">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-accent to-accent/70 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform shrink-0">
+                        <Clock className="w-5 h-5 sm:w-6 sm:h-6 text-accent-foreground" />
                       </div>
-                      <div className="flex-grow">
-                        <p className="font-semibold text-foreground">{t("features.shabbat.quick")}</p>
-                        <p className="text-sm text-muted-foreground">{t("features.shabbat.quickDesc")}</p>
+                      <div className="flex-grow min-w-0">
+                        <p className="font-semibold text-foreground text-sm sm:text-base">{t("features.shabbat.quick")}</p>
+                        <p className="text-xs sm:text-sm text-muted-foreground">{t("features.shabbat.quickDesc")}</p>
                       </div>
-                      <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all" />
+                      <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all shrink-0" />
                     </div>
                     
-                    <div className="group flex items-center gap-4 p-4 rounded-2xl bg-gradient-to-r from-accent/5 to-transparent border border-accent/10 hover:border-accent/30 transition-all cursor-pointer">
-                      <div className="w-12 h-12 bg-gradient-to-br from-accent to-accent/70 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                        <Moon className="w-6 h-6 text-accent-foreground" />
+                    <div className="group flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-2xl bg-gradient-to-r from-accent/5 to-transparent border border-accent/10 hover:border-accent/30 transition-all cursor-pointer">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-accent to-accent/70 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform shrink-0">
+                        <Moon className="w-5 h-5 sm:w-6 sm:h-6 text-accent-foreground" />
                       </div>
-                      <div className="flex-grow">
-                        <p className="font-semibold text-foreground">{t("features.shabbat.auto")}</p>
-                        <p className="text-sm text-muted-foreground">{t("features.shabbat.autoDesc")}</p>
+                      <div className="flex-grow min-w-0">
+                        <p className="font-semibold text-foreground text-sm sm:text-base">{t("features.shabbat.auto")}</p>
+                        <p className="text-xs sm:text-sm text-muted-foreground">{t("features.shabbat.autoDesc")}</p>
                       </div>
-                      <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all" />
+                      <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all shrink-0" />
                     </div>
                   </div>
                 </div>
@@ -176,53 +176,53 @@ const FeatureTabs = () => {
           </TabsContent>
 
           <TabsContent value="automate" className="animate-fade-in">
-            <div className="bg-card rounded-3xl p-8 md:p-12 border border-border shadow-xl">
-              <div className="grid lg:grid-cols-2 gap-12 items-center">
-                <div className="space-y-8">
+            <div className="bg-card rounded-2xl sm:rounded-3xl p-4 sm:p-8 md:p-12 border border-border shadow-xl">
+              <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
+                <div className="space-y-6 sm:space-y-8">
                   <div>
-                    <span className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+                    <span className="inline-block px-3 sm:px-4 py-1 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-medium mb-3 sm:mb-4">
                       {t("features.automate.badge")}
                     </span>
-                    <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4">
                       {t("features.automate.title")}
                     </h3>
-                    <p className="text-muted-foreground text-lg leading-relaxed">
+                    <p className="text-muted-foreground text-sm sm:text-base lg:text-lg leading-relaxed">
                       {t("features.automate.description")}
                     </p>
                   </div>
                   
                   <div className="space-y-4">
-                    <div className="group flex items-center gap-4 p-4 rounded-2xl bg-gradient-to-r from-primary/5 to-transparent border border-primary/10 hover:border-primary/30 transition-all cursor-pointer">
-                      <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary/70 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                        <Zap className="w-6 h-6 text-primary-foreground" />
+                    <div className="group flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-2xl bg-gradient-to-r from-primary/5 to-transparent border border-primary/10 hover:border-primary/30 transition-all cursor-pointer">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-primary to-primary/70 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform shrink-0">
+                        <Zap className="w-5 h-5 sm:w-6 sm:h-6 text-primary-foreground" />
                       </div>
-                      <div className="flex-grow">
-                        <p className="font-semibold text-foreground">{t("features.automate.scenes")}</p>
-                        <p className="text-sm text-muted-foreground">{t("features.automate.scenesDesc")}</p>
+                      <div className="flex-grow min-w-0">
+                        <p className="font-semibold text-foreground text-sm sm:text-base">{t("features.automate.scenes")}</p>
+                        <p className="text-xs sm:text-sm text-muted-foreground">{t("features.automate.scenesDesc")}</p>
                       </div>
-                      <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
+                      <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all shrink-0" />
                     </div>
                     
-                    <div className="group flex items-center gap-4 p-4 rounded-2xl bg-gradient-to-r from-accent/5 to-transparent border border-accent/10 hover:border-accent/30 transition-all cursor-pointer">
-                      <div className="w-12 h-12 bg-gradient-to-br from-accent to-accent/70 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                        <Clock className="w-6 h-6 text-accent-foreground" />
+                    <div className="group flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-2xl bg-gradient-to-r from-accent/5 to-transparent border border-accent/10 hover:border-accent/30 transition-all cursor-pointer">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-accent to-accent/70 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform shrink-0">
+                        <Clock className="w-5 h-5 sm:w-6 sm:h-6 text-accent-foreground" />
                       </div>
-                      <div className="flex-grow">
-                        <p className="font-semibold text-foreground">{t("features.automate.schedule")}</p>
-                        <p className="text-sm text-muted-foreground">{t("features.automate.scheduleDesc")}</p>
+                      <div className="flex-grow min-w-0">
+                        <p className="font-semibold text-foreground text-sm sm:text-base">{t("features.automate.schedule")}</p>
+                        <p className="text-xs sm:text-sm text-muted-foreground">{t("features.automate.scheduleDesc")}</p>
                       </div>
-                      <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all" />
+                      <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all shrink-0" />
                     </div>
                     
-                    <div className="group flex items-center gap-4 p-4 rounded-2xl bg-gradient-to-r from-primary/5 to-transparent border border-primary/10 hover:border-primary/30 transition-all cursor-pointer">
-                      <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary/70 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                        <Home className="w-6 h-6 text-primary-foreground" />
+                    <div className="group flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-2xl bg-gradient-to-r from-primary/5 to-transparent border border-primary/10 hover:border-primary/30 transition-all cursor-pointer">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-primary to-primary/70 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform shrink-0">
+                        <Home className="w-5 h-5 sm:w-6 sm:h-6 text-primary-foreground" />
                       </div>
-                      <div className="flex-grow">
-                        <p className="font-semibold text-foreground">{t("features.automate.presence")}</p>
-                        <p className="text-sm text-muted-foreground">{t("features.automate.presenceDesc")}</p>
+                      <div className="flex-grow min-w-0">
+                        <p className="font-semibold text-foreground text-sm sm:text-base">{t("features.automate.presence")}</p>
+                        <p className="text-xs sm:text-sm text-muted-foreground">{t("features.automate.presenceDesc")}</p>
                       </div>
-                      <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
+                      <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all shrink-0" />
                     </div>
                   </div>
                 </div>
@@ -242,53 +242,53 @@ const FeatureTabs = () => {
           </TabsContent>
 
           <TabsContent value="dispositivos" className="animate-fade-in">
-            <div className="bg-card rounded-3xl p-8 md:p-12 border border-border shadow-xl">
-              <div className="grid lg:grid-cols-2 gap-12 items-center">
-                <div className="space-y-8">
+            <div className="bg-card rounded-2xl sm:rounded-3xl p-4 sm:p-8 md:p-12 border border-border shadow-xl">
+              <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
+                <div className="space-y-6 sm:space-y-8">
                   <div>
-                    <span className="inline-block px-4 py-1 rounded-full bg-accent/10 text-accent text-sm font-medium mb-4">
+                    <span className="inline-block px-3 sm:px-4 py-1 rounded-full bg-accent/10 text-accent text-xs sm:text-sm font-medium mb-3 sm:mb-4">
                       {t("features.devices.badge")}
                     </span>
-                    <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4">
                       {t("features.devices.title")}
                     </h3>
-                    <p className="text-muted-foreground text-lg leading-relaxed">
+                    <p className="text-muted-foreground text-sm sm:text-base lg:text-lg leading-relaxed">
                       {t("features.devices.description")}
                     </p>
                   </div>
                   
                   <div className="space-y-4">
-                    <div className="group flex items-center gap-4 p-4 rounded-2xl bg-gradient-to-r from-primary/5 to-transparent border border-primary/10 hover:border-primary/30 transition-all cursor-pointer">
-                      <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary/70 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                        <Smartphone className="w-6 h-6 text-primary-foreground" />
+                    <div className="group flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-2xl bg-gradient-to-r from-primary/5 to-transparent border border-primary/10 hover:border-primary/30 transition-all cursor-pointer">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-primary to-primary/70 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform shrink-0">
+                        <Smartphone className="w-5 h-5 sm:w-6 sm:h-6 text-primary-foreground" />
                       </div>
-                      <div className="flex-grow">
-                        <p className="font-semibold text-foreground">{t("features.devices.phone")}</p>
-                        <p className="text-sm text-muted-foreground">{t("features.devices.phoneDesc")}</p>
+                      <div className="flex-grow min-w-0">
+                        <p className="font-semibold text-foreground text-sm sm:text-base">{t("features.devices.phone")}</p>
+                        <p className="text-xs sm:text-sm text-muted-foreground">{t("features.devices.phoneDesc")}</p>
                       </div>
-                      <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
+                      <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all shrink-0" />
                     </div>
                     
-                    <div className="group flex items-center gap-4 p-4 rounded-2xl bg-gradient-to-r from-accent/5 to-transparent border border-accent/10 hover:border-accent/30 transition-all cursor-pointer">
-                      <div className="w-12 h-12 bg-gradient-to-br from-accent to-accent/70 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                        <Tablet className="w-6 h-6 text-accent-foreground" />
+                    <div className="group flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-2xl bg-gradient-to-r from-accent/5 to-transparent border border-accent/10 hover:border-accent/30 transition-all cursor-pointer">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-accent to-accent/70 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform shrink-0">
+                        <Tablet className="w-5 h-5 sm:w-6 sm:h-6 text-accent-foreground" />
                       </div>
-                      <div className="flex-grow">
-                        <p className="font-semibold text-foreground">{t("features.devices.tablet")}</p>
-                        <p className="text-sm text-muted-foreground">{t("features.devices.tabletDesc")}</p>
+                      <div className="flex-grow min-w-0">
+                        <p className="font-semibold text-foreground text-sm sm:text-base">{t("features.devices.tablet")}</p>
+                        <p className="text-xs sm:text-sm text-muted-foreground">{t("features.devices.tabletDesc")}</p>
                       </div>
-                      <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all" />
+                      <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all shrink-0" />
                     </div>
                     
-                    <div className="group flex items-center gap-4 p-4 rounded-2xl bg-gradient-to-r from-primary/5 to-transparent border border-primary/10 hover:border-primary/30 transition-all cursor-pointer">
-                      <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary/70 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                        <Monitor className="w-6 h-6 text-primary-foreground" />
+                    <div className="group flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-2xl bg-gradient-to-r from-primary/5 to-transparent border border-primary/10 hover:border-primary/30 transition-all cursor-pointer">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-primary to-primary/70 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform shrink-0">
+                        <Monitor className="w-5 h-5 sm:w-6 sm:h-6 text-primary-foreground" />
                       </div>
-                      <div className="flex-grow">
-                        <p className="font-semibold text-foreground">{t("features.devices.pc")}</p>
-                        <p className="text-sm text-muted-foreground">{t("features.devices.pcDesc")}</p>
+                      <div className="flex-grow min-w-0">
+                        <p className="font-semibold text-foreground text-sm sm:text-base">{t("features.devices.pc")}</p>
+                        <p className="text-xs sm:text-sm text-muted-foreground">{t("features.devices.pcDesc")}</p>
                       </div>
-                      <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
+                      <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all shrink-0" />
                     </div>
                   </div>
                 </div>
