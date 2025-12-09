@@ -277,45 +277,45 @@ const InteractiveDemo = () => {
                   <div 
                     className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl transition-all duration-500 pointer-events-none"
                     style={{
-                      width: `${100 + brightness}px`,
-                      height: `${100 + brightness}px`,
+                      width: `${80 + brightness}px`,
+                      height: `${80 + brightness}px`,
                       background: `radial-gradient(circle, rgba(253, 224, 71, ${brightness / 120}) 0%, transparent 70%)`,
                     }}
                   />
                 )}
                 
                 {/* Bulb SVG */}
-                <svg width="80" height="120" viewBox="0 0 80 120" className="relative z-10">
+                <svg width="80" height="115" viewBox="0 0 80 115" className="relative z-10">
                   <defs>
-                    {/* Gradient for lit bulb */}
-                    <radialGradient id="bulbGlowOn" cx="50%" cy="40%" r="50%">
-                      <stop offset="0%" stopColor="#ffffff" />
-                      <stop offset="40%" stopColor="#fef9c3" />
-                      <stop offset="100%" stopColor="#fde047" />
-                    </radialGradient>
-                    {/* Gradient for off bulb */}
-                    <radialGradient id="bulbGlowOff" cx="50%" cy="40%" r="50%">
-                      <stop offset="0%" stopColor="#e5e7eb" />
-                      <stop offset="100%" stopColor="#9ca3af" />
+                    {/* Dynamic gradient based on brightness */}
+                    <radialGradient id="bulbGlowDynamic" cx="50%" cy="35%" r="55%">
+                      <stop offset="0%" stopColor={lightOn ? `rgba(255, 255, 255, ${0.5 + brightness / 200})` : '#e5e7eb'} />
+                      <stop offset="35%" stopColor={lightOn ? `rgba(254, 249, 195, ${brightness / 100})` : '#d1d5db'} />
+                      <stop offset="100%" stopColor={lightOn ? `rgba(250, 204, 21, ${0.4 + brightness / 166})` : '#9ca3af'} />
                     </radialGradient>
                   </defs>
                   
                   {/* Bulb body - round top with narrowing bottom */}
                   <path 
-                    d="M40 6 C62 6, 76 24, 76 46 C76 68, 62 80, 52 86 L28 86 C18 80, 4 68, 4 46 C4 24, 18 6, 40 6 Z"
-                    fill={lightOn ? 'url(#bulbGlowOn)' : 'url(#bulbGlowOff)'}
-                    stroke="#374151"
+                    d="M40 5 C65 5, 77 25, 77 48 C77 71, 60 82, 52 87 L28 87 C20 82, 3 71, 3 48 C3 25, 15 5, 40 5 Z"
+                    fill="url(#bulbGlowDynamic)"
+                    stroke="#4b5563"
                     strokeWidth="2"
                     className="transition-all duration-300"
                   />
                   
-                  {/* Screw base - striped pattern */}
-                  <path d="M28 86 L28 90 L52 90 L52 86 Z" fill="#9ca3af" stroke="#374151" strokeWidth="1.5" />
-                  <path d="M30 90 L30 94 L50 94 L50 90 Z" fill="#6b7280" stroke="#374151" strokeWidth="1.5" />
-                  <path d="M31 94 L31 98 L49 98 L49 94 Z" fill="#9ca3af" stroke="#374151" strokeWidth="1.5" />
-                  <path d="M32 98 L32 102 L48 102 L48 98 Z" fill="#6b7280" stroke="#374151" strokeWidth="1.5" />
-                  <path d="M33 102 L33 106 L47 106 L47 102 Z" fill="#9ca3af" stroke="#374151" strokeWidth="1.5" />
-                  <path d="M35 106 L35 112 C35 114, 45 114, 45 112 L45 106 Z" fill="#4b5563" stroke="#374151" strokeWidth="1.5" />
+                  {/* Screw base */}
+                  <g>
+                    {/* Top collar */}
+                    <rect x="26" y="87" width="28" height="5" fill="#9ca3af" stroke="#4b5563" strokeWidth="1" />
+                    {/* Screw threads */}
+                    <rect x="28" y="92" width="24" height="4" fill="#71717a" stroke="#4b5563" strokeWidth="1" />
+                    <rect x="28" y="96" width="24" height="4" fill="#a1a1aa" stroke="#4b5563" strokeWidth="1" />
+                    <rect x="29" y="100" width="22" height="4" fill="#71717a" stroke="#4b5563" strokeWidth="1" />
+                    <rect x="30" y="104" width="20" height="4" fill="#a1a1aa" stroke="#4b5563" strokeWidth="1" />
+                    {/* Bottom tip */}
+                    <path d="M32 108 L32 112 Q40 116 48 112 L48 108 Z" fill="#52525b" stroke="#4b5563" strokeWidth="1" />
+                  </g>
                 </svg>
               </div>
             </div>
