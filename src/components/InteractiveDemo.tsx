@@ -392,13 +392,14 @@ const InteractiveDemo = () => {
               
               {/* Blinds overlay */}
               <div 
-                className="absolute inset-x-0 top-0 z-20"
+                className="absolute inset-x-0 top-0 z-20 overflow-hidden transition-all duration-100"
                 style={{ height: `${100 - blindsLevel}%` }}
               >
-                {Array.from({ length: Math.ceil((100 - blindsLevel) / 6) }).map((_, i) => (
+                {/* Create fixed number of slats that fill the container */}
+                {Array.from({ length: 12 }).map((_, i) => (
                   <div 
                     key={i} 
-                    className="h-4 bg-gradient-to-b from-slate-300 to-slate-400 border-b border-slate-500/50 shadow-sm"
+                    className="h-[8.33%] bg-gradient-to-b from-slate-300 to-slate-400 border-b border-slate-500/50 shadow-sm"
                   />
                 ))}
               </div>
