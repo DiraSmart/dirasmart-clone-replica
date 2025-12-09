@@ -93,13 +93,13 @@ const FeatureTabs = () => {
                   </div>
                 </div>
                 
-                <div className="flex justify-center items-center">
-                  <div className="relative">
+                <div className="flex justify-center items-center h-[320px]">
+                  <div className="relative h-full flex items-center">
                     <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full blur-3xl" />
                     <img 
                       src={appMobileImage} 
                       alt="App DiraSmart" 
-                      className="relative w-full max-w-sm drop-shadow-2xl"
+                      className="relative h-full w-auto object-contain drop-shadow-2xl"
                     />
                   </div>
                 </div>
@@ -159,13 +159,13 @@ const FeatureTabs = () => {
                   </div>
                 </div>
                 
-                <div className="flex justify-center items-center">
-                  <div className="relative">
+                <div className="flex justify-center items-center h-[320px]">
+                  <div className="relative h-full flex items-center">
                     <div className="absolute -inset-4 bg-gradient-to-r from-accent/20 to-primary/20 rounded-full blur-3xl" />
                     <img 
                       src={shabatModeImage} 
                       alt="Modo Shabbat" 
-                      className="relative w-48 md:w-56 drop-shadow-2xl"
+                      className="relative h-full w-auto object-contain drop-shadow-2xl"
                     />
                   </div>
                 </div>
@@ -225,13 +225,13 @@ const FeatureTabs = () => {
                   </div>
                 </div>
                 
-                <div className="flex justify-center items-center">
-                  <div className="relative">
+                <div className="flex justify-center items-center h-[320px]">
+                  <div className="relative h-full flex items-center">
                     <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full blur-3xl" />
                     <img 
                       src={automationsImage} 
                       alt="Automatizaciones" 
-                      className="relative w-48 md:w-56 drop-shadow-2xl rounded-2xl"
+                      className="relative h-full w-auto object-contain drop-shadow-2xl rounded-2xl"
                     />
                   </div>
                 </div>
