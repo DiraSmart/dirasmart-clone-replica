@@ -11,7 +11,7 @@ import {
   ChevronUp,
   ChevronDown
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Slider } from "@/components/ui/slider";
 
 type ACMode = 'off' | 'cool' | 'dry';
 type FanSpeed = 'auto' | 'min' | 'med' | 'high';
@@ -19,14 +19,11 @@ type FanSpeed = 'auto' | 'min' | 'med' | 'high';
 const InteractiveDemo = () => {
   const [acMode, setAcMode] = useState<ACMode>('off');
   const [fanSpeed, setFanSpeed] = useState<FanSpeed>('med');
-  const [acTemp, setAcTemp] = useState([24]);
+  const [acTemp, setAcTemp] = useState(24);
   const [currentTemp] = useState(27);
   const [currentHumidity] = useState(65);
-  const [lights, setLights] = useState({
-    sala: { on: false, brightness: 100 },
-    cocina: { on: true, brightness: 65 },
-    habitacion: { on: false, brightness: 50 },
-  });
+  const [lightOn, setLightOn] = useState(true);
+  const [brightness, setBrightness] = useState(75);
   const [blindsLevel, setBlindsLevel] = useState(70);
   const [isAnimating, setIsAnimating] = useState(false);
   const animationRef = useRef<NodeJS.Timeout | null>(null);
@@ -39,26 +36,12 @@ const InteractiveDemo = () => {
     setFanSpeed(speed);
   };
 
-  const toggleLight = (room: keyof typeof lights) => {
-    setLights(prev => ({
-      ...prev,
-      [room]: { ...prev[room], on: !prev[room].on }
-    }));
-  };
-
-  const adjustBrightness = (room: keyof typeof lights, value: number) => {
-    setLights(prev => ({
-      ...prev,
-      [room]: { ...prev[room], brightness: value }
-    }));
-  };
-
   const animateBlinds = (direction: 'up' | 'down') => {
     if (isAnimating) return;
     
     setIsAnimating(true);
     const targetLevel = direction === 'up' ? 100 : 0;
-    const step = direction === 'up' ? 2 : -2;
+    const step = direction === 'up' ? 1 : -1;
     
     const animate = () => {
       setBlindsLevel(prev => {
@@ -68,19 +51,19 @@ const InteractiveDemo = () => {
           setIsAnimating(false);
           return targetLevel;
         }
-        animationRef.current = setTimeout(animate, 30);
+        animationRef.current = setTimeout(animate, 50);
         return newLevel;
       });
     };
     animate();
   };
 
-  const setBlindsPercentage = (value: number) => {
+  const setBlindsPercentage = (value: number[]) => {
     if (animationRef.current) {
       clearTimeout(animationRef.current);
       setIsAnimating(false);
     }
-    setBlindsLevel(value);
+    setBlindsLevel(value[0]);
   };
 
   useEffect(() => {
@@ -89,86 +72,8 @@ const InteractiveDemo = () => {
     };
   }, []);
 
-  // Futuristic slider component
-  const FuturisticSlider = ({ 
-    value, 
-    onChange, 
-    min = 0, 
-    max = 100, 
-    disabled = false,
-    color = 'primary',
-    showGlow = true
-  }: { 
-    value: number; 
-    onChange: (val: number) => void; 
-    min?: number; 
-    max?: number; 
-    disabled?: boolean;
-    color?: 'primary' | 'accent' | 'amber';
-    showGlow?: boolean;
-  }) => {
-    const percentage = ((value - min) / (max - min)) * 100;
-    const colorClasses = {
-      primary: 'from-primary via-primary to-cyan-400',
-      accent: 'from-accent via-accent to-emerald-400',
-      amber: 'from-amber-500 via-amber-400 to-yellow-300'
-    };
-    const glowClasses = {
-      primary: 'shadow-[0_0_20px_rgba(0,200,200,0.5)]',
-      accent: 'shadow-[0_0_20px_rgba(34,197,94,0.5)]',
-      amber: 'shadow-[0_0_20px_rgba(245,158,11,0.5)]'
-    };
-
-    return (
-      <div className="relative h-3 group">
-        {/* Track background with futuristic grid */}
-        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-muted/80 to-muted overflow-hidden">
-          <div className="absolute inset-0 opacity-30" style={{
-            backgroundImage: 'repeating-linear-gradient(90deg, transparent, transparent 4px, rgba(255,255,255,0.1) 4px, rgba(255,255,255,0.1) 5px)'
-          }} />
-        </div>
-        
-        {/* Active track with gradient and glow */}
-        <div 
-          className={`absolute h-full rounded-full bg-gradient-to-r ${colorClasses[color]} transition-all duration-150 ${showGlow && !disabled ? glowClasses[color] : ''}`}
-          style={{ width: `${percentage}%`, opacity: disabled ? 0.4 : 1 }}
-        >
-          {/* Animated shine effect */}
-          <div className="absolute inset-0 rounded-full overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full animate-[shimmer_2s_infinite]" />
-          </div>
-        </div>
-        
-        {/* Thumb with glow ring */}
-        <input
-          type="range"
-          min={min}
-          max={max}
-          value={value}
-          onChange={(e) => onChange(Number(e.target.value))}
-          disabled={disabled}
-          className="absolute inset-0 w-full opacity-0 cursor-pointer disabled:cursor-not-allowed"
-        />
-        <div 
-          className={`absolute top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-white border-2 transition-all duration-150 pointer-events-none ${
-            disabled ? 'border-muted-foreground/50' : `border-${color === 'amber' ? 'amber-500' : color}`
-          } ${showGlow && !disabled ? 'shadow-[0_0_10px_rgba(255,255,255,0.8)]' : ''}`}
-          style={{ left: `calc(${percentage}% - 10px)` }}
-        >
-          <div className={`absolute inset-1 rounded-full bg-gradient-to-br ${colorClasses[color]} ${disabled ? 'opacity-40' : ''}`} />
-        </div>
-      </div>
-    );
-  };
-
   return (
     <section className="section-padding bg-gradient-to-br from-muted via-background to-muted/50">
-      <style>{`
-        @keyframes shimmer {
-          0% { transform: translateX(-100%); }
-          100% { transform: translateX(200%); }
-        }
-      `}</style>
       <div className="container-custom">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
@@ -196,21 +101,30 @@ const InteractiveDemo = () => {
               </div>
             </div>
 
-            {/* Current sensors display */}
-            <div className="flex gap-4 mb-4 p-3 rounded-xl bg-muted/50 border border-border">
-              <div className="flex items-center gap-2 flex-1">
-                <Thermometer className="w-4 h-4 text-primary" />
-                <div>
-                  <span className="text-xs text-muted-foreground block">Actual</span>
-                  <span className="text-lg font-bold text-foreground">{currentTemp}°C</span>
+            {/* Futuristic sensors display */}
+            <div className="grid grid-cols-2 gap-3 mb-4">
+              <div className="relative p-4 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 overflow-hidden">
+                <div className="absolute top-0 right-0 w-12 h-12 bg-primary/10 rounded-full blur-xl" />
+                <div className="relative flex items-center gap-2">
+                  <div className="p-2 rounded-lg bg-primary/20">
+                    <Thermometer className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <span className="text-xs text-muted-foreground block">Temp.</span>
+                    <span className="text-xl font-bold text-foreground">{currentTemp}°</span>
+                  </div>
                 </div>
               </div>
-              <div className="w-px bg-border" />
-              <div className="flex items-center gap-2 flex-1">
-                <Droplets className="w-4 h-4 text-primary" />
-                <div>
-                  <span className="text-xs text-muted-foreground block">Humedad</span>
-                  <span className="text-lg font-bold text-foreground">{currentHumidity}%</span>
+              <div className="relative p-4 rounded-xl bg-gradient-to-br from-accent/10 to-accent/5 border border-accent/20 overflow-hidden">
+                <div className="absolute top-0 right-0 w-12 h-12 bg-accent/10 rounded-full blur-xl" />
+                <div className="relative flex items-center gap-2">
+                  <div className="p-2 rounded-lg bg-accent/20">
+                    <Droplets className="w-5 h-5 text-accent" />
+                  </div>
+                  <div>
+                    <span className="text-xs text-muted-foreground block">Humedad</span>
+                    <span className="text-xl font-bold text-foreground">{currentHumidity}%</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -219,25 +133,21 @@ const InteractiveDemo = () => {
             <div className="flex items-center justify-center gap-4 mb-4">
               <span className="text-muted-foreground text-sm">Objetivo:</span>
               <div className="flex items-center gap-2">
-                <Button 
-                  variant="outline" 
-                  size="sm" 
-                  className="h-8 w-8 p-0 border-border"
-                  onClick={() => setAcTemp([Math.max(16, acTemp[0] - 1)])}
+                <button 
+                  className="h-8 w-8 rounded-lg bg-muted hover:bg-muted/80 flex items-center justify-center text-foreground font-bold transition-colors disabled:opacity-40"
+                  onClick={() => setAcTemp(Math.max(16, acTemp - 1))}
                   disabled={acMode === 'off'}
                 >
                   -
-                </Button>
-                <span className="text-2xl font-bold text-primary min-w-[60px] text-center">{acTemp[0]}°C</span>
-                <Button 
-                  variant="outline" 
-                  size="sm" 
-                  className="h-8 w-8 p-0 border-border"
-                  onClick={() => setAcTemp([Math.min(30, acTemp[0] + 1)])}
+                </button>
+                <span className="text-2xl font-bold text-primary min-w-[60px] text-center">{acTemp}°C</span>
+                <button 
+                  className="h-8 w-8 rounded-lg bg-muted hover:bg-muted/80 flex items-center justify-center text-foreground font-bold transition-colors disabled:opacity-40"
+                  onClick={() => setAcTemp(Math.min(30, acTemp + 1))}
                   disabled={acMode === 'off'}
                 >
                   +
-                </Button>
+                </button>
               </div>
             </div>
 
@@ -292,7 +202,7 @@ const InteractiveDemo = () => {
             </div>
           </div>
 
-          {/* Lights Control with Dimmers */}
+          {/* Lights Control - Single Dimmer */}
           <div className="bg-card rounded-2xl p-6 border border-accent/20 hover:border-accent/40 transition-all shadow-card hover:shadow-card-hover">
             <div className="flex items-center gap-3 mb-6">
               <div className="p-3 rounded-xl bg-accent/20">
@@ -301,58 +211,60 @@ const InteractiveDemo = () => {
               <div>
                 <h3 className="font-semibold text-foreground">Control de Luces</h3>
                 <p className="text-sm text-muted-foreground">
-                  {Object.values(lights).filter(l => l.on).length} de 3 encendidas
+                  {lightOn ? 'Encendida' : 'Apagada'}
                 </p>
               </div>
             </div>
 
-            <div className="space-y-4">
-              {Object.entries(lights).map(([room, state]) => (
-                <div
-                  key={room}
-                  className={`p-4 rounded-xl transition-all ${
-                    state.on 
-                      ? 'bg-accent/10 border-accent/30' 
-                      : 'bg-muted/30 border-muted'
-                  } border`}
-                >
-                  <div className="flex items-center justify-between mb-3">
-                    <div className="flex items-center gap-3">
-                      <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
-                        state.on ? 'bg-amber-400 shadow-[0_0_15px_rgba(251,191,36,0.6)]' : 'bg-muted'
-                      }`}>
-                        <Lightbulb className={`w-4 h-4 ${state.on ? 'text-amber-900' : 'text-muted-foreground'}`} />
-                      </div>
-                      <div>
-                        <span className="text-foreground font-medium block">
-                          {room === 'habitacion' ? 'Habitación' : room.charAt(0).toUpperCase() + room.slice(1)}
-                        </span>
-                        <span className="text-xs text-muted-foreground">
-                          {state.on ? `${state.brightness}%` : 'Apagada'}
-                        </span>
-                      </div>
-                    </div>
-                    <button
-                      onClick={() => toggleLight(room as keyof typeof lights)}
-                      className={`p-2 rounded-full transition-all ${
-                        state.on ? 'bg-accent text-accent-foreground' : 'bg-muted text-muted-foreground hover:bg-muted/80'
-                      }`}
-                    >
-                      <Power className="w-4 h-4" />
-                    </button>
-                  </div>
-                  
-                  {/* Futuristic brightness slider */}
-                  <FuturisticSlider
-                    value={state.brightness}
-                    onChange={(v) => adjustBrightness(room as keyof typeof lights, v)}
-                    min={10}
-                    max={100}
-                    disabled={!state.on}
-                    color="amber"
-                  />
-                </div>
-              ))}
+            {/* Light visual representation */}
+            <div className="relative flex justify-center mb-6">
+              <div 
+                className={`w-32 h-32 rounded-full flex items-center justify-center transition-all duration-500 ${
+                  lightOn 
+                    ? 'bg-gradient-to-br from-amber-300 to-amber-500' 
+                    : 'bg-muted'
+                }`}
+                style={{
+                  boxShadow: lightOn 
+                    ? `0 0 ${brightness}px ${brightness / 2}px rgba(251, 191, 36, ${brightness / 200})` 
+                    : 'none'
+                }}
+              >
+                <Lightbulb 
+                  className={`w-16 h-16 transition-colors ${lightOn ? 'text-amber-900' : 'text-muted-foreground'}`} 
+                />
+              </div>
+            </div>
+
+            {/* Power toggle */}
+            <div className="flex justify-center mb-6">
+              <button
+                onClick={() => setLightOn(!lightOn)}
+                className={`p-4 rounded-full transition-all ${
+                  lightOn 
+                    ? 'bg-accent text-accent-foreground shadow-[0_0_20px_rgba(34,197,94,0.4)]' 
+                    : 'bg-muted text-muted-foreground hover:bg-muted/80'
+                }`}
+              >
+                <Power className="w-6 h-6" />
+              </button>
+            </div>
+
+            {/* Brightness slider */}
+            <div className="space-y-3">
+              <div className="flex justify-between text-sm">
+                <span className="text-muted-foreground">Intensidad</span>
+                <span className="font-medium text-foreground">{brightness}%</span>
+              </div>
+              <Slider
+                value={[brightness]}
+                onValueChange={(v) => setBrightness(v[0])}
+                min={10}
+                max={100}
+                step={1}
+                disabled={!lightOn}
+                className="[&_[role=slider]]:bg-amber-400 [&_[role=slider]]:border-amber-500 [&_[role=slider]]:shadow-[0_0_10px_rgba(251,191,36,0.5)] [&_.relative]:bg-muted [&_[data-orientation=horizontal]>.absolute]:bg-gradient-to-r [&_[data-orientation=horizontal]>.absolute]:from-amber-400 [&_[data-orientation=horizontal]>.absolute]:to-amber-300"
+              />
             </div>
           </div>
 
@@ -372,33 +284,13 @@ const InteractiveDemo = () => {
               </div>
             </div>
 
-            {/* Futuristic progress bar */}
-            <div className="mb-4">
-              <div className="h-4 bg-muted rounded-full overflow-hidden relative border border-border/50">
-                <div className="absolute inset-0 opacity-20" style={{
-                  backgroundImage: 'repeating-linear-gradient(90deg, transparent, transparent 8px, rgba(255,255,255,0.1) 8px, rgba(255,255,255,0.1) 9px)'
-                }} />
-                <div 
-                  className="h-full bg-gradient-to-r from-primary via-cyan-400 to-primary transition-all duration-100 rounded-full shadow-[0_0_20px_rgba(0,200,200,0.4)]"
-                  style={{ width: `${blindsLevel}%` }}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-                </div>
-              </div>
-              <div className="flex justify-between text-xs text-muted-foreground mt-1">
-                <span>0%</span>
-                <span className="text-primary font-medium">{blindsLevel}%</span>
-                <span>100%</span>
-              </div>
-            </div>
-
             {/* Visual representation */}
-            <div className="relative h-28 bg-gradient-to-b from-sky-200 to-sky-100 rounded-xl overflow-hidden mb-4 border border-border">
+            <div className="relative h-32 bg-gradient-to-b from-sky-200 to-sky-100 rounded-xl overflow-hidden mb-4 border border-border">
               <div className="absolute inset-x-0 top-0 flex justify-center">
                 <Sun className="w-6 h-6 text-yellow-500 mt-1" />
               </div>
               <div 
-                className="absolute inset-x-0 top-0 bg-gradient-to-b from-slate-400 to-slate-300 transition-all duration-100"
+                className="absolute inset-x-0 top-0 bg-gradient-to-b from-slate-400 to-slate-300 transition-all duration-200"
                 style={{ height: `${100 - blindsLevel}%` }}
               >
                 {Array.from({ length: Math.floor((100 - blindsLevel) / 12) }).map((_, i) => (
@@ -410,41 +302,41 @@ const InteractiveDemo = () => {
               </div>
             </div>
 
-            {/* Futuristic slider */}
-            <div className="mb-4">
-              <FuturisticSlider
-                value={blindsLevel}
-                onChange={setBlindsPercentage}
+            {/* Percentage slider */}
+            <div className="space-y-3 mb-4">
+              <div className="flex justify-between text-sm">
+                <span className="text-muted-foreground">Apertura</span>
+                <span className="font-medium text-primary">{blindsLevel}%</span>
+              </div>
+              <Slider
+                value={[blindsLevel]}
+                onValueChange={setBlindsPercentage}
                 min={0}
                 max={100}
+                step={1}
                 disabled={isAnimating}
-                color="primary"
+                className="[&_[role=slider]]:bg-primary [&_[role=slider]]:border-primary [&_[role=slider]]:shadow-[0_0_10px_rgba(0,180,180,0.5)] [&_.relative]:bg-muted [&_[data-orientation=horizontal]>.absolute]:bg-gradient-to-r [&_[data-orientation=horizontal]>.absolute]:from-primary [&_[data-orientation=horizontal]>.absolute]:to-cyan-400"
               />
-              <div className="flex justify-between text-xs text-muted-foreground mt-2">
-                <span>Cerrado</span>
-                <span>Abierto</span>
-              </div>
             </div>
 
+            {/* Up/Down buttons */}
             <div className="flex gap-3">
-              <Button
+              <button
                 onClick={() => animateBlinds('up')}
                 disabled={isAnimating || blindsLevel === 100}
-                variant="outline"
-                className="flex-1 border-primary/30 text-foreground hover:bg-primary/10 hover:border-primary"
+                className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl border-2 border-primary/30 bg-gradient-to-br from-primary/10 to-primary/5 hover:from-primary/20 hover:to-primary/10 hover:border-primary/50 text-foreground font-medium transition-all disabled:opacity-40 disabled:cursor-not-allowed group"
               >
-                <ChevronUp className="w-5 h-5 mr-2" />
-                Subir
-              </Button>
-              <Button
+                <ChevronUp className="w-5 h-5 text-primary group-hover:animate-bounce" />
+                <span>Subir</span>
+              </button>
+              <button
                 onClick={() => animateBlinds('down')}
                 disabled={isAnimating || blindsLevel === 0}
-                variant="outline"
-                className="flex-1 border-primary/30 text-foreground hover:bg-primary/10 hover:border-primary"
+                className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl border-2 border-primary/30 bg-gradient-to-br from-primary/10 to-primary/5 hover:from-primary/20 hover:to-primary/10 hover:border-primary/50 text-foreground font-medium transition-all disabled:opacity-40 disabled:cursor-not-allowed group"
               >
-                <ChevronDown className="w-5 h-5 mr-2" />
-                Bajar
-              </Button>
+                <ChevronDown className="w-5 h-5 text-primary group-hover:animate-bounce" />
+                <span>Bajar</span>
+              </button>
             </div>
           </div>
         </div>
