@@ -16,7 +16,7 @@
     --popover-foreground: 220 30% 15%;
 
     /* Cyan/Turquoise primary - DiraSmart brand color */
-    --primary: 190 90% 50%;
+    --primary: 193 82% 43%;
     --primary-foreground: 0 0% 100%;
 
     /* Dark navy for headers */
@@ -26,8 +26,13 @@
     --muted: 210 20% 96%;
     --muted-foreground: 220 10% 45%;
 
-    --accent: 190 85% 45%;
+    /* Green accent - DiraSmart secondary color */
+    --accent: 158 64% 52%;
     --accent-foreground: 0 0% 100%;
+
+    /* Additional green for highlights */
+    --success: 158 64% 52%;
+    --success-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
