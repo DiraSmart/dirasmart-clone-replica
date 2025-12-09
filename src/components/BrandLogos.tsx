@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 // Brand logos
 import zigbeeLogo from "@/assets/brands/zigbee.png";
@@ -21,6 +22,7 @@ import shellyLogo from "@/assets/brands/shelly.png";
 
 const BrandLogos = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const { t } = useLanguage();
 
   const brands = [
     { name: "Alexa", logo: alexaLogo },
@@ -71,10 +73,10 @@ const BrandLogos = () => {
       <div className="container-custom">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Marcas <span className="text-gradient">compatibles</span>
+            {t("brands.title")} <span className="text-gradient">{t("brands.titleHighlight")}</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Trabajamos con las principales marcas y protocolos del mercado
+            {t("brands.subtitle")}
           </p>
         </div>
 
@@ -103,7 +105,7 @@ const BrandLogos = () => {
 
         {/* Protocols Section */}
         <div>
-          <h3 className="text-center text-lg font-semibold text-muted-foreground mb-6">Protocolos soportados</h3>
+          <h3 className="text-center text-lg font-semibold text-muted-foreground mb-6">{t("brands.protocols")}</h3>
           <div className="flex flex-wrap justify-center gap-6">
             {protocols.map((protocol) => (
               <div

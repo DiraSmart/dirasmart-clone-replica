@@ -1,56 +1,84 @@
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const TestimonialsCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const { t, language } = useLanguage();
 
-  const testimonials = [
-    {
-      name: "María González",
-      role: "Propietaria",
-      text: "DiraSmart transformó completamente mi hogar. Ahora puedo controlar todo desde mi teléfono y la automatización del Shabbat funciona perfectamente.",
-      rating: 5,
-    },
-    {
-      name: "David Cohen",
-      role: "Empresario",
-      text: "La instalación fue impecable y el soporte técnico es excelente. Recomiendo DiraSmart a todos mis conocidos.",
-      rating: 5,
-    },
-    {
-      name: "Ana Rodríguez",
-      role: "Arquitecta",
-      text: "Como profesional del diseño, valoro mucho la integración elegante de DiraSmart con cualquier estilo de hogar. Es simplemente perfecto.",
-      rating: 5,
-    },
-    {
-      name: "Carlos Martínez",
-      role: "Ingeniero",
-      text: "La compatibilidad con múltiples dispositivos y protocolos me convenció. Ahora todo mi hogar está conectado de forma inteligente.",
-      rating: 5,
-    },
-    {
-      name: "Laura Fernández",
-      role: "Médica",
-      text: "Con mis horarios complicados, poder controlar mi casa desde cualquier lugar es invaluable. DiraSmart me da tranquilidad.",
-      rating: 5,
-    },
-  ];
+  const testimonials = {
+    es: [
+      {
+        name: "María González",
+        roleKey: "testimonials.role.owner",
+        text: "DiraSmart transformó completamente mi hogar. Ahora puedo controlar todo desde mi teléfono y la automatización del Shabbat funciona perfectamente.",
+      },
+      {
+        name: "David Cohen",
+        roleKey: "testimonials.role.business",
+        text: "La instalación fue impecable y el soporte técnico es excelente. Recomiendo DiraSmart a todos mis conocidos.",
+      },
+      {
+        name: "Ana Rodríguez",
+        roleKey: "testimonials.role.architect",
+        text: "Como profesional del diseño, valoro mucho la integración elegante de DiraSmart con cualquier estilo de hogar. Es simplemente perfecto.",
+      },
+      {
+        name: "Carlos Martínez",
+        roleKey: "testimonials.role.engineer",
+        text: "La compatibilidad con múltiples dispositivos y protocolos me convenció. Ahora todo mi hogar está conectado de forma inteligente.",
+      },
+      {
+        name: "Laura Fernández",
+        roleKey: "testimonials.role.doctor",
+        text: "Con mis horarios complicados, poder controlar mi casa desde cualquier lugar es invaluable. DiraSmart me da tranquilidad.",
+      },
+    ],
+    en: [
+      {
+        name: "María González",
+        roleKey: "testimonials.role.owner",
+        text: "DiraSmart completely transformed my home. Now I can control everything from my phone and the Shabbat automation works perfectly.",
+      },
+      {
+        name: "David Cohen",
+        roleKey: "testimonials.role.business",
+        text: "The installation was flawless and the technical support is excellent. I recommend DiraSmart to everyone I know.",
+      },
+      {
+        name: "Ana Rodríguez",
+        roleKey: "testimonials.role.architect",
+        text: "As a design professional, I highly value DiraSmart's elegant integration with any home style. It's simply perfect.",
+      },
+      {
+        name: "Carlos Martínez",
+        roleKey: "testimonials.role.engineer",
+        text: "The compatibility with multiple devices and protocols convinced me. Now my entire home is smartly connected.",
+      },
+      {
+        name: "Laura Fernández",
+        roleKey: "testimonials.role.doctor",
+        text: "With my complicated schedule, being able to control my house from anywhere is invaluable. DiraSmart gives me peace of mind.",
+      },
+    ],
+  };
+
+  const currentTestimonials = testimonials[language];
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+      setCurrentIndex((prev) => (prev + 1) % currentTestimonials.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, [testimonials.length]);
+  }, [currentTestimonials.length]);
 
   const goToPrevious = () => {
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    setCurrentIndex((prev) => (prev - 1 + currentTestimonials.length) % currentTestimonials.length);
   };
 
   const goToNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+    setCurrentIndex((prev) => (prev + 1) % currentTestimonials.length);
   };
 
   return (
@@ -58,10 +86,10 @@ const TestimonialsCarousel = () => {
       <div className="container-custom">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            ¿Qué dicen nuestros <span className="text-gradient">clientes</span>?
+            {t("testimonials.title")} <span className="text-gradient">{t("testimonials.titleHighlight")}</span>?
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Opiniones reales de hogares transformados con tecnología inteligente
+            {t("testimonials.subtitle")}
           </p>
         </div>
 
@@ -82,22 +110,22 @@ const TestimonialsCarousel = () => {
 
                 {/* Quote text */}
                 <blockquote className="text-lg md:text-2xl text-foreground mb-8 leading-relaxed font-medium">
-                  "{testimonials[currentIndex].text}"
+                  "{currentTestimonials[currentIndex].text}"
                 </blockquote>
                 
                 {/* Author info */}
                 <div className="flex items-center gap-4">
                   <div className="w-14 h-14 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center shadow-lg">
                     <span className="text-xl font-bold text-white">
-                      {testimonials[currentIndex].name.charAt(0)}
+                      {currentTestimonials[currentIndex].name.charAt(0)}
                     </span>
                   </div>
                   <div>
                     <p className="font-semibold text-foreground text-lg">
-                      {testimonials[currentIndex].name}
+                      {currentTestimonials[currentIndex].name}
                     </p>
                     <p className="text-sm text-muted-foreground">
-                      {testimonials[currentIndex].role}
+                      {t(currentTestimonials[currentIndex].roleKey)}
                     </p>
                   </div>
                 </div>
@@ -117,7 +145,7 @@ const TestimonialsCarousel = () => {
             </Button>
 
             <div className="flex gap-2">
-              {testimonials.map((_, index) => (
+              {currentTestimonials.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}

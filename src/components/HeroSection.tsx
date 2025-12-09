@@ -2,12 +2,14 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import ParticleBackground from "./ParticleBackground";
 import AnimatedCounter from "./AnimatedCounter";
+import { useLanguage } from "@/contexts/LanguageContext";
 import appMobileImage from "@/assets/app-mobile.png";
 import appMobileImage2 from "@/assets/app-mobile-2.png";
 
 const HeroSection = () => {
   const [currentImage, setCurrentImage] = useState(0);
   const images = [appMobileImage, appMobileImage2];
+  const { t } = useLanguage();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -45,13 +47,11 @@ const HeroSection = () => {
           {/* Left Content */}
           <div className="space-y-8 animate-fade-in">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-secondary leading-tight">
-              Controla tu hogar{" "}
-              <span className="text-gradient">desde un app</span>
+              {t("hero.title")}{" "}
+              <span className="text-gradient">{t("hero.titleHighlight")}</span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-lg">
-              Transforma tu casa en un hogar inteligente. Controla luces,
-              climatización, persianas y más desde tu smartphone, en cualquier
-              momento y lugar.
+              {t("hero.subtitle")}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
@@ -59,7 +59,7 @@ const HeroSection = () => {
                 size="lg"
                 className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground text-lg px-8 py-6"
               >
-                Contáctanos
+                {t("hero.cta")}
               </Button>
               <Button
                 variant="outline"
@@ -70,7 +70,7 @@ const HeroSection = () => {
                   element?.scrollIntoView({ behavior: "smooth" });
                 }}
               >
-                Saber más
+                {t("hero.ctaSecondary")}
               </Button>
             </div>
 
@@ -80,17 +80,17 @@ const HeroSection = () => {
                 <p className="text-3xl font-bold text-primary">
                   <AnimatedCounter end={500} suffix="+" />
                 </p>
-                <p className="text-sm text-muted-foreground">Hogares conectados</p>
+                <p className="text-sm text-muted-foreground">{t("hero.stat.homes")}</p>
               </div>
               <div className="text-center">
                 <p className="text-3xl font-bold text-accent">24/7</p>
-                <p className="text-sm text-muted-foreground">Soporte técnico</p>
+                <p className="text-sm text-muted-foreground">{t("hero.stat.support")}</p>
               </div>
               <div className="text-center">
                 <p className="text-3xl font-bold text-primary">
                   <AnimatedCounter end={100} suffix="%" />
                 </p>
-                <p className="text-sm text-muted-foreground">Satisfacción</p>
+                <p className="text-sm text-muted-foreground">{t("hero.stat.satisfaction")}</p>
               </div>
             </div>
           </div>

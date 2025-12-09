@@ -10,56 +10,58 @@ import {
   Headphones 
 } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useLanguage } from "@/contexts/LanguageContext";
 import TiltCard from "./TiltCard";
 
 const ServicesGrid = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
+  const { t } = useLanguage();
 
   const services = [
     {
       icon: Wrench,
-      title: "Instalación Completa",
-      description: "Instalamos todo el sistema de domótica en tu hogar de forma profesional",
+      titleKey: "services.installation",
+      descKey: "services.installationDesc",
     },
     {
       icon: Palette,
-      title: "Diseño Personalizado",
-      description: "Diseñamos soluciones adaptadas a tus necesidades específicas",
+      titleKey: "services.design",
+      descKey: "services.designDesc",
     },
     {
       icon: Zap,
-      title: "Automatización",
-      description: "Automatizamos todos los procesos de tu hogar inteligente",
+      titleKey: "services.automation",
+      descKey: "services.automationDesc",
     },
     {
       icon: Link,
-      title: "Compatibilidad",
-      description: "Integramos dispositivos de múltiples marcas y protocolos",
+      titleKey: "services.compatibility",
+      descKey: "services.compatibilityDesc",
     },
     {
       icon: Brain,
-      title: "Adaptación Inteligente",
-      description: "El sistema aprende de tus hábitos y se adapta automáticamente",
+      titleKey: "services.adaptation",
+      descKey: "services.adaptationDesc",
     },
     {
       icon: Globe,
-      title: "Acceso Universal",
-      description: "Controla tu hogar desde cualquier lugar del mundo",
+      titleKey: "services.access",
+      descKey: "services.accessDesc",
     },
     {
       icon: MapPin,
-      title: "Local y Confiable",
-      description: "Servicio local con garantía y soporte continuo",
+      titleKey: "services.local",
+      descKey: "services.localDesc",
     },
     {
       icon: Settings,
-      title: "Mantenimiento",
-      description: "Mantenimiento preventivo y actualizaciones periódicas",
+      titleKey: "services.maintenance",
+      descKey: "services.maintenanceDesc",
     },
     {
       icon: Headphones,
-      title: "Servicio Técnico",
-      description: "Soporte técnico 24/7 para resolver cualquier incidencia",
+      titleKey: "services.support",
+      descKey: "services.supportDesc",
     },
   ];
 
@@ -68,16 +70,16 @@ const ServicesGrid = () => {
       <div className="container-custom">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-4">
-            ¿Qué <span className="text-gradient">ofrecemos</span>?
+            {t("services.title")} <span className="text-gradient">{t("services.titleHighlight")}</span>?
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Un servicio integral para transformar tu hogar en un espacio inteligente y conectado
+            {t("services.subtitle")}
           </p>
         </div>
 
         <div ref={ref} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (
-            <TiltCard key={service.title}>
+            <TiltCard key={service.titleKey}>
               <div
                 className={`bg-card rounded-2xl p-6 shadow-card hover:shadow-card-hover transition-all duration-500 h-full ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -88,10 +90,10 @@ const ServicesGrid = () => {
                   <service.icon className={`w-7 h-7 ${index % 2 === 0 ? 'text-primary' : 'text-accent'}`} />
                 </div>
                 <h3 className="text-xl font-semibold text-secondary mb-2">
-                  {service.title}
+                  {t(service.titleKey)}
                 </h3>
                 <p className="text-muted-foreground">
-                  {service.description}
+                  {t(service.descKey)}
                 </p>
               </div>
             </TiltCard>
