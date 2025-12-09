@@ -1,4 +1,5 @@
-import { Home, Facebook, Instagram, Twitter, Linkedin } from "lucide-react";
+import { Facebook, Instagram, Twitter, Linkedin } from "lucide-react";
+import dirasmartLogo from "@/assets/dirasmart-logo.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -30,13 +31,8 @@ const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <a href="#home" className="flex items-center gap-2 mb-6">
-              <div className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
-                <Home className="w-6 h-6 text-primary-foreground" />
-              </div>
-              <span className="text-xl font-bold">
-                DIRA<span className="text-primary">SMART</span>
-              </span>
+            <a href="#home" className="flex items-center mb-6">
+              <img src={dirasmartLogo} alt="DiraSmart Logo" className="h-10" />
             </a>
             <p className="text-secondary-foreground/70 max-w-md mb-6">
               Transformamos hogares ordinarios en espacios inteligentes y conectados. 

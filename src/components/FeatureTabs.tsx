@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Smartphone, Moon, Zap, Cpu, Lightbulb, Thermometer, Home, Clock } from "lucide-react";
+import appMobileImage from "@/assets/app-mobile.png";
+import smartHomeImage from "@/assets/smart-home.png";
 
 const FeatureTabs = () => {
   const [activeTab, setActiveTab] = useState("app");
@@ -78,15 +80,11 @@ const FeatureTabs = () => {
                 </ul>
               </div>
               <div className="flex justify-center">
-                <div className="w-64 h-[500px] bg-secondary rounded-[2.5rem] p-2 shadow-xl">
-                  <div className="w-full h-full bg-background rounded-[2rem] flex items-center justify-center">
-                    <div className="text-center p-6">
-                      <Smartphone className="w-16 h-16 text-primary mx-auto mb-4" />
-                      <p className="text-lg font-semibold">App DiraSmart</p>
-                      <p className="text-sm text-muted-foreground">Disponible para iOS y Android</p>
-                    </div>
-                  </div>
-                </div>
+                <img 
+                  src={appMobileImage} 
+                  alt="App DiraSmart" 
+                  className="w-64 drop-shadow-xl"
+                />
               </div>
             </div>
           </TabsContent>
@@ -229,11 +227,11 @@ const FeatureTabs = () => {
                 </ul>
               </div>
               <div className="flex justify-center">
-                <div className="bg-card rounded-3xl p-8 shadow-lg">
-                  <Cpu className="w-24 h-24 text-accent mx-auto mb-6" />
-                  <p className="text-center text-lg font-semibold">+100 Dispositivos</p>
-                  <p className="text-center text-sm text-muted-foreground mt-2">Compatibles con DiraSmart</p>
-                </div>
+                <img 
+                  src={smartHomeImage} 
+                  alt="Dispositivos inteligentes" 
+                  className="w-80 rounded-2xl shadow-lg"
+                />
               </div>
             </div>
           </TabsContent>
