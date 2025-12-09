@@ -74,13 +74,13 @@ const BrandLogos = () => {
   }, []);
 
   return (
-    <section className="section-padding bg-gradient-to-br from-accent/5 via-background to-primary/5 overflow-hidden">
+    <section className="section-padding bg-white overflow-hidden">
       <div className="container-custom">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             {t("brands.title")} <span className="text-gradient">{t("brands.titleHighlight")}</span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-gray-600 max-w-2xl mx-auto">
             {t("brands.subtitle")}
           </p>
         </div>
@@ -96,7 +96,7 @@ const BrandLogos = () => {
             {[...brands, ...brands].map((brand, index) => (
               <div
                 key={`${brand.name}-${index}`}
-                className="flex-shrink-0 bg-card rounded-2xl p-4 flex flex-col items-center justify-center gap-3 shadow-card hover:shadow-card-hover transition-all hover:-translate-y-1 border border-border min-w-[120px] h-[100px]"
+                className="flex-shrink-0 bg-white rounded-2xl p-4 flex flex-col items-center justify-center gap-3 shadow-card hover:shadow-card-hover transition-all hover:-translate-y-1 border border-gray-200 min-w-[120px] h-[100px]"
               >
                 <img 
                   src={brand.logo} 
@@ -110,12 +110,12 @@ const BrandLogos = () => {
 
         {/* Protocols Section */}
         <div>
-          <h3 className="text-center text-lg font-semibold text-muted-foreground mb-6">{t("brands.protocols")}</h3>
+          <h3 className="text-center text-lg font-semibold text-gray-600 mb-6">{t("brands.protocols")}</h3>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto">
             {protocols.map((protocol) => (
               <div
                 key={protocol.name}
-                className="bg-card rounded-xl p-4 flex items-center justify-center border border-border shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
+                className="bg-white rounded-xl p-4 flex items-center justify-center border border-gray-200 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
               >
                 <img 
                   src={protocol.logo} 
