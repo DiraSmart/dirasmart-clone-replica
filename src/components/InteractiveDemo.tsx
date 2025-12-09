@@ -12,8 +12,6 @@ import {
   ChevronDown
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Slider } from "@/components/ui/slider";
-import { toast } from "sonner";
 
 type ACMode = 'off' | 'cool' | 'dry';
 type FanSpeed = 'auto' | 'min' | 'med' | 'high';
@@ -22,6 +20,8 @@ const InteractiveDemo = () => {
   const [acMode, setAcMode] = useState<ACMode>('off');
   const [fanSpeed, setFanSpeed] = useState<FanSpeed>('med');
   const [acTemp, setAcTemp] = useState([24]);
+  const [currentTemp] = useState(27);
+  const [currentHumidity] = useState(65);
   const [lights, setLights] = useState({
     sala: { on: false, brightness: 100 },
     cocina: { on: true, brightness: 65 },
@@ -33,34 +33,23 @@ const InteractiveDemo = () => {
 
   const setACMode = (mode: ACMode) => {
     setAcMode(mode);
-    const modeNames = { off: 'Apagado', cool: 'Enfriamiento', dry: 'Deshumidificador' };
-    toast.success(`❄️ Modo: ${modeNames[mode]}`, {
-      description: mode !== 'off' ? `Temperatura: ${acTemp[0]}°C` : 'Sistema desactivado'
-    });
   };
 
   const setFanSpeedLevel = (speed: FanSpeed) => {
     setFanSpeed(speed);
-    const speedNames = { auto: 'Automático', min: 'Mínimo', med: 'Medio', high: 'Alto' };
-    toast.success(`🌀 Ventilador: ${speedNames[speed]}`);
   };
 
   const toggleLight = (room: keyof typeof lights) => {
-    const roomNames = { sala: "Sala", cocina: "Cocina", habitacion: "Habitación" };
-    setLights(prev => {
-      const newState = !prev[room].on;
-      toast.success(
-        newState ? `💡 ${roomNames[room]} encendida` : `🔌 ${roomNames[room]} apagada`,
-        { description: newState ? `Brillo: ${prev[room].brightness}%` : undefined }
-      );
-      return { ...prev, [room]: { ...prev[room], on: newState } };
-    });
-  };
-
-  const adjustBrightness = (room: keyof typeof lights, value: number[]) => {
     setLights(prev => ({
       ...prev,
-      [room]: { ...prev[room], brightness: value[0] }
+      [room]: { ...prev[room], on: !prev[room].on }
+    }));
+  };
+
+  const adjustBrightness = (room: keyof typeof lights, value: number) => {
+    setLights(prev => ({
+      ...prev,
+      [room]: { ...prev[room], brightness: value }
     }));
   };
 
@@ -77,9 +66,6 @@ const InteractiveDemo = () => {
         if ((direction === 'up' && newLevel >= targetLevel) || 
             (direction === 'down' && newLevel <= targetLevel)) {
           setIsAnimating(false);
-          toast.success(`🪟 Persianas al ${targetLevel}%`, {
-            description: targetLevel === 0 ? "Completamente cerradas" : "Completamente abiertas"
-          });
           return targetLevel;
         }
         animationRef.current = setTimeout(animate, 30);
@@ -89,12 +75,12 @@ const InteractiveDemo = () => {
     animate();
   };
 
-  const setBlindsPercentage = (value: number[]) => {
+  const setBlindsPercentage = (value: number) => {
     if (animationRef.current) {
       clearTimeout(animationRef.current);
       setIsAnimating(false);
     }
-    setBlindsLevel(value[0]);
+    setBlindsLevel(value);
   };
 
   useEffect(() => {
@@ -103,8 +89,86 @@ const InteractiveDemo = () => {
     };
   }, []);
 
+  // Futuristic slider component
+  const FuturisticSlider = ({ 
+    value, 
+    onChange, 
+    min = 0, 
+    max = 100, 
+    disabled = false,
+    color = 'primary',
+    showGlow = true
+  }: { 
+    value: number; 
+    onChange: (val: number) => void; 
+    min?: number; 
+    max?: number; 
+    disabled?: boolean;
+    color?: 'primary' | 'accent' | 'amber';
+    showGlow?: boolean;
+  }) => {
+    const percentage = ((value - min) / (max - min)) * 100;
+    const colorClasses = {
+      primary: 'from-primary via-primary to-cyan-400',
+      accent: 'from-accent via-accent to-emerald-400',
+      amber: 'from-amber-500 via-amber-400 to-yellow-300'
+    };
+    const glowClasses = {
+      primary: 'shadow-[0_0_20px_rgba(0,200,200,0.5)]',
+      accent: 'shadow-[0_0_20px_rgba(34,197,94,0.5)]',
+      amber: 'shadow-[0_0_20px_rgba(245,158,11,0.5)]'
+    };
+
+    return (
+      <div className="relative h-3 group">
+        {/* Track background with futuristic grid */}
+        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-muted/80 to-muted overflow-hidden">
+          <div className="absolute inset-0 opacity-30" style={{
+            backgroundImage: 'repeating-linear-gradient(90deg, transparent, transparent 4px, rgba(255,255,255,0.1) 4px, rgba(255,255,255,0.1) 5px)'
+          }} />
+        </div>
+        
+        {/* Active track with gradient and glow */}
+        <div 
+          className={`absolute h-full rounded-full bg-gradient-to-r ${colorClasses[color]} transition-all duration-150 ${showGlow && !disabled ? glowClasses[color] : ''}`}
+          style={{ width: `${percentage}%`, opacity: disabled ? 0.4 : 1 }}
+        >
+          {/* Animated shine effect */}
+          <div className="absolute inset-0 rounded-full overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full animate-[shimmer_2s_infinite]" />
+          </div>
+        </div>
+        
+        {/* Thumb with glow ring */}
+        <input
+          type="range"
+          min={min}
+          max={max}
+          value={value}
+          onChange={(e) => onChange(Number(e.target.value))}
+          disabled={disabled}
+          className="absolute inset-0 w-full opacity-0 cursor-pointer disabled:cursor-not-allowed"
+        />
+        <div 
+          className={`absolute top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-white border-2 transition-all duration-150 pointer-events-none ${
+            disabled ? 'border-muted-foreground/50' : `border-${color === 'amber' ? 'amber-500' : color}`
+          } ${showGlow && !disabled ? 'shadow-[0_0_10px_rgba(255,255,255,0.8)]' : ''}`}
+          style={{ left: `calc(${percentage}% - 10px)` }}
+        >
+          <div className={`absolute inset-1 rounded-full bg-gradient-to-br ${colorClasses[color]} ${disabled ? 'opacity-40' : ''}`} />
+        </div>
+      </div>
+    );
+  };
+
   return (
     <section className="section-padding bg-gradient-to-br from-muted via-background to-muted/50">
+      <style>{`
+        @keyframes shimmer {
+          0% { transform: translateX(-100%); }
+          100% { transform: translateX(200%); }
+        }
+      `}</style>
       <div className="container-custom">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
@@ -116,7 +180,7 @@ const InteractiveDemo = () => {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {/* AC Control - Updated with modes */}
+          {/* AC Control */}
           <div className="bg-card rounded-2xl p-6 border border-primary/20 hover:border-primary/40 transition-all shadow-card hover:shadow-card-hover">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-3">
@@ -132,9 +196,28 @@ const InteractiveDemo = () => {
               </div>
             </div>
 
+            {/* Current sensors display */}
+            <div className="flex gap-4 mb-4 p-3 rounded-xl bg-muted/50 border border-border">
+              <div className="flex items-center gap-2 flex-1">
+                <Thermometer className="w-4 h-4 text-primary" />
+                <div>
+                  <span className="text-xs text-muted-foreground block">Actual</span>
+                  <span className="text-lg font-bold text-foreground">{currentTemp}°C</span>
+                </div>
+              </div>
+              <div className="w-px bg-border" />
+              <div className="flex items-center gap-2 flex-1">
+                <Droplets className="w-4 h-4 text-primary" />
+                <div>
+                  <span className="text-xs text-muted-foreground block">Humedad</span>
+                  <span className="text-lg font-bold text-foreground">{currentHumidity}%</span>
+                </div>
+              </div>
+            </div>
+
             {/* Temperature display */}
             <div className="flex items-center justify-center gap-4 mb-4">
-              <span className="text-muted-foreground text-sm">Temp:</span>
+              <span className="text-muted-foreground text-sm">Objetivo:</span>
               <div className="flex items-center gap-2">
                 <Button 
                   variant="outline" 
@@ -181,7 +264,7 @@ const InteractiveDemo = () => {
               <button
                 onClick={() => setACMode('dry')}
                 className={`flex-1 flex flex-col items-center gap-1 py-2 px-3 rounded-lg border transition-all ${
-                  acMode === 'dry' ? 'bg-primary text-primary-foreground border-primary' : 'bg-card border-border hover:bg-muted/50'
+                  acMode === 'dry' ? 'bg-orange-500 text-white border-orange-500' : 'bg-card border-border hover:bg-muted/50'
                 }`}
               >
                 <Droplets className="w-4 h-4" />
@@ -233,10 +316,10 @@ const InteractiveDemo = () => {
                       : 'bg-muted/30 border-muted'
                   } border`}
                 >
-                  <div className="flex items-center justify-between mb-2">
+                  <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-3">
-                      <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                        state.on ? 'bg-amber-400' : 'bg-muted'
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
+                        state.on ? 'bg-amber-400 shadow-[0_0_15px_rgba(251,191,36,0.6)]' : 'bg-muted'
                       }`}>
                         <Lightbulb className={`w-4 h-4 ${state.on ? 'text-amber-900' : 'text-muted-foreground'}`} />
                       </div>
@@ -259,22 +342,15 @@ const InteractiveDemo = () => {
                     </button>
                   </div>
                   
-                  {/* Brightness slider */}
-                  <div className="relative mt-3">
-                    <div 
-                      className="absolute h-2 rounded-full bg-amber-400 transition-all"
-                      style={{ width: state.on ? `${state.brightness}%` : '0%' }}
-                    />
-                    <Slider
-                      value={[state.brightness]}
-                      onValueChange={(v) => adjustBrightness(room as keyof typeof lights, v)}
-                      min={10}
-                      max={100}
-                      step={5}
-                      disabled={!state.on}
-                      className="[&_[role=slider]]:bg-accent [&_[role=slider]]:border-accent [&_.bg-primary]:bg-amber-400"
-                    />
-                  </div>
+                  {/* Futuristic brightness slider */}
+                  <FuturisticSlider
+                    value={state.brightness}
+                    onChange={(v) => adjustBrightness(room as keyof typeof lights, v)}
+                    min={10}
+                    max={100}
+                    disabled={!state.on}
+                    color="amber"
+                  />
                 </div>
               ))}
             </div>
@@ -296,13 +372,23 @@ const InteractiveDemo = () => {
               </div>
             </div>
 
-            {/* Progress bar visualization */}
+            {/* Futuristic progress bar */}
             <div className="mb-4">
-              <div className="h-6 bg-muted rounded-full overflow-hidden relative">
+              <div className="h-4 bg-muted rounded-full overflow-hidden relative border border-border/50">
+                <div className="absolute inset-0 opacity-20" style={{
+                  backgroundImage: 'repeating-linear-gradient(90deg, transparent, transparent 8px, rgba(255,255,255,0.1) 8px, rgba(255,255,255,0.1) 9px)'
+                }} />
                 <div 
-                  className="h-full bg-primary transition-all duration-100 rounded-full"
+                  className="h-full bg-gradient-to-r from-primary via-cyan-400 to-primary transition-all duration-100 rounded-full shadow-[0_0_20px_rgba(0,200,200,0.4)]"
                   style={{ width: `${blindsLevel}%` }}
-                />
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+                </div>
+              </div>
+              <div className="flex justify-between text-xs text-muted-foreground mt-1">
+                <span>0%</span>
+                <span className="text-primary font-medium">{blindsLevel}%</span>
+                <span>100%</span>
               </div>
             </div>
 
@@ -324,18 +410,17 @@ const InteractiveDemo = () => {
               </div>
             </div>
 
-            {/* Percentage slider */}
+            {/* Futuristic slider */}
             <div className="mb-4">
-              <Slider
-                value={[blindsLevel]}
-                onValueChange={setBlindsPercentage}
+              <FuturisticSlider
+                value={blindsLevel}
+                onChange={setBlindsPercentage}
                 min={0}
                 max={100}
-                step={5}
                 disabled={isAnimating}
-                className="[&_[role=slider]]:bg-primary [&_[role=slider]]:border-primary"
+                color="primary"
               />
-              <div className="flex justify-between text-xs text-muted-foreground mt-1">
+              <div className="flex justify-between text-xs text-muted-foreground mt-2">
                 <span>Cerrado</span>
                 <span>Abierto</span>
               </div>
