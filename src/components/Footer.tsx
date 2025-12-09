@@ -31,11 +31,11 @@ const Footer = () => {
           {/* Brand */}
           <div className="lg:col-span-2">
             <a href="#home" className="flex items-center gap-2 mb-6">
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                <Home className="w-6 h-6 text-primary-foreground" />
+              <div className="w-10 h-10 bg-accent rounded-lg flex items-center justify-center">
+                <Home className="w-6 h-6 text-accent-foreground" />
               </div>
               <span className="text-xl font-bold">
-                DIRA<span className="text-primary">SMART</span>
+                DIRA<span className="text-accent">SMART</span>
               </span>
             </a>
             <p className="text-secondary-foreground/70 max-w-md mb-6">
@@ -47,7 +47,7 @@ const Footer = () => {
                 <a
                   key={social.label}
                   href={social.href}
-                  className="w-10 h-10 bg-secondary-foreground/10 rounded-full flex items-center justify-center hover:bg-primary transition-colors"
+                  className="w-10 h-10 bg-secondary-foreground/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors"
                   aria-label={social.label}
                 >
                   <social.icon className="w-5 h-5" />
@@ -64,7 +64,7 @@ const Footer = () => {
                 <li key={link.name}>
                   <button
                     onClick={() => scrollToSection(link.href)}
-                    className="text-secondary-foreground/70 hover:text-primary transition-colors"
+                    className="text-secondary-foreground/70 hover:text-accent transition-colors"
                   >
                     {link.name}
                   </button>

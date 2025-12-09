@@ -17,7 +17,7 @@ const FeatureTabs = () => {
       <div className="container-custom">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-4">
-            Todo lo que necesitas en <span className="text-primary">una app</span>
+            Todo lo que necesitas en <span className="text-accent">una app</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Descubre las funcionalidades que hacen de DiraSmart la mejor opción para tu hogar inteligente
@@ -30,7 +30,7 @@ const FeatureTabs = () => {
               <TabsTrigger
                 key={tab.id}
                 value={tab.id}
-                className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground px-6 py-3 rounded-full border border-border data-[state=inactive]:bg-card"
+                className="data-[state=active]:bg-accent data-[state=active]:text-accent-foreground px-6 py-3 rounded-full border border-border data-[state=inactive]:bg-card"
               >
                 <tab.icon className="w-4 h-4 mr-2" />
                 {tab.label}
@@ -49,8 +49,8 @@ const FeatureTabs = () => {
                 </p>
                 <ul className="space-y-4">
                   <li className="flex items-start gap-3">
-                    <div className="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                      <Thermometer className="w-4 h-4 text-primary" />
+                    <div className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <Thermometer className="w-4 h-4 text-accent" />
                     </div>
                     <div>
                       <p className="font-medium">Aire Acondicionado</p>
@@ -58,8 +58,8 @@ const FeatureTabs = () => {
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
-                    <div className="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                      <Home className="w-4 h-4 text-primary" />
+                    <div className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <Home className="w-4 h-4 text-accent" />
                     </div>
                     <div>
                       <p className="font-medium">Persianas Motorizadas</p>
@@ -67,8 +67,8 @@ const FeatureTabs = () => {
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
-                    <div className="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                      <Lightbulb className="w-4 h-4 text-primary" />
+                    <div className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <Lightbulb className="w-4 h-4 text-accent" />
                     </div>
                     <div>
                       <p className="font-medium">Iluminación Inteligente</p>
@@ -81,7 +81,7 @@ const FeatureTabs = () => {
                 <div className="w-64 h-[500px] bg-secondary rounded-[2.5rem] p-2 shadow-xl">
                   <div className="w-full h-full bg-background rounded-[2rem] flex items-center justify-center">
                     <div className="text-center p-6">
-                      <Smartphone className="w-16 h-16 text-primary mx-auto mb-4" />
+                      <Smartphone className="w-16 h-16 text-accent mx-auto mb-4" />
                       <p className="text-lg font-semibold">App DiraSmart</p>
                       <p className="text-sm text-muted-foreground">Disponible para iOS y Android</p>
                     </div>
@@ -102,8 +102,8 @@ const FeatureTabs = () => {
                 </p>
                 <ul className="space-y-4">
                   <li className="flex items-start gap-3">
-                    <div className="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                      <Clock className="w-4 h-4 text-primary" />
+                    <div className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <Clock className="w-4 h-4 text-accent" />
                     </div>
                     <div>
                       <p className="font-medium">Programación Automática</p>
@@ -111,8 +111,8 @@ const FeatureTabs = () => {
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
-                    <div className="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                      <Lightbulb className="w-4 h-4 text-primary" />
+                    <div className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <Lightbulb className="w-4 h-4 text-accent" />
                     </div>
                     <div>
                       <p className="font-medium">Control de Luces</p>
@@ -120,8 +120,8 @@ const FeatureTabs = () => {
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
-                    <div className="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                      <Moon className="w-4 h-4 text-primary" />
+                    <div className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <Moon className="w-4 h-4 text-accent" />
                     </div>
                     <div>
                       <p className="font-medium">Modo Nocturno</p>
@@ -132,7 +132,7 @@ const FeatureTabs = () => {
               </div>
               <div className="flex justify-center">
                 <div className="bg-card rounded-3xl p-8 shadow-lg">
-                  <Moon className="w-24 h-24 text-primary mx-auto mb-6" />
+                  <Moon className="w-24 h-24 text-accent mx-auto mb-6" />
                   <p className="text-center text-lg font-semibold">Shabbat Mode</p>
                   <p className="text-center text-sm text-muted-foreground mt-2">Tranquilidad total en días festivos</p>
                 </div>
@@ -151,8 +151,8 @@ const FeatureTabs = () => {
                 </p>
                 <ul className="space-y-4">
                   <li className="flex items-start gap-3">
-                    <div className="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                      <Zap className="w-4 h-4 text-primary" />
+                    <div className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <Zap className="w-4 h-4 text-accent" />
                     </div>
                     <div>
                       <p className="font-medium">Escenas Personalizadas</p>
@@ -160,8 +160,8 @@ const FeatureTabs = () => {
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
-                    <div className="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                      <Clock className="w-4 h-4 text-primary" />
+                    <div className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <Clock className="w-4 h-4 text-accent" />
                     </div>
                     <div>
                       <p className="font-medium">Programación Horaria</p>
@@ -169,8 +169,8 @@ const FeatureTabs = () => {
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
-                    <div className="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                      <Home className="w-4 h-4 text-primary" />
+                    <div className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <Home className="w-4 h-4 text-accent" />
                     </div>
                     <div>
                       <p className="font-medium">Detección de Presencia</p>
@@ -181,7 +181,7 @@ const FeatureTabs = () => {
               </div>
               <div className="flex justify-center">
                 <div className="bg-card rounded-3xl p-8 shadow-lg">
-                  <Zap className="w-24 h-24 text-primary mx-auto mb-6" />
+                  <Zap className="w-24 h-24 text-accent mx-auto mb-6" />
                   <p className="text-center text-lg font-semibold">Automatización Total</p>
                   <p className="text-center text-sm text-muted-foreground mt-2">Tu hogar aprende de ti</p>
                 </div>
@@ -200,8 +200,8 @@ const FeatureTabs = () => {
                 </p>
                 <ul className="space-y-4">
                   <li className="flex items-start gap-3">
-                    <div className="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                      <Cpu className="w-4 h-4 text-primary" />
+                    <div className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <Cpu className="w-4 h-4 text-accent" />
                     </div>
                     <div>
                       <p className="font-medium">Múltiples Protocolos</p>
@@ -209,8 +209,8 @@ const FeatureTabs = () => {
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
-                    <div className="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                      <Home className="w-4 h-4 text-primary" />
+                    <div className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <Home className="w-4 h-4 text-accent" />
                     </div>
                     <div>
                       <p className="font-medium">Marcas Líderes</p>
@@ -218,8 +218,8 @@ const FeatureTabs = () => {
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
-                    <div className="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                      <Zap className="w-4 h-4 text-primary" />
+                    <div className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <Zap className="w-4 h-4 text-accent" />
                     </div>
                     <div>
                       <p className="font-medium">Fácil Integración</p>
@@ -230,7 +230,7 @@ const FeatureTabs = () => {
               </div>
               <div className="flex justify-center">
                 <div className="bg-card rounded-3xl p-8 shadow-lg">
-                  <Cpu className="w-24 h-24 text-primary mx-auto mb-6" />
+                  <Cpu className="w-24 h-24 text-accent mx-auto mb-6" />
                   <p className="text-center text-lg font-semibold">+100 Dispositivos</p>
                   <p className="text-center text-sm text-muted-foreground mt-2">Compatibles con DiraSmart</p>
                 </div>

@@ -15,7 +15,7 @@ const BrandLogos = () => {
       <div className="container-custom">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-4">
-            Sistemas <span className="text-primary">compatibles</span>
+            Sistemas <span className="text-accent">compatibles</span>
           </h2>
           <p className="text-muted-foreground">
             Trabajamos con las mejores marcas del mercado

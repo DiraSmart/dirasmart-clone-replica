@@ -25,11 +25,11 @@ const Header = () => {
         <div className="flex items-center justify-between h-16 md:h-20 px-4">
           {/* Logo */}
           <a href="#home" className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-              <Home className="w-6 h-6 text-primary-foreground" />
+            <div className="w-10 h-10 bg-accent rounded-lg flex items-center justify-center">
+              <Home className="w-6 h-6 text-accent-foreground" />
             </div>
             <span className="text-xl font-bold text-secondary">
-              DIRA<span className="text-primary">SMART</span>
+              DIRA<span className="text-accent">SMART</span>
             </span>
           </a>
 
@@ -39,14 +39,14 @@ const Header = () => {
               <button
                 key={link.name}
                 onClick={() => scrollToSection(link.href)}
-                className="text-foreground/80 hover:text-primary transition-colors font-medium"
+                className="text-foreground/80 hover:text-accent transition-colors font-medium"
               >
                 {link.name}
               </button>
             ))}
             <Button
               onClick={() => scrollToSection("#contacto")}
-              className="bg-primary hover:bg-primary/90 text-primary-foreground px-6"
+              className="bg-accent hover:bg-accent/90 text-accent-foreground px-6"
             >
               Contacto
             </Button>
@@ -74,14 +74,14 @@ const Header = () => {
                 <button
                   key={link.name}
                   onClick={() => scrollToSection(link.href)}
-                  className="text-foreground/80 hover:text-primary transition-colors font-medium text-left py-2"
+                  className="text-foreground/80 hover:text-accent transition-colors font-medium text-left py-2"
                 >
                   {link.name}
                 </button>
               ))}
               <Button
                 onClick={() => scrollToSection("#contacto")}
-                className="bg-primary hover:bg-primary/90 text-primary-foreground w-full"
+                className="bg-accent hover:bg-accent/90 text-accent-foreground w-full"
               >
                 Contacto
               </Button>
