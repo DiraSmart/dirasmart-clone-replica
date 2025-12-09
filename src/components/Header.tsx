@@ -25,11 +25,11 @@ const Header = () => {
         <div className="flex items-center justify-between h-16 md:h-20 px-4">
           {/* Logo */}
           <a href="#home" className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-accent rounded-lg flex items-center justify-center">
-              <Home className="w-6 h-6 text-accent-foreground" />
+            <div className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
+              <Home className="w-6 h-6 text-primary-foreground" />
             </div>
             <span className="text-xl font-bold text-secondary">
-              DIRA<span className="text-accent">SMART</span>
+              DIRA<span className="text-gradient">SMART</span>
             </span>
           </a>
 
@@ -46,7 +46,7 @@ const Header = () => {
             ))}
             <Button
               onClick={() => scrollToSection("#contacto")}
-              className="bg-accent hover:bg-accent/90 text-accent-foreground px-6"
+              className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground px-6"
             >
               Contacto
             </Button>
@@ -81,7 +81,7 @@ const Header = () => {
               ))}
               <Button
                 onClick={() => scrollToSection("#contacto")}
-                className="bg-accent hover:bg-accent/90 text-accent-foreground w-full"
+                className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground w-full"
               >
                 Contacto
               </Button>

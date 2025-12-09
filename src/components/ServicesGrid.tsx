@@ -64,7 +64,7 @@ const ServicesGrid = () => {
       <div className="container-custom">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-4">
-            ¿Qué <span className="text-accent">ofrecemos</span>?
+            ¿Qué <span className="text-gradient">ofrecemos</span>?
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Un servicio integral para transformar tu hogar en un espacio inteligente y conectado
@@ -78,8 +78,8 @@ const ServicesGrid = () => {
               className="bg-card rounded-2xl p-6 shadow-card hover:shadow-card-hover transition-all duration-300 hover-lift group"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
-                <service.icon className="w-7 h-7 text-accent" />
+              <div className={`w-14 h-14 ${index % 2 === 0 ? 'bg-primary/10 group-hover:bg-primary/20' : 'bg-accent/10 group-hover:bg-accent/20'} rounded-xl flex items-center justify-center mb-4 transition-colors`}>
+                <service.icon className={`w-7 h-7 ${index % 2 === 0 ? 'text-primary' : 'text-accent'}`} />
               </div>
               <h3 className="text-xl font-semibold text-secondary mb-2">
                 {service.title}

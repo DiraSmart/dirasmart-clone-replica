@@ -29,7 +29,7 @@ const HeroSection = () => {
           <div className="space-y-8 animate-fade-in">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-secondary leading-tight">
               Controla tu hogar{" "}
-              <span className="text-accent">desde un app</span>
+              <span className="text-gradient">desde un app</span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-lg">
               Transforma tu casa en un hogar inteligente. Controla luces,
@@ -40,14 +40,14 @@ const HeroSection = () => {
               <Button
                 onClick={scrollToContact}
                 size="lg"
-                className="bg-accent hover:bg-accent/90 text-accent-foreground text-lg px-8 py-6"
+                className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground text-lg px-8 py-6"
               >
                 Contáctanos
               </Button>
               <Button
                 variant="outline"
                 size="lg"
-                className="border-accent text-accent hover:bg-accent/10 text-lg px-8 py-6"
+                className="border-primary text-primary hover:bg-primary/10 text-lg px-8 py-6"
                 onClick={() => {
                   const element = document.querySelector("#features");
                   element?.scrollIntoView({ behavior: "smooth" });
@@ -60,7 +60,7 @@ const HeroSection = () => {
             {/* Stats */}
             <div className="flex flex-wrap gap-8 pt-4">
               <div className="text-center">
-                <p className="text-3xl font-bold text-accent">500+</p>
+                <p className="text-3xl font-bold text-primary">500+</p>
                 <p className="text-sm text-muted-foreground">Hogares conectados</p>
               </div>
               <div className="text-center">
@@ -68,7 +68,7 @@ const HeroSection = () => {
                 <p className="text-sm text-muted-foreground">Soporte técnico</p>
               </div>
               <div className="text-center">
-                <p className="text-3xl font-bold text-accent">100%</p>
+                <p className="text-3xl font-bold text-primary">100%</p>
                 <p className="text-sm text-muted-foreground">Satisfacción</p>
               </div>
             </div>

@@ -31,11 +31,11 @@ const Footer = () => {
           {/* Brand */}
           <div className="lg:col-span-2">
             <a href="#home" className="flex items-center gap-2 mb-6">
-              <div className="w-10 h-10 bg-accent rounded-lg flex items-center justify-center">
-                <Home className="w-6 h-6 text-accent-foreground" />
+              <div className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
+                <Home className="w-6 h-6 text-primary-foreground" />
               </div>
               <span className="text-xl font-bold">
-                DIRA<span className="text-accent">SMART</span>
+                DIRA<span className="text-primary">SMART</span>
               </span>
             </a>
             <p className="text-secondary-foreground/70 max-w-md mb-6">

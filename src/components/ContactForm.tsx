@@ -61,7 +61,7 @@ const ContactForm = () => {
       <div className="container-custom">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-4">
-            <span className="text-accent">Contáctanos</span>
+            <span className="text-gradient">Contáctanos</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             ¿Listo para transformar tu hogar? Déjanos tus datos y te contactaremos
@@ -82,8 +82,8 @@ const ContactForm = () => {
 
             <div className="space-y-6">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Phone className="w-6 h-6 text-accent" />
+                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Phone className="w-6 h-6 text-primary" />
                 </div>
                 <div>
                   <p className="font-medium text-secondary">Teléfono</p>
@@ -194,7 +194,7 @@ const ContactForm = () => {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-accent hover:bg-accent/90 text-accent-foreground py-6 text-lg rounded-xl"
+                  className="w-full bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground py-6 text-lg rounded-xl"
                 >
                   {isSubmitting ? (
                     "Enviando..."
