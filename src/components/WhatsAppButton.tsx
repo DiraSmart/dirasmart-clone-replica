@@ -1,4 +1,4 @@
-import whatsappLogo from "@/assets/whatsapp-logo.jpg";
+import whatsappLogo from "@/assets/whatsapp-logo.png";
 
 const WhatsAppButton = () => {
   const phoneNumber = "5491234567890"; // Replace with actual WhatsApp number
