@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useTheme } from "next-themes";
 import ThemeToggle from "./ThemeToggle";
 import dirasmartLogo from "@/assets/dirasmart-logo.png";
+import dirasmartLogoGrey from "@/assets/dirasmart-logo-grey.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { resolvedTheme } = useTheme();
 
   const navLinks = [
     { name: "Home", href: "#home" },
@@ -27,7 +30,11 @@ const Header = () => {
         <div className="flex items-center justify-between h-16 md:h-20 px-4">
           {/* Logo */}
           <a href="#home" className="flex items-center">
-            <img src={dirasmartLogo} alt="DiraSmart Logo" className="h-10 md:h-12" />
+            <img 
+              src={resolvedTheme === 'dark' ? dirasmartLogo : dirasmartLogoGrey} 
+              alt="DiraSmart Logo" 
+              className="h-10 md:h-12" 
+            />
           </a>
 
           {/* Desktop Navigation */}
