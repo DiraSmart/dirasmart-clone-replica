@@ -277,86 +277,51 @@ const InteractiveDemo = () => {
                   <div 
                     className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl transition-all duration-500 pointer-events-none"
                     style={{
-                      width: `${120 + brightness}px`,
-                      height: `${120 + brightness}px`,
-                      background: `radial-gradient(circle, rgba(251, 191, 36, ${brightness / 150}) 0%, rgba(251, 191, 36, 0.1) 50%, transparent 70%)`,
+                      width: `${100 + brightness}px`,
+                      height: `${100 + brightness}px`,
+                      background: `radial-gradient(circle, rgba(251, 191, 36, ${brightness / 150}) 0%, transparent 70%)`,
                     }}
                   />
                 )}
                 
-                {/* Bulb */}
-                <div className="relative z-10 flex flex-col items-center">
-                  {/* Bulb glass - classic shape */}
-                  <div 
-                    className={`relative w-20 h-24 transition-all duration-300`}
-                    style={{
-                      background: lightOn 
-                        ? 'linear-gradient(135deg, #fcd34d 0%, #fbbf24 30%, #f59e0b 100%)' 
-                        : 'linear-gradient(135deg, #d1d5db 0%, #9ca3af 30%, #6b7280 100%)',
-                      borderRadius: '50% 50% 45% 45% / 60% 60% 40% 40%',
-                      boxShadow: lightOn 
-                        ? `0 0 ${brightness / 2}px rgba(251, 191, 36, 0.6)` 
-                        : 'none'
-                    }}
-                  >
-                    {/* Inner highlight/reflection */}
-                    <div 
-                      className="absolute top-3 left-4 w-6 h-8 rounded-full"
-                      style={{
-                        background: lightOn 
-                          ? 'radial-gradient(ellipse, rgba(255,255,255,0.6) 0%, transparent 70%)' 
-                          : 'radial-gradient(ellipse, rgba(255,255,255,0.2) 0%, transparent 70%)'
-                      }}
-                    />
-                    
-                    {/* Filament area */}
-                    {lightOn && (
-                      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center">
-                        {/* Inner glow circle */}
-                        <div 
-                          className="w-8 h-8 rounded-full mb-1"
-                          style={{
-                            background: 'radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(253,224,71,0.3) 50%, transparent 70%)'
-                          }}
-                        />
-                        {/* Filament stems */}
-                        <svg width="24" height="20" viewBox="0 0 24 20" className="opacity-80">
-                          <path 
-                            d="M12 0 C8 8, 6 12, 8 20 M12 0 C16 8, 18 12, 16 20" 
-                            stroke="#d97706" 
-                            strokeWidth="2" 
-                            fill="none"
-                            strokeLinecap="round"
-                          />
-                        </svg>
-                      </div>
-                    )}
+                {/* Light rays */}
+                {lightOn && (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    {/* Top ray */}
+                    <div className="absolute -top-8 left-1/2 -translate-x-1/2 w-2 h-6 bg-yellow-400 rounded-full" />
+                    {/* Top-left ray */}
+                    <div className="absolute -top-4 -left-4 w-2 h-5 bg-yellow-400 rounded-full rotate-[-45deg]" />
+                    {/* Top-right ray */}
+                    <div className="absolute -top-4 -right-4 w-2 h-5 bg-yellow-400 rounded-full rotate-[45deg]" />
+                    {/* Left ray */}
+                    <div className="absolute top-6 -left-8 w-6 h-2 bg-yellow-400 rounded-full" />
+                    {/* Right ray */}
+                    <div className="absolute top-6 -right-8 w-6 h-2 bg-yellow-400 rounded-full" />
                   </div>
-                  
-                  {/* Bulb neck - narrowing part */}
-                  <div 
-                    className="w-10 h-4 -mt-1"
-                    style={{
-                      background: lightOn 
-                        ? 'linear-gradient(to bottom, #f59e0b, #d97706)' 
-                        : 'linear-gradient(to bottom, #6b7280, #4b5563)',
-                      borderRadius: '0 0 30% 30% / 0 0 100% 100%'
-                    }}
+                )}
+                
+                {/* Bulb SVG */}
+                <svg width="80" height="110" viewBox="0 0 80 110" className="relative z-10">
+                  {/* Bulb body - teardrop shape */}
+                  <path 
+                    d="M40 8 C60 8, 72 28, 72 48 C72 68, 56 82, 48 86 L32 86 C24 82, 8 68, 8 48 C8 28, 20 8, 40 8"
+                    fill={lightOn ? '#f59e0b' : '#6b7280'}
+                    className="transition-all duration-300"
                   />
                   
-                  {/* Screw base */}
-                  <div className="flex flex-col items-center -mt-0.5">
-                    <div className="w-10 h-2.5 bg-gradient-to-b from-slate-400 to-slate-500 rounded-sm" 
-                         style={{ borderBottom: '1px solid #64748b' }} />
-                    <div className="w-9 h-2 bg-gradient-to-b from-slate-500 to-slate-600"
-                         style={{ borderBottom: '1px solid #475569' }} />
-                    <div className="w-8 h-2 bg-gradient-to-b from-slate-500 to-slate-600"
-                         style={{ borderBottom: '1px solid #475569' }} />
-                    <div className="w-7 h-2 bg-gradient-to-b from-slate-600 to-slate-700"
-                         style={{ borderBottom: '1px solid #334155' }} />
-                    <div className="w-6 h-2.5 bg-gradient-to-b from-slate-600 to-slate-700 rounded-b-lg" />
-                  </div>
-                </div>
+                  {/* Highlight reflection */}
+                  <path 
+                    d="M28 30 C32 24, 38 22, 42 28 C46 34, 42 44, 36 44 C30 44, 24 36, 28 30"
+                    fill={lightOn ? 'rgba(255,255,255,0.5)' : 'rgba(255,255,255,0.2)'}
+                    className="transition-all duration-300"
+                  />
+                  
+                  {/* Screw base segments */}
+                  <rect x="24" y="86" width="32" height="6" rx="1" fill="#6b7280" />
+                  <rect x="26" y="92" width="28" height="5" rx="1" fill="#64748b" />
+                  <rect x="28" y="97" width="24" height="5" rx="1" fill="#64748b" />
+                  <rect x="30" y="102" width="20" height="6" rx="3" fill="#4b5563" />
+                </svg>
               </div>
             </div>
 
