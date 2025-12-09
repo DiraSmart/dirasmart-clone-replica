@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Smartphone, Moon, Zap, Cpu, Lightbulb, Thermometer, Home, Clock, ChevronRight, Calendar, Tablet, Monitor } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -8,6 +8,7 @@ import automationsImage from "@/assets/automations-screen.jpg";
 
 const FeatureTabs = () => {
   const [activeTab, setActiveTab] = useState("app");
+  const [isPaused, setIsPaused] = useState(false);
   const { t } = useLanguage();
 
   const tabs = [
@@ -16,6 +17,29 @@ const FeatureTabs = () => {
     { id: "shabbat", labelKey: "features.tab.shabbat", icon: Moon },
     { id: "dispositivos", labelKey: "features.tab.devices", icon: Cpu },
   ];
+
+  const goToNextTab = useCallback(() => {
+    const currentIndex = tabs.findIndex(tab => tab.id === activeTab);
+    const nextIndex = (currentIndex + 1) % tabs.length;
+    setActiveTab(tabs[nextIndex].id);
+  }, [activeTab, tabs]);
+
+  useEffect(() => {
+    if (isPaused) return;
+    
+    const interval = setInterval(() => {
+      goToNextTab();
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [isPaused, goToNextTab]);
+
+  const handleTabChange = (value: string) => {
+    setActiveTab(value);
+    setIsPaused(true);
+    // Resume auto-rotation after 10 seconds of inactivity
+    setTimeout(() => setIsPaused(false), 10000);
+  };
 
   return (
     <section id="features" className="section-padding bg-muted/40 dark:bg-muted/20">
@@ -29,13 +53,13 @@ const FeatureTabs = () => {
           </p>
         </div>
 
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+        <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
           <TabsList className="w-full grid grid-cols-2 sm:flex sm:flex-wrap justify-center gap-2 sm:gap-3 bg-transparent h-auto mb-8 md:mb-12">
             {tabs.map((tab) => (
               <TabsTrigger
                 key={tab.id}
                 value={tab.id}
-                className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-accent data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg px-3 sm:px-6 py-2 sm:py-3 rounded-full border-2 border-border data-[state=inactive]:bg-card data-[state=inactive]:hover:border-primary/50 transition-all text-xs sm:text-sm"
+                className="relative data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-accent data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg px-3 sm:px-6 py-2 sm:py-3 rounded-full border-2 border-border data-[state=inactive]:bg-card data-[state=inactive]:hover:border-primary/50 transition-all duration-300 text-xs sm:text-sm"
               >
                 <tab.icon className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
                 {t(tab.labelKey)}
