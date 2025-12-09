@@ -96,7 +96,7 @@ const BrandLogos = () => {
             {[...brands, ...brands].map((brand, index) => (
               <div
                 key={`${brand.name}-${index}`}
-                className="flex-shrink-0 bg-card rounded-2xl p-4 flex flex-col items-center justify-center gap-3 shadow-card hover:shadow-card-hover transition-all hover:-translate-y-1 border border-border min-w-[120px] h-[100px]"
+                className="flex-shrink-0 bg-white rounded-2xl p-4 flex flex-col items-center justify-center gap-3 shadow-card hover:shadow-card-hover transition-all hover:-translate-y-1 border border-border min-w-[120px] h-[100px]"
               >
                 <img 
                   src={brand.logo} 
@@ -115,7 +115,7 @@ const BrandLogos = () => {
             {protocols.map((protocol) => (
               <div
                 key={protocol.name}
-                className="bg-card rounded-xl p-4 flex items-center justify-center border border-border shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
+                className="bg-white rounded-xl p-4 flex items-center justify-center border border-border shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
               >
                 <img 
                   src={protocol.logo} 
