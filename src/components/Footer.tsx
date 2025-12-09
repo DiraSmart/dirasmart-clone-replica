@@ -14,15 +14,15 @@ const Footer = () => {
 
   return (
     <footer className="bg-secondary text-secondary-foreground">
-      <div className="container-custom py-12">
+      <div className="container-custom py-8 sm:py-12 px-4">
         <div className="flex flex-col items-center text-center">
           {/* Logo */}
-          <a href="#home" className="mb-6">
-            <img src={dirasmartLogo} alt="DiraSmart Logo" className="h-12" />
+          <a href="#home" className="mb-4 sm:mb-6">
+            <img src={dirasmartLogo} alt="DiraSmart Logo" className="h-10 sm:h-12" />
           </a>
           
           {/* Description */}
-          <p className="text-secondary-foreground/70 max-w-lg mb-8">
+          <p className="text-sm sm:text-base text-secondary-foreground/70 max-w-lg mb-6 sm:mb-8 px-2">
             {t("footer.description")}
           </p>
           

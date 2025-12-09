@@ -160,17 +160,17 @@ const InteractiveDemo = () => {
 
   return (
     <section id="demo" className="section-padding section-divider bg-gradient-to-br from-primary/5 via-background to-accent/5">
-      <div className="container-custom">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+      <div className="container-custom px-3 sm:px-4">
+        <div className="text-center mb-8 md:mb-12">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 md:mb-4">
             {t("demo.title")} <span className="text-gradient">{t("demo.titleHighlight")}</span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto px-2">
             {t("demo.subtitle")}
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-5xl mx-auto items-stretch">
           {/* AC Control */}
           <div className="bg-card rounded-2xl p-6 border border-primary/20 hover:border-primary/40 transition-all shadow-card hover:shadow-card-hover flex flex-col">
             <div className="flex items-center justify-between mb-6">

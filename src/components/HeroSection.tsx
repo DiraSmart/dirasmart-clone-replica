@@ -28,7 +28,7 @@ const HeroSection = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center pt-20 relative overflow-hidden"
+      className="min-h-screen flex items-center pt-16 pb-8 md:pt-20 relative overflow-hidden"
       style={{
         background: "var(--gradient-hero)",
       }}
@@ -43,28 +43,28 @@ const HeroSection = () => {
       </div>
 
       <div className="container-custom relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center px-4">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center px-4">
           {/* Left Content */}
-          <div className="space-y-8 animate-fade-in">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-secondary leading-tight">
+          <div className="space-y-6 md:space-y-8 animate-fade-in text-center lg:text-left">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-secondary leading-tight">
               {t("hero.title")}{" "}
               <span className="text-gradient">{t("hero.titleHighlight")}</span>
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-lg">
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-lg mx-auto lg:mx-0">
               {t("hero.subtitle")}
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
               <Button
                 onClick={scrollToContact}
                 size="lg"
-                className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground text-lg px-8 py-6"
+                className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6"
               >
                 {t("hero.cta")}
               </Button>
               <Button
                 variant="outline"
                 size="lg"
-                className="border-primary text-primary hover:bg-primary/10 text-lg px-8 py-6"
+                className="border-primary text-primary hover:bg-primary/10 text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6"
                 onClick={() => {
                   const element = document.querySelector("#features");
                   element?.scrollIntoView({ behavior: "smooth" });
@@ -75,34 +75,34 @@ const HeroSection = () => {
             </div>
 
             {/* Animated Stats */}
-            <div className="flex flex-wrap gap-8 pt-4">
+            <div className="flex flex-wrap gap-6 sm:gap-8 pt-4 justify-center lg:justify-start">
               <div className="text-center">
-                <p className="text-3xl font-bold text-primary">
+                <p className="text-2xl sm:text-3xl font-bold text-primary">
                   <AnimatedCounter end={500} suffix="+" />
                 </p>
-                <p className="text-sm text-muted-foreground">{t("hero.stat.homes")}</p>
+                <p className="text-xs sm:text-sm text-muted-foreground">{t("hero.stat.homes")}</p>
               </div>
               <div className="text-center">
-                <p className="text-3xl font-bold text-accent">24/7</p>
-                <p className="text-sm text-muted-foreground">{t("hero.stat.support")}</p>
+                <p className="text-2xl sm:text-3xl font-bold text-accent">24/7</p>
+                <p className="text-xs sm:text-sm text-muted-foreground">{t("hero.stat.support")}</p>
               </div>
               <div className="text-center">
-                <p className="text-3xl font-bold text-primary">
+                <p className="text-2xl sm:text-3xl font-bold text-primary">
                   <AnimatedCounter end={100} suffix="%" />
                 </p>
-                <p className="text-sm text-muted-foreground">{t("hero.stat.satisfaction")}</p>
+                <p className="text-xs sm:text-sm text-muted-foreground">{t("hero.stat.satisfaction")}</p>
               </div>
             </div>
           </div>
 
           {/* Right Content - App Image */}
-          <div className="relative flex justify-center animate-fade-in-right">
+          <div className="relative flex justify-center animate-fade-in-right order-first lg:order-last">
             {images.map((img, index) => (
               <img 
                 key={index}
                 src={img} 
                 alt="DiraSmart App" 
-                className={`w-72 md:w-96 drop-shadow-2xl absolute transition-opacity duration-700 ${
+                className={`w-48 sm:w-64 md:w-80 lg:w-96 drop-shadow-2xl absolute transition-opacity duration-700 ${
                   index === currentImage ? 'opacity-100' : 'opacity-0'
                 }`}
                 style={{ position: index === 0 ? 'relative' : 'absolute' }}

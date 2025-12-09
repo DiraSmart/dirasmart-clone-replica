@@ -29,13 +29,13 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 glass-effect border-b border-border">
       <div className="container-custom">
-        <div className="flex items-center justify-between h-16 md:h-20 px-4">
+        <div className="flex items-center justify-between h-14 sm:h-16 md:h-20 px-3 sm:px-4">
           {/* Logo */}
           <a href="#home" className="flex items-center">
             <img 
               src={resolvedTheme === 'dark' ? dirasmartLogo : dirasmartLogoGrey} 
               alt="DiraSmart Logo" 
-              className="h-10 md:h-12" 
+              className="h-8 sm:h-10 md:h-12" 
             />
           </a>
 
