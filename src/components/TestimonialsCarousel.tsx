@@ -53,7 +53,7 @@ const TestimonialsCarousel = () => {
       <div className="container-custom">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-4">
-            ¿Qué dicen nuestros <span className="text-primary">clientes</span>?
+            ¿Qué dicen nuestros <span className="text-accent">clientes</span>?
           </h2>
           <p className="text-muted-foreground">
             Opiniones reales de hogares transformados
@@ -63,7 +63,7 @@ const TestimonialsCarousel = () => {
         <div className="relative max-w-4xl mx-auto">
           {/* Main testimonial */}
           <div className="bg-card rounded-3xl p-8 md:p-12 shadow-lg relative overflow-hidden">
-            <Quote className="absolute top-6 left-6 w-12 h-12 text-primary/20" />
+            <Quote className="absolute top-6 left-6 w-12 h-12 text-accent/20" />
             
             <div className="relative z-10">
               <p className="text-lg md:text-xl text-foreground mb-8 leading-relaxed">
@@ -71,8 +71,8 @@ const TestimonialsCarousel = () => {
               </p>
               
               <div className="flex items-center gap-4">
-                <div className="w-14 h-14 bg-primary rounded-full flex items-center justify-center">
-                  <span className="text-xl font-bold text-primary-foreground">
+                <div className="w-14 h-14 bg-accent rounded-full flex items-center justify-center">
+                  <span className="text-xl font-bold text-accent-foreground">
                     {testimonials[currentIndex].name.charAt(0)}
                   </span>
                 </div>
@@ -94,7 +94,7 @@ const TestimonialsCarousel = () => {
               variant="outline"
               size="icon"
               onClick={goToPrevious}
-              className="rounded-full border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+              className="rounded-full border-accent text-accent hover:bg-accent hover:text-accent-foreground"
             >
               <ChevronLeft className="w-5 h-5" />
             </Button>
@@ -105,7 +105,7 @@ const TestimonialsCarousel = () => {
                   key={index}
                   onClick={() => setCurrentIndex(index)}
                   className={`w-3 h-3 rounded-full transition-colors ${
-                    index === currentIndex ? "bg-primary" : "bg-muted"
+                    index === currentIndex ? "bg-accent" : "bg-muted"
                   }`}
                   aria-label={`Go to testimonial ${index + 1}`}
                 />
@@ -116,7 +116,7 @@ const TestimonialsCarousel = () => {
               variant="outline"
               size="icon"
               onClick={goToNext}
-              className="rounded-full border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+              className="rounded-full border-accent text-accent hover:bg-accent hover:text-accent-foreground"
             >
               <ChevronRight className="w-5 h-5" />
             </Button>
