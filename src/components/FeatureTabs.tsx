@@ -43,7 +43,7 @@ const FeatureTabs = () => {
 
           <TabsContent value="app" className="animate-fade-in">
             <div className="bg-card rounded-3xl p-8 md:p-12 border border-border shadow-xl">
-              <div className="grid lg:grid-cols-2 gap-12 items-stretch min-h-[350px]">
+              <div className="grid lg:grid-cols-2 gap-12 items-center">
                 <div className="space-y-8">
                   <div>
                     <span className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
@@ -93,13 +93,13 @@ const FeatureTabs = () => {
                   </div>
                 </div>
                 
-                <div className="flex justify-center items-stretch h-full w-full overflow-hidden rounded-2xl">
-                  <div className="relative w-full h-full">
+                <div className="flex justify-center items-center">
+                  <div className="relative">
                     <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full blur-3xl" />
                     <img 
                       src={appMobileImage} 
                       alt="App DiraSmart" 
-                      className="relative w-full h-full object-cover drop-shadow-2xl"
+                      className="relative w-auto h-[350px] object-contain drop-shadow-2xl"
                     />
                   </div>
                 </div>
@@ -109,7 +109,7 @@ const FeatureTabs = () => {
 
           <TabsContent value="shabbat" className="animate-fade-in">
             <div className="bg-card rounded-3xl p-8 md:p-12 border border-border shadow-xl">
-              <div className="grid lg:grid-cols-2 gap-12 items-stretch min-h-[350px]">
+              <div className="grid lg:grid-cols-2 gap-12 items-center">
                 <div className="space-y-8">
                   <div>
                     <span className="inline-block px-4 py-1 rounded-full bg-accent/10 text-accent text-sm font-medium mb-4">
@@ -159,13 +159,13 @@ const FeatureTabs = () => {
                   </div>
                 </div>
                 
-                <div className="flex justify-center items-stretch h-full w-full overflow-hidden rounded-2xl">
-                  <div className="relative w-full h-full">
+                <div className="flex justify-center items-center">
+                  <div className="relative">
                     <div className="absolute -inset-4 bg-gradient-to-r from-accent/20 to-primary/20 rounded-full blur-3xl" />
                     <img 
                       src={shabatModeImage} 
                       alt="Modo Shabbat" 
-                      className="relative w-full h-full object-cover drop-shadow-2xl"
+                      className="relative w-auto h-[350px] object-contain drop-shadow-2xl"
                     />
                   </div>
                 </div>
@@ -175,7 +175,7 @@ const FeatureTabs = () => {
 
           <TabsContent value="automate" className="animate-fade-in">
             <div className="bg-card rounded-3xl p-8 md:p-12 border border-border shadow-xl">
-              <div className="grid lg:grid-cols-2 gap-12 items-stretch min-h-[350px]">
+              <div className="grid lg:grid-cols-2 gap-12 items-center">
                 <div className="space-y-8">
                   <div>
                     <span className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
@@ -225,13 +225,13 @@ const FeatureTabs = () => {
                   </div>
                 </div>
                 
-                <div className="flex justify-center items-stretch h-full w-full overflow-hidden rounded-2xl">
-                  <div className="relative w-full h-full">
+                <div className="flex justify-center items-center">
+                  <div className="relative">
                     <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full blur-3xl" />
                     <img 
                       src={automationsImage} 
                       alt="Automatizaciones" 
-                      className="relative w-full h-full object-cover drop-shadow-2xl"
+                      className="relative w-auto h-[350px] object-contain drop-shadow-2xl rounded-2xl"
                     />
                   </div>
                 </div>
@@ -241,7 +241,7 @@ const FeatureTabs = () => {
 
           <TabsContent value="dispositivos" className="animate-fade-in">
             <div className="bg-card rounded-3xl p-8 md:p-12 border border-border shadow-xl">
-              <div className="grid lg:grid-cols-2 gap-12 items-stretch min-h-[350px]">
+              <div className="grid lg:grid-cols-2 gap-12 items-center">
                 <div className="space-y-8">
                   <div>
                     <span className="inline-block px-4 py-1 rounded-full bg-accent/10 text-accent text-sm font-medium mb-4">
