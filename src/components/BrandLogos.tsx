@@ -1,42 +1,48 @@
 import { useEffect, useRef } from "react";
 
+// Brand logos
+import zigbeeLogo from "@/assets/brands/zigbee.png";
+import zwaveLogo from "@/assets/brands/zwave.png";
+import somfyLogo from "@/assets/brands/somfy.png";
+import sonosLogo from "@/assets/brands/sonos.png";
+import switchbotLogo from "@/assets/brands/switchbot.png";
+import teslaLogo from "@/assets/brands/tesla.png";
+import tplinkLogo from "@/assets/brands/tplink.png";
+import tuyaLogo from "@/assets/brands/tuya.png";
+import unifiLogo from "@/assets/brands/unifi.png";
+import yaleLogo from "@/assets/brands/yale.png";
+import lgLogo from "@/assets/brands/lg.png";
+import hikvisionLogo from "@/assets/brands/hikvision.png";
+import alexaLogo from "@/assets/brands/alexa.png";
+import hueLogo from "@/assets/brands/hue.png";
+import ecobeeLogo from "@/assets/brands/ecobee.png";
+import smartthingsLogo from "@/assets/brands/smartthings.png";
+import shellyLogo from "@/assets/brands/shelly.png";
+
 const BrandLogos = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const brands = [
-    "Google Assistant",
-    "Amazon Alexa", 
-    "SmartThings",
-    "Tuya",
-    "Smartlife",
-    "HomeKit",
-    "Shelly",
-    "Google Nest",
-    "Ecobee",
-    "Ring",
-    "Sonos",
-    "SwitchBot",
-    "August",
-    "Leviton",
-    "Aqara",
-    "Tapo",
-    "Yale",
-    "Xiaomi",
-    "Philips Hue",
-    "Reolink",
-    "Insteon",
-    "Hikvision",
-    "Somfy",
-    "Lutron Caseta",
-    "Motionblinds"
+    { name: "Alexa", logo: alexaLogo },
+    { name: "SmartThings", logo: smartthingsLogo },
+    { name: "Philips Hue", logo: hueLogo },
+    { name: "Tuya", logo: tuyaLogo },
+    { name: "Shelly", logo: shellyLogo },
+    { name: "Ecobee", logo: ecobeeLogo },
+    { name: "Sonos", logo: sonosLogo },
+    { name: "SwitchBot", logo: switchbotLogo },
+    { name: "Yale", logo: yaleLogo },
+    { name: "LG", logo: lgLogo },
+    { name: "Hikvision", logo: hikvisionLogo },
+    { name: "Somfy", logo: somfyLogo },
+    { name: "Tesla", logo: teslaLogo },
+    { name: "TP-Link", logo: tplinkLogo },
+    { name: "UniFi", logo: unifiLogo },
   ];
 
   const protocols = [
-    { name: "KNX", color: "from-green-500 to-blue-500" },
-    { name: "Zigbee", color: "from-red-500 to-pink-500" },
-    { name: "Z-Wave", color: "from-blue-500 to-cyan-500" },
-    { name: "Matter", color: "from-gray-700 to-gray-900" },
-    { name: "MQTT", color: "from-purple-500 to-violet-600" }
+    { name: "Zigbee", logo: zigbeeLogo },
+    { name: "Z-Wave", logo: zwaveLogo },
   ];
 
   useEffect(() => {
@@ -76,16 +82,20 @@ const BrandLogos = () => {
         <div className="mb-12 -mx-4 md:-mx-8">
           <div 
             ref={scrollRef}
-            className="flex gap-4 overflow-hidden px-4"
+            className="flex gap-6 overflow-hidden px-4"
             style={{ scrollBehavior: 'auto' }}
           >
             {/* Duplicate brands for infinite scroll effect */}
             {[...brands, ...brands].map((brand, index) => (
               <div
-                key={`${brand}-${index}`}
-                className="flex-shrink-0 bg-card rounded-2xl px-6 py-4 flex items-center justify-center shadow-card hover:shadow-card-hover transition-all hover:-translate-y-1 border border-border min-w-[160px]"
+                key={`${brand.name}-${index}`}
+                className="flex-shrink-0 bg-card rounded-2xl p-4 flex flex-col items-center justify-center gap-3 shadow-card hover:shadow-card-hover transition-all hover:-translate-y-1 border border-border min-w-[120px] h-[100px]"
               >
-                <span className="font-semibold text-foreground text-sm text-center whitespace-nowrap">{brand}</span>
+                <img 
+                  src={brand.logo} 
+                  alt={brand.name} 
+                  className="h-12 w-auto object-contain"
+                />
               </div>
             ))}
           </div>
@@ -94,14 +104,17 @@ const BrandLogos = () => {
         {/* Protocols Section */}
         <div>
           <h3 className="text-center text-lg font-semibold text-muted-foreground mb-6">Protocolos soportados</h3>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-6">
             {protocols.map((protocol) => (
               <div
                 key={protocol.name}
-                className="bg-card rounded-2xl px-8 py-4 flex items-center justify-center gap-3 border border-border shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
+                className="bg-card rounded-2xl p-6 flex flex-col items-center justify-center gap-3 border border-border shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 min-w-[140px]"
               >
-                <div className={`w-3 h-3 rounded-full bg-gradient-to-r ${protocol.color}`} />
-                <span className="font-bold text-foreground">{protocol.name}</span>
+                <img 
+                  src={protocol.logo} 
+                  alt={protocol.name} 
+                  className="h-10 w-auto object-contain"
+                />
               </div>
             ))}
           </div>
