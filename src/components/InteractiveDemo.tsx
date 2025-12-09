@@ -285,34 +285,76 @@ const InteractiveDemo = () => {
                 )}
                 
                 {/* Bulb */}
-                <div className="relative z-10">
-                  {/* Bulb glass */}
+                <div className="relative z-10 flex flex-col items-center">
+                  {/* Bulb glass - classic shape */}
                   <div 
-                    className={`w-24 h-28 rounded-t-full border-2 transition-all duration-300 ${
-                      lightOn 
-                        ? 'border-amber-400 bg-gradient-to-b from-amber-200 via-amber-300 to-amber-400' 
-                        : 'border-muted-foreground/30 bg-gradient-to-b from-muted/50 via-muted to-muted'
-                    }`}
+                    className={`relative w-20 h-24 transition-all duration-300`}
                     style={{
+                      background: lightOn 
+                        ? 'linear-gradient(135deg, #fcd34d 0%, #fbbf24 30%, #f59e0b 100%)' 
+                        : 'linear-gradient(135deg, #d1d5db 0%, #9ca3af 30%, #6b7280 100%)',
+                      borderRadius: '50% 50% 45% 45% / 60% 60% 40% 40%',
                       boxShadow: lightOn 
-                        ? `inset 0 -20px 40px rgba(255, 255, 255, ${brightness / 200}), 0 0 ${brightness / 3}px rgba(251, 191, 36, 0.5)` 
+                        ? `0 0 ${brightness / 2}px rgba(251, 191, 36, 0.6)` 
                         : 'none'
                     }}
                   >
-                    {/* Inner highlight */}
+                    {/* Inner highlight/reflection */}
+                    <div 
+                      className="absolute top-3 left-4 w-6 h-8 rounded-full"
+                      style={{
+                        background: lightOn 
+                          ? 'radial-gradient(ellipse, rgba(255,255,255,0.6) 0%, transparent 70%)' 
+                          : 'radial-gradient(ellipse, rgba(255,255,255,0.2) 0%, transparent 70%)'
+                      }}
+                    />
+                    
+                    {/* Filament area */}
                     {lightOn && (
-                      <div 
-                        className="absolute top-3 left-3 w-8 h-12 rounded-full bg-white/40 blur-sm"
-                      />
+                      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center">
+                        {/* Inner glow circle */}
+                        <div 
+                          className="w-8 h-8 rounded-full mb-1"
+                          style={{
+                            background: 'radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(253,224,71,0.3) 50%, transparent 70%)'
+                          }}
+                        />
+                        {/* Filament stems */}
+                        <svg width="24" height="20" viewBox="0 0 24 20" className="opacity-80">
+                          <path 
+                            d="M12 0 C8 8, 6 12, 8 20 M12 0 C16 8, 18 12, 16 20" 
+                            stroke="#d97706" 
+                            strokeWidth="2" 
+                            fill="none"
+                            strokeLinecap="round"
+                          />
+                        </svg>
+                      </div>
                     )}
                   </div>
                   
-                  {/* Bulb base/screw */}
-                  <div className="flex flex-col items-center">
-                    <div className="w-16 h-3 bg-gradient-to-b from-zinc-400 to-zinc-500 dark:from-zinc-500 dark:to-zinc-600 rounded-sm" />
-                    <div className="w-14 h-2 bg-gradient-to-b from-zinc-500 to-zinc-600 dark:from-zinc-600 dark:to-zinc-700" />
-                    <div className="w-12 h-2 bg-gradient-to-b from-zinc-600 to-zinc-700 dark:from-zinc-700 dark:to-zinc-800" />
-                    <div className="w-10 h-3 bg-gradient-to-b from-zinc-700 to-zinc-800 dark:from-zinc-800 dark:to-zinc-900 rounded-b-lg" />
+                  {/* Bulb neck - narrowing part */}
+                  <div 
+                    className="w-10 h-4 -mt-1"
+                    style={{
+                      background: lightOn 
+                        ? 'linear-gradient(to bottom, #f59e0b, #d97706)' 
+                        : 'linear-gradient(to bottom, #6b7280, #4b5563)',
+                      borderRadius: '0 0 30% 30% / 0 0 100% 100%'
+                    }}
+                  />
+                  
+                  {/* Screw base */}
+                  <div className="flex flex-col items-center -mt-0.5">
+                    <div className="w-10 h-2.5 bg-gradient-to-b from-slate-400 to-slate-500 rounded-sm" 
+                         style={{ borderBottom: '1px solid #64748b' }} />
+                    <div className="w-9 h-2 bg-gradient-to-b from-slate-500 to-slate-600"
+                         style={{ borderBottom: '1px solid #475569' }} />
+                    <div className="w-8 h-2 bg-gradient-to-b from-slate-500 to-slate-600"
+                         style={{ borderBottom: '1px solid #475569' }} />
+                    <div className="w-7 h-2 bg-gradient-to-b from-slate-600 to-slate-700"
+                         style={{ borderBottom: '1px solid #334155' }} />
+                    <div className="w-6 h-2.5 bg-gradient-to-b from-slate-600 to-slate-700 rounded-b-lg" />
                   </div>
                 </div>
               </div>
