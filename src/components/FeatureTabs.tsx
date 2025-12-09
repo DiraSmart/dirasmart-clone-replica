@@ -16,7 +16,7 @@ const FeatureTabs = () => {
   ];
 
   return (
-    <section id="features" className="section-padding bg-gradient-to-b from-background via-muted/20 to-background">
+    <section id="features" className="section-padding bg-muted/40 dark:bg-muted/20">
       <div className="container-custom">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">

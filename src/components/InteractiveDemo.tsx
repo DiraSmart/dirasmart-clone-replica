@@ -140,7 +140,7 @@ const InteractiveDemo = () => {
   };
 
   return (
-    <section id="demo" className="section-padding bg-gradient-to-br from-muted via-background to-muted/50">
+    <section id="demo" className="section-padding section-divider bg-gradient-to-br from-primary/5 via-background to-accent/5">
       <div className="container-custom">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
