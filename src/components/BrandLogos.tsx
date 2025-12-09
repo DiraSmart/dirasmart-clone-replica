@@ -1,33 +1,19 @@
 import { useEffect, useRef } from "react";
-import { Wifi, Radio, Bluetooth, Zap, Home, Lightbulb, Thermometer, Lock, Speaker, Tv, Camera, Fan, Plug, Sun, Shield } from "lucide-react";
+import brandsImage from "@/assets/brands-logos.png";
+import protocolsImage from "@/assets/protocols-logos.png";
 
 const BrandLogos = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const brands = [
-    { name: "Philips Hue", icon: Lightbulb },
-    { name: "Nest", icon: Thermometer },
-    { name: "SmartThings", icon: Home },
-    { name: "Yale", icon: Lock },
-    { name: "Sonos", icon: Speaker },
-    { name: "Samsung", icon: Tv },
-    { name: "Ring", icon: Camera },
-    { name: "Dyson", icon: Fan },
-    { name: "TP-Link", icon: Plug },
-    { name: "IKEA Trådfri", icon: Sun },
-    { name: "Aqara", icon: Shield },
-    { name: "Lutron", icon: Lightbulb },
-    { name: "Ecobee", icon: Thermometer },
-    { name: "August", icon: Lock },
-    { name: "Nanoleaf", icon: Sun },
+    "Google Assistant", "Amazon Alexa", "SmartThings", "Tuya", "Smartlife",
+    "HomeKit", "Shelly", "Google Nest", "Ecobee", "Ring",
+    "Sonos", "SwitchBot", "August", "Leviton", "Aqara",
+    "Tapo", "Yale", "Xiaomi", "Philips Hue", "Reolink",
+    "Insteon", "Hikvision", "Somfy", "Lutron Caseta", "Motionblinds"
   ];
 
-  const protocols = [
-    { name: "WiFi", icon: Wifi, color: "from-blue-500 to-blue-600" },
-    { name: "Zigbee", icon: Radio, color: "from-green-500 to-green-600" },
-    { name: "Z-Wave", icon: Zap, color: "from-purple-500 to-purple-600" },
-    { name: "BLE", icon: Bluetooth, color: "from-cyan-500 to-cyan-600" },
-  ];
+  const protocols = ["KNX", "Zigbee", "Z-Wave", "Matter", "MQTT"];
 
   useEffect(() => {
     const scrollContainer = scrollRef.current;
@@ -62,43 +48,26 @@ const BrandLogos = () => {
           </p>
         </div>
 
-        {/* Brands Carousel */}
+        {/* Brands Section */}
         <div className="mb-12">
-          <div 
-            ref={scrollRef}
-            className="flex gap-6 overflow-hidden"
-            style={{ scrollBehavior: 'auto' }}
-          >
-            {/* Duplicate brands for infinite scroll effect */}
-            {[...brands, ...brands].map((brand, index) => (
-              <div
-                key={`${brand.name}-${index}`}
-                className="flex-shrink-0 bg-card rounded-2xl p-6 flex flex-col items-center justify-center gap-3 shadow-card hover:shadow-card-hover transition-all hover:-translate-y-1 border border-border min-w-[140px]"
-              >
-                <div className="p-3 rounded-xl bg-gradient-to-br from-primary/20 to-accent/20">
-                  <brand.icon className="w-8 h-8 text-primary" />
-                </div>
-                <span className="font-semibold text-foreground text-sm text-center">{brand.name}</span>
-              </div>
-            ))}
+          <div className="bg-card rounded-3xl p-8 border border-border shadow-xl">
+            <img 
+              src={brandsImage} 
+              alt="Marcas compatibles: Google Assistant, Amazon Alexa, SmartThings, Tuya, Smartlife, HomeKit, Shelly, Google Nest, Ecobee, Ring, Sonos, SwitchBot, August, Leviton, Aqara, Tapo, Yale, Xiaomi, Philips Hue, Reolink, Insteon, Hikvision, Somfy, Lutron Caseta, Motionblinds"
+              className="w-full h-auto object-contain"
+            />
           </div>
         </div>
 
-        {/* Protocols */}
+        {/* Protocols Section */}
         <div>
           <h3 className="text-center text-lg font-semibold text-muted-foreground mb-6">Protocolos soportados</h3>
-          <div className="grid grid-cols-4 gap-4 max-w-2xl mx-auto">
-            {protocols.map((protocol) => (
-              <div
-                key={protocol.name}
-                className="bg-card/50 rounded-xl p-4 flex flex-col items-center justify-center gap-2 border border-border/50 hover:border-primary/30 transition-all"
-              >
-                <div className={`p-2 rounded-lg bg-gradient-to-br ${protocol.color}`}>
-                  <protocol.icon className="w-5 h-5 text-white" />
-                </div>
-                <span className="text-xs font-medium text-foreground">{protocol.name}</span>
-              </div>
-            ))}
+          <div className="bg-card rounded-2xl p-6 border border-border shadow-lg max-w-3xl mx-auto">
+            <img 
+              src={protocolsImage} 
+              alt="Protocolos soportados: KNX, Zigbee, Z-Wave, Matter, MQTT"
+              className="w-full h-auto object-contain"
+            />
           </div>
         </div>
       </div>
