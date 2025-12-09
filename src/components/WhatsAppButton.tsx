@@ -14,7 +14,7 @@ const WhatsAppButton = () => {
       className="fixed bottom-6 right-6 z-50 transition-all duration-300 hover:scale-110"
       aria-label="Contactar por WhatsApp"
     >
-      <img src={whatsappIcon} alt="WhatsApp" className="w-14 h-14 object-contain drop-shadow-lg" />
+      <img src={whatsappIcon} alt="WhatsApp" className="w-16 h-16 object-contain drop-shadow-lg" />
     </a>
   );
 };
