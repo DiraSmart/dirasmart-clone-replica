@@ -99,7 +99,7 @@ const FeatureTabs = () => {
                     <img 
                       src={appMobileImage} 
                       alt="App DiraSmart" 
-                      className="relative w-48 md:w-56 drop-shadow-2xl"
+                      className="relative w-full max-w-sm drop-shadow-2xl"
                     />
                   </div>
                 </div>
