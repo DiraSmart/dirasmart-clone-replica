@@ -19,42 +19,42 @@ const FeatureTabs = () => {
 
   return (
     <section id="features" className="section-padding bg-muted/40 dark:bg-muted/20">
-      <div className="container-custom">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+      <div className="container-custom px-3 sm:px-4">
+        <div className="text-center mb-8 md:mb-12">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 md:mb-4">
             {t("features.title")} <span className="text-gradient">{t("features.titleHighlight")}</span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto px-2">
             {t("features.subtitle")}
           </p>
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="w-full flex flex-wrap justify-center gap-3 bg-transparent h-auto mb-12">
+          <TabsList className="w-full grid grid-cols-2 sm:flex sm:flex-wrap justify-center gap-2 sm:gap-3 bg-transparent h-auto mb-8 md:mb-12">
             {tabs.map((tab) => (
               <TabsTrigger
                 key={tab.id}
                 value={tab.id}
-                className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-accent data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg px-6 py-3 rounded-full border-2 border-border data-[state=inactive]:bg-card data-[state=inactive]:hover:border-primary/50 transition-all"
+                className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-accent data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg px-3 sm:px-6 py-2 sm:py-3 rounded-full border-2 border-border data-[state=inactive]:bg-card data-[state=inactive]:hover:border-primary/50 transition-all text-xs sm:text-sm"
               >
-                <tab.icon className="w-4 h-4 mr-2" />
+                <tab.icon className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
                 {t(tab.labelKey)}
               </TabsTrigger>
             ))}
           </TabsList>
 
           <TabsContent value="app" className="animate-fade-in">
-            <div className="bg-card rounded-3xl p-8 md:p-12 border border-border shadow-xl">
-              <div className="grid lg:grid-cols-2 gap-12 items-center">
-                <div className="space-y-8">
+            <div className="bg-card rounded-2xl sm:rounded-3xl p-4 sm:p-8 md:p-12 border border-border shadow-xl">
+              <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
+                <div className="space-y-6 sm:space-y-8">
                   <div>
-                    <span className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+                    <span className="inline-block px-3 sm:px-4 py-1 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-medium mb-3 sm:mb-4">
                       {t("features.app.badge")}
                     </span>
-                    <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4">
                       {t("features.app.title")}
                     </h3>
-                    <p className="text-muted-foreground text-lg leading-relaxed">
+                    <p className="text-muted-foreground text-sm sm:text-base lg:text-lg leading-relaxed">
                       {t("features.app.description")}
                     </p>
                   </div>
