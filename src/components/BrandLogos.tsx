@@ -50,7 +50,6 @@ const BrandLogos = () => {
     { name: "Zigbee", logo: zigbeeLogo },
     { name: "Z-Wave", logo: zwaveLogo },
     { name: "Bluetooth", logo: bluetoothLogo },
-    { name: "KNX", logo: knxLogo },
   ];
 
   useEffect(() => {
@@ -112,7 +111,7 @@ const BrandLogos = () => {
         {/* Protocols Section */}
         <div>
           <h3 className="text-center text-lg font-semibold text-muted-foreground mb-6">{t("brands.protocols")}</h3>
-          <div className="grid grid-cols-5 gap-4 max-w-3xl mx-auto">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto">
             {protocols.map((protocol) => (
               <div
                 key={protocol.name}
