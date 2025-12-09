@@ -9,8 +9,12 @@ import {
   Settings, 
   Headphones 
 } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import TiltCard from "./TiltCard";
 
 const ServicesGrid = () => {
+  const { ref, isVisible } = useScrollAnimation(0.1);
+
   const services = [
     {
       icon: Wrench,
@@ -71,23 +75,26 @@ const ServicesGrid = () => {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div ref={ref} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (
-            <div
-              key={service.title}
-              className="bg-card rounded-2xl p-6 shadow-card hover:shadow-card-hover transition-all duration-300 hover-lift group"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <div className={`w-14 h-14 ${index % 2 === 0 ? 'bg-primary/10 group-hover:bg-primary/20' : 'bg-accent/10 group-hover:bg-accent/20'} rounded-xl flex items-center justify-center mb-4 transition-colors`}>
-                <service.icon className={`w-7 h-7 ${index % 2 === 0 ? 'text-primary' : 'text-accent'}`} />
+            <TiltCard key={service.title}>
+              <div
+                className={`bg-card rounded-2xl p-6 shadow-card hover:shadow-card-hover transition-all duration-500 h-full ${
+                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}
+                style={{ transitionDelay: `${index * 100}ms` }}
+              >
+                <div className={`w-14 h-14 ${index % 2 === 0 ? 'bg-primary/10' : 'bg-accent/10'} rounded-xl flex items-center justify-center mb-4 transition-colors`}>
+                  <service.icon className={`w-7 h-7 ${index % 2 === 0 ? 'text-primary' : 'text-accent'}`} />
+                </div>
+                <h3 className="text-xl font-semibold text-secondary mb-2">
+                  {service.title}
+                </h3>
+                <p className="text-muted-foreground">
+                  {service.description}
+                </p>
               </div>
-              <h3 className="text-xl font-semibold text-secondary mb-2">
-                {service.title}
-              </h3>
-              <p className="text-muted-foreground">
-                {service.description}
-              </p>
-            </div>
+            </TiltCard>
           ))}
         </div>
       </div>

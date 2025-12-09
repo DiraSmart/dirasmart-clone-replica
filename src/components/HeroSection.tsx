@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Smartphone, Wifi, Lightbulb, Thermometer } from "lucide-react";
+import ParticleBackground from "./ParticleBackground";
+import AnimatedCounter from "./AnimatedCounter";
 
 const HeroSection = () => {
   const scrollToContact = () => {
@@ -17,8 +19,11 @@ const HeroSection = () => {
         background: "var(--gradient-hero)",
       }}
     >
+      {/* Particle Background */}
+      <ParticleBackground />
+
       {/* Background decoration */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl" />
         <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-accent/10 rounded-full blur-3xl" />
       </div>
@@ -57,10 +62,12 @@ const HeroSection = () => {
               </Button>
             </div>
 
-            {/* Stats */}
+            {/* Animated Stats */}
             <div className="flex flex-wrap gap-8 pt-4">
               <div className="text-center">
-                <p className="text-3xl font-bold text-primary">500+</p>
+                <p className="text-3xl font-bold text-primary">
+                  <AnimatedCounter end={500} suffix="+" />
+                </p>
                 <p className="text-sm text-muted-foreground">Hogares conectados</p>
               </div>
               <div className="text-center">
@@ -68,7 +75,9 @@ const HeroSection = () => {
                 <p className="text-sm text-muted-foreground">Soporte técnico</p>
               </div>
               <div className="text-center">
-                <p className="text-3xl font-bold text-primary">100%</p>
+                <p className="text-3xl font-bold text-primary">
+                  <AnimatedCounter end={100} suffix="%" />
+                </p>
                 <p className="text-sm text-muted-foreground">Satisfacción</p>
               </div>
             </div>
