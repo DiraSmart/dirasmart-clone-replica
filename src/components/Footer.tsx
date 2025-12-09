@@ -18,14 +18,18 @@ const Footer = () => {
         <div className="flex flex-col items-center text-center">
           {/* Logo */}
           <a href="#home" className="mb-4 sm:mb-6">
-            <img src={dirasmartLogo} alt="DiraSmart Logo" className="h-10 sm:h-12" />
+            <img
+              src={resolvedTheme === "dark" ? dirasmartLogo : dirasmartLogoGrey}
+              alt="DiraSmart Logo"
+              className="h-8 sm:h-10 md:h-12"
+            />
           </a>
-          
+
           {/* Description */}
           <p className="text-sm sm:text-base text-muted-foreground max-w-lg mb-6 sm:mb-8 px-2">
             {t("footer.description")}
           </p>
-          
+
           {/* Social Links */}
           <div className="flex gap-4 mb-8">
             {socialLinks.map((social) => (
@@ -42,7 +46,9 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-foreground/10 pt-6 text-center text-muted-foreground">
-          <p>© {currentYear} DiraSmart. {t("footer.rights")}.</p>
+          <p>
+            © {currentYear} DiraSmart. {t("footer.rights")}.
+          </p>
         </div>
       </div>
     </footer>
