@@ -8,7 +8,6 @@ import {
 } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useLanguage } from "@/contexts/LanguageContext";
-import TiltCard from "./TiltCard";
 
 const ServicesGrid = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
@@ -19,66 +18,78 @@ const ServicesGrid = () => {
       icon: Wrench,
       titleKey: "services.installation",
       descKey: "services.installationDesc",
+      color: "primary",
     },
     {
       icon: Smartphone,
       titleKey: "services.customApp",
       descKey: "services.customAppDesc",
+      color: "accent",
     },
     {
       icon: Link,
       titleKey: "services.compatibility",
       descKey: "services.compatibilityDesc",
+      color: "primary",
     },
     {
       icon: Radio,
       titleKey: "services.localControl",
       descKey: "services.localControlDesc",
+      color: "accent",
     },
     {
       icon: Wifi,
       titleKey: "services.network",
       descKey: "services.networkDesc",
+      color: "primary",
     },
     {
       icon: HeartHandshake,
       titleKey: "services.continuousSupport",
       descKey: "services.continuousSupportDesc",
+      color: "accent",
     },
   ];
 
   return (
-    <section id="servicios" className="section-padding section-divider bg-muted/40 dark:bg-muted/20">
+    <section id="servicios" className="section-padding bg-muted/20 dark:bg-muted/10">
       <div className="container-custom px-3 sm:px-4">
-        <div className="text-center mb-8 md:mb-12">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-secondary mb-3 md:mb-4">
+        <div className="text-center mb-10 md:mb-14">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent text-xs font-medium tracking-wide uppercase mb-4">
+            Servicios
+          </span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">
             {t("services.title")} <span className="text-gradient">{t("services.titleHighlight")}</span>?
           </h2>
-          <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto px-2">
+          <p className="text-sm sm:text-base text-muted-foreground max-w-xl mx-auto leading-relaxed">
             {t("services.subtitle")}
           </p>
         </div>
 
-        <div ref={ref} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        <div ref={ref} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {services.map((service, index) => (
-            <TiltCard key={service.titleKey}>
-              <div
-                className={`bg-card rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-card hover:shadow-card-hover transition-all duration-500 h-full ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                }`}
-                style={{ transitionDelay: `${index * 100}ms` }}
-              >
-                <div className={`w-12 h-12 sm:w-14 sm:h-14 ${index % 2 === 0 ? 'bg-primary/10' : 'bg-accent/10'} rounded-lg sm:rounded-xl flex items-center justify-center mb-3 sm:mb-4 transition-colors`}>
-                  <service.icon className={`w-6 h-6 sm:w-7 sm:h-7 ${index % 2 === 0 ? 'text-primary' : 'text-accent'}`} />
-                </div>
-                <h3 className="text-lg sm:text-xl font-semibold text-secondary mb-2">
-                  {t(service.titleKey)}
-                </h3>
-                <p className="text-sm sm:text-base text-muted-foreground">
-                  {t(service.descKey)}
-                </p>
+            <div
+              key={service.titleKey}
+              className={`group bg-background rounded-xl p-6 border border-border/50 hover:border-${service.color}/30 transition-all duration-500 ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}
+              style={{ transitionDelay: `${index * 80}ms` }}
+            >
+              <div className={`w-11 h-11 rounded-lg flex items-center justify-center mb-4 transition-transform group-hover:scale-105 ${
+                service.color === 'primary' ? 'bg-primary/10' : 'bg-accent/10'
+              }`}>
+                <service.icon className={`w-5 h-5 ${
+                  service.color === 'primary' ? 'text-primary' : 'text-accent'
+                }`} strokeWidth={1.5} />
               </div>
-            </TiltCard>
+              <h3 className="text-base font-semibold text-foreground mb-2">
+                {t(service.titleKey)}
+              </h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                {t(service.descKey)}
+              </p>
+            </div>
           ))}
         </div>
       </div>

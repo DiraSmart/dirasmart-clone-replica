@@ -1,4 +1,4 @@
-import { MessageSquare, Wrench, HeartHandshake, ArrowRight } from "lucide-react";
+import { MessageSquare, Wrench, HeartHandshake } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -12,60 +12,78 @@ const ProcessSteps = () => {
       numberKey: "process.step1.number",
       titleKey: "process.step1.title",
       descKey: "process.step1.desc",
-      gradient: "from-primary to-primary/70",
+      color: "primary",
     },
     {
       icon: Wrench,
       numberKey: "process.step2.number",
       titleKey: "process.step2.title",
       descKey: "process.step2.desc",
-      gradient: "from-accent to-accent/70",
+      color: "accent",
     },
     {
       icon: HeartHandshake,
       numberKey: "process.step3.number",
       titleKey: "process.step3.title",
       descKey: "process.step3.desc",
-      gradient: "from-primary to-primary/70",
+      color: "primary",
     },
   ];
 
   return (
     <section className="section-padding bg-background">
       <div className="container-custom px-3 sm:px-4">
-        <div className="text-center mb-8 md:mb-12">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 md:mb-4">
+        <div className="text-center mb-12 md:mb-16">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/5 text-primary text-xs font-medium tracking-wide uppercase mb-4">
+            Proceso
+          </span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">
             {t("process.title")} <span className="text-gradient">{t("process.titleHighlight")}</span>
           </h2>
-          <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto px-2">
+          <p className="text-sm sm:text-base text-muted-foreground max-w-xl mx-auto leading-relaxed">
             {t("process.subtitle")}
           </p>
         </div>
 
-        <div ref={ref} className="relative">
+        <div ref={ref} className="relative max-w-4xl mx-auto">
           {/* Connection line - desktop */}
-          <div className="hidden lg:block absolute top-1/2 left-[15%] right-[15%] h-0.5 bg-gradient-to-r from-primary via-accent to-primary -translate-y-1/2 z-0" />
+          <div className="hidden lg:block absolute top-16 left-[20%] right-[20%] h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
             {steps.map((step, index) => (
               <div
                 key={step.titleKey}
-                className={`relative z-10 transition-all duration-700 ${
+                className={`relative transition-all duration-700 ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
-                style={{ transitionDelay: `${index * 200}ms` }}
+                style={{ transitionDelay: `${index * 150}ms` }}
               >
-                <div className="bg-card rounded-2xl p-6 sm:p-8 border border-border shadow-lg hover:shadow-xl transition-shadow text-center">
-                  <div className={`w-16 h-16 mx-auto mb-4 bg-gradient-to-br ${step.gradient} rounded-2xl flex items-center justify-center shadow-lg`}>
-                    <step.icon className="w-8 h-8 text-primary-foreground" />
+                <div className="text-center">
+                  {/* Step number badge */}
+                  <div className="relative inline-block mb-6">
+                    <div className={`w-16 h-16 rounded-2xl flex items-center justify-center transition-transform hover:scale-105 ${
+                      step.color === 'primary' 
+                        ? 'bg-primary/10' 
+                        : 'bg-accent/10'
+                    }`}>
+                      <step.icon className={`w-7 h-7 ${
+                        step.color === 'primary' ? 'text-primary' : 'text-accent'
+                      }`} strokeWidth={1.5} />
+                    </div>
+                    {/* Number indicator */}
+                    <span className={`absolute -top-2 -right-2 w-6 h-6 rounded-full flex items-center justify-center text-xs font-semibold ${
+                      step.color === 'primary' 
+                        ? 'bg-primary text-primary-foreground' 
+                        : 'bg-accent text-accent-foreground'
+                    }`}>
+                      {index + 1}
+                    </span>
                   </div>
-                  <span className="inline-block px-3 py-1 rounded-full bg-muted text-muted-foreground text-xs font-medium mb-3">
-                    {t(step.numberKey)}
-                  </span>
-                  <h3 className="text-xl font-semibold text-foreground mb-2">
+                  
+                  <h3 className="text-lg font-semibold text-foreground mb-2">
                     {t(step.titleKey)}
                   </h3>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm text-muted-foreground leading-relaxed max-w-xs mx-auto">
                     {t(step.descKey)}
                   </p>
                 </div>
@@ -73,7 +91,7 @@ const ProcessSteps = () => {
                 {/* Arrow for mobile */}
                 {index < steps.length - 1 && (
                   <div className="flex justify-center py-4 lg:hidden">
-                    <ArrowRight className="w-6 h-6 text-primary rotate-90" />
+                    <div className="w-px h-8 bg-gradient-to-b from-border to-transparent" />
                   </div>
                 )}
               </div>
@@ -81,8 +99,9 @@ const ProcessSteps = () => {
           </div>
         </div>
 
-        <div className={`mt-8 text-center transition-all duration-700 delay-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-          <p className="text-sm text-muted-foreground bg-muted/50 inline-block px-6 py-3 rounded-full border border-border">
+        {/* Note */}
+        <div className={`mt-12 text-center transition-all duration-700 delay-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+          <p className="text-xs sm:text-sm text-muted-foreground/80 italic">
             {t("process.note")}
           </p>
         </div>

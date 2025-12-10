@@ -11,58 +11,74 @@ const PrivacyFeatures = () => {
       icon: Lock,
       titleKey: "privacy.local.title",
       descKey: "privacy.local.desc",
-      gradient: "from-primary to-primary/70",
+      color: "primary",
     },
     {
       icon: Zap,
       titleKey: "privacy.speed.title",
       descKey: "privacy.speed.desc",
-      gradient: "from-accent to-accent/70",
+      color: "accent",
     },
     {
       icon: WifiOff,
       titleKey: "privacy.offline.title",
       descKey: "privacy.offline.desc",
-      gradient: "from-primary to-primary/70",
+      color: "primary",
     },
     {
       icon: Shield,
       titleKey: "privacy.privacy.title",
       descKey: "privacy.privacy.desc",
-      gradient: "from-accent to-accent/70",
+      color: "accent",
     },
   ];
 
   return (
     <section className="section-padding bg-background">
       <div className="container-custom px-3 sm:px-4">
-        <div className="text-center mb-8 md:mb-12">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 md:mb-4">
+        <div className="text-center mb-12 md:mb-16">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/5 text-primary text-xs font-medium tracking-wide uppercase mb-4">
+            {t("privacy.title")}
+          </span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">
             {t("privacy.title")} <span className="text-gradient">{t("privacy.titleHighlight")}</span>
           </h2>
-          <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto px-2">
+          <p className="text-sm sm:text-base text-muted-foreground max-w-xl mx-auto leading-relaxed">
             {t("privacy.subtitle")}
           </p>
         </div>
 
-        <div ref={ref} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div ref={ref} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {features.map((feature, index) => (
             <div
               key={feature.titleKey}
-              className={`group bg-card rounded-2xl p-6 sm:p-8 border border-border hover:border-primary/30 transition-all duration-500 text-center ${
+              className={`group relative transition-all duration-700 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <div className={`w-16 h-16 mx-auto mb-4 bg-gradient-to-br ${feature.gradient} rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform`}>
-                <feature.icon className="w-8 h-8 text-primary-foreground" />
+              <div className="h-full p-6 sm:p-8 text-center">
+                {/* Subtle background on hover */}
+                <div className="absolute inset-0 bg-gradient-to-b from-muted/0 to-muted/30 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                
+                {/* Icon with subtle ring */}
+                <div className="relative mb-5">
+                  <div className={`w-14 h-14 mx-auto rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110 ${
+                    feature.color === 'primary' 
+                      ? 'bg-primary/10 text-primary' 
+                      : 'bg-accent/10 text-accent'
+                  }`}>
+                    <feature.icon className="w-6 h-6" strokeWidth={1.5} />
+                  </div>
+                </div>
+                
+                <h3 className="relative text-base sm:text-lg font-semibold text-foreground mb-2">
+                  {t(feature.titleKey)}
+                </h3>
+                <p className="relative text-sm text-muted-foreground leading-relaxed">
+                  {t(feature.descKey)}
+                </p>
               </div>
-              <h3 className="text-lg sm:text-xl font-semibold text-foreground mb-2">
-                {t(feature.titleKey)}
-              </h3>
-              <p className="text-sm text-muted-foreground">
-                {t(feature.descKey)}
-              </p>
             </div>
           ))}
         </div>
