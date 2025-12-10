@@ -13,8 +13,8 @@ const FeatureTabs = () => {
 
   const tabs = [
     { id: "app", labelKey: "features.tab.app", icon: Smartphone },
-    { id: "automate", labelKey: "features.tab.automate", icon: Zap },
     { id: "shabbat", labelKey: "features.tab.shabbat", icon: Moon },
+    { id: "automate", labelKey: "features.tab.automate", icon: Zap },
     { id: "dispositivos", labelKey: "features.tab.devices", icon: Cpu },
   ];
 
