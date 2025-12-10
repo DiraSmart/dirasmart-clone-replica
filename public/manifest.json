@@ -1,0 +1,25 @@
+{
+  "name": "DiraSmart - Hogar Inteligente",
+  "short_name": "DiraSmart",
+  "description": "Convierte tu hogar en un espacio inteligente con DiraSmart. Soluciones personalizadas que simplifican tu vida.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0891b2",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/og-image.png",
+      "sizes": "1200x630",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["lifestyle", "utilities"],
+  "lang": "es"
+}
