@@ -8,6 +8,9 @@ import TestimonialsCarousel from "@/components/TestimonialsCarousel";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import AnimatedSection from "@/components/AnimatedSection";
+import PrivacyFeatures from "@/components/PrivacyFeatures";
+import InfrastructureSection from "@/components/InfrastructureSection";
+import ProcessSteps from "@/components/ProcessSteps";
 
 const Index = () => {
   return (
@@ -19,6 +22,14 @@ const Index = () => {
         <AnimatedSection>
           <InteractiveDemo />
         </AnimatedSection>
+
+        <AnimatedSection delay={0.1}>
+          <PrivacyFeatures />
+        </AnimatedSection>
+
+        <AnimatedSection delay={0.1}>
+          <InfrastructureSection />
+        </AnimatedSection>
         
         <AnimatedSection delay={0.1}>
           <FeatureTabs />
@@ -26,6 +37,10 @@ const Index = () => {
         
         <AnimatedSection delay={0.1}>
           <ServicesGrid />
+        </AnimatedSection>
+
+        <AnimatedSection delay={0.1}>
+          <ProcessSteps />
         </AnimatedSection>
         
         <AnimatedSection delay={0.1}>

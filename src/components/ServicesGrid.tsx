@@ -1,13 +1,10 @@
 import { 
   Wrench, 
-  Palette, 
-  Zap, 
+  Smartphone, 
   Link, 
-  Brain, 
-  Globe, 
-  MapPin, 
-  Settings, 
-  Headphones 
+  Radio, 
+  Wifi, 
+  HeartHandshake 
 } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -24,14 +21,9 @@ const ServicesGrid = () => {
       descKey: "services.installationDesc",
     },
     {
-      icon: Palette,
-      titleKey: "services.design",
-      descKey: "services.designDesc",
-    },
-    {
-      icon: Zap,
-      titleKey: "services.automation",
-      descKey: "services.automationDesc",
+      icon: Smartphone,
+      titleKey: "services.customApp",
+      descKey: "services.customAppDesc",
     },
     {
       icon: Link,
@@ -39,29 +31,19 @@ const ServicesGrid = () => {
       descKey: "services.compatibilityDesc",
     },
     {
-      icon: Brain,
-      titleKey: "services.adaptation",
-      descKey: "services.adaptationDesc",
+      icon: Radio,
+      titleKey: "services.localControl",
+      descKey: "services.localControlDesc",
     },
     {
-      icon: Globe,
-      titleKey: "services.access",
-      descKey: "services.accessDesc",
+      icon: Wifi,
+      titleKey: "services.network",
+      descKey: "services.networkDesc",
     },
     {
-      icon: MapPin,
-      titleKey: "services.local",
-      descKey: "services.localDesc",
-    },
-    {
-      icon: Settings,
-      titleKey: "services.maintenance",
-      descKey: "services.maintenanceDesc",
-    },
-    {
-      icon: Headphones,
-      titleKey: "services.support",
-      descKey: "services.supportDesc",
+      icon: HeartHandshake,
+      titleKey: "services.continuousSupport",
+      descKey: "services.continuousSupportDesc",
     },
   ];
 

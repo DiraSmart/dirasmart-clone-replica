@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import ParticleBackground from "./ParticleBackground";
-import AnimatedCounter from "./AnimatedCounter";
 import { useLanguage } from "@/contexts/LanguageContext";
 import appMobileImage from "@/assets/app-mobile.png";
 import appMobileImage2 from "@/assets/app-mobile-2.png";
@@ -18,8 +17,8 @@ const HeroSection = () => {
     return () => clearInterval(interval);
   }, [images.length]);
 
-  const scrollToContact = () => {
-    const element = document.querySelector("#contacto");
+  const scrollToDemo = () => {
+    const element = document.querySelector("#demo");
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
@@ -55,7 +54,7 @@ const HeroSection = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
               <Button
-                onClick={scrollToContact}
+                onClick={scrollToDemo}
                 size="lg"
                 className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6"
               >
@@ -77,20 +76,16 @@ const HeroSection = () => {
             {/* Animated Stats */}
             <div className="flex flex-wrap gap-6 sm:gap-8 pt-4 justify-center lg:justify-start">
               <div className="text-center">
-                <p className="text-2xl sm:text-3xl font-bold text-primary">
-                  <AnimatedCounter end={500} suffix="+" />
-                </p>
-                <p className="text-xs sm:text-sm text-muted-foreground">{t("hero.stat.homes")}</p>
+                <p className="text-2xl sm:text-3xl font-bold text-primary">100%</p>
+                <p className="text-xs sm:text-sm text-muted-foreground">{t("hero.stat.local")}</p>
               </div>
               <div className="text-center">
-                <p className="text-2xl sm:text-3xl font-bold text-accent">24/7</p>
+                <p className="text-2xl sm:text-3xl font-bold text-accent">0ms</p>
+                <p className="text-xs sm:text-sm text-muted-foreground">{t("hero.stat.latency")}</p>
+              </div>
+              <div className="text-center">
+                <p className="text-2xl sm:text-3xl font-bold text-primary">24/7</p>
                 <p className="text-xs sm:text-sm text-muted-foreground">{t("hero.stat.support")}</p>
-              </div>
-              <div className="text-center">
-                <p className="text-2xl sm:text-3xl font-bold text-primary">
-                  <AnimatedCounter end={100} suffix="%" />
-                </p>
-                <p className="text-xs sm:text-sm text-muted-foreground">{t("hero.stat.satisfaction")}</p>
               </div>
             </div>
           </div>
