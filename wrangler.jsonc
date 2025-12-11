@@ -1,5 +1,4 @@
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "dirasmart-clone-replica",
   "compatibility_date": "2025-12-10",
   "assets": {
