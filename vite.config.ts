@@ -12,7 +12,7 @@ export default defineConfig(({ mode }) => ({
     port: 8080,
     allowedHosts: ['new.dirasmart.com']
   },
-  plugins: [viteRreact(), cloudflare(viteEnvironment: { name: "ssr" },), mode === "development" && componentTagger()].filter(Boolean),
+  plugins: [viteRreact(), cloudflare({ viteEnvironment: { name: 'ssr' } }),, mode === "development" && componentTagger()].filter(Boolean),
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
