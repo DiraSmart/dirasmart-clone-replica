@@ -1,0 +1,8 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "dirasmart-web",
+  "compatibility_date": "2025-12-10",
+  "assets": {
+    "not_found_handling": "single-page-application"
+  }
+}
