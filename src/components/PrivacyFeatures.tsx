@@ -38,7 +38,7 @@ const PrivacyFeatures = () => {
   ];
 
   return (
-    <section className="section-padding relative overflow-hidden bg-secondary">
+    <section className="section-padding relative overflow-hidden" style={{ backgroundColor: 'hsl(220 40% 13%)' }}>
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
