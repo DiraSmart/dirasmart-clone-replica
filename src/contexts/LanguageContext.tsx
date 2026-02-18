@@ -159,7 +159,7 @@ const translations: Record<Language, Record<string, string>> = {
     "testimonials.role.doctor": "Médica",
     
     // Footer
-    "footer.description": "Transformamos hogares ordinarios en espacios inteligentes y privados. Tu comodidad, seguridad y privacidad son nuestra prioridad.",
+    "footer.description": "Transformamos hogares en espacios inteligentes y privados. Tu comodidad, seguridad y privacidad son nuestra prioridad.",
     "footer.rights": "Todos los derechos reservados",
   },
   en: {
@@ -312,7 +312,7 @@ const translations: Record<Language, Record<string, string>> = {
     "testimonials.role.doctor": "Doctor",
     
     // Footer
-    "footer.description": "We transform ordinary homes into smart and private spaces. Your comfort, security and privacy are our priority.",
+    "footer.description": "We transform homes into smart and private spaces. Your comfort, security and privacy are our priority.",
     "footer.rights": "All rights reserved",
   },
 };
