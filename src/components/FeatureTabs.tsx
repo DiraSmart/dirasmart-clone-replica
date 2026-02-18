@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Smartphone, Moon, Zap, Cpu, Lightbulb, Thermometer, Home, Clock, Calendar, Tablet, Monitor } from "lucide-react";
+import devicesMockup from "@/assets/devices-mockup.png";
 import { useLanguage } from "@/contexts/LanguageContext";
 import appMobileImage from "@/assets/app-mobile-main.webp";
 import shabatModeImage from "@/assets/shabat-mode.png";
@@ -223,18 +224,11 @@ const FeatureTabs = () => {
                 <div className="flex justify-center items-center">
                   <div className="relative">
                     <div className="absolute -inset-8 bg-gradient-to-r from-primary/10 to-accent/10 rounded-full blur-3xl opacity-40" />
-                    {/* Device mockups */}
-                    <div className="relative flex items-end gap-4">
-                      <div className="w-20 h-36 bg-muted rounded-xl border border-border flex items-center justify-center">
-                        <Smartphone className="w-8 h-8 text-primary" strokeWidth={1.5} />
-                      </div>
-                      <div className="w-32 h-24 bg-muted rounded-xl border border-border flex items-center justify-center">
-                        <Tablet className="w-10 h-10 text-accent" strokeWidth={1.5} />
-                      </div>
-                      <div className="w-40 h-28 bg-muted rounded-xl border border-border flex items-center justify-center">
-                        <Monitor className="w-12 h-12 text-primary" strokeWidth={1.5} />
-                      </div>
-                    </div>
+                    <img
+                      src={devicesMockup}
+                      alt="DiraSmart en todos tus dispositivos"
+                      className="relative w-auto max-h-[320px] sm:max-h-[380px] object-contain drop-shadow-2xl"
+                    />
                   </div>
                 </div>
               </div>
