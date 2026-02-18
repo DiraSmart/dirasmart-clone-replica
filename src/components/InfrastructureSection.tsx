@@ -1,4 +1,4 @@
-import { Wifi, Signal, Router, Network } from "lucide-react";
+import { Wifi, Signal, Router, Network, CheckCircle2 } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -12,55 +12,106 @@ const InfrastructureSection = () => {
     { icon: Network, labelKey: "infra.stable" },
   ];
 
-  return (
-    <section className="section-padding bg-muted/20 dark:bg-muted/10">
-      <div className="container-custom px-3 sm:px-4">
-        <div ref={ref} className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Content */}
-          <div className={`space-y-6 transition-all duration-700 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
-            <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent text-xs font-medium tracking-wide uppercase">
-              {t("infra.badge")}
-            </span>
-            
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground leading-tight">
-              {t("infra.title")} <span className="text-gradient">{t("infra.titleHighlight")}</span>
-            </h2>
-            
-            <p className="text-muted-foreground text-sm sm:text-base lg:text-lg leading-relaxed max-w-lg">
-              {t("infra.description")}
-            </p>
+  const stats = [
+    { value: "99.9%", label: "Uptime" },
+    { value: "<1ms", label: "Latencia" },
+    { value: "∞", label: "Dispositivos" },
+  ];
 
-            <div className="flex flex-wrap gap-3 pt-2">
-              {features.map((feature) => (
-                <div
-                  key={feature.labelKey}
-                  className="flex items-center gap-2.5 px-4 py-2.5 bg-background rounded-full border border-border/50 shadow-sm"
-                >
-                  <feature.icon className="w-4 h-4 text-primary" strokeWidth={1.5} />
-                  <span className="text-sm font-medium text-foreground">{t(feature.labelKey)}</span>
+  return (
+    <section className="section-padding bg-background relative overflow-hidden">
+      {/* Subtle grid background */}
+      <div
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        style={{
+          backgroundImage:
+            "linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)",
+          backgroundSize: "40px 40px",
+        }}
+      />
+
+      <div className="container-custom px-3 sm:px-4 relative z-10">
+        <div ref={ref} className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          {/* Visual */}
+          <div
+            className={`flex justify-center order-last lg:order-first transition-all duration-700 ${
+              isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
+            }`}
+          >
+            <div className="relative">
+              {/* Glow */}
+              <div className="absolute -inset-16 bg-gradient-to-r from-primary/15 to-accent/15 rounded-full blur-3xl" />
+
+              {/* Stats cards arranged around central icon */}
+              <div className="relative w-64 h-64 sm:w-80 sm:h-80">
+                {/* Central circle */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center backdrop-blur-sm">
+                    <Wifi className="w-14 h-14 sm:w-16 sm:h-16 text-primary" strokeWidth={1.2} />
+                  </div>
                 </div>
-              ))}
+
+                {/* Animated rings */}
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  <div className="w-full h-full border border-primary/10 rounded-full animate-pulse" style={{ animationDuration: "3s" }} />
+                </div>
+                <div className="absolute inset-[-20px] flex items-center justify-center pointer-events-none">
+                  <div className="w-full h-full border border-accent/8 rounded-full animate-pulse" style={{ animationDuration: "5s", animationDelay: "1s" }} />
+                </div>
+
+                {/* Floating stat chips */}
+                {stats.map((stat, i) => {
+                  const positions = [
+                    "top-0 left-1/2 -translate-x-1/2 -translate-y-1/2",
+                    "top-1/2 right-0 translate-x-1/2 -translate-y-1/2",
+                    "bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2",
+                  ];
+                  return (
+                    <div
+                      key={stat.label}
+                      className={`absolute ${positions[i]} bg-card border border-border rounded-xl px-3 py-2 shadow-lg text-center min-w-[72px]`}
+                    >
+                      <p className="text-lg font-bold text-primary leading-none">{stat.value}</p>
+                      <p className="text-xs text-muted-foreground mt-0.5">{stat.label}</p>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
 
-          {/* Visual */}
-          <div className={`flex justify-center transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>
-            <div className="relative">
-              {/* Subtle glow */}
-              <div className="absolute -inset-12 bg-gradient-to-r from-primary/10 to-accent/10 rounded-full blur-3xl opacity-60" />
-              
-              {/* Main circle */}
-              <div className="relative w-52 h-52 sm:w-64 sm:h-64 rounded-full border border-border/30 flex items-center justify-center bg-background/50">
-                {/* Inner circle */}
-                <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-full border border-primary/20 flex items-center justify-center bg-primary/5">
-                  <Wifi className="w-12 h-12 sm:w-16 sm:h-16 text-primary" strokeWidth={1.5} />
+          {/* Content */}
+          <div
+            className={`space-y-8 transition-all duration-700 delay-200 ${
+              isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
+            }`}
+          >
+            <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent text-xs font-semibold tracking-widest uppercase">
+              {t("infra.badge")}
+            </span>
+
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground leading-tight">
+              {t("infra.title")}{" "}
+              <span className="text-gradient">{t("infra.titleHighlight")}</span>
+            </h2>
+
+            <p className="text-muted-foreground text-base lg:text-lg leading-relaxed max-w-lg">
+              {t("infra.description")}
+            </p>
+
+            <div className="space-y-3 pt-2">
+              {features.map((feature) => (
+                <div
+                  key={feature.labelKey}
+                  className="flex items-center gap-3 p-4 bg-muted/30 rounded-xl border border-border/50 hover:border-primary/30 hover:bg-muted/50 transition-all"
+                >
+                  <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                    <feature.icon className="w-4 h-4 text-primary" strokeWidth={1.5} />
+                  </div>
+                  <span className="text-sm font-medium text-foreground flex-1">{t(feature.labelKey)}</span>
+                  <CheckCircle2 className="w-4 h-4 text-accent shrink-0" strokeWidth={1.5} />
                 </div>
-              </div>
-              
-              {/* Animated rings */}
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="w-80 h-80 sm:w-96 sm:h-96 border border-primary/5 rounded-full animate-pulse" style={{ animationDuration: '4s' }} />
-              </div>
+              ))}
             </div>
           </div>
         </div>

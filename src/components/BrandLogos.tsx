@@ -74,13 +74,18 @@ const BrandLogos = () => {
   }, []);
 
   return (
-    <section className="section-padding bg-gradient-to-br from-accent/5 via-background to-primary/5 overflow-hidden">
+    <section className="section-padding bg-muted/30 dark:bg-muted/10 overflow-hidden relative">
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
       <div className="container-custom">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/5 border border-primary/20 text-primary text-xs font-semibold tracking-widest uppercase mb-5">
+            Compatibilidad
+          </span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-5 leading-tight">
             {t("brands.title")} <span className="text-gradient">{t("brands.titleHighlight")}</span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base text-muted-foreground max-w-2xl mx-auto">
             {t("brands.subtitle")}
           </p>
         </div>
