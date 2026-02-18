@@ -7,16 +7,16 @@ const InfrastructureSection = () => {
   const { t } = useLanguage();
 
   const features = [
-    { icon: Router, labelKey: "infra.enterprise" },
-    { icon: Signal, labelKey: "infra.coverage" },
-    { icon: Network, labelKey: "infra.stable" },
-  ];
+  { icon: Router, labelKey: "infra.enterprise" },
+  { icon: Signal, labelKey: "infra.coverage" },
+  { icon: Network, labelKey: "infra.stable" }];
+
 
   const stats = [
-    { value: "99.9%", label: "Uptime" },
-    { value: "<1ms", label: "Latencia" },
-    { value: "∞", label: "Dispositivos" },
-  ];
+  { value: "99.9%", label: "Uptime" },
+  { value: "<1ms", label: "Latencia" },
+  { value: "∞", label: "Dispositivos" }];
+
 
   return (
     <section className="section-padding bg-background relative overflow-hidden">
@@ -25,19 +25,19 @@ const InfrastructureSection = () => {
         className="absolute inset-0 opacity-[0.03] pointer-events-none"
         style={{
           backgroundImage:
-            "linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)",
-          backgroundSize: "40px 40px",
-        }}
-      />
+          "linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)",
+          backgroundSize: "40px 40px"
+        }} />
+
 
       <div className="container-custom px-3 sm:px-4 relative z-10">
         <div ref={ref} className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Visual */}
           <div
             className={`flex justify-center order-last lg:order-first transition-all duration-700 ${
-              isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
-            }`}
-          >
+            isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"}`
+            }>
+
             <div className="relative">
               {/* Glow */}
               <div className="absolute -inset-16 bg-gradient-to-r from-primary/15 to-accent/15 rounded-full blur-3xl" />
@@ -62,19 +62,19 @@ const InfrastructureSection = () => {
                 {/* Floating stat chips */}
                 {stats.map((stat, i) => {
                   const positions = [
-                    "top-0 left-1/2 -translate-x-1/2 -translate-y-1/2",
-                    "top-1/2 right-0 translate-x-1/2 -translate-y-1/2",
-                    "bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2",
-                  ];
+                  "top-0 left-1/2 -translate-x-1/2 -translate-y-1/2",
+                  "top-1/2 right-0 translate-x-1/2 -translate-y-1/2",
+                  "bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2"];
+
                   return (
                     <div
                       key={stat.label}
-                      className={`absolute ${positions[i]} bg-card border border-border rounded-xl px-3 py-2 shadow-lg text-center min-w-[72px]`}
-                    >
+                      className={`absolute ${positions[i]} bg-card border border-border rounded-xl px-3 py-2 shadow-lg text-center min-w-[72px]`}>
+
                       <p className="text-lg font-bold text-primary leading-none">{stat.value}</p>
                       <p className="text-xs text-muted-foreground mt-0.5">{stat.label}</p>
-                    </div>
-                  );
+                    </div>);
+
                 })}
               </div>
             </div>
@@ -83,12 +83,12 @@ const InfrastructureSection = () => {
           {/* Content */}
           <div
             className={`space-y-8 transition-all duration-700 delay-200 ${
-              isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
-            }`}
-          >
-            <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent text-xs font-semibold tracking-widest uppercase">
-              {t("infra.badge")}
-            </span>
+            isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"}`
+            }>
+
+            
+
+
 
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground leading-tight">
               {t("infra.title")}{" "}
@@ -100,24 +100,24 @@ const InfrastructureSection = () => {
             </p>
 
             <div className="space-y-3 pt-2">
-              {features.map((feature) => (
-                <div
-                  key={feature.labelKey}
-                  className="flex items-center gap-3 p-4 bg-muted/30 rounded-xl border border-border/50 hover:border-primary/30 hover:bg-muted/50 transition-all"
-                >
+              {features.map((feature) =>
+              <div
+                key={feature.labelKey}
+                className="flex items-center gap-3 p-4 bg-muted/30 rounded-xl border border-border/50 hover:border-primary/30 hover:bg-muted/50 transition-all">
+
                   <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
                     <feature.icon className="w-4 h-4 text-primary" strokeWidth={1.5} />
                   </div>
                   <span className="text-sm font-medium text-foreground flex-1">{t(feature.labelKey)}</span>
                   <CheckCircle2 className="w-4 h-4 text-accent shrink-0" strokeWidth={1.5} />
                 </div>
-              ))}
+              )}
             </div>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default InfrastructureSection;
