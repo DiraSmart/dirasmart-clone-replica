@@ -13,21 +13,21 @@ const FeatureTabs = () => {
   const { t } = useLanguage();
 
   const tabs = [
-    { id: "app", labelKey: "features.tab.app", icon: Smartphone },
-    { id: "shabbat", labelKey: "features.tab.shabbat", icon: Moon },
-    { id: "automate", labelKey: "features.tab.automate", icon: Zap },
-    { id: "dispositivos", labelKey: "features.tab.devices", icon: Cpu },
-  ];
+  { id: "app", labelKey: "features.tab.app", icon: Smartphone },
+  { id: "shabbat", labelKey: "features.tab.shabbat", icon: Moon },
+  { id: "automate", labelKey: "features.tab.automate", icon: Zap },
+  { id: "dispositivos", labelKey: "features.tab.devices", icon: Cpu }];
+
 
   const goToNextTab = useCallback(() => {
-    const currentIndex = tabs.findIndex(tab => tab.id === activeTab);
+    const currentIndex = tabs.findIndex((tab) => tab.id === activeTab);
     const nextIndex = (currentIndex + 1) % tabs.length;
     setActiveTab(tabs[nextIndex].id);
   }, [activeTab, tabs]);
 
   useEffect(() => {
     if (isPaused) return;
-    
+
     const interval = setInterval(() => {
       goToNextTab();
     }, 5000);
@@ -42,8 +42,8 @@ const FeatureTabs = () => {
   };
 
   // Reusable feature card component
-  const FeatureCard = ({ icon: Icon, title, desc, colorClass }: { icon: typeof Thermometer, title: string, desc: string, colorClass: string }) => (
-    <div className={`group flex items-start gap-4 p-4 rounded-xl border border-border/50 hover:border-${colorClass}/30 hover:bg-${colorClass}/5 transition-all duration-300`}>
+  const FeatureCard = ({ icon: Icon, title, desc, colorClass }: {icon: typeof Thermometer;title: string;desc: string;colorClass: string;}) =>
+  <div className={`group flex items-start gap-4 p-4 rounded-xl border border-border/50 hover:border-${colorClass}/30 hover:bg-${colorClass}/5 transition-all duration-300`}>
       <div className={`w-10 h-10 bg-${colorClass}/10 rounded-lg flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform`}>
         <Icon className={`w-5 h-5 text-${colorClass}`} strokeWidth={1.5} />
       </div>
@@ -51,16 +51,16 @@ const FeatureTabs = () => {
         <p className="font-medium text-foreground text-sm">{title}</p>
         <p className="text-xs text-muted-foreground mt-0.5">{desc}</p>
       </div>
-    </div>
-  );
+    </div>;
+
 
   return (
     <section id="features" className="section-padding bg-muted/20 dark:bg-muted/10">
       <div className="container-custom px-3 sm:px-4">
         <div className="text-center mb-10 md:mb-14">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/5 text-primary text-xs font-medium tracking-wide uppercase mb-4">
-            Características
-          </span>
+          
+
+
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">
             {t("features.title")} <span className="text-gradient">{t("features.titleHighlight")}</span>
           </h2>
@@ -71,16 +71,16 @@ const FeatureTabs = () => {
 
         <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
           <TabsList className="w-full flex flex-wrap justify-center gap-2 bg-transparent h-auto mb-10 md:mb-14">
-            {tabs.map((tab) => (
-              <TabsTrigger
-                key={tab.id}
-                value={tab.id}
-                className="relative data-[state=active]:bg-foreground data-[state=active]:text-background data-[state=inactive]:bg-background px-4 sm:px-5 py-2.5 rounded-full border border-border/50 data-[state=inactive]:hover:border-primary/30 transition-all duration-300 text-xs sm:text-sm font-medium"
-              >
+            {tabs.map((tab) =>
+            <TabsTrigger
+              key={tab.id}
+              value={tab.id}
+              className="relative data-[state=active]:bg-foreground data-[state=active]:text-background data-[state=inactive]:bg-background px-4 sm:px-5 py-2.5 rounded-full border border-border/50 data-[state=inactive]:hover:border-primary/30 transition-all duration-300 text-xs sm:text-sm font-medium">
+
                 <tab.icon className="w-4 h-4 mr-2" strokeWidth={1.5} />
                 {t(tab.labelKey)}
               </TabsTrigger>
-            ))}
+            )}
           </TabsList>
 
           {/* App Tab */}
@@ -110,11 +110,11 @@ const FeatureTabs = () => {
                 <div className="flex justify-center items-center">
                   <div className="relative">
                     <div className="absolute -inset-8 bg-gradient-to-r from-primary/10 to-accent/10 rounded-full blur-3xl opacity-60" />
-                    <img 
-                      src={appMobileImage} 
-                      alt="App DiraSmart" 
-                      className="relative w-auto h-[320px] sm:h-[380px] object-contain"
-                    />
+                    <img
+                      src={appMobileImage}
+                      alt="App DiraSmart"
+                      className="relative w-auto h-[320px] sm:h-[380px] object-contain" />
+
                   </div>
                 </div>
               </div>
@@ -148,11 +148,11 @@ const FeatureTabs = () => {
                 <div className="flex justify-center items-center">
                   <div className="relative">
                     <div className="absolute -inset-8 bg-gradient-to-r from-accent/10 to-primary/10 rounded-full blur-3xl opacity-60" />
-                    <img 
-                      src={shabatModeImage} 
-                      alt="Modo Shabbat" 
-                      className="relative w-auto h-[320px] sm:h-[380px] object-contain"
-                    />
+                    <img
+                      src={shabatModeImage}
+                      alt="Modo Shabbat"
+                      className="relative w-auto h-[320px] sm:h-[380px] object-contain" />
+
                   </div>
                 </div>
               </div>
@@ -186,11 +186,11 @@ const FeatureTabs = () => {
                 <div className="flex justify-center items-center">
                   <div className="relative">
                     <div className="absolute -inset-8 bg-gradient-to-r from-primary/10 to-accent/10 rounded-full blur-3xl opacity-60" />
-                    <img 
-                      src={automationsImage} 
-                      alt="Automatizaciones" 
-                      className="relative w-auto h-[320px] sm:h-[380px] object-contain rounded-xl"
-                    />
+                    <img
+                      src={automationsImage}
+                      alt="Automatizaciones"
+                      className="relative w-auto h-[320px] sm:h-[380px] object-contain rounded-xl" />
+
                   </div>
                 </div>
               </div>
@@ -227,8 +227,8 @@ const FeatureTabs = () => {
                     <img
                       src={devicesMockup}
                       alt="DiraSmart en todos tus dispositivos"
-                      className="relative w-auto max-h-[320px] sm:max-h-[380px] object-contain drop-shadow-2xl"
-                    />
+                      className="relative w-auto max-h-[320px] sm:max-h-[380px] object-contain drop-shadow-2xl" />
+
                   </div>
                 </div>
               </div>
@@ -236,8 +236,8 @@ const FeatureTabs = () => {
           </TabsContent>
         </Tabs>
       </div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default FeatureTabs;
