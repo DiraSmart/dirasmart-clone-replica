@@ -24,7 +24,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-secondary text-white relative overflow-hidden">
+    <footer className="text-white relative overflow-hidden" style={{ backgroundColor: 'hsl(220 40% 13%)' }}>
       {/* Top decorative line */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
       {/* Background glow */}
