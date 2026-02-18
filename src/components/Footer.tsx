@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Linkedin, Mail, Phone, MapPin } from "lucide-react";
+import { Facebook, Instagram, Youtube, Mail, Phone, MapPin } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useTheme } from "next-themes";
 import dirasmartLogo from "@/assets/dirasmart-logo.png";
@@ -12,7 +12,7 @@ const Footer = () => {
   const socialLinks = [
     { icon: Facebook, href: "https://www.facebook.com/dirasmartpty", label: "Facebook" },
     { icon: Instagram, href: "https://www.instagram.com/dirasmart", label: "Instagram" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
+    { icon: Youtube, href: "https://www.youtube.com/@DiraSmart", label: "YouTube" },
   ];
 
   const navLinks = [
