@@ -89,11 +89,11 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3 text-sm text-white/40">
                 <Phone className="w-4 h-4 text-primary shrink-0" strokeWidth={1.5} />
-                <span>+54 11 0000-0000</span>
+                <span>+507 6595-6439</span>
               </li>
               <li className="flex items-center gap-3 text-sm text-white/40">
                 <MapPin className="w-4 h-4 text-primary shrink-0" strokeWidth={1.5} />
-                <span>Buenos Aires, Argentina</span>
+                <span>Panama City, Panama</span>
               </li>
             </ul>
           </div>
@@ -101,7 +101,7 @@ const Footer = () => {
 
         <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/30">
           <p>© {currentYear} DiraSmart. {t("footer.rights")}.</p>
-          <p>Hecho con ❤️ en Argentina</p>
+          <p>Hecho con ❤️ en Panamá</p>
         </div>
       </div>
     </footer>
