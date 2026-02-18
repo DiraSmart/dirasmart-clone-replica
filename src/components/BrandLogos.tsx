@@ -91,38 +91,38 @@ const BrandLogos = () => {
         </div>
 
         {/* Brands Carousel - 2 rows */}
-        <div className="mb-12 -mx-4 md:-mx-8">
+        <div className="mb-8 -mx-4 md:-mx-8">
           <div 
             ref={scrollRef}
             className="flex flex-col gap-4 overflow-hidden px-4"
             style={{ scrollBehavior: 'auto' }}
           >
             {/* Row 1 */}
-            <div className="flex gap-6">
+            <div className="flex gap-3">
               {[...brands.slice(0, 8), ...brands.slice(0, 8)].map((brand, index) => (
                 <div
                   key={`row1-${brand.name}-${index}`}
-                  className="flex-shrink-0 bg-white rounded-2xl p-4 flex flex-col items-center justify-center gap-3 shadow-card hover:shadow-card-hover transition-all hover:-translate-y-1 border border-border min-w-[120px] h-[100px]"
+                  className="flex-shrink-0 bg-white rounded-xl p-3 flex items-center justify-center shadow-card hover:shadow-card-hover transition-all hover:-translate-y-0.5 border border-border min-w-[80px] h-[64px]"
                 >
                   <img 
                     src={brand.logo} 
                     alt={brand.name} 
-                    className="h-12 w-auto object-contain"
+                    className="h-7 w-auto object-contain"
                   />
                 </div>
               ))}
             </div>
             {/* Row 2 */}
-            <div className="flex gap-6" style={{ marginLeft: '-60px' }}>
+            <div className="flex gap-3" style={{ marginLeft: '-40px' }}>
               {[...brands.slice(8), ...brands.slice(8)].map((brand, index) => (
                 <div
                   key={`row2-${brand.name}-${index}`}
-                  className="flex-shrink-0 bg-white rounded-2xl p-4 flex flex-col items-center justify-center gap-3 shadow-card hover:shadow-card-hover transition-all hover:-translate-y-1 border border-border min-w-[120px] h-[100px]"
+                  className="flex-shrink-0 bg-white rounded-xl p-3 flex items-center justify-center shadow-card hover:shadow-card-hover transition-all hover:-translate-y-0.5 border border-border min-w-[80px] h-[64px]"
                 >
                   <img 
                     src={brand.logo} 
                     alt={brand.name} 
-                    className="h-12 w-auto object-contain"
+                    className="h-7 w-auto object-contain"
                   />
                 </div>
               ))}
