@@ -21,4 +21,32 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+      },
+    },
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'radix-ui': [
+            '@radix-ui/react-dialog',
+            '@radix-ui/react-dropdown-menu',
+            '@radix-ui/react-accordion',
+            '@radix-ui/react-tabs',
+          ],
+          'vendors': [
+            'react',
+            'react-dom',
+            'react-router-dom',
+          ],
+          'animation': [
+            'framer-motion',
+          ],
+        },
+      },
+    },
+  },
 }));

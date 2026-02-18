@@ -1,13 +1,25 @@
 export default {
-  fetch(request: Request): Response {
+  async fetch(request: Request, env: any): Promise<Response> {
     const url = new URL(request.url);
 
+    // API routes
     if (url.pathname.startsWith("/api/")) {
       return Response.json({
         name: "Cloudflare",
       });
     }
 
-    return new Response(null, { status: 404 });
+    // Serve static assets
+    const asset = await env.ASSETS.fetch(request);
+    if (asset.status === 200) {
+      return asset;
+    }
+
+    // Fallback to index.html for SPA routing
+    if (asset.status === 404 && !url.pathname.includes(".")) {
+      return env.ASSETS.fetch(new Request(new URL("/index.html", request.url), request));
+    }
+
+    return asset;
   },
 } satisfies ExportedHandler;
