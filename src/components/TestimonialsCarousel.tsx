@@ -9,107 +9,107 @@ const TestimonialsCarousel = () => {
 
   const testimonials = {
     es: [
-      {
-        name: "Sara Tesone",
-        role: "Cliente DiraSmart",
-        text: "Instalamos el sistema DiraSmart y nos da la tranquilidad de poder controlar todo según la Halajá, además del ahorro significativo en nuestra cuenta mensual de energía. Recomiendo al 100% este proyecto. Además nos dieron seguimiento y ayuda cuando necesitamos, ¡así sea minutos antes de Shabat!",
-        rating: 5,
-        initial: "S",
-      },
-      {
-        name: "Joseph Homsany",
-        role: "Cliente DiraSmart",
-        text: "Quiero dejar constancia del trabajo profesional que se ha realizado en mis residencias creando un ambiente perfecto de Shabat. Quiero recomendarlo por su dinamismo, resolución y constancia.",
-        rating: 5,
-        initial: "J",
-      },
-      {
-        name: "Esther Kamhaji",
-        role: "Cliente DiraSmart",
-        text: "Excelente sistema. Excelente atención. Excelente proceso de instalación. Tener control de la casa desde tu mano, donde sea que estés, es un sueño hecho realidad. Gracias DiraSmart. Lo recomiendo con los ojos cerrados.",
-        rating: 5,
-        initial: "E",
-      },
-      {
-        name: "Samy Poliwoda",
-        role: "Cliente DiraSmart",
-        text: "Me ha cambiado la forma de manejar mi oficina de trabajo. Siento el control desde mi celular en una sola app: video seguridad, registro entrada y salida, encendido y apagado de aires e iluminación, manejo de la música del lugar. ¡Increíble! Y la atención es super.",
-        rating: 5,
-        initial: "S",
-      },
-      {
-        name: "Jacobo Kolangui",
-        role: "Cliente DiraSmart",
-        text: "El sistema smarthome de DiraSmart funciona increíblemente bien. Todo está perfectamente integrado y funciona de maravilla. Además, su atención al cliente es de 10, siempre están ahí para ayudar en todo momento. ¡Totalmente recomendados!",
-        rating: 5,
-        initial: "J",
-      },
-      {
-        name: "Elias Eskenazi",
-        role: "Cliente DiraSmart",
-        text: "Excelente el sistema y el servicio al cliente. Estaba indeciso si montar un sistema smart para mi casa pero con la ayuda de DiraSmart no lo pensé dos veces. Si algo no sale al principio, buscan la forma de resolver hasta que salga. Recomendado al 100%.",
-        rating: 5,
-        initial: "E",
-      },
-      {
-        name: "Jonathan Tache",
-        role: "Cliente DiraSmart",
-        text: "Excelentes productos pero sobre todo excelente atención al cliente. Siempre encima de todo y tratando que sea la mejor experiencia para el cliente. ¡Super recomendado!",
-        rating: 5,
-        initial: "J",
-      },
-    ],
+    {
+      name: "Sara Tesone",
+      role: "Cliente DiraSmart",
+      text: "Instalamos el sistema DiraSmart y nos da la tranquilidad de poder controlar todo según la Halajá, además del ahorro significativo en nuestra cuenta mensual de energía. Recomiendo al 100% este proyecto. Además nos dieron seguimiento y ayuda cuando necesitamos, ¡así sea minutos antes de Shabat!",
+      rating: 5,
+      initial: "S"
+    },
+    {
+      name: "Joseph Homsany",
+      role: "Cliente DiraSmart",
+      text: "Quiero dejar constancia del trabajo profesional que se ha realizado en mis residencias creando un ambiente perfecto de Shabat. Quiero recomendarlo por su dinamismo, resolución y constancia.",
+      rating: 5,
+      initial: "J"
+    },
+    {
+      name: "Esther Kamhaji",
+      role: "Cliente DiraSmart",
+      text: "Excelente sistema. Excelente atención. Excelente proceso de instalación. Tener control de la casa desde tu mano, donde sea que estés, es un sueño hecho realidad. Gracias DiraSmart. Lo recomiendo con los ojos cerrados.",
+      rating: 5,
+      initial: "E"
+    },
+    {
+      name: "Samy Poliwoda",
+      role: "Cliente DiraSmart",
+      text: "Me ha cambiado la forma de manejar mi oficina de trabajo. Siento el control desde mi celular en una sola app: video seguridad, registro entrada y salida, encendido y apagado de aires e iluminación, manejo de la música del lugar. ¡Increíble! Y la atención es super.",
+      rating: 5,
+      initial: "S"
+    },
+    {
+      name: "Jacobo Kolangui",
+      role: "Cliente DiraSmart",
+      text: "El sistema smarthome de DiraSmart funciona increíblemente bien. Todo está perfectamente integrado y funciona de maravilla. Además, su atención al cliente es de 10, siempre están ahí para ayudar en todo momento. ¡Totalmente recomendados!",
+      rating: 5,
+      initial: "J"
+    },
+    {
+      name: "Elias Eskenazi",
+      role: "Cliente DiraSmart",
+      text: "Excelente el sistema y el servicio al cliente. Estaba indeciso si montar un sistema smart para mi casa pero con la ayuda de DiraSmart no lo pensé dos veces. Si algo no sale al principio, buscan la forma de resolver hasta que salga. Recomendado al 100%.",
+      rating: 5,
+      initial: "E"
+    },
+    {
+      name: "Jonathan Tache",
+      role: "Cliente DiraSmart",
+      text: "Excelentes productos pero sobre todo excelente atención al cliente. Siempre encima de todo y tratando que sea la mejor experiencia para el cliente. ¡Super recomendado!",
+      rating: 5,
+      initial: "J"
+    }],
+
     en: [
-      {
-        name: "Sara Tesone",
-        role: "DiraSmart Client",
-        text: "We installed the DiraSmart system and it gives us peace of mind to control everything according to Halacha, plus significant savings on our monthly energy bill. I 100% recommend this project!",
-        rating: 5,
-        initial: "S",
-      },
-      {
-        name: "Joseph Homsany",
-        role: "DiraSmart Client",
-        text: "I want to put on record the professional work that has been done in my residences, creating a perfect Shabbat environment. I recommend them for their dynamism, resolution and perseverance.",
-        rating: 5,
-        initial: "J",
-      },
-      {
-        name: "Esther Kamhaji",
-        role: "DiraSmart Client",
-        text: "Excellent system. Excellent service. Excellent installation process. Having control of the house from your hand, wherever you are, is a dream come true. Thank you DiraSmart!",
-        rating: 5,
-        initial: "E",
-      },
-      {
-        name: "Samy Poliwoda",
-        role: "DiraSmart Client",
-        text: "It has changed the way I manage my office. I feel in control from my phone in a single app: video security, entry/exit tracking, AC and lighting, music control. Incredible! And the support is great.",
-        rating: 5,
-        initial: "S",
-      },
-      {
-        name: "Jacobo Kolangui",
-        role: "DiraSmart Client",
-        text: "DiraSmart's smarthome system works incredibly well. Everything is perfectly integrated. Their customer service is top-notch, always there to help at any time. Totally recommended!",
-        rating: 5,
-        initial: "J",
-      },
-      {
-        name: "Elias Eskenazi",
-        role: "DiraSmart Client",
-        text: "Excellent system and customer service. I was undecided about setting up a smart system, but with DiraSmart's help I didn't think twice. If something doesn't work at first, they find a way to fix it. 100% recommended.",
-        rating: 5,
-        initial: "E",
-      },
-      {
-        name: "Jonathan Tache",
-        role: "DiraSmart Client",
-        text: "Excellent products but above all excellent customer service. Always on top of everything and making sure it's the best experience for the client! Super recommended!",
-        rating: 5,
-        initial: "J",
-      },
-    ],
+    {
+      name: "Sara Tesone",
+      role: "DiraSmart Client",
+      text: "We installed the DiraSmart system and it gives us peace of mind to control everything according to Halacha, plus significant savings on our monthly energy bill. I 100% recommend this project!",
+      rating: 5,
+      initial: "S"
+    },
+    {
+      name: "Joseph Homsany",
+      role: "DiraSmart Client",
+      text: "I want to put on record the professional work that has been done in my residences, creating a perfect Shabbat environment. I recommend them for their dynamism, resolution and perseverance.",
+      rating: 5,
+      initial: "J"
+    },
+    {
+      name: "Esther Kamhaji",
+      role: "DiraSmart Client",
+      text: "Excellent system. Excellent service. Excellent installation process. Having control of the house from your hand, wherever you are, is a dream come true. Thank you DiraSmart!",
+      rating: 5,
+      initial: "E"
+    },
+    {
+      name: "Samy Poliwoda",
+      role: "DiraSmart Client",
+      text: "It has changed the way I manage my office. I feel in control from my phone in a single app: video security, entry/exit tracking, AC and lighting, music control. Incredible! And the support is great.",
+      rating: 5,
+      initial: "S"
+    },
+    {
+      name: "Jacobo Kolangui",
+      role: "DiraSmart Client",
+      text: "DiraSmart's smarthome system works incredibly well. Everything is perfectly integrated. Their customer service is top-notch, always there to help at any time. Totally recommended!",
+      rating: 5,
+      initial: "J"
+    },
+    {
+      name: "Elias Eskenazi",
+      role: "DiraSmart Client",
+      text: "Excellent system and customer service. I was undecided about setting up a smart system, but with DiraSmart's help I didn't think twice. If something doesn't work at first, they find a way to fix it. 100% recommended.",
+      rating: 5,
+      initial: "E"
+    },
+    {
+      name: "Jonathan Tache",
+      role: "DiraSmart Client",
+      text: "Excellent products but above all excellent customer service. Always on top of everything and making sure it's the best experience for the client! Super recommended!",
+      rating: 5,
+      initial: "J"
+    }]
+
   };
 
   const currentTestimonials = testimonials[language];
@@ -138,9 +138,9 @@ const TestimonialsCarousel = () => {
 
       <div className="container-custom relative z-10">
         <div className="text-center mb-14 md:mb-20">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/5 border border-primary/20 text-primary text-xs font-semibold tracking-widest uppercase mb-5">
-            Testimonios
-          </span>
+          
+
+
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-5 leading-tight">
             {t("testimonials.title")}{" "}
             <span className="text-gradient">{t("testimonials.titleHighlight")}</span>?
@@ -182,39 +182,39 @@ const TestimonialsCarousel = () => {
               variant="outline"
               size="icon"
               onClick={goToPrevious}
-              className="rounded-full w-10 h-10 border border-border hover:border-primary hover:bg-primary hover:text-primary-foreground transition-all"
-            >
+              className="rounded-full w-10 h-10 border border-border hover:border-primary hover:bg-primary hover:text-primary-foreground transition-all">
+
               <ChevronLeft className="w-4 h-4" />
             </Button>
 
             <div className="flex gap-2">
-              {currentTestimonials.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentIndex(index)}
-                  className={`h-1.5 rounded-full transition-all duration-300 ${
-                    index === currentIndex
-                      ? "bg-gradient-to-r from-primary to-accent w-6"
-                      : "bg-muted-foreground/20 hover:bg-muted-foreground/40 w-1.5"
-                  }`}
-                  aria-label={`Testimonial ${index + 1}`}
-                />
-              ))}
+              {currentTestimonials.map((_, index) =>
+              <button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                index === currentIndex ?
+                "bg-gradient-to-r from-primary to-accent w-6" :
+                "bg-muted-foreground/20 hover:bg-muted-foreground/40 w-1.5"}`
+                }
+                aria-label={`Testimonial ${index + 1}`} />
+
+              )}
             </div>
 
             <Button
               variant="outline"
               size="icon"
               onClick={goToNext}
-              className="rounded-full w-10 h-10 border border-border hover:border-primary hover:bg-primary hover:text-primary-foreground transition-all"
-            >
+              className="rounded-full w-10 h-10 border border-border hover:border-primary hover:bg-primary hover:text-primary-foreground transition-all">
+
               <ChevronRight className="w-4 h-4" />
             </Button>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default TestimonialsCarousel;
