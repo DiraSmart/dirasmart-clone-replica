@@ -48,18 +48,6 @@ const PrivacyFeatures = () => {
       </div>
 
       <div className="container-custom px-3 sm:px-4 relative z-10">
-        <div className="text-center mb-14 md:mb-20">
-          <span className="inline-block px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs font-semibold tracking-widest uppercase mb-5">
-            {t("privacy.title")}
-          </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-5 leading-tight">
-            {t("privacy.title")}{" "}
-            <span className="text-gradient">{t("privacy.titleHighlight")}</span>
-          </h2>
-          <p className="text-base text-white/60 max-w-xl mx-auto leading-relaxed">
-            {t("privacy.subtitle")}
-          </p>
-        </div>
 
         <div ref={ref} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
           {features.map((feature, index) => (
