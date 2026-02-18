@@ -1,4 +1,4 @@
-import { MessageSquare, Wrench, HeartHandshake } from "lucide-react";
+import { MessageSquare, Wrench, HeartHandshake, ArrowRight } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -9,89 +9,100 @@ const ProcessSteps = () => {
   const steps = [
     {
       icon: MessageSquare,
-      numberKey: "process.step1.number",
       titleKey: "process.step1.title",
       descKey: "process.step1.desc",
       color: "primary",
+      gradient: "from-primary/20 to-primary/5",
+      number: "01",
     },
     {
       icon: Wrench,
-      numberKey: "process.step2.number",
       titleKey: "process.step2.title",
       descKey: "process.step2.desc",
       color: "accent",
+      gradient: "from-accent/20 to-accent/5",
+      number: "02",
     },
     {
       icon: HeartHandshake,
-      numberKey: "process.step3.number",
       titleKey: "process.step3.title",
       descKey: "process.step3.desc",
       color: "primary",
+      gradient: "from-primary/20 to-primary/5",
+      number: "03",
     },
   ];
 
   return (
-    <section className="section-padding bg-background">
+    <section className="section-padding bg-muted/30 dark:bg-muted/10 relative overflow-hidden">
+      {/* Decorative top line */}
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
       <div className="container-custom px-3 sm:px-4">
-        <div className="text-center mb-12 md:mb-16">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/5 text-primary text-xs font-medium tracking-wide uppercase mb-4">
+        <div className="text-center mb-14 md:mb-20">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/5 border border-primary/20 text-primary text-xs font-semibold tracking-widest uppercase mb-5">
             Proceso
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">
-            {t("process.title")} <span className="text-gradient">{t("process.titleHighlight")}</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-5 leading-tight">
+            {t("process.title")}{" "}
+            <span className="text-gradient">{t("process.titleHighlight")}</span>
           </h2>
-          <p className="text-sm sm:text-base text-muted-foreground max-w-xl mx-auto leading-relaxed">
+          <p className="text-base text-muted-foreground max-w-xl mx-auto leading-relaxed">
             {t("process.subtitle")}
           </p>
         </div>
 
-        <div ref={ref} className="relative max-w-4xl mx-auto">
-          {/* Connection line - desktop */}
-          <div className="hidden lg:block absolute top-16 left-[20%] right-[20%] h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+        <div ref={ref} className="relative max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
             {steps.map((step, index) => (
               <div
                 key={step.titleKey}
                 className={`relative transition-all duration-700 ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
                 }`}
                 style={{ transitionDelay: `${index * 150}ms` }}
               >
-                <div className="text-center">
-                  {/* Step number badge */}
-                  <div className="relative inline-block mb-6">
-                    <div className={`w-16 h-16 rounded-2xl flex items-center justify-center transition-transform hover:scale-105 ${
-                      step.color === 'primary' 
-                        ? 'bg-primary/10' 
-                        : 'bg-accent/10'
-                    }`}>
-                      <step.icon className={`w-7 h-7 ${
-                        step.color === 'primary' ? 'text-primary' : 'text-accent'
-                      }`} strokeWidth={1.5} />
+                {/* Arrow between cards (desktop) */}
+                {index < steps.length - 1 && (
+                  <div className="hidden lg:flex absolute top-10 -right-4 z-10 items-center justify-center w-8 h-8">
+                    <ArrowRight className="w-5 h-5 text-muted-foreground/40" />
+                  </div>
+                )}
+
+                <div className={`h-full bg-background rounded-2xl p-7 border border-border/50 hover:border-${step.color}/30 hover:shadow-lg transition-all duration-300 group flex flex-col gap-6`}>
+                  {/* Top: number + icon */}
+                  <div className="flex items-start justify-between">
+                    <div
+                      className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${step.gradient} flex items-center justify-center transition-transform group-hover:scale-105`}
+                    >
+                      <step.icon
+                        className={`w-7 h-7 ${
+                          step.color === "primary" ? "text-primary" : "text-accent"
+                        }`}
+                        strokeWidth={1.5}
+                      />
                     </div>
-                    {/* Number indicator */}
-                    <span className={`absolute -top-2 -right-2 w-6 h-6 rounded-full flex items-center justify-center text-xs font-semibold ${
-                      step.color === 'primary' 
-                        ? 'bg-primary text-primary-foreground' 
-                        : 'bg-accent text-accent-foreground'
-                    }`}>
-                      {index + 1}
+                    <span className="text-5xl font-black text-muted/50 group-hover:text-muted-foreground/20 transition-colors leading-none">
+                      {step.number}
                     </span>
                   </div>
-                  
-                  <h3 className="text-lg font-semibold text-foreground mb-2">
-                    {t(step.titleKey)}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed max-w-xs mx-auto">
-                    {t(step.descKey)}
-                  </p>
+
+                  {/* Content */}
+                  <div>
+                    <h3 className="text-lg font-semibold text-foreground mb-2">
+                      {t(step.titleKey)}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {t(step.descKey)}
+                    </p>
+                  </div>
                 </div>
 
-                {/* Arrow for mobile */}
+                {/* Mobile arrow */}
                 {index < steps.length - 1 && (
-                  <div className="flex justify-center py-4 lg:hidden">
-                    <div className="w-px h-8 bg-gradient-to-b from-border to-transparent" />
+                  <div className="flex justify-center py-2 lg:hidden">
+                    <ArrowRight className="w-5 h-5 text-muted-foreground/40 rotate-90" />
                   </div>
                 )}
               </div>
@@ -100,8 +111,12 @@ const ProcessSteps = () => {
         </div>
 
         {/* Note */}
-        <div className={`mt-12 text-center transition-all duration-700 delay-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-          <p className="text-xs sm:text-sm text-muted-foreground/80 italic">
+        <div
+          className={`mt-12 text-center transition-all duration-700 delay-500 ${
+            isVisible ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          <p className="text-xs sm:text-sm text-muted-foreground/70 italic">
             {t("process.note")}
           </p>
         </div>

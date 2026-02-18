@@ -53,42 +53,55 @@ const ServicesGrid = () => {
   ];
 
   return (
-    <section id="servicios" className="section-padding bg-muted/20 dark:bg-muted/10">
-      <div className="container-custom px-3 sm:px-4">
-        <div className="text-center mb-10 md:mb-14">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent text-xs font-medium tracking-wide uppercase mb-4">
+    <section id="servicios" className="section-padding bg-background relative overflow-hidden">
+      {/* Subtle background shape */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-br from-primary/5 to-accent/5 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="container-custom px-3 sm:px-4 relative z-10">
+        <div className="text-center mb-14 md:mb-20">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-semibold tracking-widest uppercase mb-5">
             Servicios
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">
-            {t("services.title")} <span className="text-gradient">{t("services.titleHighlight")}</span>?
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-5 leading-tight">
+            {t("services.title")}{" "}
+            <span className="text-gradient">{t("services.titleHighlight")}</span>?
           </h2>
-          <p className="text-sm sm:text-base text-muted-foreground max-w-xl mx-auto leading-relaxed">
+          <p className="text-base text-muted-foreground max-w-xl mx-auto leading-relaxed">
             {t("services.subtitle")}
           </p>
         </div>
 
-        <div ref={ref} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div ref={ref} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
           {services.map((service, index) => (
             <div
               key={service.titleKey}
-              className={`group bg-background rounded-xl p-6 border border-border/50 hover:border-${service.color}/30 transition-all duration-500 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              className={`group relative bg-muted/20 rounded-2xl p-7 border border-border/50 hover:border-${service.color}/40 hover:bg-${service.color}/5 transition-all duration-400 hover:-translate-y-1 hover:shadow-md ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
               style={{ transitionDelay: `${index * 80}ms` }}
             >
-              <div className={`w-11 h-11 rounded-lg flex items-center justify-center mb-4 transition-transform group-hover:scale-105 ${
-                service.color === 'primary' ? 'bg-primary/10' : 'bg-accent/10'
-              }`}>
-                <service.icon className={`w-5 h-5 ${
-                  service.color === 'primary' ? 'text-primary' : 'text-accent'
-                }`} strokeWidth={1.5} />
+              {/* Icon */}
+              <div
+                className={`w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-all duration-300 group-hover:scale-110 group-hover:shadow-sm ${
+                  service.color === "primary"
+                    ? "bg-primary/10 text-primary"
+                    : "bg-accent/10 text-accent"
+                }`}
+              >
+                <service.icon className="w-6 h-6" strokeWidth={1.5} />
               </div>
+
               <h3 className="text-base font-semibold text-foreground mb-2">
                 {t(service.titleKey)}
               </h3>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 {t(service.descKey)}
               </p>
+
+              {/* Bottom accent line */}
+              <div
+                className={`absolute bottom-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-${service.color}/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
+              />
             </div>
           ))}
         </div>
