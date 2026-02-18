@@ -10,7 +10,7 @@ const Footer = () => {
   const { resolvedTheme } = useTheme();
 
   const socialLinks = [
-    { icon: Facebook, href: "#", label: "Facebook" },
+    { icon: Facebook, href: "https://www.facebook.com/dirasmartpty", label: "Facebook" },
     { icon: Instagram, href: "#", label: "Instagram" },
     { icon: Linkedin, href: "#", label: "LinkedIn" },
   ];
