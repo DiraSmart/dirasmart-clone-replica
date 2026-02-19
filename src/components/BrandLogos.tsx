@@ -25,7 +25,7 @@ const BrandLogos = () => {
   const { t } = useLanguage();
 
   const brands = [
-    { name: "Alexa", logo: alexaLogo, dark: false },
+    { name: "Alexa", logo: alexaLogo, dark: true },
     { name: "SmartThings", logo: smartthingsLogo, dark: true },
     { name: "Philips Hue", logo: hueLogo, dark: false },
     { name: "Tuya", logo: tuyaLogo, dark: false },
@@ -34,11 +34,11 @@ const BrandLogos = () => {
     { name: "Sonos", logo: sonosLogo, dark: true },
     { name: "SwitchBot", logo: switchbotLogo, dark: false },
     { name: "Yale", logo: yaleLogo, dark: true },
-    { name: "LG", logo: lgLogo, dark: false },
+    { name: "LG", logo: lgLogo, dark: true },
     { name: "Hikvision", logo: hikvisionLogo, dark: true },
-    { name: "Somfy", logo: somfyLogo, dark: false },
+    { name: "Somfy", logo: somfyLogo, dark: true },
     { name: "Tesla", logo: teslaLogo, dark: true },
-    { name: "TP-Link", logo: tplinkLogo, dark: false },
+    { name: "TP-Link", logo: tplinkLogo, dark: true },
     { name: "UniFi", logo: unifiLogo, dark: true },
   ];
 
