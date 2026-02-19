@@ -1,4 +1,4 @@
-import { Wifi, Signal, Router, Network, CheckCircle2 } from "lucide-react";
+import { Wifi, Signal, Router, Network, Cable, CheckCircle2 } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -7,15 +7,16 @@ const InfrastructureSection = () => {
   const { t } = useLanguage();
 
   const features = [
+  { icon: Cable, labelKey: "infra.cabling" },
   { icon: Router, labelKey: "infra.enterprise" },
   { icon: Signal, labelKey: "infra.coverage" },
   { icon: Network, labelKey: "infra.stable" }];
 
 
   const stats = [
-  { value: "99.9%", label: "Uptime" },
-  { value: "<1ms", label: "Latencia" },
-  { value: "∞", label: "Dispositivos" }];
+  { value: "99.9%", labelKey: "infra.stat.uptime" },
+  { value: "<1ms", labelKey: "infra.stat.latency" },
+  { value: "∞", labelKey: "infra.stat.devices" }];
 
 
   return (
@@ -68,11 +69,11 @@ const InfrastructureSection = () => {
 
                   return (
                     <div
-                      key={stat.label}
+                      key={stat.labelKey}
                       className={`absolute ${positions[i]} bg-card border border-border rounded-xl px-3 py-2 shadow-lg text-center min-w-[72px]`}>
 
                       <p className="text-lg font-bold text-primary leading-none">{stat.value}</p>
-                      <p className="text-xs text-muted-foreground mt-0.5">{stat.label}</p>
+                      <p className="text-xs text-muted-foreground mt-0.5">{t(stat.labelKey)}</p>
                     </div>);
 
                 })}

@@ -5,52 +5,99 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="manifest" href="/manifest.json" />
-    <link rel="apple-touch-icon" href="/og-image.png" />
+    <link rel="apple-touch-icon" href="/og-image120.png" />
     <meta name="theme-color" content="#0891b2" />
-    <link rel="canonical" href="https://dirasmart.com" />
+    <link rel="canonical" href="https://dirasmart.com/" />
+    <meta name="robots" content="index, follow" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <!-- Preload LCP image -->
+    <link rel="preload" as="image" href="/app-mobile.png" fetchpriority="high" />
 
     <!-- Preload critical resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
 
+    <!-- Load Google Fonts asynchronously (non-render-blocking) -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" /></noscript>
+
     <title>DiraSmart • Smart Home • Automatiza tu Hogar o Oficina</title>
     <meta
       name="description"
-      content="Convierte tu hogar en un espacio inteligente con DiraSmart. Descubre soluciones personalizadas que simplifican tu vida y aumentan la eficiencia."
+      content="DiraSmart: Convierte tu hogar en un espacio inteligente. Instalaci&oacute;n profesional de automatizaciones, control local, WiFi empresarial y app personalizada en Panam&aacute;."
     />
     <meta name="author" content="DiraSmart" />
-    <meta name="keywords" content="smart home,smart house,casa inteligente,automatizaciones,hogar inteligente" />
+    <meta name="keywords" content="smart home,smart house,casa inteligente,automatizaciones,hogar inteligente,domótica,DiraSmart,automatización del hogar,control inteligente,WiFi empresarial,Panamá" />
 
     <meta name="google-site-verification" content="bSrUVSTb-nth1XKdzNA-xWukhOqjxlfRako6vb9nKPE" />
 
+    <!-- Open Graph / Facebook / WhatsApp -->
     <meta property="og:locale" content="es_ES" />
-    <meta property="og:title" content="Smart Home • Automatiza tu Hogar o Oficina" />
+    <meta property="og:title" content="DiraSmart • Smart Home • Automatiza tu Hogar o Oficina" />
     <meta
       property="og:description"
-      content="Convierte tu hogar en un espacio inteligente con DiraSmart. Descubre soluciones personalizadas que simplifican tu vida y aumentan la eficiencia."
+      content="Convierte tu hogar en un espacio inteligente con DiraSmart. Instalación profesional, control local, WiFi empresarial y app personalizada."
     />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://dirasmart.com" />
-    <meta property="og:site_name" content="DiraSmart • Automate your life" />
-    <meta property="og:image" content="/og-image.png" />
+    <meta property="og:url" content="https://dirasmart.com/" />
+    <meta property="og:site_name" content="DiraSmart" />
+    <meta property="og:image" content="https://dirasmart.com/og-image.png" />
+    <meta property="og:image:secure_url" content="https://dirasmart.com/og-image.png" />
+    <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="DiraSmart - Smart Home - Automatiza tu Hogar o Oficina" />
 
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Smart Home • Automatiza tu Hogar o Oficina" />
+    <meta name="twitter:title" content="DiraSmart • Smart Home • Automatiza tu Hogar o Oficina" />
     <meta
       name="twitter:description"
-      content="Convierte tu hogar en un espacio inteligente con DiraSmart. Descubre soluciones personalizadas que simplifican tu vida y aumentan la eficiencia."
+      content="Convierte tu hogar en un espacio inteligente con DiraSmart. Instalación profesional, control local, WiFi empresarial y app personalizada."
     />
-    <!--  <meta name="twitter:site" content="@dirasmart" /> -->
-    <meta name="twitter:image" content="/og-image.png" />
+    <meta name="twitter:image" content="https://dirasmart.com/og-image.png" />
+    <meta name="twitter:image:alt" content="DiraSmart - Smart Home - Automatiza tu Hogar o Oficina" />
+
+    <!-- Structured Data for Google SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "DiraSmart",
+      "description": "Convierte tu hogar en un espacio inteligente con DiraSmart. Instalación profesional de automatizaciones, control local, WiFi empresarial y app personalizada.",
+      "url": "https://dirasmart.com",
+      "logo": "https://dirasmart.com/og-image.png",
+      "image": "https://dirasmart.com/og-image.png",
+      "telephone": "+507-6595-6439",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "PA"
+      },
+      "areaServed": "Panamá",
+      "serviceType": ["Smart Home Installation", "Home Automation", "WiFi Infrastructure"],
+      "sameAs": [],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+507-6595-6439",
+        "contactType": "sales",
+        "availableLanguage": ["Spanish", "English"]
+      }
+    }
+    </script>
   </head>
 
   <body>
-    <div id="root"></div>
+    <script>try{var t=localStorage.getItem('theme');if(t==='dark'||(t!=='light'&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')}catch(e){}</script>
+    <div id="root">
+      <!-- Static hero shell for faster LCP - replaced by React on mount -->
+      <div style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#f0fdfa 0%,#e0f2fe 50%,#f0fdf4 100%)">
+        <img src="/app-mobile.png" alt="" width="384" height="680" fetchpriority="high" style="width:192px;height:auto;filter:drop-shadow(0 25px 25px rgba(0,0,0,.15))" />
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

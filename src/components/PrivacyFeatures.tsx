@@ -79,7 +79,7 @@ const PrivacyFeatures = () => {
                   >
                     <feature.icon className="w-6 h-6" strokeWidth={1.5} />
                   </div>
-                  <span className="text-4xl font-black text-white/10 group-hover:text-white/15 transition-colors leading-none">
+                  <span className="text-4xl font-black text-white/[0.08] group-hover:text-white/15 transition-colors leading-none" aria-hidden="true">
                     {feature.number}
                   </span>
                 </div>
@@ -88,7 +88,7 @@ const PrivacyFeatures = () => {
                   <h3 className="text-base sm:text-lg font-semibold text-white mb-2">
                     {t(feature.titleKey)}
                   </h3>
-                  <p className="text-sm text-white/50 leading-relaxed">
+                  <p className="text-sm text-white/60 leading-relaxed">
                     {t(feature.descKey)}
                   </p>
                 </div>

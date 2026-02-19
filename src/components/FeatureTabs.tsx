@@ -42,25 +42,30 @@ const FeatureTabs = () => {
   };
 
   // Reusable feature card component
-  const FeatureCard = ({ icon: Icon, title, desc, colorClass }: {icon: typeof Thermometer;title: string;desc: string;colorClass: string;}) =>
-  <div className={`group flex items-start gap-4 p-4 rounded-xl border border-border/50 hover:border-${colorClass}/30 hover:bg-${colorClass}/5 transition-all duration-300`}>
-      <div className={`w-10 h-10 bg-${colorClass}/10 rounded-lg flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform`}>
-        <Icon className={`w-5 h-5 text-${colorClass}`} strokeWidth={1.5} />
+  const FeatureCard = ({ icon: Icon, title, desc, colorClass }: {icon: typeof Thermometer;title: string;desc: string;colorClass: string;}) => {
+    const isPrimary = colorClass === "primary";
+    return (
+      <div className={`group flex items-start gap-4 p-4 rounded-xl border border-border/50 border-l-[3px] transition-all duration-300 ${isPrimary ? "border-l-primary hover:border-primary/30 hover:bg-primary/5" : "border-l-accent hover:border-accent/30 hover:bg-accent/5"}`}>
+        <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform ${isPrimary ? "bg-primary/10" : "bg-accent/10"}`}>
+          <Icon className={`w-5 h-5 ${isPrimary ? "text-primary" : "text-accent"}`} strokeWidth={1.5} />
+        </div>
+        <div className="min-w-0">
+          <p className="font-semibold text-foreground text-sm">{title}</p>
+          <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">{desc}</p>
+        </div>
       </div>
-      <div className="min-w-0">
-        <p className="font-medium text-foreground text-sm">{title}</p>
-        <p className="text-xs text-muted-foreground mt-0.5">{desc}</p>
-      </div>
-    </div>;
+    );
+  };
 
 
   return (
-    <section id="features" className="section-padding bg-muted/20 dark:bg-muted/10">
-      <div className="container-custom px-3 sm:px-4">
+    <section id="features" className="section-padding bg-muted/20 dark:bg-muted/10 relative overflow-hidden">
+      {/* Decorative gradient orbs */}
+      <div className="absolute -top-40 -left-40 w-80 h-80 bg-primary/8 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-40 -right-40 w-80 h-80 bg-accent/8 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="container-custom px-3 sm:px-4 relative z-10">
         <div className="text-center mb-10 md:mb-14">
-          
-
-
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">
             {t("features.title")} <span className="text-gradient">{t("features.titleHighlight")}</span>
           </h2>
@@ -75,17 +80,27 @@ const FeatureTabs = () => {
             <TabsTrigger
               key={tab.id}
               value={tab.id}
-              className="relative data-[state=active]:bg-foreground data-[state=active]:text-background data-[state=inactive]:bg-background px-4 sm:px-5 py-2.5 rounded-full border border-border/50 data-[state=inactive]:hover:border-primary/30 transition-all duration-300 text-xs sm:text-sm font-medium">
+              className="relative overflow-hidden data-[state=active]:bg-foreground data-[state=active]:text-background data-[state=inactive]:bg-background px-4 sm:px-5 py-2.5 rounded-full border border-border/50 data-[state=active]:border-foreground data-[state=inactive]:hover:border-primary/30 transition-all duration-300 text-xs sm:text-sm font-medium">
 
                 <tab.icon className="w-4 h-4 mr-2" strokeWidth={1.5} />
                 {t(tab.labelKey)}
+                {activeTab === tab.id && (
+                  <span
+                    key={`progress-${activeTab}`}
+                    className="absolute bottom-0 left-0 h-[2px] w-full bg-gradient-to-r from-primary to-accent rounded-full origin-left"
+                    style={{
+                      animation: isPaused ? 'none' : 'tab-progress 5s linear forwards',
+                      transform: isPaused ? 'scaleX(1)' : undefined,
+                    }}
+                  />
+                )}
               </TabsTrigger>
             )}
           </TabsList>
 
           {/* App Tab */}
           <TabsContent value="app" className="animate-fade-in">
-            <div className="bg-background rounded-2xl sm:rounded-3xl p-6 sm:p-10 md:p-12 border border-border/50 shadow-sm">
+            <div className="bg-background rounded-2xl sm:rounded-3xl p-6 sm:p-10 md:p-12 border border-border/50 shadow-sm ring-1 ring-primary/5">
               <div className="grid lg:grid-cols-2 gap-8 lg:gap-14 items-center">
                 <div className="space-y-6">
                   <div>
@@ -112,8 +127,11 @@ const FeatureTabs = () => {
                     <div className="absolute -inset-8 bg-gradient-to-r from-primary/10 to-accent/10 rounded-full blur-3xl opacity-60" />
                     <img
                       src={appMobileImage}
-                      alt="App DiraSmart"
-                      className="relative w-auto h-[320px] sm:h-[380px] object-contain" />
+                      alt="DiraSmart mobile app showing smart home controls"
+                      className="relative w-auto h-[320px] sm:h-[380px] object-contain"
+                      width={300}
+                      height={380}
+                      loading="lazy" />
 
                   </div>
                 </div>
@@ -123,7 +141,7 @@ const FeatureTabs = () => {
 
           {/* Shabbat Tab */}
           <TabsContent value="shabbat" className="animate-fade-in">
-            <div className="bg-background rounded-2xl sm:rounded-3xl p-6 sm:p-10 md:p-12 border border-border/50 shadow-sm">
+            <div className="bg-background rounded-2xl sm:rounded-3xl p-6 sm:p-10 md:p-12 border border-border/50 shadow-sm ring-1 ring-primary/5">
               <div className="grid lg:grid-cols-2 gap-8 lg:gap-14 items-center">
                 <div className="space-y-6">
                   <div>
@@ -150,8 +168,11 @@ const FeatureTabs = () => {
                     <div className="absolute -inset-8 bg-gradient-to-r from-accent/10 to-primary/10 rounded-full blur-3xl opacity-60" />
                     <img
                       src={shabatModeImage}
-                      alt="Modo Shabbat"
-                      className="relative w-auto h-[320px] sm:h-[380px] object-contain" />
+                      alt="DiraSmart Shabbat mode configuration screen"
+                      className="relative w-auto h-[320px] sm:h-[380px] object-contain"
+                      width={300}
+                      height={380}
+                      loading="lazy" />
 
                   </div>
                 </div>
@@ -161,7 +182,7 @@ const FeatureTabs = () => {
 
           {/* Automate Tab */}
           <TabsContent value="automate" className="animate-fade-in">
-            <div className="bg-background rounded-2xl sm:rounded-3xl p-6 sm:p-10 md:p-12 border border-border/50 shadow-sm">
+            <div className="bg-background rounded-2xl sm:rounded-3xl p-6 sm:p-10 md:p-12 border border-border/50 shadow-sm ring-1 ring-primary/5">
               <div className="grid lg:grid-cols-2 gap-8 lg:gap-14 items-center">
                 <div className="space-y-6">
                   <div>
@@ -188,8 +209,11 @@ const FeatureTabs = () => {
                     <div className="absolute -inset-8 bg-gradient-to-r from-primary/10 to-accent/10 rounded-full blur-3xl opacity-60" />
                     <img
                       src={automationsImage}
-                      alt="Automatizaciones"
-                      className="relative w-auto h-[320px] sm:h-[380px] object-contain rounded-xl" />
+                      alt="DiraSmart automation rules and scenes configuration"
+                      className="relative w-auto h-[320px] sm:h-[380px] object-contain rounded-xl"
+                      width={400}
+                      height={380}
+                      loading="lazy" />
 
                   </div>
                 </div>
@@ -199,7 +223,7 @@ const FeatureTabs = () => {
 
           {/* Devices Tab */}
           <TabsContent value="dispositivos" className="animate-fade-in">
-            <div className="bg-background rounded-2xl sm:rounded-3xl p-6 sm:p-10 md:p-12 border border-border/50 shadow-sm">
+            <div className="bg-background rounded-2xl sm:rounded-3xl p-6 sm:p-10 md:p-12 border border-border/50 shadow-sm ring-1 ring-primary/5">
               <div className="grid lg:grid-cols-2 gap-8 lg:gap-14 items-center">
                 <div className="space-y-6">
                   <div>
@@ -226,8 +250,11 @@ const FeatureTabs = () => {
                     <div className="absolute -inset-8 bg-gradient-to-r from-primary/10 to-accent/10 rounded-full blur-3xl opacity-40" />
                     <img
                       src={devicesMockup}
-                      alt="DiraSmart en todos tus dispositivos"
-                      className="relative w-auto max-h-[320px] sm:max-h-[380px] object-contain drop-shadow-2xl" />
+                      alt="DiraSmart compatible with phone, tablet and desktop"
+                      className="relative w-auto max-h-[320px] sm:max-h-[380px] object-contain drop-shadow-2xl"
+                      width={500}
+                      height={380}
+                      loading="lazy" />
 
                   </div>
                 </div>

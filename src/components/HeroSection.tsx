@@ -2,12 +2,11 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import ParticleBackground from "./ParticleBackground";
 import { useLanguage } from "@/contexts/LanguageContext";
-import appMobileImage from "@/assets/app-mobile.png";
 import appMobileImage2 from "@/assets/app-mobile-2.png";
 
 const HeroSection = () => {
   const [currentImage, setCurrentImage] = useState(0);
-  const images = [appMobileImage, appMobileImage2];
+  const images = ["/app-mobile.png", appMobileImage2];
   const { t } = useLanguage();
 
   useEffect(() => {
@@ -63,7 +62,7 @@ const HeroSection = () => {
               <Button
                 variant="outline"
                 size="lg"
-                className="border-primary text-primary hover:bg-primary/10 text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6"
+                className="border-primary bg-white/90 dark:bg-background text-primary hover:bg-primary/10 text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6"
                 onClick={() => {
                   const element = document.querySelector("#features");
                   element?.scrollIntoView({ behavior: "smooth" });
@@ -76,16 +75,16 @@ const HeroSection = () => {
             {/* Animated Stats */}
             <div className="flex flex-wrap gap-6 sm:gap-8 pt-4 justify-center lg:justify-start">
               <div className="text-center">
-                <p className="text-2xl sm:text-3xl font-bold text-primary">100%</p>
-                <p className="text-xs sm:text-sm text-muted-foreground">{t("hero.stat.local")}</p>
+                <p className="text-2xl sm:text-3xl font-bold text-primary">{t("hero.stat1.value")}</p>
+                <p className="text-xs sm:text-sm text-muted-foreground">{t("hero.stat1.label")}</p>
               </div>
               <div className="text-center">
-                <p className="text-2xl sm:text-3xl font-bold text-accent">0ms</p>
-                <p className="text-xs sm:text-sm text-muted-foreground">{t("hero.stat.latency")}</p>
+                <p className="text-2xl sm:text-3xl font-bold text-accent">{t("hero.stat2.value")}</p>
+                <p className="text-xs sm:text-sm text-muted-foreground">{t("hero.stat2.label")}</p>
               </div>
               <div className="text-center">
-                <p className="text-2xl sm:text-3xl font-bold text-primary">24/7</p>
-                <p className="text-xs sm:text-sm text-muted-foreground">{t("hero.stat.support")}</p>
+                <p className="text-2xl sm:text-3xl font-bold text-primary">{t("hero.stat3.value")}</p>
+                <p className="text-xs sm:text-sm text-muted-foreground">{t("hero.stat3.label")}</p>
               </div>
             </div>
           </div>
@@ -93,10 +92,14 @@ const HeroSection = () => {
           {/* Right Content - App Image */}
           <div className="relative flex justify-center animate-fade-in-right order-first lg:order-last">
             {images.map((img, index) => (
-              <img 
+              <img
                 key={index}
-                src={img} 
-                alt="DiraSmart App" 
+                src={img}
+                alt={`DiraSmart smart home mobile app interface ${index + 1}`}
+                width={384}
+                height={680}
+                loading={index === 0 ? 'eager' : 'lazy'}
+                fetchPriority={index === 0 ? 'high' : 'auto'}
                 className={`w-48 sm:w-64 md:w-80 lg:w-96 drop-shadow-2xl absolute transition-opacity duration-700 ${
                   index === currentImage ? 'opacity-100' : 'opacity-0'
                 }`}

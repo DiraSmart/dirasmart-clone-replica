@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run build:*)",
+      "Bash(npm install:*)",
+      "Bash(curl:*)",
+      "Bash(pkill:*)",
+      "Bash(npx wrangler:*)",
+      "WebFetch(domain:www.home-assistant.io)",
+      "WebFetch(domain:pagespeed.web.dev)",
+      "WebFetch(domain:www.googleapis.com)",
+      "Bash(python3:*)",
+      "Bash(identify:*)",
+      "Bash(magick identify:*)",
+      "Bash(ls:*)",
+      "Bash(test:*)",
+      "Bash(powershell -NoProfile -Command:*)",
+      "Bash(powershell -Command:*)",
+      "Bash(git add:*)"
+    ]
+  }
+}

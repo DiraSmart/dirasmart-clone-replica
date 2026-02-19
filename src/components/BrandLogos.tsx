@@ -1,4 +1,3 @@
-import { useEffect, useRef } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 // Brand logos
@@ -19,59 +18,52 @@ import hueLogo from "@/assets/brands/hue.png";
 import ecobeeLogo from "@/assets/brands/ecobee.png";
 import smartthingsLogo from "@/assets/brands/smartthings.png";
 import shellyLogo from "@/assets/brands/shelly.png";
-import bluetoothLogo from "@/assets/brands/bluetooth.jpg";
-import knxLogo from "@/assets/brands/knx.png";
-import wifiLogo from "@/assets/brands/wifi.png";
+import bluetoothLogo from "@/assets/brands/bluetooth.png";
+import wifiLogo from "@/assets/brands/wifi.svg";
 
 const BrandLogos = () => {
-  const scrollRef = useRef<HTMLDivElement>(null);
   const { t } = useLanguage();
 
   const brands = [
-  { name: "Alexa", logo: alexaLogo },
-  { name: "SmartThings", logo: smartthingsLogo },
-  { name: "Philips Hue", logo: hueLogo },
-  { name: "Tuya", logo: tuyaLogo },
-  { name: "Shelly", logo: shellyLogo },
-  { name: "Ecobee", logo: ecobeeLogo },
-  { name: "Sonos", logo: sonosLogo },
-  { name: "SwitchBot", logo: switchbotLogo },
-  { name: "Yale", logo: yaleLogo },
-  { name: "LG", logo: lgLogo },
-  { name: "Hikvision", logo: hikvisionLogo },
-  { name: "Somfy", logo: somfyLogo },
-  { name: "Tesla", logo: teslaLogo },
-  { name: "TP-Link", logo: tplinkLogo },
-  { name: "UniFi", logo: unifiLogo }];
-
+    { name: "Alexa", logo: alexaLogo },
+    { name: "SmartThings", logo: smartthingsLogo },
+    { name: "Philips Hue", logo: hueLogo },
+    { name: "Tuya", logo: tuyaLogo },
+    { name: "Shelly", logo: shellyLogo },
+    { name: "Ecobee", logo: ecobeeLogo },
+    { name: "Sonos", logo: sonosLogo },
+    { name: "SwitchBot", logo: switchbotLogo },
+    { name: "Yale", logo: yaleLogo },
+    { name: "LG", logo: lgLogo },
+    { name: "Hikvision", logo: hikvisionLogo },
+    { name: "Somfy", logo: somfyLogo },
+    { name: "Tesla", logo: teslaLogo },
+    { name: "TP-Link", logo: tplinkLogo },
+    { name: "UniFi", logo: unifiLogo },
+  ];
 
   const protocols = [
-  { name: "WiFi", logo: wifiLogo },
-  { name: "Zigbee", logo: zigbeeLogo },
-  { name: "Z-Wave", logo: zwaveLogo },
-  { name: "Bluetooth", logo: bluetoothLogo }];
+    { name: "WiFi", logo: wifiLogo },
+    { name: "Zigbee", logo: zigbeeLogo },
+    { name: "Z-Wave", logo: zwaveLogo },
+    { name: "Bluetooth", logo: bluetoothLogo },
+  ];
 
+  const row1 = brands.slice(0, 8);
+  const row2 = brands.slice(8);
 
-  useEffect(() => {
-    const scrollContainer = scrollRef.current;
-    if (!scrollContainer) return;
-
-    let animationId: number;
-    let scrollPosition = 0;
-
-    const animate = () => {
-      scrollPosition += 0.5;
-      if (scrollPosition >= scrollContainer.scrollWidth / 2) {
-        scrollPosition = 0;
-      }
-      scrollContainer.scrollLeft = scrollPosition;
-      animationId = requestAnimationFrame(animate);
-    };
-
-    animationId = requestAnimationFrame(animate);
-
-    return () => cancelAnimationFrame(animationId);
-  }, []);
+  const BrandCard = ({ brand }: { brand: { name: string; logo: string } }) => (
+    <div className="flex-shrink-0 bg-background dark:bg-muted/30 rounded-lg sm:rounded-xl p-2 sm:p-4 flex items-center justify-center shadow-card border border-border/50 min-w-[72px] sm:min-w-[110px] h-[48px] sm:h-[72px]">
+      <img
+        src={brand.logo}
+        alt={brand.name}
+        className="h-5 sm:h-9 w-auto object-contain dark:brightness-0 dark:invert"
+        width={80}
+        height={36}
+        loading="lazy"
+      />
+    </div>
+  );
 
   return (
     <section className="section-padding bg-muted/30 dark:bg-muted/10 overflow-hidden relative">
@@ -79,9 +71,6 @@ const BrandLogos = () => {
       <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
       <div className="container-custom">
         <div className="text-center mb-12">
-          
-
-
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-5 leading-tight">
             {t("brands.title")} <span className="text-gradient">{t("brands.titleHighlight")}</span>
           </h2>
@@ -90,42 +79,23 @@ const BrandLogos = () => {
           </p>
         </div>
 
-        {/* Brands Carousel - 2 rows */}
-        <div className="mb-8 -mx-4 md:-mx-8">
-          <div
-            ref={scrollRef}
-            className="flex flex-col gap-4 overflow-hidden px-4"
-            style={{ scrollBehavior: 'auto' }}>
-
-            {/* Row 1 */}
-            <div className="flex gap-3">
-              {[...brands.slice(0, 8), ...brands.slice(0, 8)].map((brand, index) =>
-              <div
-                key={`row1-${brand.name}-${index}`}
-                className="flex-shrink-0 bg-white rounded-xl p-3 flex items-center justify-center shadow-card hover:shadow-card-hover transition-all hover:-translate-y-0.5 border border-border min-w-[80px] h-[64px]">
-
-                  <img
-                  src={brand.logo}
-                  alt={brand.name}
-                  className="h-7 w-auto object-contain" />
-
-                </div>
-              )}
+        {/* Brands Carousel - 2 rows with CSS animation */}
+        <div className="mb-8 -mx-4 md:-mx-8 space-y-2 sm:space-y-4">
+          {/* Row 1 - scrolls left */}
+          <div className="overflow-hidden">
+            <div className="flex gap-2 sm:gap-4 animate-scroll-left hover:[animation-play-state:paused]" style={{ width: 'max-content' }}>
+              {[...row1, ...row1, ...row1, ...row1].map((brand, index) => (
+                <BrandCard key={`r1-${brand.name}-${index}`} brand={brand} />
+              ))}
             </div>
-            {/* Row 2 */}
-            <div className="flex gap-3" style={{ marginLeft: '-40px' }}>
-              {[...brands.slice(8), ...brands.slice(8)].map((brand, index) =>
-              <div
-                key={`row2-${brand.name}-${index}`}
-                className="flex-shrink-0 bg-white rounded-xl p-3 flex items-center justify-center shadow-card hover:shadow-card-hover transition-all hover:-translate-y-0.5 border border-border min-w-[80px] h-[64px]">
+          </div>
 
-                  <img
-                  src={brand.logo}
-                  alt={brand.name}
-                  className="h-7 w-auto object-contain" />
-
-                </div>
-              )}
+          {/* Row 2 - scrolls left */}
+          <div className="overflow-hidden">
+            <div className="flex gap-2 sm:gap-4 animate-scroll-left hover:[animation-play-state:paused]" style={{ width: 'max-content' }}>
+              {[...row2, ...row2, ...row2, ...row2].map((brand, index) => (
+                <BrandCard key={`r2-${brand.name}-${index}`} brand={brand} />
+              ))}
             </div>
           </div>
         </div>
@@ -134,23 +104,26 @@ const BrandLogos = () => {
         <div>
           <h3 className="text-center text-lg font-semibold text-muted-foreground mb-6">{t("brands.protocols")}</h3>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto">
-            {protocols.map((protocol) =>
-            <div
-              key={protocol.name}
-              className="bg-white rounded-xl p-4 flex items-center justify-center border border-border shadow-lg hover:shadow-xl transition-all hover:-translate-y-1">
-
+            {protocols.map((protocol) => (
+              <div
+                key={protocol.name}
+                className="bg-background dark:bg-muted/30 rounded-xl p-4 flex items-center justify-center border border-border/50 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
+              >
                 <img
-                src={protocol.logo}
-                alt={protocol.name}
-                className="h-8 sm:h-10 w-auto object-contain" />
-
+                  src={protocol.logo}
+                  alt={protocol.name}
+                  className="h-8 sm:h-10 w-auto object-contain dark:brightness-0 dark:invert"
+                  width={80}
+                  height={40}
+                  loading="lazy"
+                />
               </div>
-            )}
+            ))}
           </div>
         </div>
       </div>
-    </section>);
-
+    </section>
+  );
 };
 
 export default BrandLogos;

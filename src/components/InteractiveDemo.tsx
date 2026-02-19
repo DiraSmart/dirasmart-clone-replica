@@ -27,6 +27,7 @@ const InteractiveDemo = () => {
   const [lightOn, setLightOn] = useState(true);
   const [brightness, setBrightness] = useState(75);
   const [blindsLevel, setBlindsLevel] = useState(70);
+  const [blindsTarget, setBlindsTarget] = useState(70);
   const [isAnimating, setIsAnimating] = useState(false);
   const [animationDirection, setAnimationDirection] = useState<'up' | 'down' | null>(null);
   const animationRef = useRef<number | null>(null);
@@ -51,43 +52,61 @@ const InteractiveDemo = () => {
       cancelAnimationFrame(animationRef.current);
       animationRef.current = null;
     }
+    setBlindsTarget(blindsLevelRef.current);
     setIsAnimating(false);
     setAnimationDirection(null);
   };
 
-  const animateBlinds = (direction: 'up' | 'down') => {
-    if (isAnimating) return;
-    
+  const startBlindsAnimation = (targetLevel: number, sliderFollows: boolean) => {
+    if (animationRef.current) {
+      cancelAnimationFrame(animationRef.current);
+      animationRef.current = null;
+    }
+
+    if (!sliderFollows) {
+      setBlindsTarget(targetLevel);
+    }
+
+    const currentLevel = blindsLevelRef.current;
+    if (currentLevel === targetLevel) {
+      setIsAnimating(false);
+      setAnimationDirection(null);
+      return;
+    }
+
+    const direction = targetLevel > currentLevel ? 'up' : 'down';
     setIsAnimating(true);
     setAnimationDirection(direction);
-    
-    const targetLevel = direction === 'up' ? 100 : 0;
+
     const totalSteps = 100;
-    const duration = 8000; // 8 seconds
+    const duration = 8000;
     const stepDuration = duration / totalSteps;
     let lastTime = performance.now();
     let accumulated = 0;
-    
+
     const animate = (currentTime: number) => {
       const deltaTime = currentTime - lastTime;
       accumulated += deltaTime;
       lastTime = currentTime;
-      
+
       if (accumulated >= stepDuration) {
         const steps = Math.floor(accumulated / stepDuration);
         accumulated = accumulated % stepDuration;
-        
-        const currentLevel = blindsLevelRef.current;
+
+        const level = blindsLevelRef.current;
         let newLevel: number;
-        
+
         if (direction === 'up') {
-          newLevel = Math.min(currentLevel + steps, targetLevel);
+          newLevel = Math.min(level + steps, targetLevel);
         } else {
-          newLevel = Math.max(currentLevel - steps, targetLevel);
+          newLevel = Math.max(level - steps, targetLevel);
         }
-        
+
         setBlindsLevel(newLevel);
-        
+        if (sliderFollows) {
+          setBlindsTarget(newLevel);
+        }
+
         if (newLevel === targetLevel) {
           setIsAnimating(false);
           setAnimationDirection(null);
@@ -95,16 +114,20 @@ const InteractiveDemo = () => {
           return;
         }
       }
-      
+
       animationRef.current = requestAnimationFrame(animate);
     };
-    
+
     animationRef.current = requestAnimationFrame(animate);
   };
 
+  const animateBlinds = (direction: 'up' | 'down') => {
+    if (isAnimating) return;
+    startBlindsAnimation(direction === 'up' ? 100 : 0, true);
+  };
+
   const setBlindsPercentage = (value: number[]) => {
-    stopBlinds();
-    setBlindsLevel(value[0]);
+    startBlindsAnimation(value[0], false);
   };
 
   const toggleLight = () => {
@@ -179,8 +202,9 @@ const InteractiveDemo = () => {
   };
 
   const getBlindsStatus = () => {
-    if (blindsLevel === 0) return t("demo.blinds.closed");
-    if (blindsLevel === 100) return t("demo.blinds.open");
+    if (blindsTarget === 0 && blindsLevel === 0) return t("demo.blinds.closed");
+    if (blindsTarget === 100 && blindsLevel === 100) return t("demo.blinds.open");
+    if (isAnimating) return `${t("demo.blinds.partial")} · ${blindsLevel}% → ${blindsTarget}%`;
     return `${t("demo.blinds.partial")} · ${blindsLevel}%`;
   };
 
@@ -230,18 +254,20 @@ const InteractiveDemo = () => {
               <div className="flex flex-col items-center gap-2">
                 <span className="text-muted-foreground text-sm">{t("demo.target")}</span>
                 <div className="flex items-center gap-3">
-                  <button 
+                  <button
                     className="h-10 w-10 rounded-xl bg-muted hover:bg-muted/80 flex items-center justify-center text-foreground font-bold transition-colors disabled:opacity-40 text-xl"
                     onClick={() => setAcTemp(Math.max(16, acTemp - 1))}
                     disabled={acMode === 'off'}
+                    aria-label="Decrease temperature"
                   >
                     -
                   </button>
                   <span className="text-4xl font-bold text-primary min-w-[80px] text-center">{acTemp}°C</span>
-                  <button 
+                  <button
                     className="h-10 w-10 rounded-xl bg-muted hover:bg-muted/80 flex items-center justify-center text-foreground font-bold transition-colors disabled:opacity-40 text-xl"
                     onClick={() => setAcTemp(Math.min(30, acTemp + 1))}
                     disabled={acMode === 'off'}
+                    aria-label="Increase temperature"
                   >
                     +
                   </button>
@@ -253,29 +279,32 @@ const InteractiveDemo = () => {
             <div className="flex gap-2 mb-4">
               <button
                 onClick={() => setACMode('off')}
+                aria-label="AC mode: Off"
                 className={`flex-1 flex flex-col items-center gap-1 py-3 px-3 rounded-lg border transition-all ${
                   acMode === 'off' ? 'bg-muted border-muted-foreground/30' : 'bg-card border-border hover:bg-muted/50'
                 }`}
               >
-                <Power className="w-5 h-5" />
+                <Power className="w-5 h-5" aria-hidden="true" />
                 <span className="text-xs">off</span>
               </button>
               <button
                 onClick={() => setACMode('cool')}
+                aria-label="AC mode: Cool"
                 className={`flex-1 flex flex-col items-center gap-1 py-3 px-3 rounded-lg border transition-all ${
                   acMode === 'cool' ? 'bg-primary text-primary-foreground border-primary' : 'bg-card border-border hover:bg-muted/50'
                 }`}
               >
-                <Snowflake className="w-5 h-5" />
+                <Snowflake className="w-5 h-5" aria-hidden="true" />
                 <span className="text-xs">cool</span>
               </button>
               <button
                 onClick={() => setACMode('dry')}
+                aria-label="AC mode: Dry"
                 className={`flex-1 flex flex-col items-center gap-1 py-3 px-3 rounded-lg border transition-all ${
                   acMode === 'dry' ? 'bg-orange-500 text-white border-orange-500' : 'bg-card border-border hover:bg-muted/50'
                 }`}
               >
-                <Droplets className="w-5 h-5" />
+                <Droplets className="w-5 h-5" aria-hidden="true" />
                 <span className="text-xs">dry</span>
               </button>
             </div>
@@ -300,7 +329,7 @@ const InteractiveDemo = () => {
             </div>
           </div>
 
-          {/* Lights Control - Light Bulb */}
+          {/* Lights Control - Ceiling Lamp */}
           <div className="bg-card rounded-2xl p-6 border border-accent/20 hover:border-accent/40 transition-all shadow-card hover:shadow-card-hover flex flex-col">
             <div className="flex items-center gap-3 mb-6">
             <div className={`p-3 rounded-xl transition-colors ${lightOn ? 'bg-amber-500' : 'bg-muted'}`}>
@@ -314,64 +343,89 @@ const InteractiveDemo = () => {
               </div>
             </div>
 
-            {/* Light Bulb */}
-            <div className="relative flex justify-center flex-grow items-center py-4">
-              <div className="relative">
-                {/* Glow effect */}
+            {/* Ceiling Lamp */}
+            <div className="relative flex justify-center flex-grow items-start pt-0 pb-4 overflow-hidden min-h-[220px]">
+              <svg width="200" height="220" viewBox="0 0 200 220" className="relative z-10" role="img" aria-label="Ceiling lamp visualization">
+                <defs>
+                  {/* Lamp shade metallic gradient */}
+                  <linearGradient id="shadeOuter" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stopColor="#78716c" />
+                    <stop offset="30%" stopColor="#57534e" />
+                    <stop offset="60%" stopColor="#44403c" />
+                    <stop offset="100%" stopColor="#292524" />
+                  </linearGradient>
+                  {/* Shade highlight for 3D effect */}
+                  <linearGradient id="shadeHighlight" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="rgba(255,255,255,0.15)" />
+                    <stop offset="100%" stopColor="rgba(0,0,0,0)" />
+                  </linearGradient>
+                  {/* Inner shade warm reflection */}
+                  <radialGradient id="shadeInner" cx="50%" cy="0%" r="100%">
+                    <stop offset="0%" stopColor={lightOn ? `rgba(253, 224, 71, ${brightness / 150})` : 'rgba(100,100,100,0.3)'} />
+                    <stop offset="100%" stopColor={lightOn ? `rgba(180, 120, 20, ${brightness / 300})` : 'rgba(60,60,60,0.2)'} />
+                  </radialGradient>
+                  {/* Light cone gradient */}
+                  <linearGradient id="lightCone" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor={lightOn ? `rgba(253, 224, 71, ${brightness / 200})` : 'transparent'} />
+                    <stop offset="40%" stopColor={lightOn ? `rgba(253, 224, 71, ${brightness / 400})` : 'transparent'} />
+                    <stop offset="100%" stopColor="transparent" />
+                  </linearGradient>
+                </defs>
+
+                {/* Ceiling plate */}
+                <ellipse cx="100" cy="4" rx="18" ry="4" fill="#57534e" stroke="#44403c" strokeWidth="1" />
+                <rect x="86" y="0" width="28" height="4" fill="#57534e" />
+
+                {/* Cable/rod */}
+                <line x1="100" y1="8" x2="100" y2="45" stroke="#78716c" strokeWidth="2.5" />
+
+                {/* Lamp shade - smooth bell/dome shape */}
+                <path
+                  d="M100 45 C100 45, 97 48, 96 52 C94 58, 80 62, 62 72 C56 75, 52 80, 52 84 L148 84 C148 80, 144 75, 138 72 C120 62, 106 58, 104 52 C103 48, 100 45, 100 45 Z"
+                  fill="url(#shadeOuter)"
+                  stroke="#44403c"
+                  strokeWidth="1"
+                />
+                {/* Shade highlight strip for realism */}
+                <path
+                  d="M100 46 C98 49, 96 53, 82 63 C74 68, 66 73, 60 78 L66 78 C72 73, 80 68, 88 63 C98 55, 99 50, 100 46 Z"
+                  fill="url(#shadeHighlight)"
+                  opacity="0.6"
+                />
+
+                {/* Shade bottom rim */}
+                <ellipse cx="100" cy="84" rx="48" ry="5" fill="#44403c" stroke="#3f3f46" strokeWidth="0.5" />
+
+                {/* Inner shade visible surface */}
+                <ellipse cx="100" cy="83" rx="44" ry="4" fill="url(#shadeInner)" className="transition-all duration-300" />
+
+                {/* Light cone - trapezoid using SVG polygon with gradient */}
                 {lightOn && (
-                  <div 
-                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl transition-all duration-500 pointer-events-none"
-                    style={{
-                      width: `${80 + brightness}px`,
-                      height: `${80 + brightness}px`,
-                      background: `radial-gradient(circle, rgba(253, 224, 71, ${brightness / 120}) 0%, transparent 70%)`,
-                    }}
+                  <polygon
+                    points={`${100 - 42} 88, ${100 + 42} 88, ${100 + 30 + brightness * 0.4} 218, ${100 - 30 - brightness * 0.4} 218`}
+                    fill="url(#lightCone)"
+                    className="transition-all duration-500"
                   />
                 )}
-                
-                {/* Bulb SVG */}
-                <svg width="80" height="115" viewBox="0 0 80 115" className="relative z-10">
-                  <defs>
-                    {/* Dynamic gradient based on brightness */}
-                    <radialGradient id="bulbGlowDynamic" cx="50%" cy="35%" r="55%">
-                      <stop offset="0%" stopColor={lightOn ? `rgba(255, 255, 255, ${0.5 + brightness / 200})` : '#e5e7eb'} />
-                      <stop offset="35%" stopColor={lightOn ? `rgba(254, 249, 195, ${brightness / 100})` : '#d1d5db'} />
-                      <stop offset="100%" stopColor={lightOn ? `rgba(250, 204, 21, ${0.4 + brightness / 166})` : '#9ca3af'} />
-                    </radialGradient>
-                  </defs>
-                  
-                  {/* Bulb body - round top with narrowing bottom */}
-                  <path 
-                    d="M40 5 C65 5, 77 25, 77 48 C77 71, 60 82, 52 87 L28 87 C20 82, 3 71, 3 48 C3 25, 15 5, 40 5 Z"
-                    fill="url(#bulbGlowDynamic)"
-                    stroke="#4b5563"
-                    strokeWidth="2"
-                    className="transition-all duration-300"
+
+                {/* Warm spot directly under lamp */}
+                {lightOn && (
+                  <ellipse cx="100" cy="210" rx={20 + brightness * 0.3} ry="6"
+                    fill={`rgba(253, 224, 71, ${brightness / 500})`}
+                    className="transition-all duration-500"
                   />
-                  
-                  {/* Screw base */}
-                  <g>
-                    {/* Top collar */}
-                    <rect x="26" y="87" width="28" height="5" fill="#9ca3af" stroke="#4b5563" strokeWidth="1" />
-                    {/* Screw threads */}
-                    <rect x="28" y="92" width="24" height="4" fill="#71717a" stroke="#4b5563" strokeWidth="1" />
-                    <rect x="28" y="96" width="24" height="4" fill="#a1a1aa" stroke="#4b5563" strokeWidth="1" />
-                    <rect x="29" y="100" width="22" height="4" fill="#71717a" stroke="#4b5563" strokeWidth="1" />
-                    <rect x="30" y="104" width="20" height="4" fill="#a1a1aa" stroke="#4b5563" strokeWidth="1" />
-                    {/* Bottom tip */}
-                    <path d="M32 108 L32 112 Q40 116 48 112 L48 108 Z" fill="#52525b" stroke="#4b5563" strokeWidth="1" />
-                  </g>
-                </svg>
-              </div>
+                )}
+              </svg>
             </div>
 
             {/* Power toggle */}
             <div className="flex justify-center mb-6">
               <button
                 onClick={toggleLight}
+                aria-label={lightOn ? "Turn off light" : "Turn on light"}
                 className={`p-4 rounded-full transition-all ${
-                  lightOn 
-                    ? 'bg-amber-500 text-white shadow-[0_0_20px_rgba(251,191,36,0.5)]' 
+                  lightOn
+                    ? 'bg-amber-500 text-white shadow-[0_0_20px_rgba(251,191,36,0.5)]'
                     : 'bg-muted text-muted-foreground hover:bg-muted/80'
                 }`}
               >
@@ -391,7 +445,7 @@ const InteractiveDemo = () => {
                 min={10}
                 max={100}
                 step={1}
-                disabled={!lightOn}
+                aria-label="Light brightness intensity"
                 className="[&_[role=slider]]:bg-amber-400 [&_[role=slider]]:border-amber-500 [&_[role=slider]]:shadow-[0_0_10px_rgba(251,191,36,0.5)] [&_.relative]:bg-muted [&_[data-orientation=horizontal]>.absolute]:bg-gradient-to-r [&_[data-orientation=horizontal]>.absolute]:from-amber-400 [&_[data-orientation=horizontal]>.absolute]:to-amber-300"
               />
             </div>
@@ -442,9 +496,9 @@ const InteractiveDemo = () => {
               >
                 {/* Create fixed number of slats that fill the container */}
                 {Array.from({ length: 12 }).map((_, i) => (
-                  <div 
-                    key={i} 
-                    className="h-[8.33%] bg-gradient-to-b from-slate-300 to-slate-400 border-b border-slate-500/50 shadow-sm"
+                  <div
+                    key={i}
+                    className="h-[8.33%] bg-gradient-to-b from-slate-300/80 to-slate-400/80 border-b border-slate-500/30 backdrop-blur-[1px]"
                   />
                 ))}
               </div>
@@ -455,6 +509,7 @@ const InteractiveDemo = () => {
               <button
                 onClick={() => animateBlinds('up')}
                 disabled={isAnimating && animationDirection !== 'up'}
+                aria-label="Open blinds"
                 className={`p-3 rounded-xl transition-all ${
                   animationDirection === 'up'
                     ? 'bg-primary text-primary-foreground'
@@ -466,6 +521,7 @@ const InteractiveDemo = () => {
               <button
                 onClick={stopBlinds}
                 disabled={!isAnimating}
+                aria-label="Stop blinds"
                 className="p-3 rounded-xl bg-muted hover:bg-muted/80 text-foreground disabled:opacity-40 transition-all"
               >
                 <Square className="w-5 h-5" />
@@ -473,6 +529,7 @@ const InteractiveDemo = () => {
               <button
                 onClick={() => animateBlinds('down')}
                 disabled={isAnimating && animationDirection !== 'down'}
+                aria-label="Close blinds"
                 className={`p-3 rounded-xl transition-all ${
                   animationDirection === 'down'
                     ? 'bg-primary text-primary-foreground'
@@ -484,22 +541,28 @@ const InteractiveDemo = () => {
             </div>
 
             {/* Percentage slider */}
-            <div className="space-y-3">
-              <div className="flex justify-between text-sm">
-                <span className="text-muted-foreground">{t("demo.blinds.open")}</span>
-                <span className="font-medium text-foreground">{blindsLevel}%</span>
-              </div>
-              <Slider
-                value={[blindsLevel]}
-                onValueChange={setBlindsPercentage}
-                min={0}
-                max={100}
-                step={1}
-                disabled={isAnimating}
-                className="[&_[role=slider]]:bg-primary [&_[role=slider]]:border-primary [&_.relative]:bg-muted [&_[data-orientation=horizontal]>.absolute]:bg-gradient-to-r [&_[data-orientation=horizontal]>.absolute]:from-primary [&_[data-orientation=horizontal]>.absolute]:to-accent"
-              />
-            </div>
+            <Slider
+              value={[blindsTarget]}
+              onValueChange={setBlindsPercentage}
+              min={0}
+              max={100}
+              step={1}
+              aria-label="Blinds open percentage"
+              className="[&_[role=slider]]:bg-primary [&_[role=slider]]:border-primary [&_[role=slider]]:w-5 [&_[role=slider]]:h-5 [&_[role=slider]]:shadow-md [&_.relative]:bg-muted/60 [&_.relative]:h-2 [&_.relative]:rounded-full [&_[data-orientation=horizontal]>.absolute]:bg-gradient-to-r [&_[data-orientation=horizontal]>.absolute]:from-primary [&_[data-orientation=horizontal]>.absolute]:to-accent [&_[data-orientation=horizontal]>.absolute]:rounded-full"
+            />
           </div>
+        </div>
+
+        {/* CTA Button */}
+        <div className="text-center mt-8 md:mt-12">
+          <a
+            href={`https://wa.me/50765956439?text=${encodeURIComponent(t("demo.cta.message"))}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-primary to-accent text-white font-medium rounded-full hover:opacity-90 hover:scale-105 transition-all shadow-lg"
+          >
+            {t("demo.cta")}
+          </a>
         </div>
       </div>
     </section>

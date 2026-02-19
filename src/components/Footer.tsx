@@ -1,4 +1,5 @@
 import { Facebook, Instagram, Youtube, Mail, Phone, MapPin } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useTheme } from "next-themes";
 import dirasmartLogo from "@/assets/dirasmart-logo.png";
@@ -15,12 +16,17 @@ const Footer = () => {
     { icon: Youtube, href: "https://www.youtube.com/@DiraSmart", label: "YouTube" },
   ];
 
-  const navLinks = [
-    { label: "Inicio", href: "#home" },
-    { label: "Demo", href: "#demo" },
-    { label: "Características", href: "#features" },
-    { label: "Servicios", href: "#servicios" },
-    { label: "Testimonios", href: "#testimonios" },
+  const sectionLinks = [
+    { labelKey: "footer.nav.home", href: "#home" },
+    { labelKey: "footer.nav.demo", href: "#demo" },
+    { labelKey: "footer.nav.features", href: "#features" },
+    { labelKey: "footer.nav.services", href: "#servicios" },
+    { labelKey: "footer.nav.testimonials", href: "#testimonios" },
+  ];
+
+  const pageLinks = [
+    { labelKey: "footer.nav.about", href: "/about" },
+    { labelKey: "footer.nav.blog", href: "/blog" },
   ];
 
   return (
@@ -38,10 +44,10 @@ const Footer = () => {
               <img
                 src={dirasmartLogo}
                 alt="DiraSmart Logo"
-                className="h-9 sm:h-10"
+                className="h-12 sm:h-14 w-auto"
               />
             </a>
-            <p className="text-sm text-white/50 leading-relaxed max-w-xs">
+            <p className="text-sm text-white/60 leading-relaxed max-w-xs">
               {t("footer.description")}
             </p>
             <div className="flex gap-3">
@@ -60,18 +66,28 @@ const Footer = () => {
 
           {/* Nav links */}
           <div className="space-y-4">
-            <h4 className="text-sm font-semibold text-white/80 uppercase tracking-widest">
-              Navegación
-            </h4>
+            <p className="text-sm font-semibold text-white/80 uppercase tracking-widest">
+              {t("footer.nav")}
+            </p>
             <ul className="space-y-2.5">
-              {navLinks.map((link) => (
-                <li key={link.label}>
+              {sectionLinks.map((link) => (
+                <li key={link.labelKey}>
                   <a
                     href={link.href}
-                    className="text-sm text-white/40 hover:text-white transition-colors"
+                    className="text-sm text-white/60 hover:text-white transition-colors"
                   >
-                    {link.label}
+                    {t(link.labelKey)}
                   </a>
+                </li>
+              ))}
+              {pageLinks.map((link) => (
+                <li key={link.labelKey}>
+                  <Link
+                    to={link.href}
+                    className="text-sm text-white/60 hover:text-white transition-colors"
+                  >
+                    {t(link.labelKey)}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -79,19 +95,19 @@ const Footer = () => {
 
           {/* Contact */}
           <div className="space-y-4">
-            <h4 className="text-sm font-semibold text-white/80 uppercase tracking-widest">
-              Contacto
-            </h4>
+            <p className="text-sm font-semibold text-white/80 uppercase tracking-widest">
+              {t("footer.contact")}
+            </p>
             <ul className="space-y-3">
-              <li className="flex items-center gap-3 text-sm text-white/40">
+              <li className="flex items-center gap-3 text-sm text-white/60">
                 <Mail className="w-4 h-4 text-primary shrink-0" strokeWidth={1.5} />
                 <span>info@dirasmart.com</span>
               </li>
-              <li className="flex items-center gap-3 text-sm text-white/40">
+              <li className="flex items-center gap-3 text-sm text-white/60">
                 <Phone className="w-4 h-4 text-primary shrink-0" strokeWidth={1.5} />
                 <span>+507 6595-6439</span>
               </li>
-              <li className="flex items-center gap-3 text-sm text-white/40">
+              <li className="flex items-center gap-3 text-sm text-white/60">
                 <MapPin className="w-4 h-4 text-primary shrink-0" strokeWidth={1.5} />
                 <span>Panama City, Panama</span>
               </li>
@@ -99,9 +115,9 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/30">
+        <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/50">
           <p>© {currentYear} DiraSmart. {t("footer.rights")}.</p>
-          <p>Hecho con ❤️ en Panamá</p>
+          <p>{t("footer.madeWith")}</p>
         </div>
       </div>
     </footer>
