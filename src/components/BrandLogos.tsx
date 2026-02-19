@@ -25,39 +25,39 @@ const BrandLogos = () => {
   const { t } = useLanguage();
 
   const brands = [
-    { name: "Alexa", logo: alexaLogo, dark: true },
-    { name: "SmartThings", logo: smartthingsLogo, dark: true },
-    { name: "Philips Hue", logo: hueLogo, dark: false },
-    { name: "Tuya", logo: tuyaLogo, dark: false },
-    { name: "Shelly", logo: shellyLogo, dark: false },
-    { name: "Ecobee", logo: ecobeeLogo, dark: true },
-    { name: "Sonos", logo: sonosLogo, dark: true },
-    { name: "SwitchBot", logo: switchbotLogo, dark: false },
-    { name: "Yale", logo: yaleLogo, dark: true },
-    { name: "LG", logo: lgLogo, dark: true },
-    { name: "Hikvision", logo: hikvisionLogo, dark: true },
-    { name: "Somfy", logo: somfyLogo, dark: true },
-    { name: "Tesla", logo: teslaLogo, dark: true },
-    { name: "TP-Link", logo: tplinkLogo, dark: true },
-    { name: "UniFi", logo: unifiLogo, dark: true },
+    { name: "Alexa", logo: alexaLogo },
+    { name: "SmartThings", logo: smartthingsLogo },
+    { name: "Philips Hue", logo: hueLogo },
+    { name: "Tuya", logo: tuyaLogo },
+    { name: "Shelly", logo: shellyLogo },
+    { name: "Ecobee", logo: ecobeeLogo },
+    { name: "Sonos", logo: sonosLogo },
+    { name: "SwitchBot", logo: switchbotLogo },
+    { name: "Yale", logo: yaleLogo },
+    { name: "LG", logo: lgLogo },
+    { name: "Hikvision", logo: hikvisionLogo },
+    { name: "Somfy", logo: somfyLogo },
+    { name: "Tesla", logo: teslaLogo },
+    { name: "TP-Link", logo: tplinkLogo },
+    { name: "UniFi", logo: unifiLogo },
   ];
 
   const protocols = [
-    { name: "WiFi", logo: wifiLogo, dark: true },
-    { name: "Zigbee", logo: zigbeeLogo, dark: false },
-    { name: "Z-Wave", logo: zwaveLogo, dark: false },
-    { name: "Bluetooth", logo: bluetoothLogo, dark: false },
+    { name: "WiFi", logo: wifiLogo },
+    { name: "Zigbee", logo: zigbeeLogo },
+    { name: "Z-Wave", logo: zwaveLogo },
+    { name: "Bluetooth", logo: bluetoothLogo },
   ];
 
   const row1 = brands.slice(0, 8);
   const row2 = brands.slice(8);
 
-  const BrandCard = ({ brand }: { brand: { name: string; logo: string; dark: boolean } }) => (
-    <div className="flex-shrink-0 bg-background dark:bg-muted/30 rounded-lg sm:rounded-xl p-2 sm:p-4 flex items-center justify-center shadow-card border border-border/50 min-w-[72px] sm:min-w-[110px] h-[48px] sm:h-[72px]">
+  const BrandCard = ({ brand }: { brand: { name: string; logo: string } }) => (
+    <div className="flex-shrink-0 bg-background dark:bg-white/90 rounded-lg sm:rounded-xl p-2 sm:p-4 flex items-center justify-center shadow-card border border-border/50 min-w-[72px] sm:min-w-[110px] h-[48px] sm:h-[72px]">
       <img
         src={brand.logo}
         alt={brand.name}
-        className={`h-5 sm:h-9 w-auto object-contain ${brand.dark ? "dark:brightness-0 dark:invert" : ""}`}
+        className="h-5 sm:h-9 w-auto object-contain"
         width={80}
         height={36}
         loading="lazy"
@@ -107,12 +107,12 @@ const BrandLogos = () => {
             {protocols.map((protocol) => (
               <div
                 key={protocol.name}
-                className="bg-background dark:bg-muted/30 rounded-xl p-4 flex items-center justify-center border border-border/50 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
+                className="bg-background dark:bg-white/90 rounded-xl p-4 flex items-center justify-center border border-border/50 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
               >
                 <img
                   src={protocol.logo}
                   alt={protocol.name}
-                  className={`h-8 sm:h-10 w-auto object-contain ${protocol.dark ? "dark:brightness-0 dark:invert" : ""}`}
+                  className="h-8 sm:h-10 w-auto object-contain"
                   width={80}
                   height={40}
                   loading="lazy"
