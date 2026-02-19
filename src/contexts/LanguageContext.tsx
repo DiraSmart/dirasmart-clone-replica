@@ -44,10 +44,10 @@ const translations: Record<Language, Record<string, string>> = {
     // Infrastructure - NEW
     "infra.badge": "Base Sólida",
     "infra.title": "La Base de Todo:",
-    "infra.titleHighlight": "Red Profesional",
+    "infra.titleHighlight": "Una Robusta Red WiFi",
     "infra.description": "Antes de automatizar, realizamos un cableado estructurado profesional e instalamos una red WiFi empresarial con múltiples puntos de acceso. Esta infraestructura cableada garantiza que todas las antenas estén siempre activas, con cobertura total y máxima estabilidad.",
     "infra.cabling": "Cableado Estructurado",
-    "infra.enterprise": "WiFi Profesional",
+    "infra.enterprise": "Múltiples Puntos de Acceso",
     "infra.coverage": "Cobertura Total",
     "infra.stable": "Red Estable",
 
@@ -123,8 +123,8 @@ const translations: Record<Language, Record<string, string>> = {
     "features.automate.presenceDesc": "Activa escenas al llegar o salir de casa",
     "features.devices.badge": "Multiplataforma",
     "features.devices.title": "Todos Tus Dispositivos",
-    "features.devices.description": "Accede a tu hogar inteligente desde cualquier dispositivo: celular, tablet, PC y más.",
-    "features.devices.phone": "Celular",
+    "features.devices.description": "Accede a tu hogar inteligente desde cualquier dispositivo: smartphone, tablet, PC y más.",
+    "features.devices.phone": "Smartphone",
     "features.devices.phoneDesc": "App nativa para iOS y Android",
     "features.devices.tablet": "Tablet",
     "features.devices.tabletDesc": "Interfaz optimizada para pantallas grandes",
@@ -264,10 +264,10 @@ const translations: Record<Language, Record<string, string>> = {
     // Infrastructure - NEW
     "infra.badge": "Solid Foundation",
     "infra.title": "The Foundation:",
-    "infra.titleHighlight": "Professional Network",
+    "infra.titleHighlight": "A Robust WiFi Network",
     "infra.description": "Before automating, we install professional structured cabling and enterprise-grade WiFi with multiple access points. This wired infrastructure ensures all access points stay always active, with full coverage and maximum stability.",
     "infra.cabling": "Structured Cabling",
-    "infra.enterprise": "Professional WiFi",
+    "infra.enterprise": "Multiple Access Points",
     "infra.coverage": "Full Coverage",
     "infra.stable": "Stable Network",
 
