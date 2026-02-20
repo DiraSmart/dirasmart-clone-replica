@@ -53,7 +53,7 @@ const BrandLogos = () => {
   const row2 = brands.slice(8);
 
   const BrandCard = ({ brand }: { brand: { name: string; logo: string } }) => (
-    <div className="flex-shrink-0 bg-background dark:bg-white/90 rounded-lg sm:rounded-xl p-2 sm:p-4 flex items-center justify-center shadow-card border border-border/50 min-w-[72px] sm:min-w-[110px] h-[48px] sm:h-[72px]">
+    <div className="flex-shrink-0 bg-background dark:bg-slate-200 rounded-lg sm:rounded-xl p-2 sm:p-4 flex items-center justify-center shadow-card border border-border/50 min-w-[72px] sm:min-w-[110px] h-[48px] sm:h-[72px]">
       <img
         src={brand.logo}
         alt={brand.name}
@@ -107,7 +107,7 @@ const BrandLogos = () => {
             {protocols.map((protocol) => (
               <div
                 key={protocol.name}
-                className="bg-background dark:bg-white/90 rounded-xl p-4 flex items-center justify-center border border-border/50 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
+                className="bg-background dark:bg-slate-200 rounded-xl p-4 flex items-center justify-center border border-border/50 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
               >
                 <img
                   src={protocol.logo}
