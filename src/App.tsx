@@ -11,6 +11,7 @@ import About from "./pages/About";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import NotFound from "./pages/NotFound";
+import DynamicHead from "./components/DynamicHead";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +32,7 @@ const App = () => (
           <Sonner />
           <BrowserRouter>
             <ScrollToTop />
+            <DynamicHead />
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/about" element={<About />} />

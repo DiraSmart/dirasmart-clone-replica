@@ -2,6 +2,12 @@ export default {
   async fetch(request: Request, env: any): Promise<Response> {
     const url = new URL(request.url);
 
+    // Redirect workers.dev to main domain to avoid duplicate content
+    if (url.hostname.endsWith(".workers.dev")) {
+      const destination = new URL(url.pathname + url.search, "https://dirasmart.com");
+      return Response.redirect(destination.toString(), 301);
+    }
+
     // API routes
     if (url.pathname.startsWith("/api/")) {
       return Response.json({
