@@ -64,6 +64,9 @@ const BlogPost = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
+      <div className="pt-14 sm:pt-16 md:pt-20 pr-4 sm:pr-6 text-right">
+        <span className="text-foreground/70 font-serif text-sm select-none">בּ״ה</span>
+      </div>
       <main>
         {/* Hero */}
         <section className={`pt-24 pb-0 relative overflow-hidden`}>
