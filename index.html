@@ -12,9 +12,6 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-    <!-- Preload LCP image -->
-    <link rel="preload" as="image" href="/app-mobile.png" fetchpriority="high" />
-
     <!-- Preload critical resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -92,12 +89,7 @@
 
   <body>
     <script>try{var t=localStorage.getItem('theme');if(t==='dark'||(t!=='light'&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')}catch(e){}</script>
-    <div id="root">
-      <!-- Static hero shell for faster LCP - replaced by React on mount -->
-      <div style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#f0fdfa 0%,#e0f2fe 50%,#f0fdf4 100%)">
-        <img src="/app-mobile.png" alt="" width="384" height="680" fetchpriority="high" style="width:192px;height:auto;filter:drop-shadow(0 25px 25px rgba(0,0,0,.15))" />
-      </div>
-    </div>
+    <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
