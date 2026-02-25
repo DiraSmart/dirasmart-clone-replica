@@ -20,6 +20,14 @@ import smartthingsLogo from "@/assets/brands/smartthings.png";
 import shellyLogo from "@/assets/brands/shelly.png";
 import bluetoothLogo from "@/assets/brands/bluetooth.png";
 import wifiLogo from "@/assets/brands/wifi.svg";
+import knxLogo from "@/assets/brands/knx.png";
+import loraLogo from "@/assets/brands/lora.png";
+import modbusLogo from "@/assets/brands/modbus.png";
+import kasaLogo from "@/assets/brands/kasa.png";
+import tapoLogo from "@/assets/brands/tapo.png";
+import geLogo from "@/assets/brands/gel.png";
+import levitonLogo from "@/assets/brands/leviton.png";
+import lutronLogo from "@/assets/brands/lutron.png";
 
 const BrandLogos = () => {
   const { t } = useLanguage();
@@ -40,6 +48,11 @@ const BrandLogos = () => {
     { name: "Tesla", logo: teslaLogo },
     { name: "TP-Link", logo: tplinkLogo },
     { name: "UniFi", logo: unifiLogo },
+    { name: "Kasa", logo: kasaLogo },
+    { name: "Tapo", logo: tapoLogo },
+    { name: "GE", logo: geLogo },
+    { name: "Leviton", logo: levitonLogo },
+    { name: "Lutron", logo: lutronLogo },
   ];
 
   const protocols = [
@@ -47,10 +60,13 @@ const BrandLogos = () => {
     { name: "Zigbee", logo: zigbeeLogo },
     { name: "Z-Wave", logo: zwaveLogo },
     { name: "Bluetooth", logo: bluetoothLogo },
+    { name: "KNX", logo: knxLogo },
+    { name: "LoRa", logo: loraLogo },
+    { name: "Modbus", logo: modbusLogo },
   ];
 
-  const row1 = brands.slice(0, 8);
-  const row2 = brands.slice(8);
+  const row1 = brands.slice(0, 10);
+  const row2 = brands.slice(10);
 
   const BrandCard = ({ brand }: { brand: { name: string; logo: string } }) => (
     <div className="flex-shrink-0 bg-background dark:bg-slate-200 rounded-lg sm:rounded-xl p-2 sm:p-4 flex items-center justify-center shadow-card border border-border/50 min-w-[72px] sm:min-w-[110px] h-[48px] sm:h-[72px]">
@@ -103,7 +119,7 @@ const BrandLogos = () => {
         {/* Protocols Section */}
         <div>
           <h3 className="text-center text-lg font-semibold text-muted-foreground mb-6">{t("brands.protocols")}</h3>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto">
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-4 max-w-4xl mx-auto">
             {protocols.map((protocol) => (
               <div
                 key={protocol.name}
