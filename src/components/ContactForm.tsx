@@ -45,8 +45,6 @@ const ContactForm = () => {
     // Simulate form submission (replace with actual backend call when Cloud is enabled)
     await new Promise((resolve) => setTimeout(resolve, 1500));
     
-    console.log("Form data:", data);
-    
     toast({
       title: "¡Mensaje enviado!",
       description: "Nos pondremos en contacto contigo pronto.",
