@@ -68,15 +68,24 @@ const BlogPost = () => {
       <main>
         {/* Hero */}
         <section className={`pt-24 pb-0 relative overflow-hidden`}>
-          <div className={`h-48 sm:h-64 bg-gradient-to-br ${post.gradient} flex items-center justify-center relative`}>
-            <div className="absolute inset-0 bg-black/20" />
-            <div className="relative text-center px-4">
-              <span className="inline-block px-3 py-1 rounded-full bg-white/20 text-white text-xs font-medium mb-4">
-                {post.category[language]}
-              </span>
-              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white max-w-3xl leading-tight">
-                {post.title[language]}
-              </h1>
+          <div className={`h-48 sm:h-64 md:h-80 bg-gradient-to-br ${post.gradient} relative overflow-hidden`}>
+            {post.image ? (
+              <img
+                src={post.image}
+                alt={post.title[language]}
+                className="w-full h-full object-cover"
+              />
+            ) : null}
+            <div className="absolute inset-0 bg-black/40" />
+            <div className="absolute inset-0 flex items-center justify-center text-center px-4">
+              <div>
+                <span className="inline-block px-3 py-1 rounded-full bg-white/20 text-white text-xs font-medium mb-4">
+                  {post.category[language]}
+                </span>
+                <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white max-w-3xl leading-tight">
+                  {post.title[language]}
+                </h1>
+              </div>
             </div>
           </div>
         </section>

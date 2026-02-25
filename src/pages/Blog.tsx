@@ -41,16 +41,28 @@ const Blog = () => {
                   to={`/blog/${post.slug}`}
                   className="group rounded-2xl border border-border/50 bg-card overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
                 >
-                  {/* Gradient header */}
-                  <div className={`h-40 bg-gradient-to-br ${post.gradient} flex items-center justify-center relative`}>
-                    <div className="absolute inset-0 bg-black/10" />
-                    <span className="relative text-white/90 text-6xl font-bold opacity-20 group-hover:opacity-30 transition-opacity">
-                      {post.icon === "Home" && "🏠"}
-                      {post.icon === "Cpu" && "⚙️"}
-                      {post.icon === "Moon" && "🕯️"}
-                      {post.icon === "Wifi" && "📡"}
-                      {post.icon === "Lock" && "🔒"}
-                    </span>
+                  {/* Image or gradient header */}
+                  <div className={`h-40 bg-gradient-to-br ${post.gradient} relative overflow-hidden`}>
+                    {post.image ? (
+                      <img
+                        src={post.image}
+                        alt={post.title[language]}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    ) : (
+                      <>
+                        <div className="absolute inset-0 bg-black/10" />
+                        <div className="flex items-center justify-center h-full">
+                          <span className="relative text-white/90 text-6xl font-bold opacity-20 group-hover:opacity-30 transition-opacity">
+                            {post.icon === "Home" && "🏠"}
+                            {post.icon === "Cpu" && "⚙️"}
+                            {post.icon === "Moon" && "🕯️"}
+                            {post.icon === "Wifi" && "📡"}
+                            {post.icon === "Lock" && "🔒"}
+                          </span>
+                        </div>
+                      </>
+                    )}
                   </div>
 
                   <div className="p-5 space-y-3">
