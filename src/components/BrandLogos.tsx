@@ -125,14 +125,12 @@ const BrandLogos = () => {
             {protocols.map((protocol) => (
               <div
                 key={protocol.name}
-                className="bg-background dark:bg-slate-200 rounded-xl p-4 flex items-center justify-center border border-border/50 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
+                className="bg-background dark:bg-slate-200 rounded-xl p-4 flex items-center justify-center border border-border/50 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 min-h-[56px]"
               >
                 <img
                   src={protocol.logo}
                   alt={protocol.name}
-                  className="h-8 sm:h-10 w-auto object-contain"
-                  width={80}
-                  height={40}
+                  className="max-h-8 sm:max-h-10 max-w-full object-contain"
                   loading="lazy"
                 />
               </div>
