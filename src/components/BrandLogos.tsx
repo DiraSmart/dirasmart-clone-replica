@@ -130,7 +130,7 @@ const BrandLogos = () => {
                 <img
                   src={protocol.logo}
                   alt={protocol.name}
-                  className="h-8 sm:h-10 w-auto object-contain"
+                  className="max-h-10 w-full object-contain"
                   loading="lazy"
                 />
               </div>
