@@ -121,16 +121,16 @@ const BrandLogos = () => {
         {/* Protocols Section */}
         <div>
           <h3 className="text-center text-lg font-semibold text-muted-foreground mb-6">{t("brands.protocols")}</h3>
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-4 max-w-4xl mx-auto">
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-4 max-w-4xl mx-auto">
             {protocols.map((protocol) => (
               <div
                 key={protocol.name}
-                className="bg-background dark:bg-slate-200 rounded-xl p-4 flex items-center justify-center border border-border/50 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 min-h-[56px]"
+                className="bg-background dark:bg-slate-200 rounded-xl px-5 py-3 flex items-center justify-center border border-border/50 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
               >
                 <img
                   src={protocol.logo}
                   alt={protocol.name}
-                  className="max-h-8 sm:max-h-10 max-w-full object-contain"
+                  className="h-8 sm:h-10 w-auto object-contain"
                   loading="lazy"
                 />
               </div>
