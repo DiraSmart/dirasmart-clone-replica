@@ -121,11 +121,11 @@ const BrandLogos = () => {
         {/* Protocols Section */}
         <div>
           <h3 className="text-center text-lg font-semibold text-muted-foreground mb-6">{t("brands.protocols")}</h3>
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-4 max-w-4xl mx-auto">
+          <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-7 gap-3 sm:gap-4 max-w-4xl mx-auto">
             {protocols.map((protocol) => (
               <div
                 key={protocol.name}
-                className="bg-background dark:bg-slate-200 rounded-xl p-4 flex items-center justify-center border border-border/50 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
+                className={`bg-background dark:bg-slate-200 rounded-xl p-3 sm:p-4 flex items-center justify-center border border-border/50 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1${protocol.name === "Modbus" ? " hidden sm:flex" : ""}`}
               >
                 <img
                   src={protocol.logo}
