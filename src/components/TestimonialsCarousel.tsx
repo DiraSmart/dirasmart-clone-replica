@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -20,6 +20,9 @@ import joeImg from "@/assets/testimonials/joe.png";
 
 const TestimonialsCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
   const { t, language } = useLanguage();
 
   const testimonials = {
@@ -256,18 +259,35 @@ const TestimonialsCarousel = () => {
   const currentTestimonials = testimonials[language];
 
   useEffect(() => {
+    if (isPaused) return;
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % currentTestimonials.length);
     }, 5000);
     return () => clearInterval(timer);
+  }, [currentTestimonials.length, isPaused]);
+
+  const goToPrevious = useCallback(() => {
+    setCurrentIndex((prev) => (prev - 1 + currentTestimonials.length) % currentTestimonials.length);
   }, [currentTestimonials.length]);
 
-  const goToPrevious = () => {
-    setCurrentIndex((prev) => (prev - 1 + currentTestimonials.length) % currentTestimonials.length);
+  const goToNext = useCallback(() => {
+    setCurrentIndex((prev) => (prev + 1) % currentTestimonials.length);
+  }, [currentTestimonials.length]);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
   };
 
-  const goToNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % currentTestimonials.length);
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const diff = touchStartX.current - touchEndX.current;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) goToNext();
+      else goToPrevious();
+    }
   };
 
   const current = currentTestimonials[currentIndex];
@@ -293,7 +313,14 @@ const TestimonialsCarousel = () => {
 
         <div className="max-w-3xl mx-auto">
           {/* Card */}
-          <div className="relative bg-muted/20 border border-border/60 rounded-3xl p-8 md:p-12 overflow-hidden">
+          <div
+            className="relative bg-muted/20 border border-border/60 rounded-3xl p-8 md:p-12 overflow-hidden cursor-grab active:cursor-grabbing"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
             {/* Large decorative number */}
             <div className="absolute top-6 right-8 text-[120px] font-black text-foreground/5 leading-none select-none" aria-hidden="true">
               "
