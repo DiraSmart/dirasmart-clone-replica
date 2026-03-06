@@ -5,6 +5,8 @@
   "compatibility_date": "2025-12-10",
   "assets": {
     "binding": "ASSETS",
-    "directory": "dist"
+    "directory": "dist",
+    "html_handling": "none",
+    "not_found_handling": "none"
   }
 }
