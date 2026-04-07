@@ -32,15 +32,23 @@ export default {
 
     // For non-file paths, check if it's a valid SPA route
     if (!url.pathname.includes(".")) {
-      const indexRequest = new Request(new URL("/index.html", request.url), request);
-      const indexResponse = await env.ASSETS.fetch(indexRequest);
-
       if (isValidRoute(url.pathname)) {
-        // Valid route — serve index.html with 200
-        return indexResponse;
+        // Try pre-rendered HTML first (e.g., /about -> /about.html)
+        const prerenderedPath = url.pathname === "/" ? "/index.html" : `${url.pathname}.html`;
+        const prerenderedRequest = new Request(new URL(prerenderedPath, request.url), request);
+        const prerendered = await env.ASSETS.fetch(prerenderedRequest);
+        if (prerendered.status === 200) {
+          return prerendered;
+        }
+
+        // Fallback to generic index.html
+        const indexRequest = new Request(new URL("/index.html", request.url), request);
+        return env.ASSETS.fetch(indexRequest);
       }
 
       // Unknown route — serve index.html with 410 Gone so Google removes it
+      const indexRequest = new Request(new URL("/index.html", request.url), request);
+      const indexResponse = await env.ASSETS.fetch(indexRequest);
       return new Response(indexResponse.body, {
         status: 410,
         headers: indexResponse.headers,
