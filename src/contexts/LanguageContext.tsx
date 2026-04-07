@@ -17,7 +17,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Hero
     "hero.title": "Casa Inteligente en Panamá.",
-    "hero.titleHighlight": "A Tu Medida.",
+    "hero.titleHighlight": "Diseñada Para Ti.",
     "hero.subtitle": "Una sola app para controlar todo tu hogar. Diseñada para ti, instalada por profesionales, con soporte continuo.",
     "hero.cta": "Contáctanos",
     "hero.cta.message": "¡Hola! Me interesa automatizar mi hogar con DiraSmart",
