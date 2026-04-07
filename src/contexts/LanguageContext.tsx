@@ -16,7 +16,7 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.services": "Servicios",
 
     // Hero
-    "hero.title": "Tu Hogar Inteligente.",
+    "hero.title": "Casa Inteligente en Panamá.",
     "hero.titleHighlight": "A Tu Medida.",
     "hero.subtitle": "Una sola app para controlar todo tu hogar. Diseñada para ti, instalada por profesionales, con soporte continuo.",
     "hero.cta": "Contáctanos",
