@@ -243,8 +243,8 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.services": "Services",
     
     // Hero
-    "hero.title": "Your Smart Home.",
-    "hero.titleHighlight": "Tailored to You.",
+    "hero.title": "Smart Home in Panama.",
+    "hero.titleHighlight": "Designed For You.",
     "hero.subtitle": "One app to control your entire home. Designed for you, professionally installed, with ongoing support.",
     "hero.cta": "Contact Us",
     "hero.cta.message": "Hello! I'm interested in automating my home with DiraSmart",
