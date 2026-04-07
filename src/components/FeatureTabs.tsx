@@ -168,7 +168,7 @@ const FeatureTabs = () => {
                 { icon: Lightbulb, title: t("features.app.lights"), desc: t("features.app.lightsDesc"), colorClass: "primary" },
               ]}
               image={appMobileImage}
-              imageAlt="DiraSmart mobile app showing smart home controls"
+              imageAlt="App de casa inteligente DiraSmart - control de luces, clima y persianas en Panamá"
             />
           </TabsContent>
 
@@ -185,7 +185,7 @@ const FeatureTabs = () => {
                 { icon: Moon, title: t("features.shabbat.auto"), desc: t("features.shabbat.autoDesc"), colorClass: "accent" },
               ]}
               image={shabatModeImage}
-              imageAlt="DiraSmart Shabbat mode configuration screen"
+              imageAlt="Modo Shabbat - automatización inteligente del hogar según calendario hebreo"
               reversed
             />
           </TabsContent>
@@ -203,7 +203,7 @@ const FeatureTabs = () => {
                 { icon: Home, title: t("features.automate.presence"), desc: t("features.automate.presenceDesc"), colorClass: "primary" },
               ]}
               image={automationsImage}
-              imageAlt="DiraSmart automation rules and scenes configuration"
+              imageAlt="Automatización del hogar DiraSmart - escenas y programación inteligente"
               imageClass="w-auto h-[260px] sm:h-[380px] rounded-xl"
             />
           </TabsContent>
@@ -221,7 +221,7 @@ const FeatureTabs = () => {
                 { icon: Monitor, title: t("features.devices.pc"), desc: t("features.devices.pcDesc"), colorClass: "primary" },
               ]}
               image={devicesMockup}
-              imageAlt="DiraSmart compatible with phone, tablet and desktop"
+              imageAlt="Smart home multiplataforma - control de domótica desde celular, tablet y PC"
               imageClass="w-auto max-h-[260px] sm:max-h-[380px] drop-shadow-2xl"
               reversed
             />

@@ -137,6 +137,35 @@ const BlogPost = () => {
                 </a>
               </div>
 
+              {/* Related articles (internal linking) */}
+              {(() => {
+                const related = blogPosts
+                  .filter((p) => p.slug !== post.slug)
+                  .sort(() => 0.5 - Math.random())
+                  .slice(0, 3);
+                return related.length > 0 ? (
+                  <div className="my-8">
+                    <h3 className="text-lg font-bold text-foreground mb-4">
+                      {language === "es" ? "Artículos relacionados" : "Related articles"}
+                    </h3>
+                    <div className="grid sm:grid-cols-3 gap-3">
+                      {related.map((r) => (
+                        <Link
+                          key={r.slug}
+                          to={`/blog/${r.slug}`}
+                          className="group p-4 rounded-xl border border-border/50 hover:border-primary/30 transition-colors"
+                        >
+                          <span className="text-xs text-primary font-medium">{r.category[language]}</span>
+                          <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors line-clamp-2 mt-1">
+                            {r.title[language]}
+                          </p>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                ) : null;
+              })()}
+
               {/* Navigation */}
               <div className="grid grid-cols-2 gap-4 pt-6 border-t border-border/50">
                 {prevPost ? (

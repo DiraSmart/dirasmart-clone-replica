@@ -26,6 +26,63 @@ const PAGE_META: Record<string, PageMeta> = {
   },
 };
 
+const SERVICE_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  serviceType: "Instalación de Casa Inteligente",
+  provider: {
+    "@type": "LocalBusiness",
+    name: "DiraSmart",
+    url: "https://dirasmart.com",
+  },
+  areaServed: {
+    "@type": "Country",
+    name: "Panamá",
+  },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Servicios de Domótica y Smart Home",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Instalación Profesional de Smart Home",
+          description:
+            "Implementación completa de automatización del hogar con procesamiento local, WiFi empresarial y app personalizada en Panamá.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Infraestructura WiFi Empresarial",
+          description:
+            "Cableado estructurado profesional y red WiFi empresarial con múltiples puntos de acceso para cobertura total.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Seguridad Inteligente",
+          description:
+            "Integración de cámaras, sensores de movimiento y cerraduras inteligentes con control desde una sola app.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Servicio Continuo y Soporte 24/7",
+          description:
+            "Mantenimiento, actualizaciones de seguridad y soporte técnico continuo para tu casa inteligente.",
+        },
+      },
+    ],
+  },
+};
+
 const FAQ_SCHEMA = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -131,13 +188,15 @@ const DynamicHead = () => {
     // --- Dynamic schemas ---
     document.querySelectorAll(".dynamic-schema").forEach((el) => el.remove());
 
-    // FAQ schema on homepage
+    // Homepage schemas: FAQ + Service
     if (pathname === "/") {
-      const faqScript = document.createElement("script");
-      faqScript.className = "dynamic-schema";
-      faqScript.type = "application/ld+json";
-      faqScript.textContent = JSON.stringify(FAQ_SCHEMA);
-      document.head.appendChild(faqScript);
+      [FAQ_SCHEMA, SERVICE_SCHEMA].forEach((schema) => {
+        const script = document.createElement("script");
+        script.className = "dynamic-schema";
+        script.type = "application/ld+json";
+        script.textContent = JSON.stringify(schema);
+        document.head.appendChild(script);
+      });
     }
 
     // BlogPosting schema for blog post pages
@@ -163,6 +222,37 @@ const DynamicHead = () => {
             updateMeta('meta[property="og:image"]', "content", imgUrl);
             updateMeta('meta[name="twitter:image"]', "content", imgUrl);
           }
+
+          // BreadcrumbList schema
+          const breadcrumb = {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Inicio",
+                item: SITE_URL,
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Blog",
+                item: `${SITE_URL}/blog`,
+              },
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: post.title.es,
+                item: `${SITE_URL}${pathname}`,
+              },
+            ],
+          };
+          const breadcrumbScript = document.createElement("script");
+          breadcrumbScript.className = "dynamic-schema";
+          breadcrumbScript.type = "application/ld+json";
+          breadcrumbScript.textContent = JSON.stringify(breadcrumb);
+          document.head.appendChild(breadcrumbScript);
 
           const schema = {
             "@context": "https://schema.org",

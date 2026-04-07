@@ -24,7 +24,7 @@ const Footer = () => {
             <a href="#home" className="inline-block">
               <img
                 src={dirasmartLogo}
-                alt="DiraSmart Logo"
+                alt="DiraSmart - Casa Inteligente y Domótica en Panamá"
                 className="h-10 sm:h-12 w-auto"
               />
             </a>

@@ -100,7 +100,7 @@ const HeroSection = () => {
               <img
                 key={index}
                 src={img}
-                alt={`DiraSmart smart home mobile app interface ${index + 1}`}
+                alt={index === 0 ? "App de casa inteligente DiraSmart - control de domótica en Panamá" : "Automatización del hogar DiraSmart - smart home app Panamá"}
                 width={384}
                 height={680}
                 loading={index === 0 ? 'eager' : 'lazy'}
