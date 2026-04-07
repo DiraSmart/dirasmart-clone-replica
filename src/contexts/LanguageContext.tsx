@@ -19,8 +19,9 @@ const translations: Record<Language, Record<string, string>> = {
     "hero.title": "Tu Hogar Inteligente.",
     "hero.titleHighlight": "A Tu Medida.",
     "hero.subtitle": "Una sola app para controlar todo tu hogar. Diseñada para ti, instalada por profesionales, con soporte continuo.",
-    "hero.cta": "Ver Demo",
-    "hero.ctaSecondary": "Saber más",
+    "hero.cta": "Contáctanos",
+    "hero.cta.message": "¡Hola! Me interesa automatizar mi hogar con DiraSmart",
+    "hero.ctaSecondary": "Ver Demo",
     "hero.stat1.value": "2500+",
     "hero.stat1.label": "Dispositivos compatibles",
     "hero.stat2.value": "24/7",
@@ -164,6 +165,12 @@ const translations: Record<Language, Record<string, string>> = {
     "testimonials.role.engineer": "Ingeniero",
     "testimonials.role.doctor": "Médica",
     
+    // CTA Banner
+    "cta.title": "¿Listo para transformar tu hogar?",
+    "cta.subtitle": "Agenda una consulta gratuita y descubre cómo DiraSmart puede hacer tu vida más cómoda y segura",
+    "cta.button": "Hablar con un especialista",
+    "cta.message": "¡Hola! Quiero agendar una consulta sobre DiraSmart",
+
     // Footer
     "footer.description": "Transformamos hogares en espacios inteligentes y privados. Tu comodidad, seguridad y privacidad son nuestra prioridad.",
     "footer.rights": "Todos los derechos reservados",
@@ -239,8 +246,9 @@ const translations: Record<Language, Record<string, string>> = {
     "hero.title": "Your Smart Home.",
     "hero.titleHighlight": "Tailored to You.",
     "hero.subtitle": "One app to control your entire home. Designed for you, professionally installed, with ongoing support.",
-    "hero.cta": "View Demo",
-    "hero.ctaSecondary": "Learn More",
+    "hero.cta": "Contact Us",
+    "hero.cta.message": "Hello! I'm interested in automating my home with DiraSmart",
+    "hero.ctaSecondary": "View Demo",
     "hero.stat1.value": "2500+",
     "hero.stat1.label": "Compatible devices",
     "hero.stat2.value": "24/7",
@@ -384,6 +392,12 @@ const translations: Record<Language, Record<string, string>> = {
     "testimonials.role.engineer": "Engineer",
     "testimonials.role.doctor": "Doctor",
     
+    // CTA Banner
+    "cta.title": "Ready to transform your home?",
+    "cta.subtitle": "Schedule a free consultation and discover how DiraSmart can make your life more comfortable and secure",
+    "cta.button": "Talk to a specialist",
+    "cta.message": "Hello! I want to schedule a consultation about DiraSmart",
+
     // Footer
     "footer.description": "We transform homes into smart and private spaces. Your comfort, security and privacy are our priority.",
     "footer.rights": "All rights reserved",

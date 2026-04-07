@@ -1,14 +1,11 @@
 import { Facebook, Instagram, Youtube, Mail, Phone, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { useTheme } from "next-themes";
 import dirasmartLogo from "@/assets/dirasmart-logo.png";
-import dirasmartLogoGrey from "@/assets/dirasmart-logo-grey.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const { t } = useLanguage();
-  const { resolvedTheme } = useTheme();
 
   const socialLinks = [
     { icon: Facebook, href: "https://www.facebook.com/dirasmartpty", label: "Facebook" },
@@ -16,40 +13,21 @@ const Footer = () => {
     { icon: Youtube, href: "https://www.youtube.com/@DiraSmart", label: "YouTube" },
   ];
 
-  const sectionLinks = [
-    { labelKey: "footer.nav.home", href: "#home" },
-    { labelKey: "footer.nav.demo", href: "#demo" },
-    { labelKey: "footer.nav.features", href: "#features" },
-    { labelKey: "footer.nav.services", href: "#servicios" },
-    { labelKey: "footer.nav.testimonials", href: "#testimonios" },
-  ];
-
-  const pageLinks = [
-    { labelKey: "footer.nav.about", href: "/about" },
-    { labelKey: "footer.nav.blog", href: "/blog" },
-  ];
-
   return (
     <footer className="text-white relative overflow-hidden" style={{ backgroundColor: 'hsl(220 40% 13%)' }}>
-      {/* Top decorative line */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
-      {/* Background glow */}
-      <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="container-custom py-12 sm:py-16 px-4 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
-          {/* Brand column */}
-          <div className="space-y-5">
+      <div className="container-custom py-10 sm:py-12 px-4 relative z-10">
+        <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-8">
+          {/* Brand + Social */}
+          <div className="flex flex-col items-center md:items-start gap-4">
             <a href="#home" className="inline-block">
               <img
                 src={dirasmartLogo}
                 alt="DiraSmart Logo"
-                className="h-12 sm:h-14 w-auto"
+                className="h-10 sm:h-12 w-auto"
               />
             </a>
-            <p className="text-sm text-white/60 leading-relaxed max-w-xs">
-              {t("footer.description")}
-            </p>
             <div className="flex gap-3">
               {socialLinks.map((social) => (
                 <a
@@ -57,7 +35,7 @@ const Footer = () => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center hover:bg-primary hover:border-primary transition-all"
+                  className="w-9 h-9 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center hover:bg-primary hover:border-primary transition-all"
                   aria-label={social.label}
                 >
                   <social.icon className="w-4 h-4" />
@@ -66,59 +44,31 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Nav links */}
-          <div className="space-y-4">
-            <p className="text-sm font-semibold text-white/80 uppercase tracking-widest">
-              {t("footer.nav")}
-            </p>
-            <ul className="space-y-2.5">
-              {sectionLinks.map((link) => (
-                <li key={link.labelKey}>
-                  <a
-                    href={link.href}
-                    className="text-sm text-white/60 hover:text-white transition-colors"
-                  >
-                    {t(link.labelKey)}
-                  </a>
-                </li>
-              ))}
-              {pageLinks.map((link) => (
-                <li key={link.labelKey}>
-                  <Link
-                    to={link.href}
-                    className="text-sm text-white/60 hover:text-white transition-colors"
-                  >
-                    {t(link.labelKey)}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          {/* Contact info */}
+          <div className="flex flex-col sm:flex-row gap-6 text-sm text-white/70">
+            <a href="mailto:info@dirasmart.com" className="flex items-center gap-2 hover:text-white transition-colors">
+              <Mail className="w-4 h-4 text-primary shrink-0" strokeWidth={1.5} />
+              info@dirasmart.com
+            </a>
+            <a href="tel:+50765956439" className="flex items-center gap-2 hover:text-white transition-colors">
+              <Phone className="w-4 h-4 text-primary shrink-0" strokeWidth={1.5} />
+              +507 6595-6439
+            </a>
+            <span className="flex items-center gap-2">
+              <MapPin className="w-4 h-4 text-accent shrink-0" strokeWidth={1.5} />
+              Panama City, Panama
+            </span>
           </div>
 
-          {/* Contact */}
-          <div className="space-y-4">
-            <p className="text-sm font-semibold text-white/80 uppercase tracking-widest">
-              {t("footer.contact")}
-            </p>
-            <ul className="space-y-3">
-              <li className="flex items-center gap-3 text-sm text-white/60">
-                <Mail className="w-4 h-4 text-primary shrink-0" strokeWidth={1.5} />
-                <span>info@dirasmart.com</span>
-              </li>
-              <li className="flex items-center gap-3 text-sm text-white/60">
-                <Phone className="w-4 h-4 text-primary shrink-0" strokeWidth={1.5} />
-                <span>+507 6595-6439</span>
-              </li>
-              <li className="flex items-center gap-3 text-sm text-white/60">
-                <MapPin className="w-4 h-4 text-primary shrink-0" strokeWidth={1.5} />
-                <span>Panama City, Panama</span>
-              </li>
-            </ul>
+          {/* Page links */}
+          <div className="flex gap-4 text-sm text-white/70">
+            <Link to="/about" className="hover:text-white transition-colors">{t("nav.about")}</Link>
+            <Link to="/blog" className="hover:text-white transition-colors">{t("nav.blog")}</Link>
           </div>
         </div>
 
-        <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/50">
-          <p>© {currentYear} DiraSmart. {t("footer.rights")}.</p>
+        <div className="border-t border-white/10 mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-white/60">
+          <p>&copy; {currentYear} DiraSmart. {t("footer.rights")}.</p>
           <p>{t("footer.madeWith")}</p>
         </div>
       </div>

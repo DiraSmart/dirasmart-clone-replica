@@ -1,8 +1,11 @@
+import { lazy, Suspense } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import { Shield, Users, MapPin, Award, Heart, Cpu } from "lucide-react";
+import { Shield, Users, MapPin, Heart, Cpu, MessageCircle } from "lucide-react";
+
+const ProcessSteps = lazy(() => import("@/components/ProcessSteps"));
 
 const About = () => {
   const { t } = useLanguage();
@@ -58,9 +61,9 @@ const About = () => {
               <div className="flex justify-center">
                 <div className="relative">
                   <div className="absolute -inset-8 bg-gradient-to-r from-primary/15 to-accent/15 rounded-full blur-3xl" />
-                  <div className="relative w-72 h-72 sm:w-80 sm:h-80 rounded-3xl bg-gradient-to-br from-primary/20 to-accent/20 border border-primary/20 flex items-center justify-center">
+                  <div className="relative w-72 h-72 sm:w-80 sm:h-80 rounded-3xl bg-gradient-to-br from-primary/20 to-accent/20 border border-accent/20 flex items-center justify-center">
                     <div className="text-center space-y-4">
-                      <MapPin className="w-12 h-12 text-primary mx-auto" strokeWidth={1.2} />
+                      <MapPin className="w-12 h-12 text-accent mx-auto" strokeWidth={1.2} />
                       <div>
                         <p className="text-2xl font-bold text-foreground">Panama City</p>
                         <p className="text-muted-foreground text-sm">{t("about.location")}</p>
@@ -111,13 +114,18 @@ const About = () => {
           </div>
         </section>
 
+        {/* Process Steps */}
+        <Suspense fallback={null}>
+          <ProcessSteps />
+        </Suspense>
+
         {/* CTA */}
         <section className="section-padding relative overflow-hidden" style={{ backgroundColor: 'hsl(220 40% 13%)' }}>
           <div className="absolute inset-0 pointer-events-none">
             <div className="absolute -top-40 -right-40 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
+            <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
           </div>
           <div className="container-custom px-4 relative z-10 text-center">
-            <Award className="w-12 h-12 text-primary mx-auto mb-6" strokeWidth={1.2} />
             <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
               {t("about.cta.title")}
             </h2>
@@ -130,6 +138,7 @@ const About = () => {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-primary to-accent text-white font-medium rounded-full hover:opacity-90 transition-opacity"
             >
+              <MessageCircle className="w-5 h-5" />
               {t("about.cta.button")}
             </a>
           </div>

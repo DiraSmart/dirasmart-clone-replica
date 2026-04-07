@@ -264,7 +264,7 @@ const TestimonialsCarousel = () => {
       setCurrentIndex((prev) => (prev + 1) % currentTestimonials.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, [currentTestimonials.length, isPaused]);
+  }, [currentTestimonials.length, isPaused, currentIndex]);
 
   const goToPrevious = useCallback(() => {
     setCurrentIndex((prev) => (prev - 1 + currentTestimonials.length) % currentTestimonials.length);

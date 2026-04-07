@@ -6,13 +6,14 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import AnimatedSection from "@/components/AnimatedSection";
 
 // Lazy load below-fold sections for faster mobile FCP/LCP
-const InteractiveDemo = lazy(() => import("@/components/InteractiveDemo"));
-const PrivacyFeatures = lazy(() => import("@/components/PrivacyFeatures"));
-const InfrastructureSection = lazy(() => import("@/components/InfrastructureSection"));
-const FeatureTabs = lazy(() => import("@/components/FeatureTabs"));
 const ServicesGrid = lazy(() => import("@/components/ServicesGrid"));
+const FeatureTabs = lazy(() => import("@/components/FeatureTabs"));
+const InteractiveDemo = lazy(() => import("@/components/InteractiveDemo"));
 const BrandLogos = lazy(() => import("@/components/BrandLogos"));
 const TestimonialsCarousel = lazy(() => import("@/components/TestimonialsCarousel"));
+const CTABanner = lazy(() => import("@/components/CTABanner"));
+const PrivacyFeatures = lazy(() => import("@/components/PrivacyFeatures"));
+const InfrastructureSection = lazy(() => import("@/components/InfrastructureSection"));
 
 const Index = () => {
   return (
@@ -24,15 +25,7 @@ const Index = () => {
 
         <Suspense fallback={null}>
           <AnimatedSection>
-            <InteractiveDemo />
-          </AnimatedSection>
-
-          <AnimatedSection delay={0.1}>
-            <PrivacyFeatures />
-          </AnimatedSection>
-
-          <AnimatedSection delay={0.1}>
-            <InfrastructureSection />
+            <ServicesGrid />
           </AnimatedSection>
 
           <AnimatedSection delay={0.1}>
@@ -40,11 +33,21 @@ const Index = () => {
           </AnimatedSection>
 
           <AnimatedSection delay={0.1}>
-            <ServicesGrid />
+            <InteractiveDemo />
           </AnimatedSection>
 
           <AnimatedSection delay={0.1}>
             <BrandLogos />
+          </AnimatedSection>
+
+          <CTABanner />
+
+          <AnimatedSection delay={0.1}>
+            <InfrastructureSection />
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.1}>
+            <PrivacyFeatures />
           </AnimatedSection>
 
           <AnimatedSection delay={0.1}>

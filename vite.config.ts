@@ -10,7 +10,7 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
-    allowedHosts: ['new.dirasmart.com']
+    allowedHosts: ['dirasmart.com']
   },
   plugins: [
     react(),
@@ -28,15 +28,10 @@ export default defineConfig(({ mode }) => ({
         drop_console: true,
       },
     },
+    cssCodeSplit: true,
     rollupOptions: {
       output: {
         manualChunks: {
-          'radix-ui': [
-            '@radix-ui/react-dialog',
-            '@radix-ui/react-dropdown-menu',
-            '@radix-ui/react-accordion',
-            '@radix-ui/react-tabs',
-          ],
           'vendors': [
             'react',
             'react-dom',

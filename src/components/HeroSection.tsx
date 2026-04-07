@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import { MessageCircle } from "lucide-react";
 import ParticleBackground from "./ParticleBackground";
 import { useLanguage } from "@/contexts/LanguageContext";
 import appMobileImage2 from "@/assets/app-mobile-2.png";
@@ -53,20 +54,24 @@ const HeroSection = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
               <Button
-                onClick={scrollToDemo}
+                asChild
                 size="lg"
                 className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6"
               >
-                {t("hero.cta")}
+                <a
+                  href={`https://wa.me/50765956439?text=${encodeURIComponent(t("hero.cta.message"))}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MessageCircle className="w-5 h-5 mr-2" />
+                  {t("hero.cta")}
+                </a>
               </Button>
               <Button
+                onClick={scrollToDemo}
                 variant="outline"
                 size="lg"
                 className="border-primary bg-white/90 dark:bg-background text-primary hover:bg-primary/10 text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6"
-                onClick={() => {
-                  const element = document.querySelector("#features");
-                  element?.scrollIntoView({ behavior: "smooth" });
-                }}
               >
                 {t("hero.ctaSecondary")}
               </Button>

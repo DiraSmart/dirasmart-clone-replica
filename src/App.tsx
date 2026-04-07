@@ -1,20 +1,17 @@
 import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { ThemeProvider } from "next-themes";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import Index from "./pages/Index";
-import About from "./pages/About";
-import Blog from "./pages/Blog";
-import BlogPost from "./pages/BlogPost";
-import NotFound from "./pages/NotFound";
-import DynamicHead from "./components/DynamicHead";
 import ErrorBoundary from "./components/ErrorBoundary";
 
-const queryClient = new QueryClient();
+// Lazy load non-critical pages to reduce initial bundle
+const About = lazy(() => import("./pages/About"));
+const Blog = lazy(() => import("./pages/Blog"));
+const BlogPost = lazy(() => import("./pages/BlogPost"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const DynamicHead = lazy(() => import("./components/DynamicHead"));
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -26,28 +23,25 @@ const ScrollToTop = () => {
 
 const App = () => (
   <ErrorBoundary>
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-        <LanguageProvider>
-          <TooltipProvider>
-            <Toaster />
-            <Sonner />
-            <BrowserRouter>
-            <ScrollToTop />
-            <DynamicHead />
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/blog/:slug" element={<BlogPost />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-            </BrowserRouter>
-          </TooltipProvider>
-        </LanguageProvider>
-      </ThemeProvider>
-    </QueryClientProvider>
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <LanguageProvider>
+        <Toaster />
+        <BrowserRouter>
+        <ScrollToTop />
+        <Suspense fallback={null}>
+          <DynamicHead />
+        </Suspense>
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/about" element={<Suspense fallback={null}><About /></Suspense>} />
+          <Route path="/blog" element={<Suspense fallback={null}><Blog /></Suspense>} />
+          <Route path="/blog/:slug" element={<Suspense fallback={null}><BlogPost /></Suspense>} />
+          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="*" element={<Suspense fallback={null}><NotFound /></Suspense>} />
+        </Routes>
+        </BrowserRouter>
+      </LanguageProvider>
+    </ThemeProvider>
   </ErrorBoundary>
 );
 
