@@ -7,7 +7,7 @@ import { blogPosts } from "@/data/blogPosts";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
 
 const Blog = () => {
-  const { language, t } = useLanguage();
+  const { language, t, localePath } = useLanguage();
 
   return (
     <div className="min-h-screen bg-background relative">
@@ -38,7 +38,7 @@ const Blog = () => {
               {blogPosts.map((post) => (
                 <Link
                   key={post.slug}
-                  to={`/blog/${post.slug}`}
+                  to={localePath(`/blog/${post.slug}`)}
                   className="group rounded-2xl border border-border/50 bg-card overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
                 >
                   {/* Image or gradient header */}

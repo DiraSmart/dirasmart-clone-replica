@@ -1,4 +1,5 @@
 import { useLanguage } from "@/contexts/LanguageContext";
+import { Award } from "lucide-react";
 
 // Brand logos
 import zigbeeLogo from "@/assets/brands/zigbee.png";
@@ -31,7 +32,7 @@ import lutronLogo from "@/assets/brands/lutron.png";
 import googleNestLogo from "@/assets/brands/google-nest.png";
 
 const BrandLogos = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   const brands = [
     { name: "Alexa", logo: alexaLogo },
@@ -95,6 +96,17 @@ const BrandLogos = () => {
           <p className="text-base text-muted-foreground max-w-2xl mx-auto">
             {t("brands.subtitle")}
           </p>
+        </div>
+
+        {/* KNX Partner Badge */}
+        <div className="flex justify-center mb-8">
+          <div className="inline-flex items-center gap-3 px-5 py-3 rounded-full bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20">
+            <Award className="w-5 h-5 text-primary" />
+            <span className="text-sm font-semibold text-foreground">
+              {language === "es" ? "KNX Partner Certificado en Panamá" : "Certified KNX Partner in Panama"}
+            </span>
+            <img src={knxLogo} alt="KNX Certified Partner" className="h-6 w-auto" />
+          </div>
         </div>
 
         {/* Brands Carousel - 2 rows with CSS animation */}

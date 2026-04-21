@@ -1,11 +1,11 @@
 import { useState, useEffect, useCallback } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Smartphone, Moon, Zap, Cpu, Lightbulb, Thermometer, Home, Clock, Calendar, Tablet, Monitor } from "lucide-react";
-import devicesMockup from "@/assets/devices-mockup.png";
+import devicesMockup from "@/assets/devices-mockup.webp";
 import { useLanguage } from "@/contexts/LanguageContext";
 import appMobileImage from "@/assets/app-mobile-main.webp";
-import shabatModeImage from "@/assets/shabat-mode.png";
-import automationsImage from "@/assets/automations-screen.jpg";
+import shabatModeImage from "@/assets/shabat-mode.webp";
+import automationsImage from "@/assets/automations-screen.webp";
 
 // Reusable feature card component
 const FeatureCard = ({ icon: Icon, title, desc, colorClass }: {icon: typeof Thermometer;title: string;desc: string;colorClass: string;}) => {

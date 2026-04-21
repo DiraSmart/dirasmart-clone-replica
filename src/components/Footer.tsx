@@ -5,7 +5,7 @@ import dirasmartLogo from "@/assets/dirasmart-logo.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const { t } = useLanguage();
+  const { t, localePath } = useLanguage();
 
   const socialLinks = [
     { icon: Facebook, href: "https://www.facebook.com/dirasmartpty", label: "Facebook" },
@@ -62,8 +62,8 @@ const Footer = () => {
 
           {/* Page links */}
           <div className="flex gap-4 text-sm text-white/70">
-            <Link to="/about" className="hover:text-white transition-colors">{t("nav.about")}</Link>
-            <Link to="/blog" className="hover:text-white transition-colors">{t("nav.blog")}</Link>
+            <Link to={localePath("/about")} className="hover:text-white transition-colors">{t("nav.about")}</Link>
+            <Link to={localePath("/blog")} className="hover:text-white transition-colors">{t("nav.blog")}</Link>
           </div>
         </div>
 

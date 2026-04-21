@@ -11,9 +11,9 @@ import dirasmartLogoGrey from "@/assets/dirasmart-logo-grey.png";
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { resolvedTheme } = useTheme();
-  const { t } = useLanguage();
+  const { t, pathPrefix, localePath } = useLanguage();
   const location = useLocation();
-  const isHomePage = location.pathname === "/";
+  const isHomePage = location.pathname === "/" || location.pathname === "/en";
 
   const sectionLinks = [
     { name: t("nav.home"), href: "#home" },
@@ -22,13 +22,13 @@ const Header = () => {
   ];
 
   const pageLinks = [
-    { name: t("nav.about"), href: "/about" },
-    { name: t("nav.blog"), href: "/blog" },
+    { name: t("nav.about"), href: localePath("/about") },
+    { name: t("nav.blog"), href: localePath("/blog") },
   ];
 
   const scrollToSection = (href: string) => {
     if (!isHomePage) {
-      window.location.href = "/" + href;
+      window.location.href = (pathPrefix || "/") + href;
       return;
     }
     const element = document.querySelector(href);
@@ -43,7 +43,7 @@ const Header = () => {
       <div className="container-custom">
         <div className="flex items-center justify-between h-14 sm:h-16 md:h-20 px-3 sm:px-4">
           {/* Logo */}
-          <Link to="/" className="flex items-center">
+          <Link to={pathPrefix || "/"} className="flex items-center">
             <img
               src={resolvedTheme === 'dark' ? dirasmartLogo : dirasmartLogoGrey}
               alt="DiraSmart Logo"

@@ -1,4 +1,5 @@
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, useState, useEffect, useCallback, ReactNode } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 type Language = "es" | "en";
 
@@ -6,6 +7,10 @@ interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
   t: (key: string) => string;
+  /** Path prefix for current language: "" for Spanish, "/en" for English */
+  pathPrefix: string;
+  /** Convert a base path (e.g. "/about") to the current language path */
+  localePath: (path: string) => string;
 }
 
 const translations: Record<Language, Record<string, string>> = {
@@ -235,6 +240,31 @@ const translations: Record<Language, Record<string, string>> = {
     // Footer extras
     "footer.nav.about": "Nosotros",
     "footer.nav.blog": "Blog",
+
+    // FAQ
+    "faq.title": "Preguntas",
+    "faq.titleHighlight": "Frecuentes",
+    "faq.subtitle": "Respuestas a las dudas más comunes sobre hogares inteligentes en Panamá",
+    "faq.q1": "¿Cuánto cuesta instalar un smart home en Panamá?",
+    "faq.a1": "El costo varía según el tamaño de tu hogar y el alcance del proyecto. Ofrecemos desde paquetes básicos inalámbricos para apartamentos hasta sistemas KNX premium para residencias de alta gama. La consulta inicial es gratuita — evaluamos tu espacio y te presentamos opciones personalizadas.",
+    "faq.q2": "¿Cuánto tiempo toma la instalación?",
+    "faq.a2": "Un apartamento con dispositivos inalámbricos se instala en un solo día. Una casa completa con cableado estructurado y WiFi empresarial toma entre 2 y 3 días. Proyectos KNX en construcción nueva se coordinan con la obra.",
+    "faq.q3": "¿Funciona en apartamentos o solo en casas?",
+    "faq.a3": "Ambos. Para apartamentos usamos dispositivos inalámbricos que no requieren obras ni modificar la instalación eléctrica. Todo se instala sin romper paredes y es removible si te mudas.",
+    "faq.q4": "¿Qué pasa si se va el internet?",
+    "faq.a4": "Todo sigue funcionando. A diferencia de sistemas como Alexa o Google Home que dependen de la nube, DiraSmart procesa todo localmente dentro de tu hogar. Si se cae tu internet, tus automatizaciones, luces y aires siguen operando normalmente.",
+    "faq.q5": "¿Qué dispositivos son compatibles?",
+    "faq.a5": "Más de 2,500 dispositivos de marcas como Tuya, Shelly, Philips Hue, Yale, Ecobee, Sonos, Somfy y más. Soportamos protocolos Zigbee, Z-Wave, WiFi, Bluetooth y KNX.",
+    "faq.q6": "¿Puedo usar Alexa, Google o Siri?",
+    "faq.a6": "Sí, somos compatibles con los tres asistentes de voz. No te encerramos en un ecosistema. El asistente funciona como un control remoto adicional — tu sistema completo opera sin depender de ellos.",
+    "faq.q7": "¿Cuál es la diferencia entre DiraSmart y Alexa o Google Home?",
+    "faq.a7": "Alexa y Google son asistentes de voz que envían tus datos a la nube. DiraSmart es un sistema completo de automatización con procesamiento 100% local, app personalizada con tu marca, instalación profesional y soporte continuo. Puedes usar Alexa o Google junto con DiraSmart si lo deseas.",
+    "faq.q8": "¿Qué es KNX y por qué importa?",
+    "faq.a8": "KNX es el estándar mundial de automatización de edificios (ISO/IEC 14543-3), usado en más de 190 países. DiraSmart es uno de los pocos KNX Partners certificados en Panamá, lo que nos permite instalar sistemas de grado profesional con más de 8,000 productos compatibles de 500+ fabricantes.",
+    "faq.q9": "¿Incluyen soporte después de la instalación?",
+    "faq.a9": "Sí. Nuestro modelo es de servicio continuo: incluimos mantenimiento, actualizaciones de seguridad y soporte técnico. Tu sistema siempre está actualizado y funcionando perfectamente.",
+    "faq.q10": "¿Y si me mudo o quiero agregar más dispositivos?",
+    "faq.a10": "El sistema es completamente escalable. Puedes agregar dispositivos en cualquier momento. Los dispositivos inalámbricos son removibles y te los puedes llevar si te mudas.",
   },
   en: {
     // Header
@@ -462,20 +492,71 @@ const translations: Record<Language, Record<string, string>> = {
     // Footer extras
     "footer.nav.about": "About",
     "footer.nav.blog": "Blog",
+
+    // FAQ
+    "faq.title": "Frequently Asked",
+    "faq.titleHighlight": "Questions",
+    "faq.subtitle": "Answers to the most common questions about smart homes in Panama",
+    "faq.q1": "How much does it cost to install a smart home in Panama?",
+    "faq.a1": "The cost varies depending on the size of your home and the scope of the project. We offer everything from basic wireless packages for apartments to premium KNX systems for high-end residences. The initial consultation is free — we evaluate your space and present personalized options.",
+    "faq.q2": "How long does installation take?",
+    "faq.a2": "An apartment with wireless devices can be installed in a single day. A complete home with structured cabling and enterprise WiFi takes 2 to 3 days. KNX projects in new construction are coordinated with the building process.",
+    "faq.q3": "Does it work in apartments or only houses?",
+    "faq.a3": "Both. For apartments, we use wireless devices that require no construction or electrical modifications. Everything is installed without breaking walls and is removable if you move.",
+    "faq.q4": "What happens if the internet goes down?",
+    "faq.a4": "Everything keeps working. Unlike systems like Alexa or Google Home that depend on the cloud, DiraSmart processes everything locally inside your home. If your internet goes down, your automations, lights, and AC continue operating normally.",
+    "faq.q5": "What devices are compatible?",
+    "faq.a5": "Over 2,500 devices from brands like Tuya, Shelly, Philips Hue, Yale, Ecobee, Sonos, Somfy, and more. We support Zigbee, Z-Wave, WiFi, Bluetooth, and KNX protocols.",
+    "faq.q6": "Can I use Alexa, Google, or Siri?",
+    "faq.a6": "Yes, we're compatible with all three voice assistants. We don't lock you into one ecosystem. The assistant works as an additional remote control — your entire system operates without depending on them.",
+    "faq.q7": "What's the difference between DiraSmart and Alexa or Google Home?",
+    "faq.a7": "Alexa and Google are voice assistants that send your data to the cloud. DiraSmart is a complete automation system with 100% local processing, a custom-branded app, professional installation, and continuous support. You can use Alexa or Google alongside DiraSmart if you wish.",
+    "faq.q8": "What is KNX and why does it matter?",
+    "faq.a8": "KNX is the worldwide building automation standard (ISO/IEC 14543-3), used in over 190 countries. DiraSmart is one of the few certified KNX Partners in Panama, allowing us to install professional-grade systems with over 8,000 compatible products from 500+ manufacturers.",
+    "faq.q9": "Do you include support after installation?",
+    "faq.a9": "Yes. Our model is continuous service: we include maintenance, security updates, and technical support. Your system is always up-to-date and running perfectly.",
+    "faq.q10": "What if I move or want to add more devices?",
+    "faq.a10": "The system is fully scalable. You can add devices at any time. Wireless devices are removable and you can take them with you if you move.",
   },
 };
+
+/** Detect language from URL pathname */
+function detectLanguage(pathname: string): Language {
+  return pathname === "/en" || pathname.startsWith("/en/") ? "en" : "es";
+}
+
+/** Strip /en prefix from a pathname to get the base path */
+function stripLangPrefix(pathname: string): string {
+  if (pathname === "/en") return "/";
+  if (pathname.startsWith("/en/")) return pathname.slice(3);
+  return pathname;
+}
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const [language, setLanguage] = useState<Language>("es");
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  const t = (key: string): string => {
+  const language = detectLanguage(location.pathname);
+  const pathPrefix = language === "en" ? "/en" : "";
+
+  const setLanguage = useCallback((lang: Language) => {
+    const basePath = stripLangPrefix(location.pathname);
+    const newPath = lang === "en" ? (basePath === "/" ? "/en" : `/en${basePath}`) : basePath;
+    navigate(newPath);
+  }, [location.pathname, navigate]);
+
+  const t = useCallback((key: string): string => {
     return translations[language][key] || key;
-  };
+  }, [language]);
+
+  const localePath = useCallback((path: string): string => {
+    return pathPrefix + path;
+  }, [pathPrefix]);
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+    <LanguageContext.Provider value={{ language, setLanguage, t, pathPrefix, localePath }}>
       {children}
     </LanguageContext.Provider>
   );

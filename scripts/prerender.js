@@ -7,11 +7,16 @@ import { fileURLToPath } from "url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DIST = join(__dirname, "..", "dist");
 
-// All routes to pre-render
-const ROUTES = [
+// Spanish routes
+const ES_ROUTES = [
   "/",
   "/about",
   "/blog",
+  "/blog/knx-partner-panama-automatizacion-premium",
+  "/blog/control-por-voz-alexa-google-siri",
+  "/blog/cortinas-motorizadas-persianas-inteligentes",
+  "/blog/automatizacion-apartamentos-panama",
+  "/blog/ahorro-energia-hogar-inteligente-panama",
   "/blog/beneficios-hogar-inteligente-panama",
   "/blog/como-funciona-automatizacion-hogar",
   "/blog/shabbat-tecnologia-automatizacion-halaja",
@@ -23,6 +28,12 @@ const ROUTES = [
   "/blog/guia-principiantes-primera-casa-inteligente",
   "/blog/smart-home-oficinas-negocios",
 ];
+
+// English routes (same structure with /en prefix)
+const EN_ROUTES = ES_ROUTES.map((r) => (r === "/" ? "/en" : `/en${r}`));
+
+// All routes to pre-render
+const ROUTES = [...ES_ROUTES, ...EN_ROUTES];
 
 // Simple static file server for the dist folder
 function startServer(port) {

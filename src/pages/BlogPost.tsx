@@ -8,13 +8,13 @@ import { Calendar, Clock, ArrowLeft, ArrowRight } from "lucide-react";
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
-  const { language, t } = useLanguage();
+  const { language, t, localePath } = useLanguage();
 
   const postIndex = blogPosts.findIndex((p) => p.slug === slug);
   const post = blogPosts[postIndex];
 
   if (!post) {
-    return <Navigate to="/blog" replace />;
+    return <Navigate to={localePath("/blog")} replace />;
   }
 
   const prevPost = postIndex > 0 ? blogPosts[postIndex - 1] : null;
@@ -96,7 +96,7 @@ const BlogPost = () => {
             <div className="max-w-3xl mx-auto">
               {/* Meta bar */}
               <div className="flex items-center gap-4 py-6 border-b border-border/50 text-sm text-muted-foreground">
-                <Link to="/blog" className="flex items-center gap-1 text-primary hover:underline">
+                <Link to={localePath("/blog")} className="flex items-center gap-1 text-primary hover:underline">
                   <ArrowLeft className="w-4 h-4" />
                   {t("blog.backToList")}
                 </Link>
@@ -152,7 +152,7 @@ const BlogPost = () => {
                       {related.map((r) => (
                         <Link
                           key={r.slug}
-                          to={`/blog/${r.slug}`}
+                          to={localePath(`/blog/${r.slug}`)}
                           className="group p-4 rounded-xl border border-border/50 hover:border-primary/30 transition-colors"
                         >
                           <span className="text-xs text-primary font-medium">{r.category[language]}</span>
@@ -169,7 +169,7 @@ const BlogPost = () => {
               {/* Navigation */}
               <div className="grid grid-cols-2 gap-4 pt-6 border-t border-border/50">
                 {prevPost ? (
-                  <Link to={`/blog/${prevPost.slug}`} className="group p-4 rounded-xl border border-border/50 hover:border-primary/30 transition-colors">
+                  <Link to={localePath(`/blog/${prevPost.slug}`)} className="group p-4 rounded-xl border border-border/50 hover:border-primary/30 transition-colors">
                     <span className="text-xs text-muted-foreground flex items-center gap-1 mb-1">
                       <ArrowLeft className="w-3 h-3" /> {t("blog.prev")}
                     </span>
@@ -179,7 +179,7 @@ const BlogPost = () => {
                   </Link>
                 ) : <div />}
                 {nextPost ? (
-                  <Link to={`/blog/${nextPost.slug}`} className="group p-4 rounded-xl border border-border/50 hover:border-primary/30 transition-colors text-right">
+                  <Link to={localePath(`/blog/${nextPost.slug}`)} className="group p-4 rounded-xl border border-border/50 hover:border-primary/30 transition-colors text-right">
                     <span className="text-xs text-muted-foreground flex items-center justify-end gap-1 mb-1">
                       {t("blog.next")} <ArrowRight className="w-3 h-3" />
                     </span>

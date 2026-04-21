@@ -4,14 +4,14 @@ import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 import saraImg from "@/assets/testimonials/sara.png";
-import josephImg from "@/assets/testimonials/joseph.png";
+import josephImg from "@/assets/testimonials/joseph.webp";
 import estherImg from "@/assets/testimonials/esther.jpg";
 import samyImg from "@/assets/testimonials/samy.jpg";
 import jacoboImg from "@/assets/testimonials/jacobo.jpg";
 import eliasImg from "@/assets/testimonials/elias.png";
 import jonathanImg from "@/assets/testimonials/jonathan.png";
 import samiImg from "@/assets/testimonials/sami.png";
-import rafaelImg from "@/assets/testimonials/rafael.png";
+import rafaelImg from "@/assets/testimonials/rafael.webp";
 import morrisImg from "@/assets/testimonials/morris.jpg";
 import simonImg from "@/assets/testimonials/simon.jpg";
 import mendyImg from "@/assets/testimonials/mendy.png";

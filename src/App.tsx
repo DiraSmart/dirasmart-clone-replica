@@ -21,26 +21,36 @@ const ScrollToTop = () => {
   return null;
 };
 
+const AppRoutes = () => (
+  <LanguageProvider>
+    <Toaster />
+    <ScrollToTop />
+    <Suspense fallback={null}>
+      <DynamicHead />
+    </Suspense>
+    <Routes>
+      {/* Spanish routes (default) */}
+      <Route path="/" element={<Index />} />
+      <Route path="/about" element={<Suspense fallback={null}><About /></Suspense>} />
+      <Route path="/blog" element={<Suspense fallback={null}><Blog /></Suspense>} />
+      <Route path="/blog/:slug" element={<Suspense fallback={null}><BlogPost /></Suspense>} />
+      {/* English routes */}
+      <Route path="/en" element={<Index />} />
+      <Route path="/en/about" element={<Suspense fallback={null}><About /></Suspense>} />
+      <Route path="/en/blog" element={<Suspense fallback={null}><Blog /></Suspense>} />
+      <Route path="/en/blog/:slug" element={<Suspense fallback={null}><BlogPost /></Suspense>} />
+      {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+      <Route path="*" element={<Suspense fallback={null}><NotFound /></Suspense>} />
+    </Routes>
+  </LanguageProvider>
+);
+
 const App = () => (
   <ErrorBoundary>
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-      <LanguageProvider>
-        <Toaster />
-        <BrowserRouter>
-        <ScrollToTop />
-        <Suspense fallback={null}>
-          <DynamicHead />
-        </Suspense>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/about" element={<Suspense fallback={null}><About /></Suspense>} />
-          <Route path="/blog" element={<Suspense fallback={null}><Blog /></Suspense>} />
-          <Route path="/blog/:slug" element={<Suspense fallback={null}><BlogPost /></Suspense>} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<Suspense fallback={null}><NotFound /></Suspense>} />
-        </Routes>
-        </BrowserRouter>
-      </LanguageProvider>
+      <BrowserRouter>
+        <AppRoutes />
+      </BrowserRouter>
     </ThemeProvider>
   </ErrorBoundary>
 );
