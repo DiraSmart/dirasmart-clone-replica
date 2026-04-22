@@ -22,8 +22,8 @@ const WhatsAppButton = () => {
         className="w-14 h-14 drop-shadow-lg"
         viewBox="700 360 48 48"
         xmlns="http://www.w3.org/2000/svg"
-        role="img"
         aria-hidden="true"
+        focusable="false"
       >
         {/* Green bubble */}
         <path

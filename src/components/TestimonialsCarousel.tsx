@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
-import { ChevronLeft, ChevronRight, Star } from "lucide-react";
+import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -21,6 +21,10 @@ import joeImg from "@/assets/testimonials/joe.png";
 const TestimonialsCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [autoplayDisabled, setAutoplayDisabled] = useState(() =>
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
   const { t, language } = useLanguage();
@@ -259,12 +263,12 @@ const TestimonialsCarousel = () => {
   const currentTestimonials = testimonials[language];
 
   useEffect(() => {
-    if (isPaused) return;
+    if (isPaused || autoplayDisabled) return;
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % currentTestimonials.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, [currentTestimonials.length, isPaused, currentIndex]);
+  }, [currentTestimonials.length, isPaused, autoplayDisabled, currentIndex]);
 
   const goToPrevious = useCallback(() => {
     setCurrentIndex((prev) => (prev - 1 + currentTestimonials.length) % currentTestimonials.length);
@@ -329,7 +333,7 @@ const TestimonialsCarousel = () => {
 
             {/* Quote */}
             <blockquote className="text-lg md:text-xl text-foreground mb-8 leading-relaxed font-medium relative z-10 max-w-2xl">
-              "{current.text}"
+              {"“"}{current.text}{"”"}
             </blockquote>
 
             {/* Author */}
@@ -359,22 +363,23 @@ const TestimonialsCarousel = () => {
               size="icon"
               onClick={goToPrevious}
               aria-label="Previous testimonial"
-              className="rounded-full w-10 h-10 border border-border hover:border-primary hover:bg-primary hover:text-primary-foreground transition-all">
+              className="rounded-full w-10 h-10 border border-border hover:border-primary hover:bg-primary hover:text-primary-foreground motion-safe:transition-[background-color,color,border-color]">
 
-              <ChevronLeft className="w-4 h-4" />
+              <ChevronLeft aria-hidden="true" className="w-4 h-4" />
             </Button>
 
             <div className="flex gap-2">
-              {currentTestimonials.map((_, index) =>
+              {currentTestimonials.map((testimonial, index) =>
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`h-1.5 rounded-full transition-all duration-300 ${
+                className={`h-1.5 rounded-full motion-safe:transition-[width,background-color] motion-safe:duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
                 index === currentIndex ?
                 "bg-gradient-to-r from-primary to-accent w-6" :
                 "bg-muted-foreground/20 hover:bg-muted-foreground/40 w-1.5"}`
                 }
-                aria-label={`Testimonial ${index + 1}`} />
+                aria-label={`${t("testimonials.goTo")} ${testimonial.name}`}
+                aria-current={index === currentIndex ? "true" : undefined} />
 
               )}
             </div>
@@ -384,10 +389,22 @@ const TestimonialsCarousel = () => {
               size="icon"
               onClick={goToNext}
               aria-label="Next testimonial"
-              className="rounded-full w-10 h-10 border border-border hover:border-primary hover:bg-primary hover:text-primary-foreground transition-all">
+              className="rounded-full w-10 h-10 border border-border hover:border-primary hover:bg-primary hover:text-primary-foreground motion-safe:transition-[background-color,color,border-color]">
 
-              <ChevronRight className="w-4 h-4" />
+              <ChevronRight aria-hidden="true" className="w-4 h-4" />
             </Button>
+          </div>
+
+          <div className="flex justify-center mt-4">
+            <button
+              type="button"
+              onClick={() => setAutoplayDisabled((d) => !d)}
+              aria-label={autoplayDisabled ? t("a11y.resumeAutoplay") : t("a11y.pauseAutoplay")}
+              className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-full px-3 py-1 motion-safe:transition-colors"
+            >
+              {autoplayDisabled ? <Play aria-hidden="true" className="w-3 h-3" /> : <Pause aria-hidden="true" className="w-3 h-3" />}
+              <span>{autoplayDisabled ? t("a11y.resumeAutoplay") : t("a11y.pauseAutoplay")}</span>
+            </button>
           </div>
         </div>
       </div>

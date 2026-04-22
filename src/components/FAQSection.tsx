@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useId, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -17,20 +17,26 @@ const FAQ_KEYS = [
 
 const FAQItem = ({ question, answer }: { question: string; answer: string }) => {
   const [open, setOpen] = useState(false);
+  const panelId = useId();
 
   return (
     <div className="border border-border/50 rounded-xl overflow-hidden transition-colors hover:border-primary/30">
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between gap-4 p-5 text-left"
+        aria-expanded={open}
+        aria-controls={panelId}
+        className="w-full flex items-center justify-between gap-4 p-5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-xl"
       >
         <span className="font-medium text-foreground text-sm sm:text-base">{question}</span>
         <ChevronDown
-          className={`w-5 h-5 text-primary shrink-0 transition-transform duration-300 ${open ? "rotate-180" : ""}`}
+          aria-hidden="true"
+          className={`w-5 h-5 text-primary shrink-0 motion-safe:transition-transform motion-safe:duration-300 ${open ? "rotate-180" : ""}`}
         />
       </button>
       <div
-        className={`grid transition-all duration-300 ease-in-out ${open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
+        id={panelId}
+        role="region"
+        className={`grid motion-safe:transition-[grid-template-rows,opacity] motion-safe:duration-300 ease-in-out ${open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
       >
         <div className="overflow-hidden">
           <p className="px-5 pb-5 text-sm text-muted-foreground leading-relaxed">

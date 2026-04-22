@@ -1,26 +1,32 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, Pause, Play } from "lucide-react";
 import ParticleBackground from "./ParticleBackground";
 import { useLanguage } from "@/contexts/LanguageContext";
 import appMobileImage2 from "@/assets/app-mobile-2.png";
 
 const HeroSection = () => {
   const [currentImage, setCurrentImage] = useState(0);
+  const [isPaused, setIsPaused] = useState(() =>
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
   const images = ["/app-mobile.png", appMobileImage2];
   const { t } = useLanguage();
 
   useEffect(() => {
+    if (isPaused) return;
     const interval = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % images.length);
     }, 4000);
     return () => clearInterval(interval);
-  }, [images.length]);
+  }, [images.length, isPaused]);
 
   const scrollToDemo = () => {
     const element = document.querySelector("#demo");
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      element.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth" });
     }
   };
 
@@ -95,7 +101,7 @@ const HeroSection = () => {
           </div>
 
           {/* Right Content - App Image */}
-          <div className="relative flex justify-center animate-fade-in-right order-first lg:order-last">
+          <div className="relative flex justify-center motion-safe:animate-fade-in-right order-first lg:order-last">
             {images.map((img, index) => (
               <img
                 key={index}
@@ -105,12 +111,20 @@ const HeroSection = () => {
                 height={680}
                 loading={index === 0 ? 'eager' : 'lazy'}
                 fetchPriority={index === 0 ? 'high' : 'auto'}
-                className={`w-48 sm:w-64 md:w-80 lg:w-96 drop-shadow-2xl absolute transition-opacity duration-700 ${
+                className={`w-48 sm:w-64 md:w-80 lg:w-96 drop-shadow-2xl absolute motion-safe:transition-opacity motion-safe:duration-700 ${
                   index === currentImage ? 'opacity-100' : 'opacity-0'
                 }`}
                 style={{ position: index === 0 ? 'relative' : 'absolute' }}
               />
             ))}
+            <button
+              type="button"
+              onClick={() => setIsPaused((p) => !p)}
+              aria-label={isPaused ? t("a11y.resumeAutoplay") : t("a11y.pauseAutoplay")}
+              className="absolute bottom-2 right-2 w-8 h-8 flex items-center justify-center rounded-full bg-background/70 backdrop-blur border border-border/40 text-foreground/70 hover:text-foreground hover:bg-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary motion-safe:transition-colors"
+            >
+              {isPaused ? <Play aria-hidden="true" className="w-3.5 h-3.5" /> : <Pause aria-hidden="true" className="w-3.5 h-3.5" />}
+            </button>
           </div>
         </div>
       </div>

@@ -64,8 +64,8 @@ const BlogPost = () => {
   return (
     <div className="min-h-screen bg-background relative">
       <Header />
-      <span className="absolute top-16 sm:top-20 md:top-24 right-4 sm:right-6 z-40 text-foreground/30 text-xs tracking-wide font-light select-none">בּ״ה</span>
-      <main>
+      <span aria-hidden="true" className="absolute top-16 sm:top-20 md:top-24 right-4 sm:right-6 z-40 text-foreground/30 text-xs tracking-wide font-light select-none">בּ״ה</span>
+      <main id="main-content">
         {/* Hero */}
         <section className={`pt-24 pb-0 relative overflow-hidden`}>
           <div className={`h-48 sm:h-64 md:h-80 bg-gradient-to-br ${post.gradient} relative overflow-hidden`}>

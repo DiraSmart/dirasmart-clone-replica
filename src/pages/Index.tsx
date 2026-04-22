@@ -20,8 +20,8 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background relative">
       <Header />
-      <span className="absolute top-16 sm:top-20 md:top-24 right-4 sm:right-6 z-40 text-foreground/30 text-xs tracking-wide font-light select-none">בּ״ה</span>
-      <main>
+      <span aria-hidden="true" className="absolute top-16 sm:top-20 md:top-24 right-4 sm:right-6 z-40 text-foreground/30 text-xs tracking-wide font-light select-none">בּ״ה</span>
+      <main id="main-content">
         <HeroSection />
 
         <Suspense fallback={null}>

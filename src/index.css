@@ -168,3 +168,17 @@
     @apply absolute top-0 left-1/2 -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-primary to-accent rounded-full;
   }
 }
+
+/* Respect the user's OS-level reduced-motion preference: disable all
+   non-essential motion (WCAG 2.3.3) without requiring every component
+   to opt-in via motion-safe:. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

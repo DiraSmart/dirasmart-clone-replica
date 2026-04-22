@@ -164,6 +164,7 @@ const translations: Record<Language, Record<string, string>> = {
     "testimonials.title": "¿Qué dicen nuestros",
     "testimonials.titleHighlight": "clientes",
     "testimonials.subtitle": "Opiniones reales de hogares transformados con tecnología inteligente",
+    "testimonials.goTo": "Ir al testimonio de",
     "testimonials.role.owner": "Propietaria",
     "testimonials.role.business": "Empresario",
     "testimonials.role.architect": "Arquitecta",
@@ -196,6 +197,11 @@ const translations: Record<Language, Record<string, string>> = {
     // Navigation extras
     "nav.about": "Nosotros",
     "nav.blog": "Blog",
+    "nav.openMenu": "Abrir menú",
+    "nav.closeMenu": "Cerrar menú",
+    "a11y.skipToContent": "Saltar al contenido principal",
+    "a11y.pauseAutoplay": "Pausar rotación automática",
+    "a11y.resumeAutoplay": "Reanudar rotación automática",
 
     // About page
     "about.title": "Conoce",
@@ -416,6 +422,7 @@ const translations: Record<Language, Record<string, string>> = {
     "testimonials.title": "What our",
     "testimonials.titleHighlight": "clients say",
     "testimonials.subtitle": "Real reviews from homeowners who transformed their spaces with smart technology",
+    "testimonials.goTo": "Go to testimonial from",
     "testimonials.role.owner": "Owner",
     "testimonials.role.business": "Businessman",
     "testimonials.role.architect": "Architect",
@@ -448,6 +455,11 @@ const translations: Record<Language, Record<string, string>> = {
     // Navigation extras
     "nav.about": "About",
     "nav.blog": "Blog",
+    "nav.openMenu": "Open menu",
+    "nav.closeMenu": "Close menu",
+    "a11y.skipToContent": "Skip to main content",
+    "a11y.pauseAutoplay": "Pause autoplay",
+    "a11y.resumeAutoplay": "Resume autoplay",
 
     // About page
     "about.title": "Meet",

@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Smartphone, Moon, Zap, Cpu, Lightbulb, Thermometer, Home, Clock, Calendar, Tablet, Monitor } from "lucide-react";
+import { Smartphone, Moon, Zap, Cpu, Lightbulb, Thermometer, Home, Clock, Calendar, Tablet, Monitor, Pause, Play } from "lucide-react";
 import devicesMockup from "@/assets/devices-mockup.webp";
 import { useLanguage } from "@/contexts/LanguageContext";
 import appMobileImage from "@/assets/app-mobile-main.webp";
@@ -11,9 +11,9 @@ import automationsImage from "@/assets/automations-screen.webp";
 const FeatureCard = ({ icon: Icon, title, desc, colorClass }: {icon: typeof Thermometer;title: string;desc: string;colorClass: string;}) => {
   const isPrimary = colorClass === "primary";
   return (
-    <div className={`group flex items-start gap-4 p-4 rounded-xl border border-border/50 border-l-[3px] transition-all duration-300 ${isPrimary ? "border-l-primary hover:border-primary/30 hover:bg-primary/5" : "border-l-accent hover:border-accent/30 hover:bg-accent/5"}`}>
-      <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform ${isPrimary ? "bg-primary/10" : "bg-accent/10"}`}>
-        <Icon className={`w-5 h-5 ${isPrimary ? "text-primary" : "text-accent"}`} strokeWidth={1.5} />
+    <div className={`group flex items-start gap-4 p-4 rounded-xl border border-border/50 border-l-[3px] motion-safe:transition-[background-color,border-color] motion-safe:duration-300 ${isPrimary ? "border-l-primary hover:border-primary/30 hover:bg-primary/5" : "border-l-accent hover:border-accent/30 hover:bg-accent/5"}`}>
+      <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 motion-safe:group-hover:scale-110 motion-safe:transition-transform ${isPrimary ? "bg-primary/10" : "bg-accent/10"}`}>
+        <Icon aria-hidden="true" className={`w-5 h-5 ${isPrimary ? "text-primary" : "text-accent"}`} strokeWidth={1.5} />
       </div>
       <div className="min-w-0">
         <p className="font-semibold text-foreground text-sm">{title}</p>
@@ -84,6 +84,10 @@ const TabPanel = ({ badge, badgeColor, title, description, cards, image, imageAl
 const FeatureTabs = () => {
   const [activeTab, setActiveTab] = useState("app");
   const [isPaused, setIsPaused] = useState(false);
+  const [autoplayDisabled, setAutoplayDisabled] = useState(() =>
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
   const { t } = useLanguage();
 
   const tabs = [
@@ -100,14 +104,14 @@ const FeatureTabs = () => {
   }, [activeTab, tabs]);
 
   useEffect(() => {
-    if (isPaused) return;
+    if (isPaused || autoplayDisabled) return;
 
     const interval = setInterval(() => {
       goToNextTab();
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [isPaused, goToNextTab]);
+  }, [isPaused, autoplayDisabled, goToNextTab]);
 
   const handleTabChange = (value: string) => {
     setActiveTab(value);
@@ -132,28 +136,36 @@ const FeatureTabs = () => {
         </div>
 
         <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
-          <TabsList className="w-full flex flex-wrap justify-center gap-2 bg-transparent h-auto mb-10 md:mb-14">
+          <TabsList className="w-full flex flex-wrap justify-center gap-2 bg-transparent h-auto mb-4">
             {tabs.map((tab) => (
               <TabsTrigger
                 key={tab.id}
                 value={tab.id}
-                className="relative overflow-hidden data-[state=active]:bg-foreground data-[state=active]:text-background data-[state=inactive]:bg-background px-5 sm:px-6 py-3 rounded-full border border-border/50 data-[state=active]:border-foreground data-[state=inactive]:hover:border-primary/30 transition-all duration-300 text-sm font-medium"
+                className="relative overflow-hidden data-[state=active]:bg-foreground data-[state=active]:text-background data-[state=inactive]:bg-background px-5 sm:px-6 py-3 rounded-full border border-border/50 data-[state=active]:border-foreground data-[state=inactive]:hover:border-primary/30 motion-safe:transition-[background-color,color,border-color] motion-safe:duration-300 text-sm font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
-                <tab.icon className="w-4 h-4 mr-2" strokeWidth={1.5} />
+                <tab.icon aria-hidden="true" className="w-4 h-4 mr-2" strokeWidth={1.5} />
                 {t(tab.labelKey)}
-                {activeTab === tab.id && (
+                {activeTab === tab.id && !autoplayDisabled && !isPaused && (
                   <span
                     key={`progress-${activeTab}`}
-                    className="absolute bottom-0 left-0 h-[3px] w-full bg-gradient-to-r from-primary to-accent rounded-full origin-left"
-                    style={{
-                      animation: isPaused ? 'none' : 'tab-progress 5s linear forwards',
-                      transform: isPaused ? 'scaleX(1)' : undefined,
-                    }}
+                    aria-hidden="true"
+                    className="absolute bottom-0 left-0 h-[3px] w-full bg-gradient-to-r from-primary to-accent rounded-full origin-left motion-safe:[animation:tab-progress_5s_linear_forwards]"
                   />
                 )}
               </TabsTrigger>
             ))}
           </TabsList>
+          <div className="flex justify-center mb-10 md:mb-14">
+            <button
+              type="button"
+              onClick={() => setAutoplayDisabled((d) => !d)}
+              aria-label={autoplayDisabled ? t("a11y.resumeAutoplay") : t("a11y.pauseAutoplay")}
+              className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-full px-3 py-1 motion-safe:transition-colors"
+            >
+              {autoplayDisabled ? <Play aria-hidden="true" className="w-3 h-3" /> : <Pause aria-hidden="true" className="w-3 h-3" />}
+              <span>{autoplayDisabled ? t("a11y.resumeAutoplay") : t("a11y.pauseAutoplay")}</span>
+            </button>
+          </div>
 
           {/* App Tab — image right */}
           <TabsContent value="app" className="animate-fade-in">
