@@ -10,14 +10,14 @@ import { post as iluminacionInteligente } from "./posts/iluminacion-inteligente-
 import { post as climatizacionTropico } from "./posts/climatizacion-inteligente-tropico-panama";
 import { post as guiaPrincipiantes } from "./posts/guia-principiantes-primera-casa-inteligente";
 import { post as smartOficinas } from "./posts/smart-home-oficinas-negocios";
-// import { post as knxPartner } from "./posts/knx-partner-panama-automatizacion-premium"; // oculto hasta terminar la certificación KNX
+import { post as knxPartner } from "./posts/knx-panama-automatizacion-premium";
 import { post as controlVoz } from "./posts/control-por-voz-alexa-google-siri";
 import { post as cortinasMotorizadas } from "./posts/cortinas-motorizadas-persianas-inteligentes";
 import { post as automatizacionApartamentos } from "./posts/automatizacion-apartamentos-panama";
 import { post as ahorroEnergia } from "./posts/ahorro-energia-hogar-inteligente-panama";
 
 export const blogPosts = [
-  // knxPartner, // oculto hasta terminar la certificación KNX
+  knxPartner,
   controlVoz,
   cortinasMotorizadas,
   automatizacionApartamentos,

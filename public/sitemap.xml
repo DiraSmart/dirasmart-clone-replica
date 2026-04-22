@@ -211,24 +211,22 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-  <!-- Oculto hasta terminar la certificación KNX
   <url>
-    <loc>https://dirasmart.com/blog/knx-partner-panama-automatizacion-premium</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/knx-partner-panama-automatizacion-premium" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/knx-partner-panama-automatizacion-premium" />
+    <loc>https://dirasmart.com/blog/knx-panama-automatizacion-premium</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/knx-panama-automatizacion-premium" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/knx-panama-automatizacion-premium" />
     <lastmod>2026-04-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://dirasmart.com/en/blog/knx-partner-panama-automatizacion-premium</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/knx-partner-panama-automatizacion-premium" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/knx-partner-panama-automatizacion-premium" />
+    <loc>https://dirasmart.com/en/blog/knx-panama-automatizacion-premium</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/knx-panama-automatizacion-premium" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/knx-panama-automatizacion-premium" />
     <lastmod>2026-04-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-  -->
   <url>
     <loc>https://dirasmart.com/blog/control-por-voz-alexa-google-siri</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/control-por-voz-alexa-google-siri" />

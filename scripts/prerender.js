@@ -12,7 +12,7 @@ const ES_ROUTES = [
   "/",
   "/about",
   "/blog",
-  // "/blog/knx-partner-panama-automatizacion-premium", // oculto hasta terminar la certificación KNX
+  "/blog/knx-panama-automatizacion-premium",
   "/blog/control-por-voz-alexa-google-siri",
   "/blog/cortinas-motorizadas-persianas-inteligentes",
   "/blog/automatizacion-apartamentos-panama",
