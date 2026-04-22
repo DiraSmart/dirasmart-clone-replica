@@ -1,6 +1,11 @@
 const VALID_ROUTES = new Set(["/", "/about", "/blog", "/en", "/en/about", "/en/blog"]);
 const VALID_PREFIXES = ["/blog/", "/en/blog/"];
 
+const PERMANENT_REDIRECTS: Record<string, string> = {
+  "/blog/knx-partner-panama-automatizacion-premium": "/blog/knx-panama-automatizacion-premium",
+  "/en/blog/knx-partner-panama-automatizacion-premium": "/en/blog/knx-panama-automatizacion-premium",
+};
+
 const ASSET_ORIGIN = "https://dirasmart-clone-replica.jbrande.workers.dev";
 
 function isValidRoute(pathname: string): boolean {
@@ -33,6 +38,11 @@ export default {
     if (url.hostname.endsWith(".workers.dev") || url.hostname === "www.dirasmart.com") {
       const destination = new URL(url.pathname + url.search, "https://dirasmart.com");
       return Response.redirect(destination.toString(), 301);
+    }
+
+    const redirectTarget = PERMANENT_REDIRECTS[url.pathname];
+    if (redirectTarget) {
+      return Response.redirect(new URL(redirectTarget + url.search, url.origin).toString(), 301);
     }
 
     if (url.pathname.startsWith("/api/")) {

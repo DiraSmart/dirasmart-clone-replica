@@ -9,8 +9,8 @@ export const post: BlogPost = {
   icon: "Award",
   image: "/blog/knx-partner.jpg",
   title: {
-    es: "KNX: El Estándar Mundial de Automatización y Por Qué Somos Partner en Panamá",
-    en: "KNX: The Global Automation Standard and Why We Are a Partner in Panama",
+    es: "KNX: El Estándar Mundial de Automatización para Proyectos Premium en Panamá",
+    en: "KNX: The Global Automation Standard for Premium Projects in Panama",
   },
   excerpt: {
     es: "Descubre qué es KNX, por qué es el estándar más confiable del mundo para edificios inteligentes, y cómo DiraSmart es uno de los pocos KNX Partners certificados en Panamá.",
