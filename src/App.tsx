@@ -13,6 +13,12 @@ const BlogPost = lazy(() => import("./pages/BlogPost"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const DynamicHead = lazy(() => import("./components/DynamicHead"));
 
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+  }
+}
+
 const ScrollToTop = () => {
   const { pathname } = useLocation();
   useEffect(() => {
@@ -21,10 +27,25 @@ const ScrollToTop = () => {
   return null;
 };
 
+const AnalyticsTracker = () => {
+  const { pathname, search } = useLocation();
+  useEffect(() => {
+    if (typeof window.gtag === "function") {
+      window.gtag("event", "page_view", {
+        page_path: pathname + search,
+        page_location: window.location.href,
+        page_title: document.title,
+      });
+    }
+  }, [pathname, search]);
+  return null;
+};
+
 const AppRoutes = () => (
   <LanguageProvider>
     <Toaster />
     <ScrollToTop />
+    <AnalyticsTracker />
     <Suspense fallback={null}>
       <DynamicHead />
     </Suspense>
