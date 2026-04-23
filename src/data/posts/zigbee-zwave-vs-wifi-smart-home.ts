@@ -7,6 +7,7 @@ export const post: BlogPost = {
   category: { es: "Protocolos", en: "Protocols" },
   gradient: "from-cyan-600 to-emerald-700",
   icon: "Network",
+  image: "/blog/protocols-zigbee-zwave-wifi.jpg",
   title: {
     es: "Zigbee y Z-Wave vs WiFi: ¿qué protocolo elegir para tu casa inteligente?",
     en: "Zigbee and Z-Wave vs WiFi: which protocol should you choose for your smart home?",
