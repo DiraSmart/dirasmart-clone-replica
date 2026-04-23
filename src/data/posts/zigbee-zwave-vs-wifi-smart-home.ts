@@ -44,7 +44,7 @@ Apartamentos o casas chicas con menos de 20 dispositivos totales — donde la sa
 
 Si vas a poner 40+ dispositivos, **no uses el router del ISP**. Pon una red WiFi empresarial con múltiples access points (UniFi, TP-Link Omada o similar) específicamente dimensionada para IoT. Esa es la diferencia entre WiFi que funciona y WiFi que se cae cada dos días.
 
-**Además, no cualquier WiFi sirve.** En DiraSmart evitamos los dispositivos WiFi *solo-nube* — esos que no responden si tu internet se cae o si el fabricante cierra la nube. Trabajamos con equipos WiFi de **control local** (Shelly, dispositivos basados en ESPHome, Sonoff con firmware local) o al menos **híbridos** (la app funciona tanto en la red local como remoto). Así, aunque elijas WiFi para un termostato o un enchufe, tu casa sigue respondiendo sin internet y no quedas expuesto a que una marca decida bajar sus servidores.
+**Además, no cualquier WiFi sirve.** En DiraSmart evitamos los dispositivos WiFi *solo-nube* — esos que no responden si tu internet se cae o si el fabricante cierra la nube. Trabajamos con equipos WiFi de **control local** (que responden sin pasar por la nube del fabricante) o al menos **híbridos** (la app funciona tanto en la red local como remoto). Así, aunque elijas WiFi para un termostato o un enchufe, tu casa sigue respondiendo sin internet y no quedas expuesto a que una marca decida bajar sus servidores.
 
 ## Zigbee: el protocolo ideal para iluminación
 
@@ -133,7 +133,7 @@ Apartments or small homes with fewer than 20 total devices — where router satu
 
 If you'll have 40+ devices, **don't use the ISP router**. Put in an enterprise WiFi network with multiple access points (UniFi, TP-Link Omada or similar) specifically sized for IoT. That's the difference between WiFi that works and WiFi that drops every other day.
 
-**Also, not every WiFi device is fair game.** At DiraSmart we avoid *cloud-only* WiFi devices — the ones that stop responding if your internet drops or if the manufacturer shuts down its cloud. We work with **locally-controlled** WiFi gear (Shelly, ESPHome-based devices, Sonoff with local firmware) or at minimum **hybrid** devices (the app works both on the local network and remotely). That way, even when you pick WiFi for a thermostat or a plug, your home keeps responding without internet and you're not exposed to a vendor deciding to shut down its servers.
+**Also, not every WiFi device is fair game.** At DiraSmart we avoid *cloud-only* WiFi devices — the ones that stop responding if your internet drops or if the manufacturer shuts down its cloud. We work with **locally-controlled** WiFi gear (that responds without touching the manufacturer's cloud) or at minimum **hybrid** devices (the app works both on the local network and remotely). That way, even when you pick WiFi for a thermostat or a plug, your home keeps responding without internet and you're not exposed to a vendor deciding to shut down its servers.
 
 ## Zigbee: the ideal protocol for lighting
 
