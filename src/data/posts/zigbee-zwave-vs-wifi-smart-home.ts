@@ -34,7 +34,7 @@ WiFi termina siendo la base de la mayoría de instalaciones por una razón simpl
 
 **Cuándo WiFi es la decisión correcta:**
 
-Casas donde ya se entregó la obra y no se pueden instalar access points adicionales ni cablear antenas escondidas — WiFi lo resuelves con un router/mesh comercial sin tocar paredes.
+Casas con infraestructura WiFi densa — idealmente **access points cableados, casi uno por cuarto** (UniFi, Omada o equivalente). Esa densidad es lo que hace la diferencia: sin ella, los dispositivos IoT sufren desconexiones constantes. WiFi no aguanta 40 cosas conectadas a un router en la sala.
 
 Equipos que solo existen en WiFi de calidad: **termostatos**, cámaras IP, pantallas de control, parlantes multi-room, ciertos electrodomésticos.
 
@@ -123,7 +123,7 @@ WiFi ends up being the base of most installs for a simple reason: **device varie
 
 **When WiFi is the right call:**
 
-Houses where construction is already finished and you can't install extra access points or hide cabling behind walls — WiFi solves it with a mesh or commercial router without touching the build.
+Houses with dense WiFi infrastructure — ideally **cabled access points, roughly one per room** (UniFi, Omada or similar). That AP density is what makes the difference: without it, IoT devices suffer constant drops. WiFi doesn't handle 40 connected things over a single router in the living room.
 
 Devices that only exist well on WiFi: **thermostats**, IP cameras, wall control panels, multi-room speakers, certain appliances.
 
