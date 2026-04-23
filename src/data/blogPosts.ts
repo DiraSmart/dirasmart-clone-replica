@@ -15,8 +15,10 @@ import { post as controlVoz } from "./posts/control-por-voz-alexa-google-siri";
 import { post as cortinasMotorizadas } from "./posts/cortinas-motorizadas-persianas-inteligentes";
 import { post as automatizacionApartamentos } from "./posts/automatizacion-apartamentos-panama";
 import { post as ahorroEnergia } from "./posts/ahorro-energia-hogar-inteligente-panama";
+import { post as zigbeeZwaveVsWifi } from "./posts/zigbee-zwave-vs-wifi-smart-home";
 
 export const blogPosts = [
+  zigbeeZwaveVsWifi,
   knxPartner,
   controlVoz,
   cortinasMotorizadas,

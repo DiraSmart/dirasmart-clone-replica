@@ -17,8 +17,6 @@ const Header = () => {
 
   const sectionLinks = [
     { name: t("nav.home"), href: "#home" },
-    { name: t("nav.features"), href: "#features" },
-    { name: t("nav.services"), href: "#servicios" },
   ];
 
   const pageLinks = [

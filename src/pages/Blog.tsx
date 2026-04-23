@@ -59,6 +59,7 @@ const Blog = () => {
                             {post.icon === "Moon" && "🕯️"}
                             {post.icon === "Wifi" && "📡"}
                             {post.icon === "Lock" && "🔒"}
+                            {post.icon === "Network" && "🌐"}
                           </span>
                         </div>
                       </>

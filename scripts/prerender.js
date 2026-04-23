@@ -12,6 +12,7 @@ const ES_ROUTES = [
   "/",
   "/about",
   "/blog",
+  "/blog/zigbee-zwave-vs-wifi-smart-home",
   "/blog/knx-panama-automatizacion-premium",
   "/blog/control-por-voz-alexa-google-siri",
   "/blog/cortinas-motorizadas-persianas-inteligentes",

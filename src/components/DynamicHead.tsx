@@ -26,9 +26,9 @@ const PAGE_META_ES: Record<string, PageMeta> = {
       "DiraSmart: Convierte tu hogar en espacio inteligente. Instalación profesional, control local, WiFi empresarial y app personalizada en Panamá.",
   },
   "/about": {
-    title: "Nosotros • DiraSmart • Casa Inteligente en Panamá",
+    title: "Nosotros • DiraSmart • Casa Inteligente y Domótica en Panamá",
     description:
-      "Conoce al equipo detrás de DiraSmart. Somos expertos en domótica y automatización del hogar en Panamá con procesamiento 100% local.",
+      "Por qué nació DiraSmart: instalación profesional de casa inteligente en Panamá con procesamiento 100% local, protocolos KNX, Zigbee y Modbus, modo Shabbat y soporte WhatsApp directo. Sin depender de la nube.",
   },
   "/blog": {
     title: "Blog • DiraSmart • Guías de Smart Home y Domótica",
@@ -44,9 +44,9 @@ const PAGE_META_EN: Record<string, PageMeta> = {
       "DiraSmart: Turn your home into a smart space. Professional installation, local processing, enterprise WiFi and custom app in Panama.",
   },
   "/about": {
-    title: "About Us • DiraSmart • Smart Home in Panama",
+    title: "About Us • DiraSmart • Smart Home & Home Automation in Panama",
     description:
-      "Meet the team behind DiraSmart. We are experts in home automation in Panama with 100% local processing.",
+      "Why DiraSmart exists: professional smart home installation in Panama with 100% local processing, KNX, Zigbee and Modbus protocols, Shabbat mode and direct WhatsApp support. No cloud dependency.",
   },
   "/blog": {
     title: "Blog • DiraSmart • Smart Home & Automation Guides",
