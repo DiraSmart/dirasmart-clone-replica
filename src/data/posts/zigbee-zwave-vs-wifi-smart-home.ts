@@ -12,199 +12,183 @@ export const post: BlogPost = {
     en: "Zigbee and Z-Wave vs WiFi: which protocol should you choose for your smart home?",
   },
   excerpt: {
-    es: "Muchos compran todo en WiFi porque es lo familiar. Pero hay razones técnicas por las que los instaladores profesionales usamos Zigbee y Z-Wave — y casos donde WiFi sí conviene.",
-    en: "Many people buy everything on WiFi because it's familiar. But there are technical reasons professional installers use Zigbee and Z-Wave — and cases where WiFi is the right call.",
+    es: "Después de decenas de instalaciones en Panamá te contamos la verdad: no hay un protocolo que gane para toda la casa. Cada uno tiene su lugar — y conviene entender cuál, cuándo y por qué.",
+    en: "After dozens of installations in Panama, the honest answer: no single protocol wins for the whole house. Each one has its place — and it pays to understand which, when, and why.",
   },
   content: {
-    es: `Cuando montas tu primera casa inteligente, el instinto es comprar todo en WiFi. Ya tienes el router, los dispositivos se anuncian como "compatibles con tu app favorita" y el precio es tentador. Pero después de decenas de instalaciones en Panamá, te podemos decir: eso funciona para 5 dispositivos. Para 30, empieza a doler. Para 50, es caos.
+    es: `La pregunta que recibimos más seguido al cotizar una instalación es: *"¿me conviene todo WiFi o me voy por Zigbee?"*. La respuesta corta es: **depende**. La respuesta honesta es más larga, y vale la pena entenderla antes de gastar miles de dólares en equipos.
 
-Este post explica las diferencias reales entre WiFi, Zigbee y Z-Wave — sin marketing, con los casos donde cada uno conviene.
+Después de decenas de instalaciones en Panamá, estas son las reglas reales con las que trabajamos.
 
-## WiFi no fue diseñado para domótica
+## El mito de "toda la casa en un solo protocolo"
 
-El estándar WiFi está optimizado para streaming de video, videollamadas y descargas grandes. Cada dispositivo WiFi mantiene una conexión constante, procesa paquetes IP completos y consume energía significativa aunque no esté haciendo nada.
+La primera idea que hay que desmontar: ningún protocolo te va a cubrir el 100% de una casa inteligente. Zigbee es excelente para muchas cosas, pero todavía le faltan categorías enteras de producto — termostatos decentes, ciertos tipos de sensores especializados, equipos específicos para climatización. Al final terminas usando esos en WiFi igual.
 
-Esto funciona bien para tu laptop. Para una bombilla que solo necesita recibir un "encender" cada 12 horas, es exagerado. Cuando multiplicas esto por 40 dispositivos:
+Hacer "toda la casa Zigbee" suena limpio pero en la práctica significa: dispositivos en cada cuarto solo para mantener la malla estable, variedad limitada, y la frustración de que el termostato que te gustó solo existe en versión WiFi.
 
-**El router residencial se satura.** La mayoría de routers de ISP en Panamá soportan entre 20 y 30 dispositivos simultáneos estables. Más allá empiezan las caídas y reconexiones, normalmente cuando todos quieren estar conectados al mismo tiempo.
+La pregunta correcta no es *"¿qué protocolo elijo?"*. Es *"¿qué protocolo uso para cada función?"*.
 
-**La batería se muere rápido.** Un sensor de movimiento WiFi dura meses. El mismo sensor en Zigbee dura 2 o 3 años con la misma pila.
+## WiFi: la base pragmática
 
-**El espectro 2.4 GHz se llena.** Y si tu vecino tiene otras 30 cosas en WiFi, peor — en edificios residenciales el espectro ya viene cargado.
+WiFi termina siendo la base de la mayoría de instalaciones por una razón simple: **la variedad de dispositivos es enorme**. Prácticamente cualquier marca de smart home fabrica su producto principal en WiFi. Además, ya tienes que tener WiFi en la casa para tu celular, laptop y TV — el cableado y los access points ya están.
 
-## Qué es Zigbee
+**Cuándo WiFi es la decisión correcta:**
 
-Zigbee es un estándar abierto (IEEE 802.15.4) diseñado específicamente para IoT. Opera en 2.4 GHz como WiFi, pero con un protocolo pensado para mensajes pequeños y ráfagas cortas.
+Casas donde ya se entregó la obra y no se pueden instalar access points adicionales ni cablear antenas escondidas — WiFi lo resuelves con un router/mesh comercial sin tocar paredes.
 
-**Ventajas clave:**
+Equipos que solo existen en WiFi de calidad: **termostatos**, cámaras IP, pantallas de control, parlantes multi-room, ciertos electrodomésticos.
 
-**Red en malla.** Cada dispositivo Zigbee conectado a corriente (enchufes, bombillas) actúa como repetidor. Mientras más dispositivos tengas, más fuerte es la red. Al revés de WiFi.
+Apartamentos o casas chicas con menos de 20 dispositivos totales — donde la saturación del router no es problema.
 
-**Bajo consumo.** Sensores que funcionan con una pila CR2032 duran de 2 a 5 años.
+**Lo que debes cuidar con WiFi:**
 
-**No toca tu router.** La red Zigbee es independiente de tu WiFi, así que no satura tu conexión a internet.
+Si vas a poner 40+ dispositivos, **no uses el router del ISP**. Pon una red WiFi empresarial con múltiples access points (UniFi, TP-Link Omada o similar) específicamente dimensionada para IoT. Esa es la diferencia entre WiFi que funciona y WiFi que se cae cada dos días.
 
-**Muchos fabricantes.** Philips Hue, Aqara, IKEA Trådfri, Sonoff, Lutron, Samsung SmartThings.
+## Zigbee: el protocolo ideal para iluminación
 
-**Lo que debes saber:**
+Zigbee es excelente, pero su superpoder está en una categoría específica: **iluminación**. Philips Hue, Aqara, IKEA Trådfri, Sonoff — hay cientos de bombillas, tiras LED y atenuadores Zigbee de muy buena calidad.
 
-Necesitas un hub (gateway) que traduzca Zigbee a tu app. Un hub básico cuesta entre 30 y 80 dólares.
+Si vas a tener 30, 50 o 100 bombillas inteligentes en la casa, **ponerlas todas en Zigbee libera completamente tu WiFi** para lo que sí necesita banda ancha. No hay 80 bombillas intentando hacer handshake con tu router.
 
-Zigbee comparte la banda 2.4 GHz con WiFi. En edificios residenciales en Panamá donde el espectro está muy cargado (Costa del Este, Punta Pacífica), los canales deben configurarse con cuidado para evitar interferencia.
+Además, **cada bombilla Zigbee que conectas a corriente actúa como repetidor** de la malla. En una casa con iluminación Zigbee, la cobertura en esa casa es prácticamente perfecta. No necesitas antenas extra para llevar la señal a cuartos lejanos.
 
-## Qué es Z-Wave
+**Cuándo Zigbee brilla:**
 
-Z-Wave es similar a Zigbee (malla, bajo consumo, pensado para IoT) pero usa una frecuencia dedicada. En Panamá y toda América opera en 908.42 MHz. Eso significa que nunca compite con tu WiFi ni con tu microondas.
+Iluminación completa de la casa — bombillas, dimmers, tiras LED.
 
-**Ventajas clave:**
+Sensores a pilas donde quieres que la pila dure 2 a 5 años (movimiento, puertas, temperatura, humedad).
 
-**Cero interferencia con WiFi.** Esta es la razón número uno para elegir Z-Wave.
-
-**Certificación estricta.** Cada dispositivo Z-Wave pasa pruebas de interoperabilidad antes de salir al mercado. Por eso "simplemente funciona" con otros Z-Wave.
-
-**Ideal para dispositivos críticos.** Cerraduras, detectores de humo, válvulas de corte de agua — donde la fiabilidad importa más que el costo.
+Casas ya entregadas donde no puedes cablear access points WiFi extra y necesitas una malla robusta sin tocar la obra.
 
 **Lo que debes saber:**
 
-Menos fabricantes que Zigbee. Principalmente Yale, Kwikset, Fibaro, Aeotec.
+Si instalas por tu cuenta tendrás que elegir un hub de marca (Philips Hue Bridge, Aqara Hub, SmartThings) — y cada uno suele amarrarte a su ecosistema. De ahí viene la fama del *"lock-in"* en Zigbee. **En nuestras instalaciones esto no aplica:** un servidor local dentro de tu casa corre un dongle USB que habla Zigbee genérico, así que puedes mezclar bombillas Philips Hue, sensores Aqara y atenuadores IKEA en la misma malla, y todo responde en una sola app. Ese mismo servidor también habla Z-Wave con un segundo dongle, así que el hub deja de ser una decisión que te ata.
 
-Los dispositivos suelen costar entre 20 y 40% más que el equivalente Zigbee.
+Zigbee comparte banda 2.4 GHz con WiFi. En edificios residenciales en Panamá (Costa del Este, Punta Pacífica), el espectro ya viene cargado y los canales hay que elegirlos con cuidado.
 
-En Panamá no hay distribuidor grande — la mayoría del equipo se importa desde Amazon EEUU.
+## Z-Wave: frecuencia dedicada, catálogo limitado
 
-## Comparativa honesta
+Z-Wave tiene una ventaja real sobre Zigbee: **usa una frecuencia dedicada** (908 MHz en América) que no compite con WiFi. Eso le da una estabilidad extra para dispositivos donde la fiabilidad es crítica.
 
-**Necesita hub:** WiFi no. Zigbee y Z-Wave sí.
+La realidad es que Z-Wave tiene menos fabricantes, cuesta 20-40% más que el equivalente Zigbee, y en Panamá no hay distribuidor grande — los equipos se importan. Por eso lo usamos con mesura, y solo cuando justifica el costo extra.
 
-**Dispositivos prácticos por red:** WiFi alrededor de 30 antes de que el router sufra. Zigbee 200 o más. Z-Wave máximo 232.
+**Cerraduras inteligentes de buena marca (Yale, Kwikset)** siguen teniendo su mejor versión en Z-Wave. Si el proyecto justifica el costo, ahí lo usamos.
 
-**Duración de batería (sensor típico):** WiFi de 3 a 6 meses. Zigbee y Z-Wave de 2 a 5 años.
+## Lo nuevo que está viniendo
 
-**Interferencia con WiFi:** Zigbee alta (misma banda). Z-Wave ninguna.
+**SuZi (Zigbee sub-GHz).** Se anunció recientemente esta variante de largo alcance — promete cubrir casas grandes o terrenos con un solo hub. De momento hay muy pocos dispositivos compatibles, pero es algo que vale la pena monitorear.
 
-**Costo por dispositivo:** WiFi barato. Zigbee medio. Z-Wave alto.
+**LoRa / LoRaWAN.** Está tomando fuerza para sensores de largo alcance y muy bajo consumo (años de pila con una sola pila). Hoy hay principalmente sensores de puertas, temperatura exterior, fugas de agua y algunas alarmas. No es todavía una opción para iluminación o control general.
 
-**Funciona sin internet:** WiFi depende (si usa nube como Tuya o Kasa, se muere). Zigbee y Z-Wave sí, siempre que tu hub sea local.
+**Matter.** El estándar unificado prometido por Apple, Google, Amazon y Samsung. Suena excelente en teoría — todos los fabricantes hablando el mismo idioma. En la práctica todavía está verde: dispositivos inconsistentes, features limitadas, implementaciones buggy. Vale la pena entender que existe, pero no recomendamos construir una casa alrededor de Matter hoy en día.
 
-## Cuándo conviene cada uno
+## KNX: si puedes darte el gusto
 
-No somos religiosos con los protocolos. Cada uno tiene su lugar.
+Aparte de todos los anteriores está **KNX** — el estándar de automatización de edificios usado en hoteles y residencias de alta gama en Europa. Funciona por cable dedicado, es extremadamente estable, y tiene el catálogo profesional más amplio del mundo.
 
-**WiFi funciona bien para cámaras de seguridad** (necesitan banda ancha para video), **TV, Chromecast, Apple TV**, y **3 a 5 enchufes simples en una casa chica**. Si no vas a crecer más allá de 15 o 20 dispositivos totales, WiFi puede ser suficiente.
+La contraparte: hay que cablearlo durante la obra (no es retrofit), cuesta significativamente más, y requiere un integrador certificado. Si estás construyendo una casa nueva y el presupuesto lo permite, es lo mejor que puedes poner. Si no, la combinación WiFi + Zigbee llega muy lejos por mucho menos.
 
-**Zigbee es nuestra base para bombillas y tiras LED** (Philips Hue, Aqara), **sensores de movimiento, puertas y temperatura**, **enchufes inteligentes donde no importa el video**, y en general **cualquier casa con más de 20 dispositivos**.
+## Nuestra recomendación real
 
-**Z-Wave lo reservamos para cerraduras inteligentes** (Yale, Kwikset), **detectores de humo y monóxido de carbono**, **válvulas de agua con corte automático**, y **entornos con mucha interferencia 2.4 GHz** donde Zigbee sufriría.
+Para la mayoría de las casas que instalamos en Panamá, la fórmula práctica es:
 
-## Qué recomendamos en DiraSmart
+**Iluminación completa en Zigbee.** Bombillas, tiras LED, atenuadores. Libera tu red WiFi y te da una malla estable gratis.
 
-La mayoría de nuestras instalaciones son híbridas: un hub central (que corre Home Assistant en un servidor local dentro de tu casa) que habla Zigbee, Z-Wave y WiFi al mismo tiempo. El cliente usa una sola app sin saber qué protocolo está detrás de cada dispositivo.
+**Todo lo demás en WiFi** — termostatos, cámaras, TVs, electrodomésticos, pantallas de control. Sobre una red WiFi empresarial bien diseñada, no residencial del ISP.
 
-En la casa promedio que instalamos en Panamá, el mix suele quedar así:
+**Z-Wave puntual** para las cerraduras de la entrada y algún detector crítico si el proyecto lo amerita.
 
-- 60% Zigbee (bombillas, sensores, enchufes)
-- 25% WiFi (cámaras, TVs, dispositivos que requieren banda)
-- 15% Z-Wave (cerraduras, detectores críticos)
+**KNX** cuando el cliente construye casa nueva y puede costear la inversión por la estabilidad y calidad que ofrece.
 
-Para proyectos comerciales o residencias premium sumamos KNX por cable, que es un estándar industrial completamente aparte.
+La peor decisión es intentar forzar toda la casa en un solo protocolo. La mejor es elegir el protocolo por la función del dispositivo y diseñar la infraestructura (router, access points, hub) para soportar el mix bien.
 
-La lección más importante: no compres todo del mismo protocolo "porque sí". Elige el protocolo por la función del dispositivo. Si lo haces al revés, vas a tener que cambiar todo en dos años.
+¿Dudas sobre qué protocolo encaja en tu proyecto? Escríbenos por WhatsApp — te ayudamos a planear la arquitectura antes de gastar en equipos, sin compromiso.`,
+    en: `The question we get most often when quoting an install: *"Should I go all WiFi, or should I go Zigbee?"*. The short answer is: **it depends**. The honest answer is longer, and worth understanding before you spend thousands of dollars on gear.
 
-¿Dudas sobre qué protocolo usar en tu proyecto? Escríbenos por WhatsApp, te ayudamos a planear sin compromiso.`,
-    en: `When you set up your first smart home, the instinct is to buy everything on WiFi. You already have the router, devices advertise "works with your favorite app," and the price is tempting. But after dozens of installations in Panama, we can tell you: that works for 5 devices. For 30, it starts to hurt. For 50, it's chaos.
+After dozens of installations in Panama, these are the real rules we work with.
 
-This post explains the real differences between WiFi, Zigbee and Z-Wave — no marketing, just the cases where each one makes sense.
+## The myth of "everything on one protocol"
 
-## WiFi wasn't designed for smart homes
+The first idea to dismantle: no single protocol covers 100% of a smart home. Zigbee is excellent for many things, but it's still missing entire product categories — decent thermostats, some specialized sensors, specific HVAC controls. You end up using those on WiFi anyway.
 
-The WiFi standard is optimized for video streaming, video calls and large downloads. Every WiFi device keeps a constant connection, processes full IP packets, and consumes significant power even when idle.
+Going "all Zigbee" sounds clean but in practice it means: devices in every room just to keep the mesh stable, limited variety, and the frustration that the thermostat you liked only exists in a WiFi version.
 
-That works fine for your laptop. For a light bulb that only needs to receive an "on" command every 12 hours, it's overkill. When you multiply this by 40 devices:
+The right question isn't *"which protocol do I pick?"*. It's *"which protocol do I use for each function?"*.
 
-**The residential router saturates.** Most ISP routers in Panama handle 20 to 30 simultaneous stable connections. Beyond that, drops and reconnects start — usually when every device tries to talk at once.
+## WiFi: the pragmatic base
 
-**Batteries die fast.** A WiFi motion sensor lasts months. The same sensor on Zigbee lasts 2 or 3 years on the same battery.
+WiFi ends up being the base of most installs for a simple reason: **device variety is huge**. Practically every smart home brand makes its flagship product on WiFi. Plus, you already need WiFi in the house for your phone, laptop and TV — the cabling and access points are already there.
 
-**The 2.4 GHz spectrum fills up.** And if your neighbor has another 30 things on WiFi, it gets worse — in residential buildings the spectrum is already loaded.
+**When WiFi is the right call:**
 
-## What is Zigbee
+Houses where construction is already finished and you can't install extra access points or hide cabling behind walls — WiFi solves it with a mesh or commercial router without touching the build.
 
-Zigbee is an open standard (IEEE 802.15.4) designed specifically for IoT. It runs on 2.4 GHz like WiFi, but with a protocol built for small messages and short bursts.
+Devices that only exist well on WiFi: **thermostats**, IP cameras, wall control panels, multi-room speakers, certain appliances.
 
-**Key advantages:**
+Apartments or small homes with fewer than 20 total devices — where router saturation isn't a concern.
 
-**Mesh network.** Every Zigbee device plugged into power (outlets, bulbs) acts as a repeater. The more devices you have, the stronger the network. The opposite of WiFi.
+**What to watch out for with WiFi:**
 
-**Low power.** Sensors running on a CR2032 battery last 2 to 5 years.
+If you'll have 40+ devices, **don't use the ISP router**. Put in an enterprise WiFi network with multiple access points (UniFi, TP-Link Omada or similar) specifically sized for IoT. That's the difference between WiFi that works and WiFi that drops every other day.
 
-**Doesn't touch your router.** The Zigbee network is independent of your WiFi, so it doesn't saturate your internet.
+## Zigbee: the ideal protocol for lighting
 
-**Many manufacturers.** Philips Hue, Aqara, IKEA Trådfri, Sonoff, Lutron, Samsung SmartThings.
+Zigbee is excellent, but its superpower is in one specific category: **lighting**. Philips Hue, Aqara, IKEA Trådfri, Sonoff — there are hundreds of Zigbee bulbs, LED strips and dimmers of excellent quality.
 
-**What to know:**
+If you're going to have 30, 50 or 100 smart bulbs in the house, **putting them all on Zigbee completely frees up your WiFi** for what actually needs bandwidth. There aren't 80 bulbs trying to handshake with your router.
 
-You need a hub (gateway) that translates Zigbee to your app. A basic hub costs between 30 and 80 dollars.
+Also, **every Zigbee bulb plugged into power acts as a mesh repeater**. In a home with full Zigbee lighting, coverage is practically perfect. You don't need extra antennas to carry signal to distant rooms.
 
-Zigbee shares the 2.4 GHz band with WiFi. In residential buildings in Panama where the spectrum is crowded (Costa del Este, Punta Pacífica), channels must be configured carefully to avoid interference.
+**Where Zigbee shines:**
 
-## What is Z-Wave
+Full-home lighting — bulbs, dimmers, LED strips.
 
-Z-Wave is similar to Zigbee (mesh, low-power, built for IoT) but uses a dedicated frequency. In Panama and throughout the Americas it runs on 908.42 MHz. That means it never competes with your WiFi or your microwave.
+Battery-powered sensors where you want 2-5 year battery life (motion, door, temperature, humidity).
 
-**Key advantages:**
-
-**Zero WiFi interference.** This is the number-one reason to choose Z-Wave.
-
-**Strict certification.** Every Z-Wave device passes interoperability tests before hitting the market. That's why "it just works" with other Z-Wave gear.
-
-**Ideal for critical devices.** Locks, smoke detectors, water shutoff valves — anywhere reliability matters more than cost.
+Finished homes where you can't run extra WiFi access points and need a robust mesh without touching the construction.
 
 **What to know:**
 
-Fewer manufacturers than Zigbee. Mostly Yale, Kwikset, Fibaro, Aeotec.
+If you install on your own, you'll have to pick a brand-specific hub (Philips Hue Bridge, Aqara Hub, SmartThings) — and each one tends to lock you into its ecosystem. That's where Zigbee's "lock-in" reputation comes from. **In our installs this doesn't apply:** a local server inside your home runs a generic Zigbee USB dongle, so you can mix Philips Hue bulbs, Aqara sensors and IKEA dimmers on the same mesh, and everything responds in a single app. The same server also handles Z-Wave via a second dongle, so hub choice stops being a locking decision.
 
-Devices typically cost 20 to 40% more than their Zigbee equivalents.
+Zigbee shares the 2.4 GHz band with WiFi. In residential buildings in Panama (Costa del Este, Punta Pacífica), the spectrum is already crowded and channels have to be chosen carefully.
 
-In Panama there's no large distributor — most gear is imported from Amazon US.
+## Z-Wave: dedicated frequency, limited catalog
 
-## Honest comparison
+Z-Wave has a real advantage over Zigbee: **it uses a dedicated frequency** (908 MHz in the Americas) that doesn't compete with WiFi. That gives it extra stability for devices where reliability is critical.
 
-**Needs a hub:** WiFi no. Zigbee and Z-Wave yes.
+The reality is Z-Wave has fewer manufacturers, costs 20-40% more than the Zigbee equivalent, and in Panama there's no large distributor — gear gets imported. So we use it selectively, and only when the cost premium makes sense.
 
-**Practical devices per network:** WiFi around 30 before the router struggles. Zigbee 200 or more. Z-Wave max 232.
+**Smart locks from good brands (Yale, Kwikset)** still have their best version on Z-Wave. If the project justifies the extra cost, that's where we use it.
 
-**Battery life (typical sensor):** WiFi 3 to 6 months. Zigbee and Z-Wave 2 to 5 years.
+## What's coming next
 
-**WiFi interference:** Zigbee high (shared band). Z-Wave none.
+**SuZi (sub-GHz Zigbee).** A long-range variant of the protocol was recently announced — it promises to cover large homes or properties with a single hub. Very few compatible devices exist today, but it's worth watching.
 
-**Cost per device:** WiFi cheap. Zigbee medium. Z-Wave high.
+**LoRa / LoRaWAN.** Gaining traction for long-range, ultra-low-power sensors (years of battery on a single cell). Today it's mainly door sensors, outdoor temperature, water-leak and some alarm devices. Not yet an option for lighting or general control.
 
-**Works without internet:** WiFi depends (cloud-dependent ones like Tuya or Kasa die). Zigbee and Z-Wave yes, as long as your hub is local.
+**Matter.** The unified standard promised by Apple, Google, Amazon and Samsung. It sounds excellent in theory — every manufacturer speaking the same language. In practice it's still immature: inconsistent devices, limited features, buggy implementations. Worth understanding it exists, but we don't recommend building a home around Matter today.
 
-## When each one fits
+## KNX: if you can afford the luxury
 
-We're not religious about protocols. Each has its place.
+Separate from all of the above is **KNX** — the building-automation standard used in hotels and premium residences in Europe. It runs over dedicated cable, is extremely stable, and has the widest professional catalog in the world.
 
-**WiFi works well for security cameras** (they need bandwidth for video), **TV, Chromecast, Apple TV**, and **3 to 5 simple plugs in a small home**. If you won't grow beyond 15 or 20 total devices, WiFi alone can be enough.
+The trade-off: it has to be wired during construction (not retrofit), it costs significantly more, and requires a certified integrator. If you're building a new home and the budget allows, it's the best you can install. If not, a WiFi + Zigbee combination goes a long way for much less.
 
-**Zigbee is our baseline for bulbs and LED strips** (Philips Hue, Aqara), **motion, door and temperature sensors**, **smart plugs where video isn't needed**, and in general **any home with more than 20 devices**.
+## What we actually recommend
 
-**Z-Wave we reserve for smart locks** (Yale, Kwikset), **smoke and carbon monoxide detectors**, **automatic water shutoff valves**, and **environments with heavy 2.4 GHz interference** where Zigbee would struggle.
+For most houses we install in Panama, the practical formula is:
 
-## What we recommend at DiraSmart
+**Full lighting on Zigbee.** Bulbs, LED strips, dimmers. Frees your WiFi network and gives you a stable mesh for free.
 
-Most of our installations are hybrid: a central hub (running Home Assistant on a local server inside your home) that speaks Zigbee, Z-Wave and WiFi at the same time. The client uses a single app without knowing which protocol sits behind each device.
+**Everything else on WiFi** — thermostats, cameras, TVs, appliances, wall panels. Over a well-designed enterprise WiFi network, not the ISP's residential router.
 
-In the average home we install in Panama, the mix usually looks like:
+**Z-Wave selectively** for entry locks and critical detectors if the project warrants it.
 
-- 60% Zigbee (bulbs, sensors, plugs)
-- 25% WiFi (cameras, TVs, devices that need bandwidth)
-- 15% Z-Wave (locks, critical detectors)
+**KNX** when the client is building new and can afford the investment for the stability and quality it delivers.
 
-For commercial projects or premium residences we add KNX over wire, which is an entirely separate industrial standard.
+The worst decision is trying to force the whole house onto a single protocol. The best is choosing the protocol by device function and designing the infrastructure (router, access points, hub) to support the mix well.
 
-The most important lesson: don't buy everything on the same protocol "just because." Choose the protocol based on the device's function. Do it backwards, and you'll be replacing everything in two years.
-
-Questions about which protocol fits your project? Message us on WhatsApp — we'll help you plan with no commitment.`,
+Questions about which protocol fits your project? Message us on WhatsApp — we help you plan the architecture before you spend on gear, no commitment.`,
   },
 };
