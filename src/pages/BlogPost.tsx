@@ -20,6 +20,25 @@ const BlogPost = () => {
   const prevPost = postIndex > 0 ? blogPosts[postIndex - 1] : null;
   const nextPost = postIndex < blogPosts.length - 1 ? blogPosts[postIndex + 1] : null;
 
+  const renderInline = (text: string): (string | JSX.Element)[] => {
+    const nodes: (string | JSX.Element)[] = [];
+    const re = /\*\*([^*]+)\*\*|\*([^*]+)\*/g;
+    let last = 0;
+    let m: RegExpExecArray | null;
+    let key = 0;
+    while ((m = re.exec(text))) {
+      if (m.index > last) nodes.push(text.slice(last, m.index));
+      if (m[1] !== undefined) {
+        nodes.push(<strong key={key++} className="text-foreground">{m[1]}</strong>);
+      } else if (m[2] !== undefined) {
+        nodes.push(<em key={key++}>{m[2]}</em>);
+      }
+      last = re.lastIndex;
+    }
+    if (last < text.length) nodes.push(text.slice(last));
+    return nodes;
+  };
+
   const renderContent = (content: string) => {
     const lines = content.split("\n");
     const elements: JSX.Element[] = [];
@@ -35,24 +54,21 @@ const BlogPost = () => {
             {trimmed.replace("## ", "")}
           </h2>
         );
-      } else if (trimmed.startsWith("**") && trimmed.endsWith("**")) {
+      } else if (
+        trimmed.startsWith("**") &&
+        trimmed.endsWith("**") &&
+        trimmed.slice(2, -2).indexOf("**") === -1
+      ) {
+        // Whole line wrapped in **…** — prominent bold callout paragraph
         elements.push(
           <p key={i} className="font-semibold text-foreground mt-4 mb-1">
-            {trimmed.replace(/\*\*/g, "")}
-          </p>
-        );
-      } else if (trimmed.startsWith("**")) {
-        const parts = trimmed.split("**");
-        elements.push(
-          <p key={i} className="text-muted-foreground leading-relaxed mb-3">
-            <strong className="text-foreground">{parts[1]}</strong>
-            {parts[2]}
+            {trimmed.slice(2, -2)}
           </p>
         );
       } else {
         elements.push(
           <p key={i} className="text-muted-foreground leading-relaxed mb-3">
-            {trimmed}
+            {renderInline(trimmed)}
           </p>
         );
       }
