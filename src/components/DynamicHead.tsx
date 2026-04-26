@@ -31,9 +31,9 @@ const PAGE_META_ES: Record<string, PageMeta> = {
       "Por qué nació DiraSmart: instalación profesional de casa inteligente en Panamá con procesamiento 100% local, protocolos KNX, Zigbee y Modbus, modo Shabbat y soporte WhatsApp directo. Sin depender de la nube.",
   },
   "/comercial": {
-    title: "Comercial • DiraSmart • Automatización para Hoteles, Oficinas y Edificios en Panamá",
+    title: "Comercial • DiraSmart • Automatización y BMS para Hoteles, Oficinas y Edificios en Panamá",
     description:
-      "Soluciones de automatización profesional para hoteles, oficinas, museos, edificios y comercios en Panamá. KNX Partner certificado, BACnet, procesamiento local y soporte continuo. Solicita tu propuesta.",
+      "Automatización profesional y gestión de edificios (BMS) para hoteles, oficinas, museos, edificios y comercios en Panamá. KNX Partner certificado, integración BACnet, procesamiento local y soporte continuo. Solicita tu propuesta.",
   },
   "/blog": {
     title: "Blog • DiraSmart • Guías de Smart Home y Domótica",
@@ -54,9 +54,9 @@ const PAGE_META_EN: Record<string, PageMeta> = {
       "Why DiraSmart exists: professional smart home installation in Panama with 100% local processing, KNX, Zigbee and Modbus protocols, Shabbat mode and direct WhatsApp support. No cloud dependency.",
   },
   "/comercial": {
-    title: "Commercial • DiraSmart • Automation for Hotels, Offices & Buildings in Panama",
+    title: "Commercial • DiraSmart • Automation & BMS for Hotels, Offices & Buildings in Panama",
     description:
-      "Professional automation for hotels, offices, museums, buildings and retail in Panama. Certified KNX Partner, BACnet, local processing and continuous support. Request a proposal.",
+      "Professional automation and building management (BMS) for hotels, offices, museums, buildings and retail in Panama. Certified KNX Partner, BACnet integration, local processing and continuous support. Request a proposal.",
   },
   "/blog": {
     title: "Blog • DiraSmart • Smart Home & Automation Guides",

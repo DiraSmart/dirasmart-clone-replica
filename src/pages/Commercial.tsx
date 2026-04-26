@@ -29,6 +29,7 @@ import {
   AlertCircle,
 } from "lucide-react";
 import knxPartnerBadge from "@/assets/brands/knx-partner.jpg";
+import bacnetLogo from "@/assets/brands/bacnet.svg";
 
 const WEB3FORMS_KEY = "1cd751d7-540f-4cad-8f38-00d2784ff893";
 
@@ -310,20 +311,23 @@ const Commercial = () => {
                 </p>
               </div>
 
-              {/* BACnet */}
+              {/* BMS / BACnet */}
               <div className="rounded-3xl border border-border/60 bg-background p-7 flex flex-col items-start">
                 <div className="h-16 mb-5 flex items-center">
-                  <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center">
-                    <Network aria-hidden="true" className="w-7 h-7 text-primary" strokeWidth={1.5} />
-                  </div>
+                  <img
+                    src={bacnetLogo}
+                    alt="BACnet"
+                    className="h-12 w-auto"
+                    loading="lazy"
+                  />
                 </div>
                 <h3 className="font-display font-semibold text-xl text-foreground mb-2.5">
-                  {lang === "es" ? "BACnet y protocolos industriales" : "BACnet & industrial protocols"}
+                  {lang === "es" ? "BMS · Gestión de edificios" : "BMS · Building Management"}
                 </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   {lang === "es"
-                    ? "Integramos con BMS existentes, sistemas HVAC comerciales y equipos legacy mediante BACnet, Modbus y M-Bus. Tu inversión previa no se descarta."
-                    : "We integrate with existing BMS, commercial HVAC and legacy equipment through BACnet, Modbus and M-Bus. Your previous investment isn't thrown away."}
+                    ? "Integración con sistemas de gestión de edificios (BMS) vía BACnet, Modbus, M-Bus y SNMP. Conectamos HVAC comercial, control de accesos, medidores de energía y más. Tu inversión previa no se descarta — la modernizamos."
+                    : "Integration with building management systems (BMS) via BACnet, Modbus, M-Bus and SNMP. We connect commercial HVAC, access control, energy meters and more. Your previous investment isn't thrown away — we modernize it."}
                 </p>
               </div>
 

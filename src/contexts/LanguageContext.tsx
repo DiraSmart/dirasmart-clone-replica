@@ -259,7 +259,7 @@ const translations: Record<Language, Record<string, string>> = {
     // Commercial / B2B page
     "commercial.title": "Automatización profesional para",
     "commercial.titleHighlight": "edificios y negocios en Panamá.",
-    "commercial.subtitle": "Hoteles, oficinas, museos, retail, edificios. Diseño con KNX, BACnet y procesamiento local. Soporte continuo desde Panamá.",
+    "commercial.subtitle": "Hoteles, oficinas, museos, retail, edificios. Diseño con KNX, integración BMS vía BACnet y procesamiento local. Soporte continuo desde Panamá.",
     "commercial.cta.primary": "Solicitar propuesta",
     "commercial.cta.secondary": "Ver sectores",
 
@@ -581,7 +581,7 @@ const translations: Record<Language, Record<string, string>> = {
     // Commercial / B2B page
     "commercial.title": "Professional automation for",
     "commercial.titleHighlight": "buildings and businesses in Panama.",
-    "commercial.subtitle": "Hotels, offices, museums, retail, condos. Designed with KNX, BACnet and local processing. Continuous support from Panama.",
+    "commercial.subtitle": "Hotels, offices, museums, retail, condos. Designed with KNX, BMS integration over BACnet and local processing. Continuous support from Panama.",
     "commercial.cta.primary": "Request a proposal",
     "commercial.cta.secondary": "Browse sectors",
 
