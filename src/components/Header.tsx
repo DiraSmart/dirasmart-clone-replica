@@ -21,6 +21,7 @@ const Header = () => {
 
   const pageLinks = [
     { name: t("nav.about"), href: localePath("/about") },
+    { name: t("nav.commercial"), href: localePath("/comercial") },
     { name: t("nav.blog"), href: localePath("/blog") },
   ];
 

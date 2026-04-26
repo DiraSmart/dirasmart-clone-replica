@@ -11,6 +11,7 @@ const DIST = join(__dirname, "..", "dist");
 const ES_ROUTES = [
   "/",
   "/about",
+  "/comercial",
   "/blog",
   "/blog/zigbee-zwave-vs-wifi-smart-home",
   "/blog/knx-panama-automatizacion-premium",

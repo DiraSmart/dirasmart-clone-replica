@@ -10,6 +10,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 const About = lazy(() => import("./pages/About"));
 const Blog = lazy(() => import("./pages/Blog"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
+const Commercial = lazy(() => import("./pages/Commercial"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const DynamicHead = lazy(() => import("./components/DynamicHead"));
 
@@ -53,11 +54,13 @@ const AppRoutes = () => (
       {/* Spanish routes (default) */}
       <Route path="/" element={<Index />} />
       <Route path="/about" element={<Suspense fallback={null}><About /></Suspense>} />
+      <Route path="/comercial" element={<Suspense fallback={null}><Commercial /></Suspense>} />
       <Route path="/blog" element={<Suspense fallback={null}><Blog /></Suspense>} />
       <Route path="/blog/:slug" element={<Suspense fallback={null}><BlogPost /></Suspense>} />
       {/* English routes */}
       <Route path="/en" element={<Index />} />
       <Route path="/en/about" element={<Suspense fallback={null}><About /></Suspense>} />
+      <Route path="/en/comercial" element={<Suspense fallback={null}><Commercial /></Suspense>} />
       <Route path="/en/blog" element={<Suspense fallback={null}><Blog /></Suspense>} />
       <Route path="/en/blog/:slug" element={<Suspense fallback={null}><BlogPost /></Suspense>} />
       {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

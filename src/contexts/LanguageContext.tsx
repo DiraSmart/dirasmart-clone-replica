@@ -197,11 +197,18 @@ const translations: Record<Language, Record<string, string>> = {
     // Navigation extras
     "nav.about": "Nosotros",
     "nav.blog": "Blog",
+    "nav.commercial": "Comercial",
     "nav.openMenu": "Abrir menú",
     "nav.closeMenu": "Cerrar menú",
     "a11y.skipToContent": "Saltar al contenido principal",
     "a11y.pauseAutoplay": "Pausar rotación automática",
     "a11y.resumeAutoplay": "Reanudar rotación automática",
+
+    // Home → Commercial banner
+    "home.commercialBanner.eyebrow": "¿Es para tu negocio?",
+    "home.commercialBanner.title": "También automatizamos hoteles, oficinas y edificios.",
+    "home.commercialBanner.subtitle": "Soluciones profesionales con KNX Partner certificado, BACnet y procesamiento local.",
+    "home.commercialBanner.cta": "Ver soluciones comerciales",
 
     // About page
     "about.title": "La mayoría de casas ‘smart’ en Panamá se usan como",
@@ -248,6 +255,44 @@ const translations: Record<Language, Record<string, string>> = {
     "about.cta.subtitle": "Hablemos. Sin compromiso, sin ventas forzadas.",
     "about.cta.button": "Escríbenos por WhatsApp",
     "about.cta.message": "¡Hola! Me interesa conocer más sobre DiraSmart",
+
+    // Commercial / B2B page
+    "commercial.title": "Automatización profesional para",
+    "commercial.titleHighlight": "edificios y negocios en Panamá.",
+    "commercial.subtitle": "Hoteles, oficinas, museos, retail, edificios. Diseño con KNX, BACnet y procesamiento local. Soporte continuo desde Panamá.",
+    "commercial.cta.primary": "Solicitar propuesta",
+    "commercial.cta.secondary": "Ver sectores",
+
+    "commercial.diff.title": "Por qué elegirnos para tu proyecto comercial",
+    "commercial.diff.subtitle": "No vendemos gadgets sueltos. Diseñamos infraestructura que dura años.",
+
+    "commercial.sectors.title": "Sectores que",
+    "commercial.sectors.titleHighlight": "atendemos",
+    "commercial.sectors.subtitle": "Cada espacio tiene su propia lógica. Adaptamos el sistema a tu operación.",
+
+    "commercial.process.title": "Cómo trabajamos un proyecto comercial",
+    "commercial.process.subtitle": "Sin sorpresas, sin tickets. Coordinación directa con arquitecto, contratista y dueño.",
+
+    "commercial.form.title": "Hablemos de tu proyecto",
+    "commercial.form.subtitle": "Cuéntanos lo básico. Te respondemos en menos de 24 horas hábiles con preguntas o propuesta inicial.",
+    "commercial.form.name": "Nombre completo",
+    "commercial.form.company": "Empresa",
+    "commercial.form.email": "Email corporativo",
+    "commercial.form.phone": "Teléfono (opcional)",
+    "commercial.form.sector": "Sector",
+    "commercial.form.size": "Tamaño aproximado",
+    "commercial.form.message": "Cuéntanos sobre el proyecto",
+    "commercial.form.sectorPlaceholder": "Selecciona un sector",
+    "commercial.form.sizePlaceholder": "Selecciona un rango",
+    "commercial.form.messagePlaceholder": "Tipo de espacio, qué quisieras automatizar, plazo aproximado…",
+    "commercial.form.submit": "Enviar solicitud",
+    "commercial.form.submitting": "Enviando…",
+    "commercial.form.success": "¡Listo! Recibimos tu solicitud. Te contactamos en menos de 24 horas hábiles.",
+    "commercial.form.error": "Hubo un problema al enviar. Inténtalo de nuevo o escríbenos directo a comercial@dirasmart.com",
+
+    "commercial.alt.title": "¿Prefieres contacto directo?",
+    "commercial.alt.whatsapp": "Mensaje por WhatsApp",
+    "commercial.alt.whatsappMessage": "¡Hola! Quisiera información sobre automatización comercial",
 
     // Blog
     "blog.title": "Blog",
@@ -474,11 +519,18 @@ const translations: Record<Language, Record<string, string>> = {
     // Navigation extras
     "nav.about": "About",
     "nav.blog": "Blog",
+    "nav.commercial": "Commercial",
     "nav.openMenu": "Open menu",
     "nav.closeMenu": "Close menu",
     "a11y.skipToContent": "Skip to main content",
     "a11y.pauseAutoplay": "Pause autoplay",
     "a11y.resumeAutoplay": "Resume autoplay",
+
+    // Home → Commercial banner
+    "home.commercialBanner.eyebrow": "Is it for your business?",
+    "home.commercialBanner.title": "We also automate hotels, offices and buildings.",
+    "home.commercialBanner.subtitle": "Professional solutions with certified KNX Partner status, BACnet and local processing.",
+    "home.commercialBanner.cta": "See commercial solutions",
 
     // About page
     "about.title": "Most ‘smart’ homes in Panama are used as",
@@ -525,6 +577,44 @@ const translations: Record<Language, Record<string, string>> = {
     "about.cta.subtitle": "Let’s talk. No commitment, no hard sell.",
     "about.cta.button": "Message us on WhatsApp",
     "about.cta.message": "Hello! I'm interested in learning more about DiraSmart",
+
+    // Commercial / B2B page
+    "commercial.title": "Professional automation for",
+    "commercial.titleHighlight": "buildings and businesses in Panama.",
+    "commercial.subtitle": "Hotels, offices, museums, retail, condos. Designed with KNX, BACnet and local processing. Continuous support from Panama.",
+    "commercial.cta.primary": "Request a proposal",
+    "commercial.cta.secondary": "Browse sectors",
+
+    "commercial.diff.title": "Why pick us for your commercial project",
+    "commercial.diff.subtitle": "We don't sell standalone gadgets. We design infrastructure that lasts for years.",
+
+    "commercial.sectors.title": "Sectors we",
+    "commercial.sectors.titleHighlight": "serve",
+    "commercial.sectors.subtitle": "Every space has its own logic. We adapt the system to how you actually operate.",
+
+    "commercial.process.title": "How we run a commercial project",
+    "commercial.process.subtitle": "No surprises, no tickets. Direct coordination with architect, contractor and owner.",
+
+    "commercial.form.title": "Let's talk about your project",
+    "commercial.form.subtitle": "Give us the basics. We respond within 24 business hours with questions or an initial proposal.",
+    "commercial.form.name": "Full name",
+    "commercial.form.company": "Company",
+    "commercial.form.email": "Work email",
+    "commercial.form.phone": "Phone (optional)",
+    "commercial.form.sector": "Sector",
+    "commercial.form.size": "Approximate size",
+    "commercial.form.message": "Tell us about the project",
+    "commercial.form.sectorPlaceholder": "Pick a sector",
+    "commercial.form.sizePlaceholder": "Pick a range",
+    "commercial.form.messagePlaceholder": "Type of space, what you'd like to automate, approximate timeline…",
+    "commercial.form.submit": "Send request",
+    "commercial.form.submitting": "Sending…",
+    "commercial.form.success": "Got it! We received your request and will reach out within 24 business hours.",
+    "commercial.form.error": "There was a problem sending. Please try again or email us directly at comercial@dirasmart.com",
+
+    "commercial.alt.title": "Prefer direct contact?",
+    "commercial.alt.whatsapp": "Message on WhatsApp",
+    "commercial.alt.whatsappMessage": "Hi! I'd like info about commercial automation",
 
     // Blog
     "blog.title": "Blog",
