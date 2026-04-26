@@ -45,8 +45,6 @@ KNX brilla especialmente en:
 
 **Proyectos nuevos en construcción:** La instalación ideal es durante la fase de construcción, cuando el cableado se integra junto con la infraestructura eléctrica. Aunque también se puede adaptar en renovaciones.
 
-${/* Sección oculta hasta aprobar el examen de certificación KNX Partner:
-
 ## DiraSmart: KNX Partner certificado en Panamá
 
 Aquí viene lo importante: **DiraSmart es uno de los pocos KNX Partners certificados en Panamá.** Esto no es solo un título — significa que nuestro equipo ha sido entrenado y certificado directamente por la KNX Association, y que cumplimos con los estándares internacionales de diseño, instalación y programación de sistemas KNX.
@@ -58,8 +56,6 @@ Aquí viene lo importante: **DiraSmart es uno de los pocos KNX Partners certific
 **Programación experta:** Utilizamos la herramienta oficial ETS (Engineering Tool Software) para programar cada escena, automatización y lógica de tu sistema.
 
 **Garantía de compatibilidad:** Al ser Partners certificados, tenemos acceso directo al soporte técnico de KNX Association y a las últimas actualizaciones del ecosistema.
-
-*/ ""}
 ## KNX + DiraSmart: Lo mejor de ambos mundos
 
 En DiraSmart no solo instalamos KNX de forma aislada. Lo integramos con nuestro ecosistema de procesamiento local y nuestra app personalizada. Esto significa que puedes tener la confiabilidad de grado industrial de KNX con la experiencia de usuario moderna que esperarías de un sistema smart home actual.
@@ -105,8 +101,6 @@ KNX shines especially in:
 
 **New construction projects:** The ideal installation is during the construction phase, when wiring is integrated alongside electrical infrastructure. Although it can also be adapted in renovations.
 
-${/* Section hidden until the KNX Partner certification exam is passed:
-
 ## DiraSmart: Certified KNX Partner in Panama
 
 Here's the important part: **DiraSmart is one of the few certified KNX Partners in Panama.** This isn't just a title — it means our team has been trained and certified directly by the KNX Association, and that we comply with international standards for KNX system design, installation, and programming.
@@ -118,8 +112,6 @@ Why does this matter? Because a poorly installed or poorly programmed KNX system
 **Expert programming:** We use the official ETS (Engineering Tool Software) to program every scene, automation, and logic in your system.
 
 **Compatibility guarantee:** As certified Partners, we have direct access to KNX Association technical support and the latest ecosystem updates.
-
-*/ ""}
 ## KNX + DiraSmart: The Best of Both Worlds
 
 At DiraSmart, we don't just install KNX in isolation. We integrate it with our local processing ecosystem and our custom app. This means you can have KNX's industrial-grade reliability with the modern user experience you'd expect from a current smart home system.

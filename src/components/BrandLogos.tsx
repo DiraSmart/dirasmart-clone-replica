@@ -20,7 +20,7 @@ import smartthingsLogo from "@/assets/brands/smartthings.png";
 import shellyLogo from "@/assets/brands/shelly.png";
 import bluetoothLogo from "@/assets/brands/bluetooth.png";
 import wifiLogo from "@/assets/brands/wifi.svg";
-import knxLogo from "@/assets/brands/knx.png";
+import knxLogo from "@/assets/brands/knx-partner.jpg";
 import loraLogo from "@/assets/brands/lora.png";
 import modbusLogo from "@/assets/brands/modbus.png";
 import kasaLogo from "@/assets/brands/kasa.png";
