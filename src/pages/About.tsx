@@ -15,7 +15,7 @@ import {
   Check,
 } from "lucide-react";
 import shabatModeImage from "@/assets/shabat-mode.webp";
-import knxLogo from "@/assets/brands/knx-partner.jpg";
+import knxLogo from "@/assets/brands/knx-partner.png";
 import zigbeeLogo from "@/assets/brands/zigbee.png";
 import zwaveLogo from "@/assets/brands/zwave.png";
 import modbusLogo from "@/assets/brands/modbus.png";
