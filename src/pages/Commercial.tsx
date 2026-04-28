@@ -309,6 +309,15 @@ const Commercial = () => {
                     ? "Diseño profesional con la herramienta oficial ETS, integración garantizada entre 500+ marcas KNX, y acceso al soporte de la KNX Association."
                     : "Professional design with the official ETS tool, guaranteed integration across 500+ KNX brands, and access to KNX Association support."}
                 </p>
+                <a
+                  href="https://www.knx.org/knx-en/for-professionals/community/partners/?company=Dirasmart"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded"
+                >
+                  {lang === "es" ? "Verifícanos en el directorio oficial KNX" : "Verify us in the official KNX directory"}
+                  <span aria-hidden="true">→</span>
+                </a>
               </div>
 
               {/* BMS / BACnet */}
