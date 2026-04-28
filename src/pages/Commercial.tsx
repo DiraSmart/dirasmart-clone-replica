@@ -28,7 +28,7 @@ import {
   CheckCircle2,
   AlertCircle,
 } from "lucide-react";
-import knxPartnerBadge from "@/assets/brands/knx-partner.jpg";
+import knxPartnerBadge from "@/assets/brands/knx-partner.png";
 import bacnetLogo from "@/assets/brands/bacnet.svg";
 
 const WEB3FORMS_KEY = "1cd751d7-540f-4cad-8f38-00d2784ff893";
