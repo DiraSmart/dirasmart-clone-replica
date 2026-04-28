@@ -15,7 +15,7 @@ const CommercialBanner = () => {
           <p className="text-xs sm:text-sm font-medium uppercase tracking-[0.2em] text-primary/80 mb-3">
             {t("home.commercialBanner.eyebrow")}
           </p>
-          <h2 className="font-display font-semibold text-2xl sm:text-3xl md:text-4xl leading-[1.15] tracking-[-0.015em] text-foreground mb-3 text-balance">
+          <h2 className="font-bold text-2xl sm:text-3xl md:text-4xl leading-[1.15] tracking-[-0.015em] text-foreground mb-3 text-balance">
             {t("home.commercialBanner.title")}
           </h2>
           <p className="text-muted-foreground text-base sm:text-lg max-w-xl mx-auto mb-7">

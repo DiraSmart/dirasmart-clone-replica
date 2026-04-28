@@ -253,7 +253,7 @@ const Commercial = () => {
               <p className="text-xs sm:text-sm font-medium uppercase tracking-[0.2em] text-primary/80 mb-5">
                 {lang === "es" ? "DiraSmart Comercial" : "DiraSmart Commercial"}
               </p>
-              <h1 className="font-display font-semibold text-[clamp(2.25rem,6vw,4.5rem)] leading-[1.05] tracking-[-0.02em] text-foreground mb-7 text-balance">
+              <h1 className="font-bold text-[clamp(2.25rem,6vw,4.5rem)] leading-[1.05] tracking-[-0.02em] text-foreground mb-7 text-balance">
                 {t("commercial.title")}{" "}
                 <span className="text-gradient">{t("commercial.titleHighlight")}</span>
               </h1>
@@ -283,7 +283,7 @@ const Commercial = () => {
         <section className="section-padding bg-muted/20 dark:bg-muted/10">
           <div className="container-custom px-4">
             <div className="text-center max-w-2xl mx-auto mb-14">
-              <h2 className="font-display font-semibold text-3xl sm:text-4xl md:text-5xl leading-[1.1] tracking-[-0.015em] text-foreground mb-3 text-balance">
+              <h2 className="font-bold text-3xl sm:text-4xl md:text-5xl leading-[1.1] tracking-[-0.015em] text-foreground mb-3 text-balance">
                 {t("commercial.diff.title")}
               </h2>
               <p className="text-muted-foreground text-base sm:text-lg">
@@ -301,7 +301,7 @@ const Commercial = () => {
                     loading="lazy"
                   />
                 </div>
-                <h3 className="font-display font-semibold text-xl text-foreground mb-2.5">
+                <h3 className="font-bold text-xl text-foreground mb-2.5">
                   {lang === "es" ? "KNX Partner certificado" : "Certified KNX Partner"}
                 </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
@@ -321,7 +321,7 @@ const Commercial = () => {
                     loading="lazy"
                   />
                 </div>
-                <h3 className="font-display font-semibold text-xl text-foreground mb-2.5">
+                <h3 className="font-bold text-xl text-foreground mb-2.5">
                   {lang === "es" ? "BMS · Gestión de edificios" : "BMS · Building Management"}
                 </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
@@ -338,7 +338,7 @@ const Commercial = () => {
                     <Server aria-hidden="true" className="w-7 h-7 text-accent" strokeWidth={1.5} />
                   </div>
                 </div>
-                <h3 className="font-display font-semibold text-xl text-foreground mb-2.5">
+                <h3 className="font-bold text-xl text-foreground mb-2.5">
                   {lang === "es" ? "Procesamiento local" : "Local processing"}
                 </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
@@ -355,7 +355,7 @@ const Commercial = () => {
         <section id="sectores" className="section-padding bg-background">
           <div className="container-custom px-4">
             <div className="text-center max-w-2xl mx-auto mb-14">
-              <h2 className="font-display font-semibold text-3xl sm:text-4xl md:text-5xl leading-[1.1] tracking-[-0.015em] text-foreground mb-3 text-balance">
+              <h2 className="font-bold text-3xl sm:text-4xl md:text-5xl leading-[1.1] tracking-[-0.015em] text-foreground mb-3 text-balance">
                 {t("commercial.sectors.title")}{" "}
                 <span className="text-gradient">{t("commercial.sectors.titleHighlight")}</span>
               </h2>
@@ -383,7 +383,7 @@ const Commercial = () => {
                       <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
                         <s.icon aria-hidden="true" className="w-5 h-5 text-primary" strokeWidth={1.5} />
                       </div>
-                      <h3 className="font-display font-semibold text-lg text-foreground leading-tight">
+                      <h3 className="font-bold text-lg text-foreground leading-tight">
                         {s.name[lang]}
                       </h3>
                     </div>
@@ -401,7 +401,7 @@ const Commercial = () => {
         <section className="section-padding bg-muted/20 dark:bg-muted/10">
           <div className="container-custom px-4">
             <div className="text-center max-w-2xl mx-auto mb-14">
-              <h2 className="font-display font-semibold text-3xl sm:text-4xl md:text-5xl leading-[1.1] tracking-[-0.015em] text-foreground mb-3 text-balance">
+              <h2 className="font-bold text-3xl sm:text-4xl md:text-5xl leading-[1.1] tracking-[-0.015em] text-foreground mb-3 text-balance">
                 {t("commercial.process.title")}
               </h2>
               <p className="text-muted-foreground text-base sm:text-lg">
@@ -414,7 +414,7 @@ const Commercial = () => {
                   <div className="flex items-center gap-3 mb-3">
                     <span
                       aria-hidden="true"
-                      className="font-display text-2xl font-bold text-primary/30 leading-none"
+                      className="text-2xl font-bold text-primary/30 leading-none"
                     >
                       {String(i + 1).padStart(2, "0")}
                     </span>
@@ -439,7 +439,7 @@ const Commercial = () => {
           </div>
           <div className="container-custom px-4 relative z-10">
             <div className="text-center max-w-2xl mx-auto mb-12">
-              <h2 className="font-display font-semibold text-3xl sm:text-4xl md:text-5xl leading-[1.1] tracking-[-0.015em] text-foreground mb-3 text-balance">
+              <h2 className="font-bold text-3xl sm:text-4xl md:text-5xl leading-[1.1] tracking-[-0.015em] text-foreground mb-3 text-balance">
                 {t("commercial.form.title")}
               </h2>
               <p className="text-muted-foreground text-base sm:text-lg text-pretty">
