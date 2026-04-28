@@ -1,4 +1,4 @@
-const VALID_ROUTES = new Set(["/", "/about", "/blog", "/en", "/en/about", "/en/blog"]);
+const VALID_ROUTES = new Set(["/", "/about", "/blog", "/comercial", "/en", "/en/about", "/en/blog", "/en/comercial"]);
 const VALID_PREFIXES = ["/blog/", "/en/blog/"];
 
 const PERMANENT_REDIRECTS: Record<string, string> = {
