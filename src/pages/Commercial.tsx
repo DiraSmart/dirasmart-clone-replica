@@ -27,6 +27,12 @@ import {
   Loader2,
   CheckCircle2,
   AlertCircle,
+  TrendingDown,
+  MonitorSmartphone,
+  ShieldCheck,
+  BellRing,
+  BarChart3,
+  ThermometerSun,
 } from "lucide-react";
 import knxPartnerBadge from "@/assets/brands/knx-partner.png";
 import bacnetLogo from "@/assets/brands/bacnet.svg";
@@ -122,6 +128,70 @@ const SECTORS: Sector[] = [
     desc: {
       es: "Iluminación adecuada para procedimientos, gestión energética por consultorio, integración con sistemas de turnos y control de accesos.",
       en: "Procedure-appropriate lighting, per-office energy management, integration with appointment systems and access control.",
+    },
+  },
+];
+
+interface Benefit {
+  id: string;
+  icon: typeof TrendingDown;
+  title: { es: string; en: string };
+  desc: { es: string; en: string };
+}
+
+const BENEFITS: Benefit[] = [
+  {
+    id: "ahorro",
+    icon: TrendingDown,
+    title: { es: "Hasta 30% menos consumo eléctrico", en: "Up to 30% less electricity use" },
+    desc: {
+      es: "Climatización e iluminación que se apagan cuando el espacio está vacío, programación por horario y desconexión de cargas inactivas.",
+      en: "HVAC and lighting that turn off when the space is empty, schedule-based programming and shutdown of idle loads.",
+    },
+  },
+  {
+    id: "control-remoto",
+    icon: MonitorSmartphone,
+    title: { es: "Control remoto y centralizado", en: "Remote, centralized control" },
+    desc: {
+      es: "Operá todo el edificio desde un panel, app o desde otra ciudad. Visibilidad total sin estar en sitio.",
+      en: "Run the whole building from a panel, app, or another city. Full visibility without being on-site.",
+    },
+  },
+  {
+    id: "mantenimiento",
+    icon: ShieldCheck,
+    title: { es: "Prevención de fallas", en: "Failure prevention" },
+    desc: {
+      es: "Detectá problemas antes de que afecten al cliente. El sistema avisa cuando un equipo trabaja fuera de rango antes de fallar.",
+      en: "Catch problems before they reach the customer. The system flags equipment running out of range before it fails.",
+    },
+  },
+  {
+    id: "notificaciones",
+    icon: BellRing,
+    title: { es: "Notificaciones en tiempo real", en: "Real-time notifications" },
+    desc: {
+      es: "Fugas de agua, puertas abiertas fuera de horario, sobrecargas eléctricas, fallos de HVAC. Tu staff alertado en segundos.",
+      en: "Water leaks, doors left open after hours, electrical overloads, HVAC failures. Your staff alerted in seconds.",
+    },
+  },
+  {
+    id: "reportes",
+    icon: BarChart3,
+    title: { es: "Reportes y análisis", en: "Reporting & analytics" },
+    desc: {
+      es: "Consumo por zona, habitación y horario. Decisiones operativas con data, no con suposiciones.",
+      en: "Consumption by zone, room and time of day. Operational decisions backed by data, not guesswork.",
+    },
+  },
+  {
+    id: "confort",
+    icon: ThermometerSun,
+    title: { es: "Confort consistente", en: "Consistent comfort" },
+    desc: {
+      es: "Climatización e iluminación adaptadas al uso real del espacio. Huéspedes y clientes que no piden más porque ya está bien.",
+      en: "HVAC and lighting tuned to how the space is actually used. Guests and customers who don't ask for more because it's already right.",
     },
   },
 ];
@@ -279,12 +349,55 @@ const Commercial = () => {
           </div>
         </section>
 
+        {/* Benefits — what you gain by going smart */}
+        <section className="section-padding bg-background">
+          <div className="container-custom px-4">
+            <div className="text-center max-w-2xl mx-auto mb-14">
+              <p className="text-xs sm:text-sm font-medium uppercase tracking-[0.2em] text-primary/80 mb-4">
+                {lang === "es" ? "Beneficios" : "Benefits"}
+              </p>
+              <h2 className="font-bold text-3xl sm:text-4xl md:text-5xl leading-[1.1] tracking-[-0.015em] text-foreground mb-3 text-balance">
+                {lang === "es" ? "Qué ganás al hacerlo " : "What you gain by going "}
+                <span className="text-gradient">{lang === "es" ? "inteligente" : "smart"}</span>
+              </h2>
+              <p className="text-muted-foreground text-base sm:text-lg">
+                {lang === "es"
+                  ? "Beneficios concretos para hoteles, edificios y negocios — desde el primer mes."
+                  : "Concrete benefits for hotels, buildings and businesses — from month one."}
+              </p>
+            </div>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
+              {BENEFITS.map((b) => (
+                <div
+                  key={b.id}
+                  className="rounded-2xl border border-border/60 bg-background p-6 flex flex-col"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                    <b.icon aria-hidden="true" className="w-6 h-6 text-primary" strokeWidth={1.5} />
+                  </div>
+                  <h3 className="font-bold text-lg text-foreground mb-2">
+                    {b.title[lang]}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {b.desc[lang]}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Differentiators */}
         <section className="section-padding bg-muted/20 dark:bg-muted/10">
           <div className="container-custom px-4">
             <div className="text-center max-w-2xl mx-auto mb-14">
+              <p className="text-xs sm:text-sm font-medium uppercase tracking-[0.2em] text-primary/80 mb-4">
+                {lang === "es" ? "Por qué DiraSmart" : "Why DiraSmart"}
+              </p>
               <h2 className="font-bold text-3xl sm:text-4xl md:text-5xl leading-[1.1] tracking-[-0.015em] text-foreground mb-3 text-balance">
-                {t("commercial.diff.title")}
+                {t("commercial.diff.title")}{" "}
+                <span className="text-gradient">{t("commercial.diff.titleHighlight")}</span>
               </h2>
               <p className="text-muted-foreground text-base sm:text-lg">
                 {t("commercial.diff.subtitle")}
@@ -364,6 +477,9 @@ const Commercial = () => {
         <section id="sectores" className="section-padding bg-background">
           <div className="container-custom px-4">
             <div className="text-center max-w-2xl mx-auto mb-14">
+              <p className="text-xs sm:text-sm font-medium uppercase tracking-[0.2em] text-primary/80 mb-4">
+                {lang === "es" ? "Sectores" : "Sectors"}
+              </p>
               <h2 className="font-bold text-3xl sm:text-4xl md:text-5xl leading-[1.1] tracking-[-0.015em] text-foreground mb-3 text-balance">
                 {t("commercial.sectors.title")}{" "}
                 <span className="text-gradient">{t("commercial.sectors.titleHighlight")}</span>
@@ -410,8 +526,12 @@ const Commercial = () => {
         <section className="section-padding bg-muted/20 dark:bg-muted/10">
           <div className="container-custom px-4">
             <div className="text-center max-w-2xl mx-auto mb-14">
+              <p className="text-xs sm:text-sm font-medium uppercase tracking-[0.2em] text-primary/80 mb-4">
+                {lang === "es" ? "Proceso" : "Process"}
+              </p>
               <h2 className="font-bold text-3xl sm:text-4xl md:text-5xl leading-[1.1] tracking-[-0.015em] text-foreground mb-3 text-balance">
-                {t("commercial.process.title")}
+                {t("commercial.process.title")}{" "}
+                <span className="text-gradient">{t("commercial.process.titleHighlight")}</span>
               </h2>
               <p className="text-muted-foreground text-base sm:text-lg">
                 {t("commercial.process.subtitle")}
@@ -448,8 +568,12 @@ const Commercial = () => {
           </div>
           <div className="container-custom px-4 relative z-10">
             <div className="text-center max-w-2xl mx-auto mb-12">
+              <p className="text-xs sm:text-sm font-medium uppercase tracking-[0.2em] text-primary/80 mb-4">
+                {lang === "es" ? "Contacto" : "Get in touch"}
+              </p>
               <h2 className="font-bold text-3xl sm:text-4xl md:text-5xl leading-[1.1] tracking-[-0.015em] text-foreground mb-3 text-balance">
-                {t("commercial.form.title")}
+                {t("commercial.form.title")}{" "}
+                <span className="text-gradient">{t("commercial.form.titleHighlight")}</span>
               </h2>
               <p className="text-muted-foreground text-base sm:text-lg text-pretty">
                 {t("commercial.form.subtitle")}

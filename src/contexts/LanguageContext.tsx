@@ -263,17 +263,20 @@ const translations: Record<Language, Record<string, string>> = {
     "commercial.cta.primary": "Solicitar propuesta",
     "commercial.cta.secondary": "Ver sectores",
 
-    "commercial.diff.title": "Por qué elegirnos para tu proyecto comercial",
+    "commercial.diff.title": "Por qué elegirnos para tu",
+    "commercial.diff.titleHighlight": "proyecto comercial",
     "commercial.diff.subtitle": "No vendemos gadgets sueltos. Diseñamos infraestructura que dura años.",
 
     "commercial.sectors.title": "Sectores que",
     "commercial.sectors.titleHighlight": "atendemos",
     "commercial.sectors.subtitle": "Cada espacio tiene su propia lógica. Adaptamos el sistema a tu operación.",
 
-    "commercial.process.title": "Cómo trabajamos un proyecto comercial",
+    "commercial.process.title": "Cómo trabajamos un",
+    "commercial.process.titleHighlight": "proyecto comercial",
     "commercial.process.subtitle": "Sin sorpresas, sin tickets. Coordinación directa con arquitecto, contratista y dueño.",
 
-    "commercial.form.title": "Hablemos de tu proyecto",
+    "commercial.form.title": "Hablemos de tu",
+    "commercial.form.titleHighlight": "proyecto",
     "commercial.form.subtitle": "Cuéntanos lo básico. Te respondemos en menos de 24 horas hábiles con preguntas o propuesta inicial.",
     "commercial.form.name": "Nombre completo",
     "commercial.form.company": "Empresa",
@@ -585,17 +588,20 @@ const translations: Record<Language, Record<string, string>> = {
     "commercial.cta.primary": "Request a proposal",
     "commercial.cta.secondary": "Browse sectors",
 
-    "commercial.diff.title": "Why pick us for your commercial project",
+    "commercial.diff.title": "Why pick us for your",
+    "commercial.diff.titleHighlight": "commercial project",
     "commercial.diff.subtitle": "We don't sell standalone gadgets. We design infrastructure that lasts for years.",
 
     "commercial.sectors.title": "Sectors we",
     "commercial.sectors.titleHighlight": "serve",
     "commercial.sectors.subtitle": "Every space has its own logic. We adapt the system to how you actually operate.",
 
-    "commercial.process.title": "How we run a commercial project",
+    "commercial.process.title": "How we run a",
+    "commercial.process.titleHighlight": "commercial project",
     "commercial.process.subtitle": "No surprises, no tickets. Direct coordination with architect, contractor and owner.",
 
-    "commercial.form.title": "Let's talk about your project",
+    "commercial.form.title": "Let's talk about your",
+    "commercial.form.titleHighlight": "project",
     "commercial.form.subtitle": "Give us the basics. We respond within 24 business hours with questions or an initial proposal.",
     "commercial.form.name": "Full name",
     "commercial.form.company": "Company",
