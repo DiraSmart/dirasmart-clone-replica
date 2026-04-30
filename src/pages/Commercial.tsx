@@ -5,9 +5,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import {
-  Award,
-  Network,
-  Server,
   Hotel,
   Building2,
   Building,
@@ -36,6 +33,7 @@ import {
 } from "lucide-react";
 import knxPartnerBadge from "@/assets/brands/knx-partner.png";
 import bacnetLogo from "@/assets/brands/bacnet.svg";
+import localFirstBadge from "@/assets/brands/local-first.svg";
 
 const WEB3FORMS_KEY = "1cd751d7-540f-4cad-8f38-00d2784ff893";
 
@@ -357,8 +355,8 @@ const Commercial = () => {
                 {lang === "es" ? "Beneficios" : "Benefits"}
               </p>
               <h2 className="font-bold text-3xl sm:text-4xl md:text-5xl leading-[1.1] tracking-[-0.015em] text-foreground mb-3 text-balance">
-                {lang === "es" ? "Qué ganás al hacerlo " : "What you gain by going "}
-                <span className="text-gradient">{lang === "es" ? "inteligente" : "smart"}</span>
+                {lang === "es" ? "Más control, menos costos, " : "More control, lower costs, "}
+                <span className="text-gradient">{lang === "es" ? "mejor experiencia" : "better experience"}</span>
               </h2>
               <p className="text-muted-foreground text-base sm:text-lg">
                 {lang === "es"
@@ -456,9 +454,12 @@ const Commercial = () => {
               {/* Local processing */}
               <div className="rounded-3xl border border-border/60 bg-background p-7 flex flex-col items-start">
                 <div className="h-16 mb-5 flex items-center">
-                  <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center">
-                    <Server aria-hidden="true" className="w-7 h-7 text-accent" strokeWidth={1.5} />
-                  </div>
+                  <img
+                    src={localFirstBadge}
+                    alt="Local First — procesamiento local sin nube"
+                    className="h-14 w-auto"
+                    loading="lazy"
+                  />
                 </div>
                 <h3 className="font-bold text-xl text-foreground mb-2.5">
                   {lang === "es" ? "Procesamiento local" : "Local processing"}

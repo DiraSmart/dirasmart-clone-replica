@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" width="300" height="100">
+  <!-- Server stack icon (3 units) -->
+  <g transform="translate(45, 50)">
+    <!-- Unit 1 -->
+    <rect x="-25" y="-29" width="50" height="18" rx="2.5" fill="none" stroke="hsl(193, 82%, 43%)" stroke-width="2"/>
+    <circle cx="-17" cy="-20" r="2.2" fill="hsl(158, 64%, 52%)"/>
+    <line x1="-8" y1="-20" x2="18" y2="-20" stroke="hsl(193, 82%, 43%)" stroke-width="1.2" stroke-opacity="0.55"/>
+    <!-- Unit 2 -->
+    <rect x="-25" y="-9" width="50" height="18" rx="2.5" fill="none" stroke="hsl(193, 82%, 43%)" stroke-width="2"/>
+    <circle cx="-17" cy="0" r="2.2" fill="hsl(158, 64%, 52%)"/>
+    <line x1="-8" y1="0" x2="18" y2="0" stroke="hsl(193, 82%, 43%)" stroke-width="1.2" stroke-opacity="0.55"/>
+    <!-- Unit 3 -->
+    <rect x="-25" y="11" width="50" height="18" rx="2.5" fill="none" stroke="hsl(193, 82%, 43%)" stroke-width="2"/>
+    <circle cx="-17" cy="20" r="2.2" fill="hsl(158, 64%, 52%)"/>
+    <line x1="-8" y1="20" x2="18" y2="20" stroke="hsl(193, 82%, 43%)" stroke-width="1.2" stroke-opacity="0.55"/>
+  </g>
+
+  <!-- Vertical divider -->
+  <line x1="100" y1="22" x2="100" y2="78" stroke="hsl(193, 82%, 43%)" stroke-width="1" stroke-opacity="0.4"/>
+
+  <!-- LOCAL -->
+  <text x="118" y="52" font-family="'Poppins', system-ui, sans-serif" font-weight="800" font-size="28" fill="hsl(193, 82%, 43%)" letter-spacing="3">LOCAL</text>
+
+  <!-- Horizontal divider -->
+  <line x1="118" y1="62" x2="262" y2="62" stroke="hsl(158, 64%, 52%)" stroke-width="1.4"/>
+
+  <!-- FIRST -->
+  <text x="118" y="82" font-family="'Poppins', system-ui, sans-serif" font-weight="500" font-size="13" fill="hsl(158, 64%, 52%)" letter-spacing="5">FIRST</text>
+</svg>

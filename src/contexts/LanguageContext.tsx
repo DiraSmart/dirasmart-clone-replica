@@ -257,8 +257,8 @@ const translations: Record<Language, Record<string, string>> = {
     "about.cta.message": "¡Hola! Me interesa conocer más sobre DiraSmart",
 
     // Commercial / B2B page
-    "commercial.title": "Automatización profesional para",
-    "commercial.titleHighlight": "edificios y negocios en Panamá.",
+    "commercial.title": "Automatización para",
+    "commercial.titleHighlight": "hoteles, edificios y negocios en Panamá.",
     "commercial.subtitle": "Hoteles, oficinas, museos, retail, edificios. Diseño con KNX, integración BMS vía BACnet y procesamiento local. Soporte continuo desde Panamá.",
     "commercial.cta.primary": "Solicitar propuesta",
     "commercial.cta.secondary": "Ver sectores",
@@ -582,8 +582,8 @@ const translations: Record<Language, Record<string, string>> = {
     "about.cta.message": "Hello! I'm interested in learning more about DiraSmart",
 
     // Commercial / B2B page
-    "commercial.title": "Professional automation for",
-    "commercial.titleHighlight": "buildings and businesses in Panama.",
+    "commercial.title": "Automation for",
+    "commercial.titleHighlight": "hotels, buildings and businesses in Panama.",
     "commercial.subtitle": "Hotels, offices, museums, retail, condos. Designed with KNX, BMS integration over BACnet and local processing. Continuous support from Panama.",
     "commercial.cta.primary": "Request a proposal",
     "commercial.cta.secondary": "Browse sectors",
