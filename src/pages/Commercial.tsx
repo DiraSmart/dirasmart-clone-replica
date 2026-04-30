@@ -437,7 +437,7 @@ const Commercial = () => {
                   <img
                     src={bacnetLogo}
                     alt="BACnet"
-                    className="h-12 w-auto"
+                    className="h-10 w-auto"
                     loading="lazy"
                   />
                 </div>
