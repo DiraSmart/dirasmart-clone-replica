@@ -302,13 +302,18 @@ const Commercial = () => {
         {/* Hero with Panama skyline backdrop */}
         <section className="relative pt-28 pb-20 md:pt-36 md:pb-28 overflow-hidden">
           <div aria-hidden="true" className="absolute inset-0 -z-10">
-            <img
-              src="/comercial/hero-panama.jpg"
-              alt=""
-              className="w-full h-full object-cover opacity-30 dark:opacity-20"
-              loading="eager"
-              fetchPriority="high"
-            />
+            <picture>
+              <source srcSet="/comercial/hero-panama.webp" type="image/webp" />
+              <img
+                src="/comercial/hero-panama.jpg"
+                alt=""
+                width={2000}
+                height={1200}
+                className="w-full h-full object-cover opacity-30 dark:opacity-20"
+                loading="eager"
+                fetchPriority="high"
+              />
+            </picture>
             <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background" />
           </div>
           <div className="container-custom px-4 relative z-10">
@@ -497,12 +502,17 @@ const Commercial = () => {
                   className="group rounded-2xl overflow-hidden border border-border/60 bg-background motion-safe:transition-shadow hover:shadow-lg flex flex-col"
                 >
                   <div className="aspect-[4/3] relative overflow-hidden bg-muted">
-                    <img
-                      src={s.image}
-                      alt={s.name[lang]}
-                      loading="lazy"
-                      className="w-full h-full object-cover motion-safe:transition-transform motion-safe:duration-500 group-hover:scale-105"
-                    />
+                    <picture>
+                      <source srcSet={s.image.replace(/\.jpg$/, ".webp")} type="image/webp" />
+                      <img
+                        src={s.image}
+                        alt={s.name[lang]}
+                        width={1200}
+                        height={900}
+                        loading="lazy"
+                        className="w-full h-full object-cover motion-safe:transition-transform motion-safe:duration-500 group-hover:scale-105"
+                      />
+                    </picture>
                   </div>
                   <div className="p-5 flex flex-col flex-1">
                     <div className="flex items-center gap-3 mb-2.5">
