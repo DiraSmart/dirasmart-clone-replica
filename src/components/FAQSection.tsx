@@ -13,6 +13,10 @@ const FAQ_KEYS = [
   { q: "faq.q8", a: "faq.a8" },
   { q: "faq.q9", a: "faq.a9" },
   { q: "faq.q10", a: "faq.a10" },
+  { q: "faq.q11", a: "faq.a11" },
+  { q: "faq.q12", a: "faq.a12" },
+  { q: "faq.q13", a: "faq.a13" },
+  { q: "faq.q14", a: "faq.a14" },
 ];
 
 const FAQItem = ({ question, answer }: { question: string; answer: string }) => {

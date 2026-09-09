@@ -1,7 +1,7 @@
 import type { BlogPost } from "./types";
 
 export const post: BlogPost = {
-  slug: "automatizacion-apartamentos-panama",
+  slug: { es: "automatizacion-apartamentos-panama", en: "apartment-automation-panama" },
   date: "2026-03-28",
   readTime: 6,
   category: { es: "Estilo de Vida", en: "Lifestyle" },
@@ -122,4 +122,36 @@ The cost depends on what you want to automate. A basic package (lights, AC, lock
 
 Contact us for a free evaluation of your apartment. We'll visit, assess the possibilities, and present a customized proposal with no obligation.`,
   },
+  faq: [
+    {
+      question: {
+        es: "¿Necesito permiso de la administración del edificio para instalar una cerradura inteligente o cámara en la puerta de mi apartamento?",
+        en: "Do I need building management approval to install a smart lock or camera on my apartment door?",
+      },
+      answer: {
+        es: "Depende del edificio. Algunos requieren aprobación de la administración para instalar cerraduras inteligentes o cámaras en la puerta principal, especialmente si se modifica algo visible desde el pasillo. En DiraSmart te ayudamos a preparar la documentación necesaria para presentarla al edificio antes de la instalación.",
+        en: "It depends on the building. Some require management approval to install smart locks or cameras on the front door, especially if anything visible from the hallway is modified. At DiraSmart we help you prepare the necessary documentation to submit to the building before installation.",
+      },
+    },
+    {
+      question: {
+        es: "¿Los sensores de movimiento se activan falsamente si tengo mascotas en el apartamento?",
+        en: "Do motion sensors trigger false alerts if I have pets in the apartment?",
+      },
+      answer: {
+        es: "No, si se configuran correctamente. Los sensores de movimiento que instalamos se ajustan para ignorar animales pequeños, evitando falsas alertas o activaciones no deseadas de automatizaciones cuando tu mascota se mueve por la casa.",
+        en: "No, not if configured correctly. The motion sensors we install are adjusted to ignore small animals, avoiding false alerts or unwanted automation triggers when your pet moves around the home.",
+      },
+    },
+    {
+      question: {
+        es: "Si alquilo mi apartamento, ¿me puedo llevar los dispositivos inteligentes cuando me mude?",
+        en: "If I rent my apartment, can I take the smart devices with me when I move?",
+      },
+      answer: {
+        es: "En la mayoría de los casos sí. Muchos de los dispositivos que instalamos en apartamentos —bombillos inteligentes, controladores IR, sensores, cerraduras y motores de cortina a batería— son removibles y no requieren modificar la instalación eléctrica original, por lo que puedes desinstalarlos y llevártelos a tu próxima vivienda.",
+        en: "In most cases, yes. Many of the devices we install in apartments — smart bulbs, IR controllers, sensors, locks, and battery-powered curtain motors — are removable and don't require modifying the original electrical installation, so you can take them with you to your next home.",
+      },
+    },
+  ],
 };

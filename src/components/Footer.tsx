@@ -12,6 +12,7 @@ const Footer = () => {
     { icon: Instagram, href: "https://www.instagram.com/dirasmart", label: "Instagram" },
     { icon: Linkedin, href: "https://www.linkedin.com/company/dirasmart", label: "LinkedIn" },
     { icon: Youtube, href: "https://www.youtube.com/@DiraSmart", label: "YouTube" },
+    { icon: MapPin, href: "https://www.google.com/maps?cid=3392890501746819804", label: "Google Maps y reseñas" },
   ];
 
   return (
@@ -65,6 +66,7 @@ const Footer = () => {
           <div className="flex gap-4 text-sm text-white/70">
             <Link to={localePath("/about")} className="hover:text-white transition-colors">{t("nav.about")}</Link>
             <Link to={localePath("/blog")} className="hover:text-white transition-colors">{t("nav.blog")}</Link>
+            <Link to={localePath("/reviews")} className="hover:text-white transition-colors">{t("nav.reviews")}</Link>
           </div>
         </div>
 

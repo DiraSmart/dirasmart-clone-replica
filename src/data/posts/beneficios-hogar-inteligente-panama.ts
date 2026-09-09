@@ -1,7 +1,7 @@
 import type { BlogPost } from "./types";
 
 export const post: BlogPost = {
-  slug: "beneficios-hogar-inteligente-panama",
+  slug: { es: "beneficios-hogar-inteligente-panama", en: "smart-home-benefits-panama" },
   date: "2026-02-10",
   readTime: 6,
   category: { es: "Estilo de Vida", en: "Lifestyle" },
@@ -60,4 +60,36 @@ Tropical storms are frequent. A smart home can automatically close motorized bli
 
 Imagine arriving home to find the lights on, the AC at the perfect temperature, your favorite music playing, and the blinds adjusted—all automatically. That's what DiraSmart does: it transforms your daily routine into a frictionless experience.`,
   },
+  faq: [
+    {
+      question: {
+        es: "¿Cuánto puedo ahorrar en la factura eléctrica con aire acondicionado inteligente en Panamá?",
+        en: "How much can I save on my electric bill with smart air conditioning in Panama?",
+      },
+      answer: {
+        es: "El aire acondicionado puede representar hasta el 60% de tu factura eléctrica en Panamá. Al programar los aires para apagarse cuando sales, encenderse antes de que llegues y ajustar la temperatura por zonas, nuestros clientes reportan ahorros de entre 20% y 35% en su factura mensual.",
+        en: "Air conditioning can represent up to 60% of your electric bill in Panama. By programming AC units to turn off when you leave, turn on before you arrive, and adjust temperature by zone, our clients report savings of between 20% and 35% on their monthly bill.",
+      },
+    },
+    {
+      question: {
+        es: "¿Cómo controla un hogar inteligente la humedad tropical de Panamá?",
+        en: "How does a smart home manage Panama's tropical humidity?",
+      },
+      answer: {
+        es: "Sensores de temperatura y humedad instalados en cada habitación monitorean el ambiente constantemente. Cuando la humedad relativa sube por encima de niveles cómodos (frecuente en Panamá, donde supera el 80%), el sistema activa la deshumidificación automáticamente, y reduce el aire acondicionado cuando baja la temperatura en la noche.",
+        en: "Temperature and humidity sensors installed in every room constantly monitor the environment. When relative humidity rises above comfortable levels (common in Panama, where it exceeds 80%), the system automatically activates dehumidification, and reduces the AC when the temperature drops at night.",
+      },
+    },
+    {
+      question: {
+        es: "¿Qué hace un hogar inteligente automáticamente durante una tormenta tropical?",
+        en: "What does a smart home do automatically during a tropical storm?",
+      },
+      answer: {
+        es: "Ante viento fuerte, el sistema puede cerrar las persianas motorizadas automáticamente sin que estés en casa. También apaga equipos sensibles cuando detecta fluctuaciones de voltaje y te alerta de inundaciones mediante sensores de agua, protegiendo tu hogar incluso cuando no estás presente.",
+        en: "When strong winds are detected, the system can automatically close motorized blinds even if you're not home. It also shuts down sensitive equipment during voltage fluctuations and alerts you to flooding through water sensors, protecting your home even when you're not present.",
+      },
+    },
+  ],
 };

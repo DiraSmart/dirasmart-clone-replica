@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 64" role="img" aria-label="DALI">
+  <g fill="#1f2937" font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif" font-weight="800">
+    <text x="0" y="46" font-size="48" letter-spacing="2">DALI</text>
+    <circle cx="142" cy="22" r="5" fill="#f59e0b"/>
+    <text x="156" y="46" font-size="20" font-weight="500" fill="#6b7280" letter-spacing="0.5">2</text>
+  </g>
+</svg>

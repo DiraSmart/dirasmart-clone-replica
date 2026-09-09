@@ -37,8 +37,8 @@ const Blog = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
               {blogPosts.map((post) => (
                 <Link
-                  key={post.slug}
-                  to={localePath(`/blog/${post.slug}`)}
+                  key={post.slug.es}
+                  to={localePath(`/blog/${post.slug[language]}`)}
                   className="group rounded-2xl border border-border/50 bg-card overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
                 >
                   {/* Image or gradient header */}
@@ -60,6 +60,7 @@ const Blog = () => {
                             {post.icon === "Wifi" && "📡"}
                             {post.icon === "Lock" && "🔒"}
                             {post.icon === "Network" && "🌐"}
+                            {post.icon === "Lightbulb" && "💡"}
                           </span>
                         </div>
                       </>

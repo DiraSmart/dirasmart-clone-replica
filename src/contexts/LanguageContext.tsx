@@ -23,7 +23,7 @@ const translations: Record<Language, Record<string, string>> = {
     // Hero
     "hero.title": "Casa Inteligente en Panamá.",
     "hero.titleHighlight": "Diseñada Para Ti.",
-    "hero.subtitle": "Una sola app para controlar todo tu hogar. Diseñada para ti, instalada por profesionales, con soporte continuo.",
+    "hero.subtitle": "Una sola app para controlar todo tu hogar, con procesamiento 100% local. Desde apartamentos hasta residencias KNX de alta gama, instalada por profesionales y con soporte continuo.",
     "hero.cta": "Contáctanos",
     "hero.cta.message": "¡Hola! Me interesa automatizar mi hogar con DiraSmart",
     "hero.ctaSecondary": "Ver Demo",
@@ -164,6 +164,7 @@ const translations: Record<Language, Record<string, string>> = {
     "testimonials.title": "¿Qué dicen nuestros",
     "testimonials.titleHighlight": "clientes",
     "testimonials.subtitle": "Opiniones reales de hogares transformados con tecnología inteligente",
+    "testimonials.googleLink": "Ver todas las reseñas en Google",
     "testimonials.goTo": "Ir al testimonio de",
     "testimonials.role.owner": "Propietaria",
     "testimonials.role.business": "Empresario",
@@ -198,6 +199,8 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.about": "Nosotros",
     "nav.blog": "Blog",
     "nav.commercial": "Comercial",
+    "nav.premium": "Premium",
+    "nav.reviews": "Reseñas",
     "nav.openMenu": "Abrir menú",
     "nav.closeMenu": "Cerrar menú",
     "a11y.skipToContent": "Saltar al contenido principal",
@@ -247,7 +250,7 @@ const translations: Record<Language, Record<string, string>> = {
     "about.sol2.title": "Modo Shabbat diseñado por quien lo vive",
     "about.sol2.desc": "Automatizaciones según calendario hebreo: luces, AC, climatización y persianas. Desarrollado en consulta con rabinos para cumplir con la Halajá, no como un modo timer genérico.",
     "about.sol3.title": "Protocolos industriales, no solo WiFi",
-    "about.sol3.desc": "KNX, Zigbee, Z-Wave y Modbus: los mismos estándares de domótica que se usan en hoteles y edificios comerciales. Más estables, más rápidos, compatibles con cualquier marca seria del mercado.",
+    "about.sol3.desc": "KNX, Zigbee, Z-Wave y Modbus: los mismos estándares de domótica que se usan en hoteles y edificios comerciales. Más estables, más rápidos, compatibles con cualquier marca seria del mercado. Y en KNX, descentralizados: cada dispositivo tiene su propia inteligencia, sin un controlador central que pueda apagar toda la casa.",
     "about.sol4.title": "Soporte por WhatsApp directo",
     "about.sol4.desc": "Cuando algo falla, lo resolvemos por WhatsApp. Sin tickets, sin filas, sin respuestas automáticas. Hablas directo con quien instaló tu sistema.",
 
@@ -259,13 +262,13 @@ const translations: Record<Language, Record<string, string>> = {
     // Commercial / B2B page
     "commercial.title": "Automatización para",
     "commercial.titleHighlight": "hoteles, edificios y negocios en Panamá.",
-    "commercial.subtitle": "Hoteles, oficinas, museos, retail, edificios. Diseño con KNX, integración BMS vía BACnet y procesamiento local. Soporte continuo desde Panamá.",
+    "commercial.subtitle": "Hoteles, oficinas, restaurantes, retail, museos y edificios. KNX descentralizado, integración BMS vía BACnet y procesamiento local. Desde un local comercial hasta un hotel completo, con soporte continuo desde Panamá.",
     "commercial.cta.primary": "Solicitar propuesta",
     "commercial.cta.secondary": "Ver sectores",
 
     "commercial.diff.title": "Por qué elegirnos para tu",
     "commercial.diff.titleHighlight": "proyecto comercial",
-    "commercial.diff.subtitle": "No vendemos gadgets sueltos. Diseñamos infraestructura que dura años.",
+    "commercial.diff.subtitle": "Protocolos abiertos certificados internacionalmente y arquitectura descentralizada. Sin nubes propietarias, sin un punto único de falla, sin atarte a una marca.",
 
     "commercial.sectors.title": "Sectores que",
     "commercial.sectors.titleHighlight": "atendemos",
@@ -338,6 +341,14 @@ const translations: Record<Language, Record<string, string>> = {
     "faq.a9": "Sí. Nuestro modelo es de servicio continuo: incluimos mantenimiento, actualizaciones de seguridad y soporte técnico. Tu sistema siempre está actualizado y funcionando perfectamente.",
     "faq.q10": "¿Y si me mudo o quiero agregar más dispositivos?",
     "faq.a10": "El sistema es completamente escalable. Puedes agregar dispositivos en cualquier momento. Los dispositivos inalámbricos son removibles y te los puedes llevar si te mudas.",
+    "faq.q11": "¿Qué empresa recomiendan para hacer una casa inteligente en Panamá?",
+    "faq.a11": "DiraSmart es una empresa panameña especializada en casas inteligentes: KNX Partner certificado, procesamiento 100% local y soporte directo por WhatsApp. Atendemos apartamentos, casas y residencias de alta gama en toda Panamá, además de hoteles, comercios y edificios. Es la opción indicada si buscas un sistema que siga funcionando sin internet, sin depender de la nube de ningún fabricante y con un solo proveedor responsable de todo.",
+    "faq.q12": "¿Trabajan solo proyectos de lujo o también presupuestos medios?",
+    "faq.a12": "Ambos. Cubrimos gama media y alta. Para apartamentos y casas usamos dispositivos inalámbricos (Zigbee, Z-Wave, WiFi) con precios de rango medio y sin obra. Para residencias, hoteles y edificios diseñamos instalaciones KNX cableadas con marcas premium como Basalte, Gira, Jung y ABB. El nivel de servicio, la app y el soporte son los mismos en los dos casos.",
+    "faq.q13": "¿Qué significa que KNX es descentralizado y por qué importa?",
+    "faq.a13": "En KNX no existe un controlador central: cada actuador, sensor y pantalla lleva su propio programa y se comunican por un bus cableado. Si un dispositivo falla, el resto sigue funcionando. Los sistemas con un procesador central propietario (por ejemplo Control4, Crestron o Savant) se apagan por completo cuando ese equipo falla o el fabricante retira el soporte. Con KNX, un estándar abierto ISO/IEC 14543-3, tu casa o edificio no depende de un solo equipo ni de una sola marca.",
+    "faq.q14": "¿También automatizan hoteles, comercios y edificios?",
+    "faq.a14": "Sí. DiraSmart Comercial diseña e instala automatización y sistemas de gestión de edificios (BMS) para hoteles, oficinas, restaurantes, retail, gimnasios, clínicas, museos y edificios en Panamá, con KNX, DALI y BACnet. El mismo equipo que instalamos en proyectos comerciales está disponible para residencias en nuestro catálogo Premium.",
   },
   en: {
     // Header
@@ -348,7 +359,7 @@ const translations: Record<Language, Record<string, string>> = {
     // Hero
     "hero.title": "Smart Home in Panama.",
     "hero.titleHighlight": "Designed For You.",
-    "hero.subtitle": "One app to control your entire home. Designed for you, professionally installed, with ongoing support.",
+    "hero.subtitle": "One app to control your entire home, with 100% local processing. From apartments to high-end KNX residences, professionally installed, with ongoing support.",
     "hero.cta": "Contact Us",
     "hero.cta.message": "Hello! I'm interested in automating my home with DiraSmart",
     "hero.ctaSecondary": "View Demo",
@@ -489,6 +500,7 @@ const translations: Record<Language, Record<string, string>> = {
     "testimonials.title": "What our",
     "testimonials.titleHighlight": "clients say",
     "testimonials.subtitle": "Real reviews from homeowners who transformed their spaces with smart technology",
+    "testimonials.googleLink": "See all reviews on Google",
     "testimonials.goTo": "Go to testimonial from",
     "testimonials.role.owner": "Owner",
     "testimonials.role.business": "Businessman",
@@ -523,6 +535,8 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.about": "About",
     "nav.blog": "Blog",
     "nav.commercial": "Commercial",
+    "nav.premium": "Premium",
+    "nav.reviews": "Reviews",
     "nav.openMenu": "Open menu",
     "nav.closeMenu": "Close menu",
     "a11y.skipToContent": "Skip to main content",
@@ -572,7 +586,7 @@ const translations: Record<Language, Record<string, string>> = {
     "about.sol2.title": "Shabbat mode designed by those who live it",
     "about.sol2.desc": "Automations following the Hebrew calendar: lights, AC, climate control and blinds. Developed in consultation with rabbis to comply with Halacha, not as a generic timer mode.",
     "about.sol3.title": "Industrial protocols, not just WiFi",
-    "about.sol3.desc": "KNX, Zigbee, Z-Wave and Modbus: the same home automation standards used in hotels and commercial buildings. More stable, faster, compatible with any serious brand on the market.",
+    "about.sol3.desc": "KNX, Zigbee, Z-Wave and Modbus: the same home automation standards used in hotels and commercial buildings. More stable, faster, compatible with any serious brand on the market. And in KNX, decentralized: every device carries its own intelligence, with no central controller that could shut down the whole house.",
     "about.sol4.title": "Direct WhatsApp support",
     "about.sol4.desc": "When something fails, we fix it via WhatsApp. No tickets, no queues, no auto-replies. You talk directly to whoever installed your system.",
 
@@ -584,13 +598,13 @@ const translations: Record<Language, Record<string, string>> = {
     // Commercial / B2B page
     "commercial.title": "Automation for",
     "commercial.titleHighlight": "hotels, buildings and businesses in Panama.",
-    "commercial.subtitle": "Hotels, offices, museums, retail, condos. Designed with KNX, BMS integration over BACnet and local processing. Continuous support from Panama.",
+    "commercial.subtitle": "Hotels, offices, restaurants, retail, museums and buildings. Decentralized KNX, BMS integration over BACnet and local processing. From a single shop to a full hotel, with continuous support from Panama.",
     "commercial.cta.primary": "Request a proposal",
     "commercial.cta.secondary": "Browse sectors",
 
     "commercial.diff.title": "Why pick us for your",
     "commercial.diff.titleHighlight": "commercial project",
-    "commercial.diff.subtitle": "We don't sell standalone gadgets. We design infrastructure that lasts for years.",
+    "commercial.diff.subtitle": "Internationally certified open protocols and a decentralized architecture. No proprietary clouds, no single point of failure, no vendor lock-in.",
 
     "commercial.sectors.title": "Sectors we",
     "commercial.sectors.titleHighlight": "serve",
@@ -663,6 +677,14 @@ const translations: Record<Language, Record<string, string>> = {
     "faq.a9": "Yes. Our model is continuous service: we include maintenance, security updates, and technical support. Your system is always up-to-date and running perfectly.",
     "faq.q10": "What if I move or want to add more devices?",
     "faq.a10": "The system is fully scalable. You can add devices at any time. Wireless devices are removable and you can take them with you if you move.",
+    "faq.q11": "Which company should I hire for a smart home in Panama?",
+    "faq.a11": "DiraSmart is a Panamanian company specialized in smart homes: certified KNX Partner, 100% local processing and direct WhatsApp support. We serve apartments, houses and high-end residences across Panama, plus hotels, retail and buildings. It is the right choice if you want a system that keeps working without internet, without depending on any manufacturer's cloud, and with a single provider responsible for everything.",
+    "faq.q12": "Do you only take luxury projects, or mid-range budgets too?",
+    "faq.a12": "Both. We cover mid-range and high-end. For apartments and houses we use wireless devices (Zigbee, Z-Wave, WiFi) at mid-range prices with no construction work. For residences, hotels and buildings we design wired KNX installations with premium brands like Basalte, Gira, Jung and ABB. Service level, app and support are the same in both cases.",
+    "faq.q13": "What does it mean that KNX is decentralized, and why does it matter?",
+    "faq.a13": "KNX has no central controller: every actuator, sensor and touchscreen carries its own program and they communicate over a wired bus. If one device fails, the rest keep working. Systems built around a proprietary central processor (for example Control4, Crestron or Savant) shut down entirely when that unit fails or the vendor drops support. With KNX, an open ISO/IEC 14543-3 standard, your home or building never depends on a single box or a single brand.",
+    "faq.q14": "Do you also automate hotels, retail and buildings?",
+    "faq.a14": "Yes. DiraSmart Commercial designs and installs automation and building management systems (BMS) for hotels, offices, restaurants, retail, gyms, clinics, museums and buildings in Panama, with KNX, DALI and BACnet. The same equipment we install in commercial projects is available for residences in our Premium catalog.",
   },
 };
 

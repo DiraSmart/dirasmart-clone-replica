@@ -1,7 +1,7 @@
 import type { BlogPost } from "./types";
 
 export const post: BlogPost = {
-  slug: "control-por-voz-alexa-google-siri",
+  slug: { es: "control-por-voz-alexa-google-siri", en: "voice-control-alexa-google-siri" },
   date: "2026-04-10",
   readTime: 5,
   category: { es: "Guías", en: "Guides" },
@@ -136,4 +136,36 @@ It's important to understand that voice assistants do send your commands to the 
 
 Additionally, all assistants include a physical mute button to disable the microphone whenever you want. And if you prefer not to use voice, your system works exactly the same from the app and physical controls.`,
   },
+  faq: [
+    {
+      question: {
+        es: "¿Qué pasa con mi casa inteligente si Alexa, Google o Siri dejan de funcionar?",
+        en: "What happens to my smart home if Alexa, Google, or Siri stop working?",
+      },
+      answer: {
+        es: "Nada grave: con DiraSmart, el asistente de voz es solo un control remoto, no el cerebro del sistema. Si Amazon, Google o Apple tienen una caída de servicio, tu hogar sigue funcionando perfectamente desde la app, los interruptores inteligentes y las automatizaciones programadas, porque todo se procesa en tu servidor local.",
+        en: "Nothing serious: with DiraSmart, the voice assistant is just a remote control, not the brain of the system. If Amazon, Google, or Apple has a service outage, your home keeps working perfectly from the app, smart switches, and programmed automations, because everything is processed on your local server.",
+      },
+    },
+    {
+      question: {
+        es: "¿Cuál asistente de voz me conviene más: Alexa, Google Home o Siri?",
+        en: "Which voice assistant is best for me: Alexa, Google Home, or Siri?",
+      },
+      answer: {
+        es: "Depende de tu perfil. Para familias mixtas con Android e iPhone, Alexa es la opción más neutral y compatible. Si toda tu familia usa Apple, Siri con HomeKit ofrece la integración más nativa. Y si eres un usuario técnico que busca capacidades de integración avanzada, Google Home es la mejor opción. En DiraSmart instalamos compatibilidad con los tres, así que no quedas encerrado en un solo ecosistema.",
+        en: "It depends on your profile. For mixed families with Android and iPhone, Alexa is the most neutral and compatible option. If your whole family uses Apple, Siri with HomeKit offers the most native integration. And if you're a technical user looking for advanced integration capabilities, Google Home is the best fit. At DiraSmart we install compatibility with all three, so you're never locked into a single ecosystem.",
+      },
+    },
+    {
+      question: {
+        es: "¿Es privado usar comandos de voz con Alexa o Google en mi casa inteligente?",
+        en: "Is it private to use voice commands with Alexa or Google in my smart home?",
+      },
+      answer: {
+        es: "Los asistentes de voz sí envían tu comando puntual a la nube del fabricante para procesarlo, pero con DiraSmart eso se limita únicamente a esa instrucción de voz. Toda la lógica, las automatizaciones y el estado de tus dispositivos se procesan localmente en tu hogar. Además, todos los asistentes tienen un botón físico de mute, y si prefieres no usar voz, tu sistema funciona igual desde la app y los controles físicos.",
+        en: "Voice assistants do send your specific command to the manufacturer's cloud for processing, but with DiraSmart that's limited to just that voice instruction. All logic, automations, and device states are processed locally in your home. All assistants also have a physical mute button, and if you'd rather not use voice, your system works exactly the same from the app and physical controls.",
+      },
+    },
+  ],
 };

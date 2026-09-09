@@ -1,7 +1,7 @@
 import type { BlogPost } from "./types";
 
 export const post: BlogPost = {
-  slug: "privacidad-hogar-inteligente-local-vs-nube",
+  slug: { es: "privacidad-hogar-inteligente-local-vs-nube", en: "smart-home-privacy-local-vs-cloud" },
   date: "2026-01-15",
   readTime: 6,
   category: { es: "Privacidad", en: "Privacy" },
@@ -68,4 +68,36 @@ You can access your home from anywhere in the world through a secure connection 
 
 The industry trend is moving toward local processing. Apple with HomeKit, the Matter standard, and more manufacturers are prioritizing privacy. DiraSmart has been working with this model for years because we believe your data is yours.`,
   },
+  faq: [
+    {
+      question: {
+        es: "¿Qué datos exactos recopilan Alexa y Google Home de mi hogar?",
+        en: "What exact data do Alexa and Google Home collect from my home?",
+      },
+      answer: {
+        es: "Recopilan datos como la hora en que te despiertas, cuándo sales de casa, la temperatura que prefieres, cuándo enciendes y apagas las luces, e incluso si hay personas en cada habitación. Esta información se usa para perfilar tu comportamiento y mostrarte publicidad personalizada. En 2023 Amazon fue multada con $25 millones por violar la privacidad de niños a través de Alexa, y en 2024 se reveló que empleados de Google escuchaban grabaciones de usuarios de Google Home.",
+        en: "They collect data like what time you wake up, when you leave home, your preferred temperature, when you turn lights on and off, and even whether people are present in each room. This information is used to profile your behavior and show you personalized ads. In 2023 Amazon was fined $25 million for violating children's privacy through Alexa, and in 2024 it was revealed that Google employees listened to Google Home users' recordings.",
+      },
+    },
+    {
+      question: {
+        es: "¿Puedo controlar mi hogar inteligente desde fuera de casa sin depender de la nube?",
+        en: "Can I control my smart home from outside without relying on the cloud?",
+      },
+      answer: {
+        es: "Sí, con procesamiento local puedes acceder a tu hogar desde cualquier parte del mundo a través de una conexión segura tipo VPN. La diferencia frente a un sistema en la nube es que tú decides cuándo abrir esa conexión, en lugar de que una empresa mantenga tus datos accesibles de forma permanente en sus servidores.",
+        en: "Yes, with local processing you can access your home from anywhere in the world through a secure VPN-style connection. The difference from a cloud system is that you decide when to open that connection, instead of a company keeping your data permanently accessible on its servers.",
+      },
+    },
+    {
+      question: {
+        es: "¿Por qué un comando de voz procesado localmente responde más rápido que uno en la nube?",
+        en: "Why does a locally processed voice command respond faster than a cloud one?",
+      },
+      answer: {
+        es: "Porque evita el viaje de ida y vuelta a un servidor externo. Cuando un comando tiene que viajar hasta un servidor en Virginia, procesarse y regresar, se genera un delay perceptible. Con un hub que procesa todo dentro de tu casa, un comando como 'apaga las luces' se ejecuta en milisegundos sin salir de tu red local.",
+        en: "Because it skips the round trip to an external server. When a command has to travel to a server in Virginia, get processed, and come back, there's a noticeable delay. With a hub that processes everything inside your home, a command like 'turn off the lights' executes in milliseconds without ever leaving your local network.",
+      },
+    },
+  ],
 };

@@ -1,7 +1,7 @@
 import type { BlogPost } from "./types";
 
 export const post: BlogPost = {
-  slug: "ahorro-energia-hogar-inteligente-panama",
+  slug: { es: "ahorro-energia-hogar-inteligente-panama", en: "smart-home-energy-savings-panama" },
   date: "2026-03-20",
   readTime: 6,
   category: { es: "Ahorro", en: "Savings" },
@@ -140,4 +140,36 @@ The first step is an evaluation of your home. We measure your current consumptio
 
 Your home will be more comfortable and your bill will be lower. There's no reason to wait.`,
   },
+  faq: [
+    {
+      question: {
+        es: "¿Qué porcentaje de la factura eléctrica en Panamá representa el aire acondicionado?",
+        en: "What percentage of the electric bill in Panama does air conditioning represent?",
+      },
+      answer: {
+        es: "Según datos de la industria, el aire acondicionado representa entre el 50% y el 65% de la factura eléctrica en hogares panameños. Le siguen la iluminación con 10-15%, los calentadores de agua con 8-12%, y los electrodomésticos varios con 15-20%.",
+        en: "According to industry data, air conditioning accounts for between 50% and 65% of the electric bill in Panamanian homes. Lighting follows at 10-15%, water heaters at 8-12%, and various appliances at 15-20%.",
+      },
+    },
+    {
+      question: {
+        es: "¿Cuánto puede ahorrar realmente un hogar en Panamá al automatizar el aire acondicionado y la iluminación?",
+        en: "How much can a home in Panama really save by automating air conditioning and lighting?",
+      },
+      answer: {
+        es: "Un hogar promedio de 3 habitaciones y 3 splits que paga entre $250 y $400 mensuales suele bajar a facturas de $170 a $280 después de instalar automatización, un ahorro de $80 a $120 al mes. En un año eso son entre $960 y $1,440, y la inversión típicamente se paga sola en menos de 2 años en un sistema que dura más de 10.",
+        en: "An average 3-bedroom home with 3 split AC units paying between $250 and $400 monthly typically drops to bills of $170 to $280 after installing automation, saving $80 to $120 a month. Over a year that's $960 to $1,440, and the investment typically pays for itself in less than 2 years on a system that lasts over 10.",
+      },
+    },
+    {
+      question: {
+        es: "¿Qué es el consumo fantasma de los electrodomésticos y cómo lo elimina un hogar inteligente?",
+        en: "What is phantom appliance consumption and how does a smart home eliminate it?",
+      },
+      answer: {
+        es: "Es la electricidad que los electrodomésticos siguen consumiendo en modo standby aunque no los estés usando, y puede representar hasta el 10% de tu factura. Los enchufes inteligentes cortan la alimentación por completo cuando el equipo no se necesita, eliminando ese consumo fantasma sin que tengas que desconectar nada manualmente.",
+        en: "It's the electricity appliances keep drawing in standby mode even when you're not using them, and it can represent up to 10% of your bill. Smart plugs cut power completely when the device isn't needed, eliminating that phantom consumption without you having to manually unplug anything.",
+      },
+    },
+  ],
 };

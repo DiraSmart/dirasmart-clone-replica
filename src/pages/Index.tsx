@@ -14,6 +14,7 @@ const TestimonialsCarousel = lazy(() => import("@/components/TestimonialsCarouse
 const CTABanner = lazy(() => import("@/components/CTABanner"));
 const PrivacyFeatures = lazy(() => import("@/components/PrivacyFeatures"));
 const InfrastructureSection = lazy(() => import("@/components/InfrastructureSection"));
+const AtAGlance = lazy(() => import("@/components/AtAGlance"));
 const FAQSection = lazy(() => import("@/components/FAQSection"));
 const CommercialBanner = lazy(() => import("@/components/CommercialBanner"));
 
@@ -54,6 +55,10 @@ const Index = () => {
 
           <AnimatedSection delay={0.1}>
             <TestimonialsCarousel />
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.1}>
+            <AtAGlance />
           </AnimatedSection>
 
           <AnimatedSection delay={0.1}>

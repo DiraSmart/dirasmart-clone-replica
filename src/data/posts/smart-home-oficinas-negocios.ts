@@ -1,7 +1,7 @@
 import type { BlogPost } from "./types";
 
 export const post: BlogPost = {
-  slug: "smart-home-oficinas-negocios",
+  slug: { es: "smart-home-oficinas-negocios", en: "smart-home-offices-business" },
   date: "2026-02-03",
   readTime: 6,
   category: { es: "Negocios", en: "Business" },
@@ -92,4 +92,36 @@ For an average 200-square-meter office in Panama City with an $800 monthly elect
 
 DiraSmart designs custom solutions for every type of business, from medical offices and law firms to restaurants and coworking spaces. If your business has a physical space, it can benefit from smart automation.`,
   },
+  faq: [
+    {
+      question: {
+        es: "¿Cuánto puede ahorrar una oficina en Panamá automatizando el aire acondicionado?",
+        en: "How much can an office in Panama save by automating its air conditioning?",
+      },
+      answer: {
+        es: "El aire acondicionado puede representar hasta el 65% de la factura eléctrica de una oficina. Al programar el clima según el horario de ocupación y apagar automáticamente las salas vacías, nuestros clientes comerciales reportan ahorros de entre 25% y 40% en sus facturas energéticas, con un retorno de inversión típico de 10 a 16 meses.",
+        en: "Air conditioning can account for up to 65% of an office's electric bill. By scheduling climate control based on occupancy hours and automatically shutting off empty rooms, our commercial clients report savings of 25% to 40% on their energy bills, with a typical return on investment of 10 to 16 months.",
+      },
+    },
+    {
+      question: {
+        es: "¿Cómo funciona la automatización de una sala de reuniones?",
+        en: "How does meeting room automation work?",
+      },
+      answer: {
+        es: "Al reservar la sala en el calendario, el sistema enciende automáticamente el aire acondicionado, ajusta las luces y prepara la pantalla de presentación. Cuando termina la reunión y todos salen, todo se apaga solo, eliminando el desperdicio de salas con el aire encendido toda la noche o pantallas que nadie apagó.",
+        en: "When a room is booked on the calendar, the system automatically turns on the air conditioning, adjusts the lights, and prepares the presentation screen. When the meeting ends and everyone leaves, everything shuts off on its own, eliminating waste from rooms left with the AC running overnight or screens nobody turned off.",
+      },
+    },
+    {
+      question: {
+        es: "¿Qué es la iluminación circadiana y cómo beneficia a los empleados?",
+        en: "What is circadian lighting and how does it benefit employees?",
+      },
+      answer: {
+        es: "La iluminación circadiana ajusta automáticamente la temperatura de color de las luces según la hora del día: luz fría y brillante en la mañana para maximizar la concentración, luz neutra en la tarde y una transición gradual a luz cálida al final de la jornada. Este ajuste automático mejora la productividad y el bienestar de los empleados sin que nadie tenga que cambiar nada manualmente.",
+        en: "Circadian lighting automatically adjusts the color temperature of the lights based on the time of day: cool, bright light in the morning to maximize focus, neutral light in the afternoon, and a gradual shift to warm light by the end of the day. This automatic adjustment improves employee productivity and well-being without anyone having to change anything manually.",
+      },
+    },
+  ],
 };

@@ -1,7 +1,7 @@
 import type { BlogPost } from "./types";
 
 export const post: BlogPost = {
-  slug: "cortinas-motorizadas-persianas-inteligentes",
+  slug: { es: "cortinas-motorizadas-persianas-inteligentes", en: "motorized-curtains-smart-blinds" },
   date: "2026-04-05",
   readTime: 5,
   category: { es: "Productos", en: "Products" },
@@ -108,4 +108,36 @@ At DiraSmart, we work with the best curtain motor brands: Somfy, Tuya Smart, and
 
 Whether your project is a single small window or an entire building — we design the solution tailored to you.`,
   },
+  faq: [
+    {
+      question: {
+        es: "¿Cuánto dura la batería de una cortina motorizada que no está cableada?",
+        en: "How long does the battery last on a motorized curtain that isn't wired?",
+      },
+      answer: {
+        es: "En instalaciones a batería, la duración típica es de 6 a 12 meses con uso normal antes de necesitar recarga o cambio. Si se le añade un pequeño panel solar, la autonomía puede extenderse indefinidamente, ya que el panel recarga la batería con la luz del día.",
+        en: "In battery-powered installations, typical battery life is 6 to 12 months of normal use before needing a recharge or replacement. Adding a small solar panel can extend this indefinitely, since the panel recharges the battery using daylight.",
+      },
+    },
+    {
+      question: {
+        es: "¿Cuál es la diferencia entre cortinas roller motorizadas y persianas venecianas motorizadas?",
+        en: "What's the difference between motorized roller blinds and motorized venetian blinds?",
+      },
+      answer: {
+        es: "Las roller son cortinas enrollables, limpias y modernas, disponibles en distintos niveles de opacidad, e ideales para salas, oficinas y dormitorios. Las persianas venecianas motorizadas, en cambio, permiten controlar el ángulo exacto de las láminas para regular la luz sin apagarla del todo, lo que las hace ideales en oficinas y estudios donde se necesita luz natural sin reflejos en pantallas.",
+        en: "Roller blinds are clean, modern roll-up shades available in different opacity levels, ideal for living rooms, offices, and bedrooms. Motorized venetian blinds instead let you control the exact angle of the slats to regulate light without blocking it entirely, making them ideal for offices and studies where you need natural light without screen glare.",
+      },
+    },
+    {
+      question: {
+        es: "¿Cómo saben las cortinas inteligentes cuándo cerrarse por el sol?",
+        en: "How do smart curtains know when to close because of the sun?",
+      },
+      answer: {
+        es: "Usan sensores de luminosidad que miden la intensidad de la luz solar en tiempo real. Si el sol pega directo, las cortinas se cierran automáticamente para reducir el calor y proteger muebles de la radiación UV; si pasa una nube o baja la intensidad, se vuelven a abrir. Esto puede combinarse con escenas y horarios para un control totalmente automático.",
+        en: "They use brightness sensors that measure sunlight intensity in real time. If the sun hits directly, the curtains close automatically to reduce heat and protect furniture from UV radiation; when a cloud passes or intensity drops, they open again. This can be combined with scenes and schedules for fully automatic control.",
+      },
+    },
+  ],
 };

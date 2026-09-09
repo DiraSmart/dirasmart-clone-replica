@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e \"console.log\\(JSON.stringify\\(require\\('./package.json'\\).scripts,null,2\\)\\)\")",
+      "PowerShell(Get-Process node -ErrorAction SilentlyContinue | Select-Object Id, StartTime, CPU, WS | Format-Table -AutoSize; if \\(Test-Path dist\\) { \"dist last write: \" + \\(Get-Item dist\\).LastWriteTime; \"dist files: \" + \\(Get-ChildItem dist -Recurse -File | Measure-Object\\).Count } else { \"no dist\" })",
+      "Bash(npx wrangler *)",
+      "Bash(node -e \"console.log\\('CLOUDFLARE_API_TOKEN:', process.env.CLOUDFLARE_API_TOKEN ? 'set' : 'NOT set'\\); console.log\\('CLOUDFLARE_ACCOUNT_ID:', process.env.CLOUDFLARE_ACCOUNT_ID ? 'set' : 'NOT set'\\)\")",
+      "PowerShell($p = Join-Path $env:APPDATA 'xdg.config\\\\.wrangler\\\\config\\\\default.toml'; $line = Select-String -Path $p -Pattern '^expiration_time' | Select-Object -First 1; $line.Line; if \\($line.Line -match '\"\\([^\"]+\\)\"'\\) { $exp = [datetime]::Parse\\($matches[1]\\); \"expira: $exp\"; \"ahora  : \" + \\(Get-Date\\); if \\($exp -lt \\(Get-Date\\)\\) { \"=> CADUCADO hace \" + [math]::Round\\(\\(\\(Get-Date\\) - $exp\\).TotalDays,1\\) + \" dias\" } else { \"=> vigente\" } })",
+      "Bash(curl -s https://dirasmart.com/comercial -o /tmp/live.html -w \"HTTP %{http_code}\\\\n\")",
+      "Bash(node -e ' *)",
+      "Bash(curl -s https://dirasmart.com/comercial -o C:/Users/jbran/AppData/Local/Temp/claude/c--Users-jbran-Downloads-dirasmart-clone-replica/4b9beb38-f1c8-4f67-9db7-9ba2d09f8b17/scratchpad/live.html -w 'comercial HTTP %{http_code}\\\\n')",
+      "Bash(curl -s -o /dev/null -w \"premium HTTP %{http_code}\\\\n\" https://dirasmart.com/premium)"
+    ]
+  }
+}

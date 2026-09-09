@@ -1,7 +1,7 @@
 import type { BlogPost } from "./types";
 
 export const post: BlogPost = {
-  slug: "zigbee-zwave-vs-wifi-smart-home",
+  slug: { es: "zigbee-zwave-vs-wifi-smart-home", en: "zigbee-zwave-vs-wifi-smart-home" },
   date: "2026-04-22",
   readTime: 7,
   category: { es: "Protocolos", en: "Protocols" },
@@ -196,4 +196,36 @@ The worst decision is trying to force the whole house onto a single protocol. Th
 
 Questions about which protocol fits your project? Message us on WhatsApp — we help you plan the architecture before you spend on gear, no commitment.`,
   },
+  faq: [
+    {
+      question: {
+        es: "¿Por qué conviene poner toda la iluminación de la casa en Zigbee en vez de WiFi?",
+        en: "Why is it better to put all home lighting on Zigbee instead of WiFi?",
+      },
+      answer: {
+        es: "Porque hay cientos de bombillas, tiras LED y atenuadores Zigbee de buena calidad (Philips Hue, Aqara, IKEA Trådfri, Sonoff), y poner ahí toda la iluminación libera completamente el WiFi para lo que sí necesita banda ancha. Además, cada bombilla Zigbee conectada a corriente actúa como repetidor de la malla, dando cobertura casi perfecta sin antenas extra.",
+        en: "Because there are hundreds of good-quality Zigbee bulbs, LED strips and dimmers (Philips Hue, Aqara, IKEA Trådfri, Sonoff), and putting all lighting there completely frees up WiFi for what actually needs bandwidth. Also, every Zigbee bulb plugged into power acts as a mesh repeater, giving near-perfect coverage without extra antennas.",
+      },
+    },
+    {
+      question: {
+        es: "¿Es inevitable el \"lock-in\" de marca con dispositivos Zigbee?",
+        en: "Is brand \"lock-in\" unavoidable with Zigbee devices?",
+      },
+      answer: {
+        es: "Si instalas por tu cuenta, normalmente sí: tienes que elegir un hub de marca (Philips Hue Bridge, Aqara Hub, SmartThings) que te amarra a su ecosistema. En instalaciones de DiraSmart esto no aplica, porque usamos un servidor local con un dongle USB Zigbee genérico, lo que permite mezclar bombillas Hue, sensores Aqara y atenuadores IKEA en una sola malla y una sola app, y el mismo servidor también maneja Z-Wave con un segundo dongle.",
+        en: "If you install on your own, usually yes: you have to pick a brand-specific hub (Philips Hue Bridge, Aqara Hub, SmartThings) that locks you into its ecosystem. In DiraSmart installs this doesn't apply, because we use a local server with a generic Zigbee USB dongle, letting you mix Hue bulbs, Aqara sensors and IKEA dimmers on a single mesh and app, with the same server also handling Z-Wave through a second dongle.",
+      },
+    },
+    {
+      question: {
+        es: "¿Cuándo conviene usar Z-Wave en vez de Zigbee?",
+        en: "When does it make sense to use Z-Wave instead of Zigbee?",
+      },
+      answer: {
+        es: "Z-Wave usa una frecuencia dedicada (908 MHz) que no compite con el WiFi, lo que le da estabilidad extra donde la fiabilidad es crítica, como en cerraduras inteligentes de buena marca (Yale, Kwikset). Su desventaja es que tiene menos fabricantes, cuesta entre 20% y 40% más que el equivalente en Zigbee, y en Panamá los equipos se importan al no haber un distribuidor grande, así que lo usamos con mesura y solo cuando el proyecto lo justifica.",
+        en: "Z-Wave uses a dedicated frequency (908 MHz) that doesn't compete with WiFi, giving it extra stability where reliability is critical, such as in quality smart locks (Yale, Kwikset). Its downside is fewer manufacturers, a 20-40% price premium over the Zigbee equivalent, and in Panama gear has to be imported since there's no large distributor, so we use it selectively and only when the project justifies it.",
+      },
+    },
+  ],
 };

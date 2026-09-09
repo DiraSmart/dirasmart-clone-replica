@@ -1,7 +1,7 @@
 import type { BlogPost } from "./types";
 
 export const post: BlogPost = {
-  slug: "como-funciona-automatizacion-hogar",
+  slug: { es: "como-funciona-automatizacion-hogar", en: "how-home-automation-works" },
   date: "2026-02-05",
   readTime: 8,
   category: { es: "Tecnología", en: "Technology" },
@@ -76,4 +76,36 @@ Automations are rules you define so your home acts on its own. For example: "If 
 
 Our team installs everything professionally: the hub, enterprise WiFi access points, devices, and configurations. You don't have to do anything technical. When we're done, your home runs itself.`,
   },
+  faq: [
+    {
+      question: {
+        es: "¿Cuál es la diferencia entre Zigbee y Z-Wave para automatización del hogar?",
+        en: "What's the difference between Zigbee and Z-Wave for home automation?",
+      },
+      answer: {
+        es: "Zigbee es ideal para sensores y dispositivos de bajo consumo, y crea una red en malla donde cada dispositivo refuerza la señal del otro. Z-Wave es similar pero opera en una frecuencia distinta a la de tu WiFi, lo que evita interferencias, y es muy popular en cerraduras y termostatos.",
+        en: "Zigbee is ideal for sensors and low-power devices, and creates a mesh network where each device reinforces the other's signal. Z-Wave is similar but operates on a different frequency than your WiFi, avoiding interference, and is very popular for locks and thermostats.",
+      },
+    },
+    {
+      question: {
+        es: "¿Qué es el protocolo Matter y por qué importa en un hogar inteligente?",
+        en: "What is the Matter protocol and why does it matter for a smart home?",
+      },
+      answer: {
+        es: "Matter es el nuevo estándar que unifica protocolos como Zigbee, Z-Wave y WiFi bajo un mismo lenguaje común. Cada vez más fabricantes lo soportan, lo que significa que a futuro será más fácil integrar dispositivos de distintas marcas sin preocuparte por la compatibilidad.",
+        en: "Matter is the new standard that unifies protocols like Zigbee, Z-Wave, and WiFi under one common language. More and more manufacturers support it, which means it will increasingly be easier to integrate devices from different brands without worrying about compatibility.",
+      },
+    },
+    {
+      question: {
+        es: "¿Cómo se ve una automatización real en un hogar DiraSmart?",
+        en: "What does a real automation look like in a DiraSmart home?",
+      },
+      answer: {
+        es: "Una automatización es una regla que defines para que el hogar actúe solo, por ejemplo: 'si son las 7am de lunes a viernes, enciende las luces del baño al 50%, pon la cafetera y sube las persianas'. También puedes crear reglas basadas en presencia, como apagar todo y activar las cámaras si no hay nadie en casa por 30 minutos.",
+        en: "An automation is a rule you define so your home acts on its own — for example: 'if it's 7am on weekdays, turn on the bathroom lights at 50%, start the coffee maker, and raise the blinds.' You can also create presence-based rules, like turning everything off and activating the cameras if no one is home for 30 minutes.",
+      },
+    },
+  ],
 };

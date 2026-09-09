@@ -1,7 +1,7 @@
 import type { BlogPost } from "./types";
 
 export const post: BlogPost = {
-  slug: "wifi-empresarial-vs-domestico",
+  slug: { es: "wifi-empresarial-vs-domestico", en: "enterprise-vs-home-wifi" },
   date: "2026-01-20",
   readTime: 5,
   category: { es: "Infraestructura", en: "Infrastructure" },
@@ -68,4 +68,36 @@ We configure a separate network exclusively for your smart devices. This means y
 
 A home where every device responds instantly, cameras stream in high definition without lag, automations work 100% of the time, and your family browses without interruptions. The foundation of a smart home is a solid network.`,
   },
+  faq: [
+    {
+      question: {
+        es: "¿Cuántos dispositivos puede soportar un router doméstico normal frente a WiFi empresarial?",
+        en: "How many devices can a regular home router handle compared to enterprise WiFi?",
+      },
+      answer: {
+        es: "Un router doméstico típico está diseñado para manejar entre 10 y 20 dispositivos, mientras que cada punto de acceso empresarial UniFi maneja hasta 200 dispositivos simultáneamente. Con 3 o 4 puntos de acceso distribuidos por tu hogar, puedes soportar cientos de dispositivos inteligentes sin problemas.",
+        en: "A typical home router is designed to handle between 10 and 20 devices, while each enterprise UniFi access point handles up to 200 devices simultaneously. With 3 or 4 access points distributed throughout your home, you can support hundreds of smart devices without issues.",
+      },
+    },
+    {
+      question: {
+        es: "¿Qué es el roaming transparente y por qué lo necesito en un hogar inteligente?",
+        en: "What is seamless roaming and why do I need it in a smart home?",
+      },
+      answer: {
+        es: "El roaming transparente permite que tu celular se conecte automáticamente al punto de acceso más cercano mientras caminas por tu casa, sin cortes ni reconexiones manuales. Es la misma experiencia de conectividad continua que tienes en un hotel de lujo o una oficina corporativa, y solo es posible con puntos de acceso de grado empresarial.",
+        en: "Seamless roaming lets your phone automatically connect to the nearest access point as you walk through your house, with no drops or manual reconnections. It's the same continuous connectivity experience you get at a luxury hotel or corporate office, and it's only possible with enterprise-grade access points.",
+      },
+    },
+    {
+      question: {
+        es: "¿Por qué mis dispositivos inteligentes necesitan una red separada de la de mi familia?",
+        en: "Why do my smart devices need a network separate from my family's?",
+      },
+      answer: {
+        es: "Configuramos una red dedicada exclusiva para tus dispositivos IoT, separada de la red que usa tu familia para streaming y navegación. Así tus cámaras y sensores no compiten por ancho de banda con Netflix o videojuegos, y cada cosa tiene su carril dedicado para funcionar sin lag ni interrupciones.",
+        en: "We configure a dedicated network exclusively for your IoT devices, separate from the network your family uses for streaming and browsing. This way your cameras and sensors don't compete for bandwidth with Netflix or gaming, and everything gets its own dedicated lane to run without lag or interruptions.",
+      },
+    },
+  ],
 };

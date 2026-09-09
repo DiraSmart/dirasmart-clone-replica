@@ -7,32 +7,38 @@ import { fileURLToPath } from "url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DIST = join(__dirname, "..", "dist");
 
-// Spanish routes
-const ES_ROUTES = [
-  "/",
-  "/about",
-  "/comercial",
-  "/blog",
-  "/blog/zigbee-zwave-vs-wifi-smart-home",
-  "/blog/knx-panama-automatizacion-premium",
-  "/blog/control-por-voz-alexa-google-siri",
-  "/blog/cortinas-motorizadas-persianas-inteligentes",
-  "/blog/automatizacion-apartamentos-panama",
-  "/blog/ahorro-energia-hogar-inteligente-panama",
-  "/blog/beneficios-hogar-inteligente-panama",
-  "/blog/como-funciona-automatizacion-hogar",
-  "/blog/shabbat-tecnologia-automatizacion-halaja",
-  "/blog/wifi-empresarial-vs-domestico",
-  "/blog/privacidad-hogar-inteligente-local-vs-nube",
-  "/blog/seguridad-inteligente-camaras-sensores",
-  "/blog/iluminacion-inteligente-ambiente-ahorro",
-  "/blog/climatizacion-inteligente-tropico-panama",
-  "/blog/guia-principiantes-primera-casa-inteligente",
-  "/blog/smart-home-oficinas-negocios",
+// Static page routes (same paths across languages)
+const STATIC_PAGES = ["/", "/about", "/comercial", "/premium", "/reviews", "/blog"];
+
+// Blog post slugs per language
+const BLOG_SLUGS = [
+  { es: "bms-sistema-gestion-edificios-comercial", en: "bms-building-management-systems" },
+  { es: "bacnet-protocolo-bms-estandar-ashrae", en: "bacnet-protocol-bms-standard" },
+  { es: "casa-inteligente-vs-dispositivos-inteligentes", en: "smart-devices-vs-smart-home" },
+  { es: "dali-protocolo-iluminacion-futuro", en: "dali-future-of-professional-lighting" },
+  { es: "zigbee-zwave-vs-wifi-smart-home", en: "zigbee-zwave-vs-wifi-smart-home" },
+  { es: "knx-panama-automatizacion-premium", en: "knx-premium-automation-panama" },
+  { es: "control-por-voz-alexa-google-siri", en: "voice-control-alexa-google-siri" },
+  { es: "cortinas-motorizadas-persianas-inteligentes", en: "motorized-curtains-smart-blinds" },
+  { es: "automatizacion-apartamentos-panama", en: "apartment-automation-panama" },
+  { es: "ahorro-energia-hogar-inteligente-panama", en: "smart-home-energy-savings-panama" },
+  { es: "beneficios-hogar-inteligente-panama", en: "smart-home-benefits-panama" },
+  { es: "como-funciona-automatizacion-hogar", en: "how-home-automation-works" },
+  { es: "shabbat-tecnologia-automatizacion-halaja", en: "shabbat-technology-automation-halacha" },
+  { es: "wifi-empresarial-vs-domestico", en: "enterprise-vs-home-wifi" },
+  { es: "privacidad-hogar-inteligente-local-vs-nube", en: "smart-home-privacy-local-vs-cloud" },
+  { es: "seguridad-inteligente-camaras-sensores", en: "smart-security-cameras-sensors" },
+  { es: "iluminacion-inteligente-ambiente-ahorro", en: "smart-lighting-ambiance-energy-savings" },
+  { es: "climatizacion-inteligente-tropico-panama", en: "smart-hvac-tropical-climate-panama" },
+  { es: "guia-principiantes-primera-casa-inteligente", en: "beginners-guide-first-smart-home" },
+  { es: "smart-home-oficinas-negocios", en: "smart-home-offices-business" },
 ];
 
-// English routes (same structure with /en prefix)
-const EN_ROUTES = ES_ROUTES.map((r) => (r === "/" ? "/en" : `/en${r}`));
+const ES_ROUTES = [...STATIC_PAGES, ...BLOG_SLUGS.map((s) => `/blog/${s.es}`)];
+const EN_ROUTES = [
+  ...STATIC_PAGES.map((r) => (r === "/" ? "/en" : `/en${r}`)),
+  ...BLOG_SLUGS.map((s) => `/en/blog/${s.en}`),
+];
 
 // All routes to pre-render
 const ROUTES = [...ES_ROUTES, ...EN_ROUTES];

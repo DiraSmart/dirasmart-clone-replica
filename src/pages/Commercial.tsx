@@ -31,9 +31,12 @@ import {
   BarChart3,
   ThermometerSun,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 import knxPartnerBadge from "@/assets/brands/knx-partner.png";
 import bacnetLogo from "@/assets/brands/bacnet.svg";
-import localFirstBadge from "@/assets/brands/local-first.svg";
+import daliLogo from "@/assets/brands/dali.png";
+import bmsLogo from "@/assets/brands/bms.png";
+import bmsLogoDark from "@/assets/brands/bms-dark.png";
 
 const WEB3FORMS_KEY = "1cd751d7-540f-4cad-8f38-00d2784ff893";
 
@@ -213,8 +216,8 @@ const STEPS: Step[] = [
     icon: PencilRuler,
     title: { es: "Diseño y propuesta", en: "Design & proposal" },
     desc: {
-      es: "Diseñamos la topología KNX/BACnet sobre planos, dimensionamos equipos y entregamos propuesta detallada.",
-      en: "We design the KNX/BACnet topology on plans, size the equipment and deliver a detailed proposal.",
+      es: "Diseñamos la topología KNX/DALI/BACnet sobre planos, dimensionamos equipos y entregamos propuesta detallada.",
+      en: "We design the KNX/DALI/BACnet topology on plans, size the equipment and deliver a detailed proposal.",
     },
   },
   {
@@ -243,8 +246,106 @@ const STEPS: Step[] = [
   },
 ];
 
+interface FaqEntry {
+  question: { es: string; en: string };
+  answer: { es: string; en: string };
+}
+
+const COMMERCIAL_FAQ: FaqEntry[] = [
+  {
+    question: {
+      es: "¿A partir de qué tamaño de edificio tiene sentido instalar un BMS?",
+      en: "At what building size does a BMS make sense?",
+    },
+    answer: {
+      es: "En la práctica, a partir de unos 3,000 m² o cuando el edificio tiene múltiples sistemas (HVAC, iluminación, accesos, energía) que hoy se operan por separado. Por debajo de eso, KNX puro o automatización por zonas suele ser más costo-efectivo que un BMS completo.",
+      en: "In practice, from around 3,000 m² or when the building has multiple systems (HVAC, lighting, access, energy) currently operated separately. Below that, pure KNX or zone-based automation is usually more cost-effective than a full BMS.",
+    },
+  },
+  {
+    question: {
+      es: "Ya tenemos equipos de HVAC, control de accesos o un PMS de hotel — ¿se pueden integrar?",
+      en: "We already have HVAC, access control or a hotel PMS — can they be integrated?",
+    },
+    answer: {
+      es: "Sí. Trabajamos con protocolos abiertos (BACnet, KNX, Modbus) precisamente para integrarnos con equipos existentes en vez de reemplazarlos. Lo evaluamos en la visita técnica y, cuando el equipo lo permite, lo incorporamos al mismo panel de control central.",
+      en: "Yes. We work with open protocols (BACnet, KNX, Modbus) specifically to integrate with existing equipment instead of replacing it. We assess this during the site visit and, when the equipment supports it, bring it into the same central control panel.",
+    },
+  },
+  {
+    question: {
+      es: "¿Cuánto se ahorra realmente en energía con automatización comercial?",
+      en: "How much does commercial automation actually save on energy?",
+    },
+    answer: {
+      es: "En proyectos comerciales típicos vemos entre 15% y 30% de reducción en el consumo de climatización, el rubro que más pesa en la factura eléctrica de hoteles y oficinas, gracias a control por ocupación, programación horaria y monitoreo en tiempo real.",
+      en: "In typical commercial projects we see 15% to 30% lower HVAC consumption — the line item that weighs most on the electric bill for hotels and offices — thanks to occupancy-based control, scheduling and real-time monitoring.",
+    },
+  },
+  {
+    question: {
+      es: "¿Qué pasa si ya tenemos un BMS de otro proveedor y no queremos reemplazarlo?",
+      en: "What if we already have a BMS from another provider and don't want to replace it?",
+    },
+    answer: {
+      es: "Si el sistema actual habla BACnet o un protocolo abierto, generalmente podemos integrarnos sobre él en lugar de reemplazarlo por completo — sumando sensores, zonas o funciones nuevas sin descartar la inversión existente. Si es un sistema propietario cerrado, evaluamos caso por caso qué conviene más al cliente.",
+      en: "If the current system speaks BACnet or another open protocol, we can usually integrate on top of it instead of replacing it entirely — adding sensors, zones or new functions without discarding the existing investment. If it's a closed proprietary system, we assess case by case what makes more sense for the client.",
+    },
+  },
+  {
+    question: {
+      es: "Operamos 24/7 (hotel, clínica). ¿Dan soporte fuera de horario de oficina?",
+      en: "We operate 24/7 (hotel, clinic). Do you support outside office hours?",
+    },
+    answer: {
+      es: "Sí. Para operaciones continuas ofrecemos un modelo de servicio con SLA definido y soporte directo por WhatsApp, no un ticket genérico. El monitoreo remoto nos permite detectar y resolver la mayoría de las fallas antes de que el huésped o el equipo en sitio las note.",
+      en: "Yes. For continuous operations we offer a service model with a defined SLA and direct WhatsApp support, not a generic ticket queue. Remote monitoring lets us catch and resolve most faults before the guest or on-site staff even notice.",
+    },
+  },
+  {
+    question: {
+      es: "¿Cuánto tiempo toma un proyecto comercial, desde el diseño hasta la puesta en marcha?",
+      en: "How long does a commercial project take, from design to commissioning?",
+    },
+    answer: {
+      es: "Depende del alcance: una oficina o retail con automatización por zonas se resuelve en 4 a 8 semanas. Un hotel o edificio completo con BMS, KNX y DALI integrados típicamente toma de 3 a 6 meses, coordinado en paralelo con la obra eléctrica para no generar atrasos.",
+      en: "It depends on scope: an office or retail space with zone-based automation is done in 4 to 8 weeks. A full hotel or building with integrated BMS, KNX and DALI typically takes 3 to 6 months, coordinated in parallel with the electrical build-out to avoid delays.",
+    },
+  },
+  {
+    question: {
+      es: "¿Por qué KNX descentralizado y no un sistema con controlador central?",
+      en: "Why decentralized KNX instead of a system with a central controller?",
+    },
+    answer: {
+      es: "Porque no hay un punto único de falla ni dependencia de un fabricante. En KNX cada actuador, sensor y pantalla ejecuta su propia lógica sobre el bus: si un equipo falla, una habitación se ve afectada, no el hotel completo. Los sistemas propietarios con un procesador central (por ejemplo Control4, Crestron o Savant) se apagan por completo si ese procesador falla o la marca retira el soporte. KNX es un estándar abierto ISO/IEC 14543-3 con más de 500 fabricantes.",
+      en: "Because there is no single point of failure and no vendor dependency. In KNX every actuator, sensor and touchscreen runs its own logic on the bus: if one unit fails, one room is affected, not the whole hotel. Proprietary systems built around a central processor (for example Control4, Crestron or Savant) shut down entirely if that processor fails or the brand drops support. KNX is an open ISO/IEC 14543-3 standard with 500+ manufacturers.",
+    },
+  },
+  {
+    question: {
+      es: "¿Qué diferencia a DiraSmart de otros integradores de automatización en Panamá?",
+      en: "What sets DiraSmart apart from other automation integrators in Panama?",
+    },
+    answer: {
+      es: "Somos KNX Partner certificado, trabajamos solo con protocolos abiertos (KNX, DALI, BACnet, Modbus) y procesamiento local, y somos un solo proveedor para automatización, red, seguridad y soporte, con contacto directo por WhatsApp y SLA definido. Cubrimos desde un local comercial hasta hoteles y edificios completos, con presupuestos de rango medio y premium.",
+      en: "We are a certified KNX Partner, we work only with open protocols (KNX, DALI, BACnet, Modbus) and local processing, and we are a single provider for automation, networking, security and support, with direct WhatsApp contact and a defined SLA. We cover everything from a single shop to full hotels and buildings, with mid-range and premium budgets.",
+    },
+  },
+  {
+    question: {
+      es: "¿Trabajan con presupuestos medios o solo proyectos de gran escala?",
+      en: "Do you work with mid-range budgets or only large-scale projects?",
+    },
+    answer: {
+      es: "Ambos. Una oficina, restaurante o local con automatización por zonas es un proyecto de rango medio que se resuelve en semanas. Un hotel o edificio con BMS, KNX y DALI integrados entra en gama alta. En los dos casos cotizamos por proyecto después de una visita técnica sin costo.",
+      en: "Both. An office, restaurant or shop with zone-based automation is a mid-range project done in weeks. A hotel or building with integrated BMS, KNX and DALI is high-end. In both cases we quote per project after a free site visit.",
+    },
+  },
+];
+
 const Commercial = () => {
-  const { t, language } = useLanguage();
+  const { t, language, localePath } = useLanguage();
   const [formState, setFormState] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState<string>("");
 
@@ -352,133 +453,6 @@ const Commercial = () => {
           </div>
         </section>
 
-        {/* Benefits — what you gain by going smart */}
-        <section className="section-padding bg-background">
-          <div className="container-custom px-4">
-            <div className="text-center max-w-2xl mx-auto mb-14">
-              <p className="text-xs sm:text-sm font-medium uppercase tracking-[0.2em] text-primary/80 mb-4">
-                {lang === "es" ? "Beneficios" : "Benefits"}
-              </p>
-              <h2 className="font-bold text-3xl sm:text-4xl md:text-5xl leading-[1.1] tracking-[-0.015em] text-foreground mb-3 text-balance">
-                {lang === "es" ? "Más control, menos costos, " : "More control, lower costs, "}
-                <span className="text-gradient">{lang === "es" ? "mejor experiencia" : "better experience"}</span>
-              </h2>
-              <p className="text-muted-foreground text-base sm:text-lg">
-                {lang === "es"
-                  ? "Beneficios concretos para hoteles, edificios y negocios — desde el primer mes."
-                  : "Concrete benefits for hotels, buildings and businesses — from month one."}
-              </p>
-            </div>
-
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
-              {BENEFITS.map((b) => (
-                <div
-                  key={b.id}
-                  className="rounded-2xl border border-border/60 bg-background p-6 flex flex-col"
-                >
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                    <b.icon aria-hidden="true" className="w-6 h-6 text-primary" strokeWidth={1.5} />
-                  </div>
-                  <h3 className="font-bold text-lg text-foreground mb-2">
-                    {b.title[lang]}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {b.desc[lang]}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Differentiators */}
-        <section className="section-padding bg-muted/20 dark:bg-muted/10">
-          <div className="container-custom px-4">
-            <div className="text-center max-w-2xl mx-auto mb-14">
-              <p className="text-xs sm:text-sm font-medium uppercase tracking-[0.2em] text-primary/80 mb-4">
-                {lang === "es" ? "Por qué DiraSmart" : "Why DiraSmart"}
-              </p>
-              <h2 className="font-bold text-3xl sm:text-4xl md:text-5xl leading-[1.1] tracking-[-0.015em] text-foreground mb-3 text-balance">
-                {t("commercial.diff.title")}{" "}
-                <span className="text-gradient">{t("commercial.diff.titleHighlight")}</span>
-              </h2>
-              <p className="text-muted-foreground text-base sm:text-lg">
-                {t("commercial.diff.subtitle")}
-              </p>
-            </div>
-            <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-              {/* KNX Partner — featured with badge */}
-              <div className="rounded-3xl border border-border/60 bg-background p-7 flex flex-col items-start">
-                <div className="h-16 mb-5 flex items-center">
-                  <img
-                    src={knxPartnerBadge}
-                    alt="KNX Partner certified"
-                    className="h-14 w-auto"
-                    loading="lazy"
-                  />
-                </div>
-                <h3 className="font-bold text-xl text-foreground mb-2.5">
-                  {lang === "es" ? "KNX Partner certificado" : "Certified KNX Partner"}
-                </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {lang === "es"
-                    ? "Diseño profesional con la herramienta oficial ETS, integración garantizada entre 500+ marcas KNX, y acceso al soporte de la KNX Association."
-                    : "Professional design with the official ETS tool, guaranteed integration across 500+ KNX brands, and access to KNX Association support."}
-                </p>
-                <a
-                  href="https://www.knx.org/knx-en/for-professionals/community/partners/?company=Dirasmart"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded"
-                >
-                  {lang === "es" ? "Verifícanos en el directorio oficial KNX" : "Verify us in the official KNX directory"}
-                  <span aria-hidden="true">→</span>
-                </a>
-              </div>
-
-              {/* BMS / BACnet */}
-              <div className="rounded-3xl border border-border/60 bg-background p-7 flex flex-col items-start">
-                <div className="h-16 mb-5 flex items-center">
-                  <img
-                    src={bacnetLogo}
-                    alt="BACnet"
-                    className="h-10 w-auto"
-                    loading="lazy"
-                  />
-                </div>
-                <h3 className="font-bold text-xl text-foreground mb-2.5">
-                  {lang === "es" ? "BMS · Gestión de edificios" : "BMS · Building Management"}
-                </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {lang === "es"
-                    ? "Integración con sistemas de gestión de edificios (BMS) vía BACnet, Modbus, M-Bus y SNMP. Conectamos HVAC comercial, control de accesos, medidores de energía y más. Tu inversión previa no se descarta — la modernizamos."
-                    : "Integration with building management systems (BMS) via BACnet, Modbus, M-Bus and SNMP. We connect commercial HVAC, access control, energy meters and more. Your previous investment isn't thrown away — we modernize it."}
-                </p>
-              </div>
-
-              {/* Local processing */}
-              <div className="rounded-3xl border border-border/60 bg-background p-7 flex flex-col items-start">
-                <div className="h-16 mb-5 flex items-center">
-                  <img
-                    src={localFirstBadge}
-                    alt="Local First — procesamiento local sin nube"
-                    className="h-14 w-auto"
-                    loading="lazy"
-                  />
-                </div>
-                <h3 className="font-bold text-xl text-foreground mb-2.5">
-                  {lang === "es" ? "Procesamiento local" : "Local processing"}
-                </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {lang === "es"
-                    ? "Tu data y operación se quedan dentro del edificio. Funciona aunque internet caiga y no dependes de la nube de un fabricante extranjero."
-                    : "Your data and operation stay inside the building. Works even when internet drops, and you don't depend on a foreign manufacturer's cloud."}
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Sectors grid */}
         <section id="sectores" className="section-padding bg-background">
           <div className="container-custom px-4">
@@ -533,6 +507,179 @@ const Commercial = () => {
           </div>
         </section>
 
+        {/* Benefits — what you gain by going smart */}
+        <section className="section-padding bg-muted/20 dark:bg-muted/10">
+          <div className="container-custom px-4">
+            <div className="text-center max-w-2xl mx-auto mb-14">
+              <p className="text-xs sm:text-sm font-medium uppercase tracking-[0.2em] text-primary/80 mb-4">
+                {lang === "es" ? "Beneficios" : "Benefits"}
+              </p>
+              <h2 className="font-bold text-3xl sm:text-4xl md:text-5xl leading-[1.1] tracking-[-0.015em] text-foreground mb-3 text-balance">
+                {lang === "es" ? "Más control, menos costos, " : "More control, lower costs, "}
+                <span className="text-gradient">{lang === "es" ? "mejor experiencia" : "better experience"}</span>
+              </h2>
+              <p className="text-muted-foreground text-base sm:text-lg">
+                {lang === "es"
+                  ? "Beneficios concretos para hoteles, edificios y negocios — desde el primer mes."
+                  : "Concrete benefits for hotels, buildings and businesses — from month one."}
+              </p>
+            </div>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
+              {BENEFITS.map((b) => (
+                <div
+                  key={b.id}
+                  className="rounded-2xl border border-border/60 bg-background p-6 flex flex-col"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                    <b.icon aria-hidden="true" className="w-6 h-6 text-primary" strokeWidth={1.5} />
+                  </div>
+                  <h3 className="font-bold text-lg text-foreground mb-2">
+                    {b.title[lang]}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {b.desc[lang]}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Differentiators */}
+        <section className="section-padding bg-background">
+          <div className="container-custom px-4">
+            <div className="text-center max-w-2xl mx-auto mb-14">
+              <p className="text-xs sm:text-sm font-medium uppercase tracking-[0.2em] text-primary/80 mb-4">
+                {lang === "es" ? "Por qué DiraSmart" : "Why DiraSmart"}
+              </p>
+              <h2 className="font-bold text-3xl sm:text-4xl md:text-5xl leading-[1.1] tracking-[-0.015em] text-foreground mb-3 text-balance">
+                {t("commercial.diff.title")}{" "}
+                <span className="text-gradient">{t("commercial.diff.titleHighlight")}</span>
+              </h2>
+              <p className="text-muted-foreground text-base sm:text-lg">
+                {t("commercial.diff.subtitle")}
+              </p>
+            </div>
+            <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+              {/* BMS */}
+              <div className="rounded-3xl border border-border/60 bg-background p-7 flex flex-col items-start">
+                <div className="h-20 mb-4 flex items-center">
+                  <img
+                    src={bmsLogo}
+                    alt="BMS — Building Management System"
+                    className="h-20 w-auto block dark:hidden"
+                    loading="lazy"
+                  />
+                  <img
+                    src={bmsLogoDark}
+                    alt=""
+                    aria-hidden="true"
+                    className="h-20 w-auto hidden dark:block"
+                    loading="lazy"
+                  />
+                </div>
+                <h3 className="font-bold text-xl text-foreground mb-2.5">
+                  {lang === "es" ? "BMS · Sistema central local" : "BMS · Local Central System"}
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {lang === "es"
+                    ? "Plataforma única que vive dentro del edificio y supervisa HVAC, iluminación, energía, accesos, ascensores y vida-seguridad. Procesamiento local — funciona aunque internet caiga, sin depender de la nube de un fabricante extranjero. Visibilidad total, mantenimiento predictivo, reportes para certificación y ahorro energético típico de 15–30%."
+                    : "Single platform that lives inside the building and supervises HVAC, lighting, energy, access, elevators and life-safety. Local processing — works even when internet drops, no dependence on a foreign manufacturer's cloud. Total visibility, predictive maintenance, certification-ready reporting and typical 15–30% energy savings."}
+                </p>
+                <Link
+                  to={localePath(`/blog/${lang === "es" ? "bms-sistema-gestion-edificios-comercial" : "bms-building-management-systems"}`)}
+                  className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded"
+                >
+                  {lang === "es" ? "Conoce más sobre BMS" : "Learn more about BMS"}
+                  <span aria-hidden="true">→</span>
+                </Link>
+              </div>
+
+              {/* KNX Partner — featured with badge */}
+              <div className="rounded-3xl border border-border/60 bg-background p-7 flex flex-col items-start">
+                <div className="h-16 mb-5 flex items-center">
+                  <img
+                    src={knxPartnerBadge}
+                    alt="KNX Partner certified"
+                    className="h-14 w-auto"
+                    loading="lazy"
+                  />
+                </div>
+                <h3 className="font-bold text-xl text-foreground mb-2.5">
+                  {lang === "es" ? "KNX Partner certificado" : "Certified KNX Partner"}
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {lang === "es"
+                    ? "Estándar mundial ISO/IEC 14543-3 para automatización de edificios, con arquitectura descentralizada: cada dispositivo ejecuta su propia lógica, sin un controlador central que pueda detener el hotel o el edificio. Diseño profesional con la herramienta oficial ETS, integración garantizada entre 500+ marcas y acceso directo al soporte de la KNX Association. La espina dorsal de proyectos comerciales premium."
+                    : "ISO/IEC 14543-3 worldwide standard for building automation, with a decentralized architecture: every device runs its own logic, with no central controller that could bring the hotel or building down. Professional design with the official ETS tool, guaranteed integration across 500+ brands and direct access to KNX Association support. The backbone of premium commercial projects."}
+                </p>
+                <Link
+                  to={localePath(`/blog/${lang === "es" ? "knx-panama-automatizacion-premium" : "knx-premium-automation-panama"}`)}
+                  className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded"
+                >
+                  {lang === "es" ? "Conoce más sobre KNX" : "Learn more about KNX"}
+                  <span aria-hidden="true">→</span>
+                </Link>
+              </div>
+
+              {/* DALI — iluminación profesional */}
+              <div className="rounded-3xl border border-border/60 bg-background p-7 flex flex-col items-start">
+                <div className="h-16 mb-5 flex items-center">
+                  <img
+                    src={daliLogo}
+                    alt="DALI-2"
+                    className="h-12 w-auto dark:invert"
+                    loading="lazy"
+                  />
+                </div>
+                <h3 className="font-bold text-xl text-foreground mb-2.5">
+                  {lang === "es" ? "DALI · Iluminación profesional" : "DALI · Professional lighting"}
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {lang === "es"
+                    ? "Control digital de cada luminaria de forma individual: dimming preciso, escenas, circadian lighting (tunable white) y reporte de fallas por driver. Estándar IEC 62386, compatible con cientos de fabricantes de iluminación arquitectónica."
+                    : "Digital per-luminaire control: precise dimming, scenes, circadian lighting (tunable white) and per-driver fault reporting. IEC 62386 standard, compatible with hundreds of architectural lighting manufacturers."}
+                </p>
+                <Link
+                  to={localePath(`/blog/${lang === "es" ? "dali-protocolo-iluminacion-futuro" : "dali-future-of-professional-lighting"}`)}
+                  className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded"
+                >
+                  {lang === "es" ? "Conoce más sobre DALI" : "Learn more about DALI"}
+                  <span aria-hidden="true">→</span>
+                </Link>
+              </div>
+
+              {/* BACnet */}
+              <div className="rounded-3xl border border-border/60 bg-background p-7 flex flex-col items-start">
+                <div className="h-16 mb-5 flex items-center">
+                  <img
+                    src={bacnetLogo}
+                    alt="BACnet"
+                    className="h-10 w-auto"
+                    loading="lazy"
+                  />
+                </div>
+                <h3 className="font-bold text-xl text-foreground mb-2.5">
+                  {lang === "es" ? "BACnet · Protocolo abierto BMS" : "BACnet · Open BMS Protocol"}
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {lang === "es"
+                    ? "Estándar ASHRAE / ISO 16484-5 que permite integrar equipos de cualquier fabricante en el BMS — HVAC, medidores, ascensores, generadores. Especificarlo en pliegos te protege del vendor lock-in y abre competencia real en licitaciones."
+                    : "ASHRAE / ISO 16484-5 standard that lets you integrate equipment from any manufacturer into the BMS — HVAC, meters, elevators, generators. Specifying it in tenders protects you from vendor lock-in and opens real competition."}
+                </p>
+                <Link
+                  to={localePath(`/blog/${lang === "es" ? "bacnet-protocolo-bms-estandar-ashrae" : "bacnet-protocol-bms-standard"}`)}
+                  className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded"
+                >
+                  {lang === "es" ? "Conoce más sobre BACnet" : "Learn more about BACnet"}
+                  <span aria-hidden="true">→</span>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Process */}
         <section className="section-padding bg-muted/20 dark:bg-muted/10">
           <div className="container-custom px-4">
@@ -565,6 +712,42 @@ const Commercial = () => {
                 </li>
               ))}
             </ol>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section id="faq" className="section-padding bg-background">
+          <div className="container-custom px-4">
+            <div className="text-center max-w-2xl mx-auto mb-14">
+              <p className="text-xs sm:text-sm font-medium uppercase tracking-[0.2em] text-primary/80 mb-4">
+                {lang === "es" ? "Preguntas frecuentes" : "FAQ"}
+              </p>
+              <h2 className="font-bold text-3xl sm:text-4xl md:text-5xl leading-[1.1] tracking-[-0.015em] text-foreground mb-3 text-balance">
+                {lang === "es" ? "Antes de escribirnos, " : "Before you reach out, "}
+                <span className="text-gradient">{lang === "es" ? "resolvamos esto" : "let's clear this up"}</span>
+              </h2>
+              <p className="text-muted-foreground text-base sm:text-lg">
+                {lang === "es"
+                  ? "Las preguntas que más nos hacen hoteles, oficinas y administradores de edificios."
+                  : "The questions we hear most from hotels, offices and building managers."}
+              </p>
+            </div>
+
+            <div className="grid sm:grid-cols-2 gap-5 max-w-5xl mx-auto">
+              {COMMERCIAL_FAQ.map((item, i) => (
+                <div
+                  key={i}
+                  className="rounded-2xl border border-border/60 bg-background p-6"
+                >
+                  <h3 className="font-bold text-foreground mb-2 leading-snug">
+                    {item.question[lang]}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {item.answer[lang]}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 

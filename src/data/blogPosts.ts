@@ -16,8 +16,16 @@ import { post as cortinasMotorizadas } from "./posts/cortinas-motorizadas-persia
 import { post as automatizacionApartamentos } from "./posts/automatizacion-apartamentos-panama";
 import { post as ahorroEnergia } from "./posts/ahorro-energia-hogar-inteligente-panama";
 import { post as zigbeeZwaveVsWifi } from "./posts/zigbee-zwave-vs-wifi-smart-home";
+import { post as daliIluminacion } from "./posts/dali-protocolo-iluminacion-futuro";
+import { post as casaVsDispositivos } from "./posts/casa-inteligente-vs-dispositivos-inteligentes";
+import { post as bmsComercial } from "./posts/bms-sistema-gestion-edificios-comercial";
+import { post as bacnetEstandar } from "./posts/bacnet-protocolo-bms-estandar-ashrae";
 
 export const blogPosts = [
+  bmsComercial,
+  bacnetEstandar,
+  casaVsDispositivos,
+  daliIluminacion,
   zigbeeZwaveVsWifi,
   knxPartner,
   controlVoz,

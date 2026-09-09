@@ -1,7 +1,7 @@
 import type { BlogPost } from "./types";
 
 export const post: BlogPost = {
-  slug: "climatizacion-inteligente-tropico-panama",
+  slug: { es: "climatizacion-inteligente-tropico-panama", en: "smart-hvac-tropical-climate-panama" },
   date: "2026-02-12",
   readTime: 6,
   category: { es: "Estilo de Vida", en: "Lifestyle" },
@@ -76,4 +76,36 @@ Our clients in Panama City report consistent savings between **20% and 35%** on 
 
 Comfort is never sacrificed. On the contrary: you arrive to a home that's already cool, every room is at your preferred temperature, and humidity stays at healthy levels. It's spending less to live better.`,
   },
+  faq: [
+    {
+      question: {
+        es: "¿Por qué el termostato de mi aire acondicionado marca una temperatura distinta a la que siento en la habitación?",
+        en: "Why does my AC's thermostat show a different temperature than what I feel in the room?",
+      },
+      answer: {
+        es: "Porque el sensor del propio equipo suele estar mal ubicado: puede marcar 23°C mientras la habitación real está a 26°C. Con sensores de temperatura independientes distribuidos por el hogar, el sistema ajusta el aire basándose en la temperatura real donde tú estás, no en la que reporta la unidad.",
+        en: "Because the unit's own sensor is often poorly placed: it might read 23°C while the room is actually at 26°C. With independent temperature sensors placed throughout the home, the system adjusts the AC based on the real temperature where you are, not the one reported by the unit itself.",
+      },
+    },
+    {
+      question: {
+        es: "¿Cómo previene el sistema el moho y la humedad excesiva en un clima tropical como Panamá?",
+        en: "How does the system prevent mold and excess humidity in a tropical climate like Panama?",
+      },
+      answer: {
+        es: "Sensores de humedad distribuidos por el hogar monitorean el ambiente en tiempo real, y cuando la humedad interior sube por encima del 65% el sistema activa automáticamente el modo de deshumidificación para prevenir moho y mantener un ambiente saludable, algo especialmente crítico en la temporada lluviosa panameña.",
+        en: "Humidity sensors distributed throughout the home monitor the environment in real time, and when indoor humidity rises above 65% the system automatically activates dehumidification mode to prevent mold and keep the environment healthy, which is especially critical during Panama's rainy season.",
+      },
+    },
+    {
+      question: {
+        es: "¿Qué es el geofencing y cómo reduce el consumo del aire acondicionado?",
+        en: "What is geofencing and how does it reduce AC energy consumption?",
+      },
+      answer: {
+        es: "El geofencing usa la ubicación de tu celular para saber cuándo te acercas o alejas de casa. El aire se enciende automáticamente cuando estás a unos 10 minutos de llegar, y el sistema entra en modo de ahorro cuando todos los miembros de la familia salen, evitando que el aire funcione horas enteras sin necesidad mientras nadie está en casa.",
+        en: "Geofencing uses your phone's location to know when you're approaching or leaving home. The AC turns on automatically when you're about 10 minutes away, and the system enters savings mode when all family members leave, preventing the AC from running for hours unnecessarily while no one is home.",
+      },
+    },
+  ],
 };

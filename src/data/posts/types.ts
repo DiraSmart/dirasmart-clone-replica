@@ -1,5 +1,10 @@
+export interface FaqItem {
+  question: { es: string; en: string };
+  answer: { es: string; en: string };
+}
+
 export interface BlogPost {
-  slug: string;
+  slug: { es: string; en: string };
   date: string;
   readTime: number;
   category: { es: string; en: string };
@@ -9,4 +14,5 @@ export interface BlogPost {
   gradient: string;
   icon: string;
   image?: string;
+  faq?: FaqItem[];
 }

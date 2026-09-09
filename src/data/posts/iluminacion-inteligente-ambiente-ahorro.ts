@@ -1,7 +1,7 @@
 import type { BlogPost } from "./types";
 
 export const post: BlogPost = {
-  slug: "iluminacion-inteligente-ambiente-ahorro",
+  slug: { es: "iluminacion-inteligente-ambiente-ahorro", en: "smart-lighting-ambiance-energy-savings" },
   date: "2026-02-14",
   readTime: 5,
   category: { es: "Tecnología", en: "Technology" },
@@ -76,4 +76,36 @@ For the observant community, our system includes specific **Shabbat scheduling**
 
 Smart LED bulbs consume up to **85% less** energy than traditional incandescents. Combined with automation that turns off lights in unoccupied spaces and reduces brightness when full power isn't needed, the savings are noticeable from the first month. An investment in smart lighting typically pays for itself in under 18 months from electricity savings alone.`,
   },
+  faq: [
+    {
+      question: {
+        es: "¿Cómo ayuda la iluminación inteligente a dormir mejor?",
+        en: "How does smart lighting help you sleep better?",
+      },
+      answer: {
+        es: "La iluminación circadiana ajusta automáticamente la temperatura de color según la hora del día, y a partir de las 8pm elimina gradualmente la luz azul del hogar. Esto es importante porque la exposición a luz azul en la noche suprime la producción de melatonina y afecta la calidad del sueño, por lo que el sistema te ayuda a dormir mejor sin que tengas que hacer nada.",
+        en: "Circadian lighting automatically adjusts color temperature based on the time of day, and starting at 8pm it gradually removes blue light from your home. This matters because exposure to blue light at night suppresses melatonin production and affects sleep quality, so the system helps you sleep better without you having to do anything.",
+      },
+    },
+    {
+      question: {
+        es: "¿Cuánto se puede ahorrar en electricidad automatizando las luces con sensores de movimiento?",
+        en: "How much can you save on electricity by automating lights with motion sensors?",
+      },
+      answer: {
+        es: "Nuestros clientes reportan reducciones de entre 25% y 40% en el consumo de iluminación al combinar luces LED inteligentes con sensores de presencia, ya que las luces dejan de quedar encendidas en habitaciones vacías. Sumado a que las bombillas LED consumen hasta un 85% menos que las incandescentes, la inversión típicamente se recupera en menos de 18 meses.",
+        en: "Our clients report reductions between 25% and 40% in lighting consumption when combining smart LED lights with presence sensors, since lights no longer stay on in empty rooms. Combined with LED bulbs using up to 85% less energy than incandescents, the investment typically pays for itself in under 18 months.",
+      },
+    },
+    {
+      question: {
+        es: "¿Se puede programar automáticamente la iluminación para la entrada de Shabbat?",
+        en: "Can lighting be automatically scheduled for Shabbat entry?",
+      },
+      answer: {
+        es: "Sí, el sistema de DiraSmart incluye programación específica de Shabbat: las luces se configuran automáticamente antes de la entrada de Shabbat según los horarios del calendario hebreo, con los niveles e intensidades que prefieras para cada espacio de tu hogar.",
+        en: "Yes, DiraSmart's system includes specific Shabbat scheduling: lights configure themselves automatically before Shabbat entry according to Hebrew calendar times, with your preferred levels and intensities for each space in your home.",
+      },
+    },
+  ],
 };

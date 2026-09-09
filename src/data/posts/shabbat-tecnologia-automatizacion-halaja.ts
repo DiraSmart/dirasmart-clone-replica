@@ -1,7 +1,7 @@
 import type { BlogPost } from "./types";
 
 export const post: BlogPost = {
-  slug: "shabbat-tecnologia-automatizacion-halaja",
+  slug: { es: "shabbat-tecnologia-automatizacion-halaja", en: "shabbat-technology-automation-halacha" },
   date: "2026-01-28",
   readTime: 7,
   category: { es: "Comunidad", en: "Community" },
@@ -68,4 +68,36 @@ The module covers all major holidays: Pesach, Shavuot, Rosh Hashanah, Yom Kippur
 
 We work in consultation with the community to ensure all automations meet halachic standards. The goal is technology in service of observance, not against it.`,
   },
+  faq: [
+    {
+      question: {
+        es: "¿Cómo sabe el sistema exactamente cuándo entra y sale el Shabbat?",
+        en: "How does the system know exactly when Shabbat begins and ends?",
+      },
+      answer: {
+        es: "El módulo de Shabbat funciona con el calendario hebreo integrado y calcula la entrada y salida de Shabbat según tu ubicación específica en Panamá. Antes de la entrada de Shabbat, el sistema se configura automáticamente sin que tengas que hacer nada.",
+        en: "The Shabbat module works with an integrated Hebrew calendar and calculates Shabbat's start and end times based on your specific location in Panama. Before Shabbat begins, the system configures itself automatically without you having to do anything.",
+      },
+    },
+    {
+      question: {
+        es: "¿Cómo funcionan las luces del baño durante Shabbat sin transgredir la Halajá?",
+        en: "How do bathroom lights work during Shabbat without transgressing Halacha?",
+      },
+      answer: {
+        es: "Durante Shabbat, las luces del baño se encienden mediante un sensor de presencia pre-programado antes de la entrada de Shabbat, no mediante una acción activada en el momento. El aire acondicionado, por su parte, se programa desde el viernes para las próximas 25 horas con los ciclos que prefieras, manteniendo la temperatura sin intervención manual.",
+        en: "During Shabbat, bathroom lights turn on via a presence sensor that was pre-programmed before Shabbat began, not through an action triggered in the moment. The air conditioning, meanwhile, is programmed on Friday for the next 25 hours with your preferred cycles, maintaining the temperature without manual intervention.",
+      },
+    },
+    {
+      question: {
+        es: "¿Qué festividades judías cubre el módulo de automatización de DiraSmart?",
+        en: "Which Jewish holidays does DiraSmart's automation module cover?",
+      },
+      answer: {
+        es: "El módulo cubre todas las festividades principales: Pesaj, Shavuot, Rosh Hashaná, Yom Kipur, Sucot y Simjat Torá. Cada festividad tiene su propia configuración de luces, clima y persianas, definida según tus preferencias y trabajada en consulta con la comunidad para cumplir los estándares halájicos.",
+        en: "The module covers all major holidays: Pesach, Shavuot, Rosh Hashanah, Yom Kippur, Sukkot, and Simchat Torah. Each holiday has its own light, climate, and blind configuration, defined according to your preferences and developed in consultation with the community to meet halachic standards.",
+      },
+    },
+  ],
 };

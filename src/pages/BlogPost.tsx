@@ -10,7 +10,7 @@ const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
   const { language, t, localePath } = useLanguage();
 
-  const postIndex = blogPosts.findIndex((p) => p.slug === slug);
+  const postIndex = blogPosts.findIndex((p) => p.slug.es === slug || p.slug.en === slug);
   const post = blogPosts[postIndex];
 
   if (!post) {
@@ -135,6 +135,23 @@ const BlogPost = () => {
                 {renderContent(post.content[language])}
               </article>
 
+              {/* FAQ */}
+              {post.faq && post.faq.length > 0 ? (
+                <div className="my-8 pt-6 border-t border-border/50">
+                  <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-4">
+                    {language === "es" ? "Preguntas frecuentes" : "Frequently asked questions"}
+                  </h2>
+                  <div className="space-y-4">
+                    {post.faq.map((item, i) => (
+                      <div key={i}>
+                        <p className="font-semibold text-foreground mb-1">{item.question[language]}</p>
+                        <p className="text-muted-foreground leading-relaxed">{item.answer[language]}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
+
               {/* CTA */}
               <div className="rounded-2xl p-6 sm:p-8 bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20 text-center my-8">
                 <h3 className="text-lg font-bold text-foreground mb-2">
@@ -156,7 +173,7 @@ const BlogPost = () => {
               {/* Related articles (internal linking) */}
               {(() => {
                 const related = blogPosts
-                  .filter((p) => p.slug !== post.slug)
+                  .filter((p) => p.slug.es !== post.slug.es)
                   .sort(() => 0.5 - Math.random())
                   .slice(0, 3);
                 return related.length > 0 ? (
@@ -167,8 +184,8 @@ const BlogPost = () => {
                     <div className="grid sm:grid-cols-3 gap-3">
                       {related.map((r) => (
                         <Link
-                          key={r.slug}
-                          to={localePath(`/blog/${r.slug}`)}
+                          key={r.slug.es}
+                          to={localePath(`/blog/${r.slug[language]}`)}
                           className="group p-4 rounded-xl border border-border/50 hover:border-primary/30 transition-colors"
                         >
                           <span className="text-xs text-primary font-medium">{r.category[language]}</span>
@@ -185,7 +202,7 @@ const BlogPost = () => {
               {/* Navigation */}
               <div className="grid grid-cols-2 gap-4 pt-6 border-t border-border/50">
                 {prevPost ? (
-                  <Link to={localePath(`/blog/${prevPost.slug}`)} className="group p-4 rounded-xl border border-border/50 hover:border-primary/30 transition-colors">
+                  <Link to={localePath(`/blog/${prevPost.slug[language]}`)} className="group p-4 rounded-xl border border-border/50 hover:border-primary/30 transition-colors">
                     <span className="text-xs text-muted-foreground flex items-center gap-1 mb-1">
                       <ArrowLeft className="w-3 h-3" /> {t("blog.prev")}
                     </span>
@@ -195,7 +212,7 @@ const BlogPost = () => {
                   </Link>
                 ) : <div />}
                 {nextPost ? (
-                  <Link to={localePath(`/blog/${nextPost.slug}`)} className="group p-4 rounded-xl border border-border/50 hover:border-primary/30 transition-colors text-right">
+                  <Link to={localePath(`/blog/${nextPost.slug[language]}`)} className="group p-4 rounded-xl border border-border/50 hover:border-primary/30 transition-colors text-right">
                     <span className="text-xs text-muted-foreground flex items-center justify-end gap-1 mb-1">
                       {t("blog.next")} <ArrowRight className="w-3 h-3" />
                     </span>

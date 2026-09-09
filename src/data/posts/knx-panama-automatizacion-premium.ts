@@ -1,7 +1,7 @@
 import type { BlogPost } from "./types";
 
 export const post: BlogPost = {
-  slug: "knx-panama-automatizacion-premium",
+  slug: { es: "knx-panama-automatizacion-premium", en: "knx-premium-automation-panama" },
   date: "2026-04-15",
   readTime: 7,
   category: { es: "Tecnología", en: "Technology" },
@@ -130,4 +130,36 @@ If you're building or renovating a property in Panama and looking for an automat
 
 Then KNX with DiraSmart is your best choice. Contact us for a free consultation and discover how we can design the perfect system for your property.`,
   },
+  faq: [
+    {
+      question: {
+        es: "¿Qué pasa si un dispositivo falla en un sistema KNX?",
+        en: "What happens if a device fails in a KNX system?",
+      },
+      answer: {
+        es: "A diferencia de sistemas con un cerebro central único, KNX es descentralizado: cada dispositivo tiene su propia inteligencia programada. Si un componente falla, el resto del sistema sigue funcionando con normalidad, sin que toda tu automatización se paralice.",
+        en: "Unlike systems with a single central brain, KNX is decentralized: each device has its own programmed intelligence. If one component fails, the rest of the system keeps working normally, without your entire automation shutting down.",
+      },
+    },
+    {
+      question: {
+        es: "¿En qué se diferencia KNX de un sistema de domótica basado en WiFi?",
+        en: "How is KNX different from a WiFi-based home automation system?",
+      },
+      answer: {
+        es: "KNX utiliza su propio cableado dedicado (un bus de par trenzado) en lugar de depender de WiFi o Bluetooth, por lo que no compite con tu red de internet y es inmune a interferencias inalámbricas. Además, sus componentes están diseñados para durar más de 20 años, mientras que muchos dispositivos WiFi de consumo quedan obsoletos en pocos años.",
+        en: "KNX uses its own dedicated wiring (a twisted-pair bus) instead of relying on WiFi or Bluetooth, so it doesn't compete with your internet network and is immune to wireless interference. Its components are also designed to last over 20 years, while many consumer WiFi devices become obsolete within a few years.",
+      },
+    },
+    {
+      question: {
+        es: "¿Qué significa que DiraSmart sea KNX Partner certificado?",
+        en: "What does it mean that DiraSmart is a certified KNX Partner?",
+      },
+      answer: {
+        es: "Significa que nuestro equipo fue entrenado y certificado directamente por la KNX Association y cumple con los estándares internacionales de diseño, instalación y programación de sistemas KNX. Usamos la herramienta oficial ETS (Engineering Tool Software) para programar cada escena y automatización, y tenemos acceso directo al soporte técnico de KNX Association y a las últimas actualizaciones del ecosistema.",
+        en: "It means our team was trained and certified directly by the KNX Association and meets international standards for designing, installing, and programming KNX systems. We use the official ETS (Engineering Tool Software) to program every scene and automation, and we have direct access to KNX Association technical support and the latest ecosystem updates.",
+      },
+    },
+  ],
 };

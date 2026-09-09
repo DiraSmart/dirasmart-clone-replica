@@ -1,7 +1,7 @@
 import type { BlogPost } from "./types";
 
 export const post: BlogPost = {
-  slug: "seguridad-inteligente-camaras-sensores",
+  slug: { es: "seguridad-inteligente-camaras-sensores", en: "smart-security-cameras-sensors" },
   date: "2026-02-17",
   readTime: 6,
   category: { es: "Seguridad", en: "Security" },
@@ -80,4 +80,36 @@ Every security event generates an **instant notification on your phone**. You ca
 
 Smart security doesn't replace common sense, but it does give you tools that were previously only available to professional security companies, integrated directly into your home and under your complete control.`,
   },
+  faq: [
+    {
+      question: {
+        es: "¿Tengo que pagar una suscripción mensual para guardar las grabaciones de las cámaras de seguridad?",
+        en: "Do I have to pay a monthly subscription to store my security camera recordings?",
+      },
+      answer: {
+        es: "No. Las cámaras de DiraSmart graban localmente en un NVR (Network Video Recorder) dentro de tu hogar, así que las grabaciones no dependen de la nube ni de cuotas mensuales. Puedes revisar el historial completo desde la app sin pagar nada adicional, y la grabación local sigue funcionando incluso si tu internet se cae temporalmente.",
+        en: "No. DiraSmart cameras record locally on an NVR (Network Video Recorder) inside your home, so recordings don't depend on the cloud or monthly fees. You can review the full history from the app without paying anything extra, and local recording keeps working even if your internet goes down temporarily.",
+      },
+    },
+    {
+      question: {
+        es: "¿Puedo darle acceso a la persona de limpieza sin entregarle una llave física?",
+        en: "Can I give my housekeeper access without handing over a physical key?",
+      },
+      answer: {
+        es: "Sí, las cerraduras inteligentes permiten crear códigos temporales que solo funcionan en horarios específicos. Por ejemplo, el código de la señora de la limpieza puede funcionar de lunes a viernes de 8am a 2pm y desactivarse automáticamente fuera de ese horario, además cada entrada queda registrada con fecha y hora.",
+        en: "Yes, smart locks let you create temporary codes that only work during specific hours. For example, your housekeeper's code can work Monday through Friday from 8am to 2pm and automatically deactivate outside those hours, and every entry is logged with date and time.",
+      },
+    },
+    {
+      question: {
+        es: "¿Qué pasa exactamente si un sensor de movimiento detecta a alguien en el jardín de noche?",
+        en: "What exactly happens if a motion sensor detects someone in the yard at night?",
+      },
+      answer: {
+        es: "El sistema enciende automáticamente las luces exteriores a máxima potencia, las cámaras de esa zona comienzan a grabar y recibes una alerta con foto en tu celular, todo en menos de 2 segundos. Si tienes activado el modo 'fuera de casa', también puede sonar una sirena si así lo decides desde la app.",
+        en: "The system automatically turns on the exterior lights at full power, cameras in that zone start recording, and you get a photo alert on your phone, all in under 2 seconds. If 'away mode' is active, a siren can also sound if you choose to trigger it from the app.",
+      },
+    },
+  ],
 };

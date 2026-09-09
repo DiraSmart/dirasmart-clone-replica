@@ -6,7 +6,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://dirasmart.com/" />
-    <lastmod>2026-04-17</lastmod>
+    <lastmod>2026-09-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -15,7 +15,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://dirasmart.com/" />
-    <lastmod>2026-04-17</lastmod>
+    <lastmod>2026-09-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -23,7 +23,7 @@
     <loc>https://dirasmart.com/about</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/about" />
     <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/about" />
-    <lastmod>2026-04-17</lastmod>
+    <lastmod>2026-09-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -31,7 +31,7 @@
     <loc>https://dirasmart.com/en/about</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/about" />
     <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/about" />
-    <lastmod>2026-04-17</lastmod>
+    <lastmod>2026-09-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -39,7 +39,7 @@
     <loc>https://dirasmart.com/comercial</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/comercial" />
     <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/comercial" />
-    <lastmod>2026-04-26</lastmod>
+    <lastmod>2026-09-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -47,15 +47,47 @@
     <loc>https://dirasmart.com/en/comercial</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/comercial" />
     <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/comercial" />
-    <lastmod>2026-04-26</lastmod>
+    <lastmod>2026-09-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://dirasmart.com/premium</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/premium" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/premium" />
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://dirasmart.com/en/premium</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/premium" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/premium" />
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://dirasmart.com/reviews</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/reviews" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/reviews" />
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dirasmart.com/en/reviews</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/reviews" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/reviews" />
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://dirasmart.com/blog</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog" />
     <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog" />
-    <lastmod>2026-04-17</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -63,249 +95,73 @@
     <loc>https://dirasmart.com/en/blog</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog" />
     <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog" />
-    <lastmod>2026-04-17</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://dirasmart.com/blog/beneficios-hogar-inteligente-panama</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/beneficios-hogar-inteligente-panama" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/beneficios-hogar-inteligente-panama" />
-    <lastmod>2026-04-17</lastmod>
+    <loc>https://dirasmart.com/blog/bms-sistema-gestion-edificios-comercial</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/bms-sistema-gestion-edificios-comercial" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/bms-building-management-systems" />
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://dirasmart.com/en/blog/beneficios-hogar-inteligente-panama</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/beneficios-hogar-inteligente-panama" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/beneficios-hogar-inteligente-panama" />
-    <lastmod>2026-04-17</lastmod>
+    <loc>https://dirasmart.com/en/blog/bms-building-management-systems</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/bms-sistema-gestion-edificios-comercial" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/bms-building-management-systems" />
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://dirasmart.com/blog/como-funciona-automatizacion-hogar</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/como-funciona-automatizacion-hogar" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/como-funciona-automatizacion-hogar" />
-    <lastmod>2026-04-17</lastmod>
+    <loc>https://dirasmart.com/blog/bacnet-protocolo-bms-estandar-ashrae</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/bacnet-protocolo-bms-estandar-ashrae" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/bacnet-protocol-bms-standard" />
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://dirasmart.com/en/blog/como-funciona-automatizacion-hogar</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/como-funciona-automatizacion-hogar" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/como-funciona-automatizacion-hogar" />
-    <lastmod>2026-04-17</lastmod>
+    <loc>https://dirasmart.com/en/blog/bacnet-protocol-bms-standard</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/bacnet-protocolo-bms-estandar-ashrae" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/bacnet-protocol-bms-standard" />
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://dirasmart.com/blog/shabbat-tecnologia-automatizacion-halaja</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/shabbat-tecnologia-automatizacion-halaja" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/shabbat-tecnologia-automatizacion-halaja" />
-    <lastmod>2026-04-17</lastmod>
+    <loc>https://dirasmart.com/blog/casa-inteligente-vs-dispositivos-inteligentes</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/casa-inteligente-vs-dispositivos-inteligentes" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/smart-devices-vs-smart-home" />
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://dirasmart.com/en/blog/shabbat-tecnologia-automatizacion-halaja</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/shabbat-tecnologia-automatizacion-halaja" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/shabbat-tecnologia-automatizacion-halaja" />
-    <lastmod>2026-04-17</lastmod>
+    <loc>https://dirasmart.com/en/blog/smart-devices-vs-smart-home</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/casa-inteligente-vs-dispositivos-inteligentes" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/smart-devices-vs-smart-home" />
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://dirasmart.com/blog/wifi-empresarial-vs-domestico</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/wifi-empresarial-vs-domestico" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/wifi-empresarial-vs-domestico" />
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://dirasmart.com/en/blog/wifi-empresarial-vs-domestico</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/wifi-empresarial-vs-domestico" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/wifi-empresarial-vs-domestico" />
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://dirasmart.com/blog/privacidad-hogar-inteligente-local-vs-nube</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/privacidad-hogar-inteligente-local-vs-nube" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/privacidad-hogar-inteligente-local-vs-nube" />
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://dirasmart.com/en/blog/privacidad-hogar-inteligente-local-vs-nube</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/privacidad-hogar-inteligente-local-vs-nube" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/privacidad-hogar-inteligente-local-vs-nube" />
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://dirasmart.com/blog/seguridad-inteligente-camaras-sensores</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/seguridad-inteligente-camaras-sensores" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/seguridad-inteligente-camaras-sensores" />
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://dirasmart.com/en/blog/seguridad-inteligente-camaras-sensores</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/seguridad-inteligente-camaras-sensores" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/seguridad-inteligente-camaras-sensores" />
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://dirasmart.com/blog/iluminacion-inteligente-ambiente-ahorro</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/iluminacion-inteligente-ambiente-ahorro" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/iluminacion-inteligente-ambiente-ahorro" />
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://dirasmart.com/en/blog/iluminacion-inteligente-ambiente-ahorro</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/iluminacion-inteligente-ambiente-ahorro" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/iluminacion-inteligente-ambiente-ahorro" />
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://dirasmart.com/blog/climatizacion-inteligente-tropico-panama</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/climatizacion-inteligente-tropico-panama" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/climatizacion-inteligente-tropico-panama" />
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://dirasmart.com/en/blog/climatizacion-inteligente-tropico-panama</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/climatizacion-inteligente-tropico-panama" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/climatizacion-inteligente-tropico-panama" />
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://dirasmart.com/blog/guia-principiantes-primera-casa-inteligente</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/guia-principiantes-primera-casa-inteligente" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/guia-principiantes-primera-casa-inteligente" />
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://dirasmart.com/en/blog/guia-principiantes-primera-casa-inteligente</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/guia-principiantes-primera-casa-inteligente" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/guia-principiantes-primera-casa-inteligente" />
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://dirasmart.com/blog/smart-home-oficinas-negocios</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/smart-home-oficinas-negocios" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/smart-home-oficinas-negocios" />
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://dirasmart.com/en/blog/smart-home-oficinas-negocios</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/smart-home-oficinas-negocios" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/smart-home-oficinas-negocios" />
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://dirasmart.com/blog/knx-panama-automatizacion-premium</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/knx-panama-automatizacion-premium" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/knx-panama-automatizacion-premium" />
-    <lastmod>2026-04-17</lastmod>
+    <loc>https://dirasmart.com/blog/dali-protocolo-iluminacion-futuro</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/dali-protocolo-iluminacion-futuro" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/dali-future-of-professional-lighting" />
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://dirasmart.com/en/blog/knx-panama-automatizacion-premium</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/knx-panama-automatizacion-premium" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/knx-panama-automatizacion-premium" />
-    <lastmod>2026-04-17</lastmod>
+    <loc>https://dirasmart.com/en/blog/dali-future-of-professional-lighting</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/dali-protocolo-iluminacion-futuro" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/dali-future-of-professional-lighting" />
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://dirasmart.com/blog/control-por-voz-alexa-google-siri</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/control-por-voz-alexa-google-siri" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/control-por-voz-alexa-google-siri" />
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://dirasmart.com/en/blog/control-por-voz-alexa-google-siri</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/control-por-voz-alexa-google-siri" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/control-por-voz-alexa-google-siri" />
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://dirasmart.com/blog/cortinas-motorizadas-persianas-inteligentes</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/cortinas-motorizadas-persianas-inteligentes" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/cortinas-motorizadas-persianas-inteligentes" />
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://dirasmart.com/en/blog/cortinas-motorizadas-persianas-inteligentes</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/cortinas-motorizadas-persianas-inteligentes" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/cortinas-motorizadas-persianas-inteligentes" />
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://dirasmart.com/blog/automatizacion-apartamentos-panama</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/automatizacion-apartamentos-panama" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/automatizacion-apartamentos-panama" />
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://dirasmart.com/en/blog/automatizacion-apartamentos-panama</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/automatizacion-apartamentos-panama" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/automatizacion-apartamentos-panama" />
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://dirasmart.com/blog/ahorro-energia-hogar-inteligente-panama</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/ahorro-energia-hogar-inteligente-panama" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/ahorro-energia-hogar-inteligente-panama" />
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://dirasmart.com/en/blog/ahorro-energia-hogar-inteligente-panama</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/ahorro-energia-hogar-inteligente-panama" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/ahorro-energia-hogar-inteligente-panama" />
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://dirasmart.com/blog/zigbee-zwave-vs-wifi-smart-home</loc>
@@ -322,5 +178,245 @@
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dirasmart.com/blog/knx-panama-automatizacion-premium</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/knx-panama-automatizacion-premium" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/knx-premium-automation-panama" />
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dirasmart.com/en/blog/knx-premium-automation-panama</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/knx-panama-automatizacion-premium" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/knx-premium-automation-panama" />
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dirasmart.com/blog/control-por-voz-alexa-google-siri</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/control-por-voz-alexa-google-siri" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/voice-control-alexa-google-siri" />
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://dirasmart.com/en/blog/voice-control-alexa-google-siri</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/control-por-voz-alexa-google-siri" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/voice-control-alexa-google-siri" />
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://dirasmart.com/blog/cortinas-motorizadas-persianas-inteligentes</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/cortinas-motorizadas-persianas-inteligentes" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/motorized-curtains-smart-blinds" />
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://dirasmart.com/en/blog/motorized-curtains-smart-blinds</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/cortinas-motorizadas-persianas-inteligentes" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/motorized-curtains-smart-blinds" />
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://dirasmart.com/blog/automatizacion-apartamentos-panama</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/automatizacion-apartamentos-panama" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/apartment-automation-panama" />
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://dirasmart.com/en/blog/apartment-automation-panama</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/automatizacion-apartamentos-panama" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/apartment-automation-panama" />
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://dirasmart.com/blog/ahorro-energia-hogar-inteligente-panama</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/ahorro-energia-hogar-inteligente-panama" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/smart-home-energy-savings-panama" />
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://dirasmart.com/en/blog/smart-home-energy-savings-panama</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/ahorro-energia-hogar-inteligente-panama" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/smart-home-energy-savings-panama" />
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://dirasmart.com/blog/beneficios-hogar-inteligente-panama</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/beneficios-hogar-inteligente-panama" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/smart-home-benefits-panama" />
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://dirasmart.com/en/blog/smart-home-benefits-panama</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/beneficios-hogar-inteligente-panama" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/smart-home-benefits-panama" />
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://dirasmart.com/blog/como-funciona-automatizacion-hogar</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/como-funciona-automatizacion-hogar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/how-home-automation-works" />
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://dirasmart.com/en/blog/how-home-automation-works</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/como-funciona-automatizacion-hogar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/how-home-automation-works" />
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://dirasmart.com/blog/shabbat-tecnologia-automatizacion-halaja</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/shabbat-tecnologia-automatizacion-halaja" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/shabbat-technology-automation-halacha" />
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://dirasmart.com/en/blog/shabbat-technology-automation-halacha</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/shabbat-tecnologia-automatizacion-halaja" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/shabbat-technology-automation-halacha" />
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://dirasmart.com/blog/wifi-empresarial-vs-domestico</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/wifi-empresarial-vs-domestico" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/enterprise-vs-home-wifi" />
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://dirasmart.com/en/blog/enterprise-vs-home-wifi</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/wifi-empresarial-vs-domestico" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/enterprise-vs-home-wifi" />
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://dirasmart.com/blog/privacidad-hogar-inteligente-local-vs-nube</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/privacidad-hogar-inteligente-local-vs-nube" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/smart-home-privacy-local-vs-cloud" />
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://dirasmart.com/en/blog/smart-home-privacy-local-vs-cloud</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/privacidad-hogar-inteligente-local-vs-nube" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/smart-home-privacy-local-vs-cloud" />
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://dirasmart.com/blog/seguridad-inteligente-camaras-sensores</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/seguridad-inteligente-camaras-sensores" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/smart-security-cameras-sensors" />
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://dirasmart.com/en/blog/smart-security-cameras-sensors</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/seguridad-inteligente-camaras-sensores" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/smart-security-cameras-sensors" />
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://dirasmart.com/blog/iluminacion-inteligente-ambiente-ahorro</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/iluminacion-inteligente-ambiente-ahorro" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/smart-lighting-ambiance-energy-savings" />
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://dirasmart.com/en/blog/smart-lighting-ambiance-energy-savings</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/iluminacion-inteligente-ambiente-ahorro" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/smart-lighting-ambiance-energy-savings" />
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://dirasmart.com/blog/climatizacion-inteligente-tropico-panama</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/climatizacion-inteligente-tropico-panama" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/smart-hvac-tropical-climate-panama" />
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://dirasmart.com/en/blog/smart-hvac-tropical-climate-panama</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/climatizacion-inteligente-tropico-panama" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/smart-hvac-tropical-climate-panama" />
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://dirasmart.com/blog/guia-principiantes-primera-casa-inteligente</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/guia-principiantes-primera-casa-inteligente" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/beginners-guide-first-smart-home" />
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://dirasmart.com/en/blog/beginners-guide-first-smart-home</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/guia-principiantes-primera-casa-inteligente" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/beginners-guide-first-smart-home" />
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://dirasmart.com/blog/smart-home-oficinas-negocios</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/smart-home-oficinas-negocios" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/smart-home-offices-business" />
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://dirasmart.com/en/blog/smart-home-offices-business</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dirasmart.com/blog/smart-home-oficinas-negocios" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dirasmart.com/en/blog/smart-home-offices-business" />
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 </urlset>

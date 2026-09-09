@@ -1,7 +1,7 @@
 import type { BlogPost } from "./types";
 
 export const post: BlogPost = {
-  slug: "guia-principiantes-primera-casa-inteligente",
+  slug: { es: "guia-principiantes-primera-casa-inteligente", en: "beginners-guide-first-smart-home" },
   date: "2026-02-08",
   readTime: 7,
   category: { es: "Guías", en: "Guides" },
@@ -104,4 +104,36 @@ Once you have lighting and climate up and running, you can add additional system
 
 The key is not to feel pressured to do everything at once. A smart home is a project that grows with you. Start with what has the most impact on your daily life and expand when you're ready. With DiraSmart, every new addition integrates seamlessly with what you already have.`,
   },
+  faq: [
+    {
+      question: {
+        es: "¿Por qué falla mi WiFi cuando agrego muchos dispositivos inteligentes?",
+        en: "Why does my WiFi fail when I add too many smart devices?",
+      },
+      answer: {
+        es: "Un hogar inteligente típico tiene entre 30 y 80 dispositivos conectados, mientras que un router doméstico estándar solo maneja entre 10 y 20. Cuando la red no puede con la carga, los dispositivos se desconectan o dejan de responder. La solución es instalar puntos de acceso WiFi empresariales (como UniFi) que garanticen cobertura y estabilidad en toda la casa antes de agregar más dispositivos.",
+        en: "A typical smart home has between 30 and 80 connected devices, while a standard home router only handles 10 to 20. When the network can't handle the load, devices disconnect or stop responding. The fix is installing enterprise-grade WiFi access points (like UniFi) that guarantee coverage and stability throughout the house before adding more devices.",
+      },
+    },
+    {
+      question: {
+        es: "¿Con qué debo empezar mi casa inteligente: luces, cámaras o cerraduras?",
+        en: "What should I start with in my smart home: lights, cameras, or locks?",
+      },
+      answer: {
+        es: "Lo ideal es empezar con iluminación y aire acondicionado, ya que son los sistemas con más impacto inmediato y los más fáciles de entender y usar para toda la familia. Con luces inteligentes ganas confort y control desde el celular desde el primer día, y con climatización inteligente puedes reducir tu factura eléctrica entre 20% y 35%. Una vez dominados estos dos, puedes expandir a seguridad, cortinas y audio a tu propio ritmo.",
+        en: "It's best to start with lighting and air conditioning, since they're the systems with the most immediate impact and the easiest for the whole family to understand and use. Smart lights give you comfort and phone control from day one, and smart climate control can cut your electric bill by 20% to 35%. Once you've mastered these two, you can expand into security, blinds, and audio at your own pace.",
+      },
+    },
+    {
+      question: {
+        es: "¿Cuál es la diferencia entre WiFi, Zigbee, Z-Wave y Matter?",
+        en: "What's the difference between WiFi, Zigbee, Z-Wave, and Matter?",
+      },
+      answer: {
+        es: "WiFi funciona directo con tu router pero consume más batería y puede saturar la red. Zigbee usa poca energía y crea una red en malla ideal para sensores y bombillas, mientras que Z-Wave es similar pero opera en otra frecuencia, popular en cerraduras y termostatos. Matter es el estándar más nuevo que busca unificar todos los anteriores. Con un hub central como el de DiraSmart no necesitas preocuparte por estas diferencias: el hub habla todos los idiomas y controlas todo desde una sola app.",
+        en: "WiFi works directly with your router but consumes more battery and can overwhelm the network. Zigbee uses little energy and creates a mesh network ideal for sensors and bulbs, while Z-Wave is similar but operates on a different frequency, popular for locks and thermostats. Matter is the newest standard aiming to unify all of the above. With a central hub like the one DiraSmart installs, you don't need to worry about these differences: the hub speaks every protocol and you control everything from one app.",
+      },
+    },
+  ],
 };
