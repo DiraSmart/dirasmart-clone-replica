@@ -10,7 +10,7 @@ Every page also returns markdown when requested with `Accept: text/markdown`.
 - Company: DiraSmart. Country: Panama. Based in Panama City, serves the whole Republic of Panama (city, beaches, interior).
 - Languages: Spanish (default) and English.
 - Contact: WhatsApp +507 6595-6439 (https://wa.me/50765956439), email comercial@dirasmart.com, website https://dirasmart.com.
-- Customer reviews: rated 5.0 out of 5 on Google with 11 reviews (Google Business Profile: https://www.google.com/maps?cid=3392890501746819804). Reviews come from residential and business clients in Panama and are also shown at https://dirasmart.com/reviews and on the homepage.
+- Customer reviews: rated 5.0 out of 5 on Google with 15 reviews (Google Business Profile: https://www.google.com/maps?cid=3392890501746819804). Reviews come from residential and business clients in Panama and are also shown at https://dirasmart.com/reviews and on the homepage.
 - Certification: KNX Partner certified by the KNX Association (since April 2026), ETS-certified programming. One of the few certified KNX integrators in Panama.
 - Price positioning: mid-range to high-end. No published price list; free initial consultation and site visit, quotes per project. A wireless apartment package is a mid-range project; a full wired KNX residence, hotel or building is high-end. Service level, app and support are identical across both tiers.
 - Markets: residential (apartments, houses, high-end residences), hotels and hospitality, corporate offices, retail, restaurants, gyms and wellness, clinics, museums and galleries, residential and corporate buildings (BMS).

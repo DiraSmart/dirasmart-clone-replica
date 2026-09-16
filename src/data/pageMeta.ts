@@ -32,7 +32,7 @@ export const PAGE_META_ES: Record<string, PageMeta> = {
   "/reviews": {
     title: "Reseñas • DiraSmart • Opiniones de Clientes de Casa Inteligente en Panamá",
     description:
-      "Reseñas reales de clientes de DiraSmart en Panamá: hogares, oficinas y residencias automatizadas con procesamiento local, KNX y soporte por WhatsApp. Calificación 5.0 en Google con 11 opiniones.",
+      "Reseñas reales de clientes de DiraSmart en Panamá: hogares, oficinas y residencias automatizadas con procesamiento local, KNX y soporte por WhatsApp. Calificación 5.0 en Google con 15 opiniones.",
   },
   "/blog": {
     title: "Blog • DiraSmart • Guías de Smart Home y Domótica",
@@ -65,7 +65,7 @@ export const PAGE_META_EN: Record<string, PageMeta> = {
   "/reviews": {
     title: "Reviews • DiraSmart • Smart Home Client Reviews in Panama",
     description:
-      "Real reviews from DiraSmart clients in Panama: homes, offices and residences automated with local processing, KNX and WhatsApp support. Rated 5.0 on Google with 11 reviews.",
+      "Real reviews from DiraSmart clients in Panama: homes, offices and residences automated with local processing, KNX and WhatsApp support. Rated 5.0 on Google with 15 reviews.",
   },
   "/blog": {
     title: "Blog • DiraSmart • Smart Home & Automation Guides",

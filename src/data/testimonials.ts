@@ -14,7 +14,7 @@ export interface Testimonial {
   source: "google" | "direct";
 }
 
-export const GOOGLE_RATING = { value: 5.0, count: 11 };
+export const GOOGLE_RATING = { value: 5.0, count: 15 };
 
 export const GOOGLE_REVIEWS_URL = "https://www.google.com/maps?cid=3392890501746819804";
 
