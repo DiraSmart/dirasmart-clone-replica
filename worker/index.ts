@@ -22,6 +22,12 @@ const PERMANENT_REDIRECTS: Record<string, string> = {
   "/mi-cuenta/": "/",
   "/contacto": "/comercial",
   "/contacto/": "/comercial",
+  "/contacto-1651": "/comercial",
+  "/contacto-1651/": "/comercial",
+  "/promotions": "/",
+  "/promotions/": "/",
+  "/derecho-de-propiedad-y-marcas-registradas": "/about",
+  "/derecho-de-propiedad-y-marcas-registradas/": "/about",
   // Migration to English slugs on /en/ blog routes (2026-05-13)
   "/en/blog/knx-panama-automatizacion-premium": "/en/blog/knx-premium-automation-panama",
   "/en/blog/control-por-voz-alexa-google-siri": "/en/blog/voice-control-alexa-google-siri",
