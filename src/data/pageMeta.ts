@@ -10,32 +10,32 @@ export interface PageMeta {
 
 export const PAGE_META_ES: Record<string, PageMeta> = {
   "/": {
-    title: "DiraSmart • Casa Inteligente en Panamá • Domótica, KNX y Automatización",
+    title: "DiraSmart · Casa Inteligente y Domótica en Panamá",
     description:
-      "Empresa de casas inteligentes en Panamá. Instalación profesional, procesamiento 100% local, KNX Partner certificado, WiFi empresarial y app propia. Gama media y alta para hogares, hoteles, comercios y edificios.",
+      "Empresa de casas inteligentes en Panamá. KNX Partner certificado, procesamiento 100% local y app propia para hogares, hoteles, comercios y edificios.",
   },
   "/about": {
-    title: "Nosotros • DiraSmart • Casa Inteligente y Domótica en Panamá",
+    title: "Nosotros · DiraSmart · Casa Inteligente en Panamá",
     description:
-      "Por qué nació DiraSmart: instalación profesional de casa inteligente en Panamá con procesamiento 100% local, protocolos KNX, Zigbee y Modbus, modo Shabbat y soporte WhatsApp directo. Sin depender de la nube.",
+      "Por qué nació DiraSmart: casa inteligente en Panamá con procesamiento 100% local, KNX, Zigbee y Modbus, modo Shabbat y soporte directo por WhatsApp.",
   },
   "/comercial": {
-    title: "Comercial • DiraSmart • Automatización y BMS para Hoteles, Oficinas y Edificios en Panamá",
+    title: "Automatización y BMS para Hoteles y Edificios en Panamá",
     description:
-      "Automatización profesional y gestión de edificios (BMS) para hoteles, oficinas, restaurantes, retail, museos y edificios en Panamá. KNX Partner certificado, arquitectura descentralizada, integración BACnet y DALI, procesamiento local y soporte continuo.",
+      "Automatización y BMS para hoteles, oficinas, retail y edificios en Panamá. KNX Partner, arquitectura descentralizada, BACnet y DALI, soporte 24/7.",
   },
   "/premium": {
-    title: "Premium • DiraSmart • Instalaciones KNX de Alta Gama en Panamá (Basalte, Gira, Jung)",
+    title: "Instalaciones KNX Premium en Panamá · DiraSmart",
     description:
-      "Catálogo Premium de DiraSmart: pantallas KNX en pared y marcas europeas como Basalte, Gira, Jung y ABB, el mismo equipo que instalamos en hoteles, ahora para residencias en Panamá. KNX Partner certificado, sistema descentralizado y sin nube.",
+      "Pantallas KNX en pared y marcas como Basalte, Gira, Jung y ABB: el equipo de hoteles, ahora para residencias en Panamá. KNX Partner, sin nube.",
   },
   "/reviews": {
-    title: "Reseñas • DiraSmart • Opiniones de Clientes de Casa Inteligente en Panamá",
+    title: "Reseñas de Clientes · DiraSmart Panamá",
     description:
-      "Reseñas reales de clientes de DiraSmart en Panamá: hogares, oficinas y residencias automatizadas con procesamiento local, KNX y soporte por WhatsApp. Calificación 5.0 en Google con 15 opiniones.",
+      "Reseñas reales de clientes de DiraSmart en Panamá: hogares, oficinas y residencias automatizadas. Calificación 5.0 en Google con 15 opiniones.",
   },
   "/blog": {
-    title: "Blog • DiraSmart • Guías de Smart Home y Domótica",
+    title: "Blog · DiraSmart · Guías de Smart Home y Domótica",
     description:
       "Artículos, guías y noticias sobre casas inteligentes, automatización del hogar, domótica y tecnología en Panamá.",
   },
@@ -43,32 +43,32 @@ export const PAGE_META_ES: Record<string, PageMeta> = {
 
 export const PAGE_META_EN: Record<string, PageMeta> = {
   "/": {
-    title: "DiraSmart • Smart Home Company in Panama • Home Automation & KNX",
+    title: "DiraSmart · Smart Home Company in Panama",
     description:
-      "Smart home company in Panama. Professional installation, 100% local processing, certified KNX Partner, enterprise WiFi and custom app. Mid-range to high-end for homes, hotels, retail and buildings.",
+      "Smart home company in Panama. Certified KNX Partner, 100% local processing and a custom app for homes, hotels, retail and buildings.",
   },
   "/about": {
-    title: "About Us • DiraSmart • Smart Home & Home Automation in Panama",
+    title: "About Us · DiraSmart · Smart Homes in Panama",
     description:
-      "Why DiraSmart exists: professional smart home installation in Panama with 100% local processing, KNX, Zigbee and Modbus protocols, Shabbat mode and direct WhatsApp support. No cloud dependency.",
+      "Why DiraSmart exists: smart homes in Panama with 100% local processing, KNX, Zigbee and Modbus, Shabbat mode and direct WhatsApp support.",
   },
   "/comercial": {
-    title: "Commercial • DiraSmart • Automation & BMS for Hotels, Offices & Buildings in Panama",
+    title: "Hotel, Office & Building Automation in Panama · DiraSmart",
     description:
-      "Professional automation and building management (BMS) for hotels, offices, restaurants, retail, museums and buildings in Panama. Certified KNX Partner, decentralized architecture, BACnet and DALI integration, local processing and continuous support.",
+      "Automation and BMS for hotels, offices, retail and buildings in Panama. Certified KNX Partner, decentralized architecture, BACnet and DALI, 24/7 support.",
   },
   "/premium": {
-    title: "Premium • DiraSmart • High-End KNX Installations in Panama (Basalte, Gira, Jung)",
+    title: "Premium KNX Installations in Panama · DiraSmart",
     description:
-      "DiraSmart Premium catalog: wall-mounted KNX touchscreens and European brands like Basalte, Gira, Jung and ABB, the same equipment we install in hotels, now for residences in Panama. Certified KNX Partner, decentralized system, no cloud.",
+      "Wall-mounted KNX touchscreens and brands like Basalte, Gira, Jung and ABB: hotel-grade equipment for residences in Panama. Certified KNX Partner, no cloud.",
   },
   "/reviews": {
-    title: "Reviews • DiraSmart • Smart Home Client Reviews in Panama",
+    title: "Client Reviews · DiraSmart Panama",
     description:
-      "Real reviews from DiraSmart clients in Panama: homes, offices and residences automated with local processing, KNX and WhatsApp support. Rated 5.0 on Google with 15 reviews.",
+      "Real reviews from DiraSmart clients in Panama: homes, offices and residences automated with local processing and KNX. Rated 5.0 on Google with 15 reviews.",
   },
   "/blog": {
-    title: "Blog • DiraSmart • Smart Home & Automation Guides",
+    title: "Blog · DiraSmart · Smart Home & Automation Guides",
     description:
       "Articles, guides and news about smart homes, home automation, and technology in Panama.",
   },

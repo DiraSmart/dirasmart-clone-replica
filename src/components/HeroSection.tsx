@@ -3,7 +3,8 @@ import { Button } from "@/components/ui/button";
 import { MessageCircle, Pause, Play } from "lucide-react";
 import ParticleBackground from "./ParticleBackground";
 import { useLanguage } from "@/contexts/LanguageContext";
-import appMobileImage2 from "@/assets/app-mobile-2.png";
+import appMobileImage from "@/assets/app-mobile.webp";
+import appMobileImage2 from "@/assets/app-mobile-2.webp";
 
 const HeroSection = () => {
   const [currentImage, setCurrentImage] = useState(0);
@@ -11,7 +12,7 @@ const HeroSection = () => {
     typeof window !== "undefined" &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches
   );
-  const images = ["/app-mobile.png", appMobileImage2];
+  const images = [appMobileImage, appMobileImage2];
   const { t } = useLanguage();
 
   useEffect(() => {

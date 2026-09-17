@@ -15,7 +15,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Poppins', 'sans-serif'],
-        display: ['Fraunces', 'Georgia', 'serif'],
+        display: ['"Fraunces Variable"', 'Fraunces', 'Georgia', 'serif'],
       },
       colors: {
         border: "hsl(var(--border))",
