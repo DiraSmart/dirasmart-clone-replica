@@ -102,6 +102,18 @@ async function prerender() {
   console.log("Starting local server...");
   const server = await startServer(PORT);
 
+  // Vite injects <link rel="modulepreload"> for every lazily loaded chunk at runtime. Snapshotting those
+  // would make the browser preload every below-fold section (and framer-motion) on first paint, so only
+  // the preloads present in the original entry HTML are kept.
+  const entryHtml = readFileSync(join(DIST, "index.html"), "utf-8");
+  const allowedPreloads = new Set(
+    [...entryHtml.matchAll(/<link rel="modulepreload"[^>]*href="([^"]+)"/g)].map((m) => m[1])
+  );
+  const stripLazyPreloads = (html) =>
+    html.replace(/<link rel="modulepreload"[^>]*href="([^"]+)"[^>]*>/g, (tag, href) =>
+      allowedPreloads.has(href) ? tag : ""
+    );
+
   console.log("Launching browser...");
   const browser = await launch({
     headless: true,
@@ -119,7 +131,7 @@ async function prerender() {
     await new Promise((r) => setTimeout(r, 1500));
 
     // Get the full rendered HTML
-    const html = await page.content();
+    const html = stripLazyPreloads(await page.content());
 
     // Determine output path
     let outPath;

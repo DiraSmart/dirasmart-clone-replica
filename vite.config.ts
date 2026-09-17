@@ -31,15 +31,11 @@ export default defineConfig(({ mode }) => ({
     cssCodeSplit: true,
     rollupOptions: {
       output: {
-        manualChunks: {
-          'vendors': [
-            'react',
-            'react-dom',
-            'react-router-dom',
-          ],
-          'animation': [
-            'framer-motion',
-          ],
+        manualChunks(id) {
+          if (!id.includes('node_modules')) return undefined;
+          if (id.includes('/framer-motion/') || id.includes('/motion-dom/') || id.includes('/motion-utils/')) return 'animation';
+          if (/\/node_modules\/(react|react-dom|react-router|react-router-dom|scheduler|@remix-run)\//.test(id)) return 'vendors';
+          return undefined;
         },
       },
     },
