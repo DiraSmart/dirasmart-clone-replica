@@ -9,6 +9,19 @@ const PERMANENT_REDIRECTS: Record<string, string> = {
   "/en/blog/knx-partner-panama-automatizacion-premium": "/en/blog/knx-premium-automation-panama",
   "/index.html": "/",
   "/en/index.html": "/en",
+  // Legacy WordPress pages (pre-2026 site) still crawled by Google
+  "/ofertas": "/",
+  "/ofertas/": "/",
+  "/info": "/about",
+  "/info/": "/about",
+  "/tienda": "/",
+  "/tienda/": "/",
+  "/carrito": "/",
+  "/carrito/": "/",
+  "/mi-cuenta": "/",
+  "/mi-cuenta/": "/",
+  "/contacto": "/comercial",
+  "/contacto/": "/comercial",
   // Migration to English slugs on /en/ blog routes (2026-05-13)
   "/en/blog/knx-panama-automatizacion-premium": "/en/blog/knx-premium-automation-panama",
   "/en/blog/control-por-voz-alexa-google-siri": "/en/blog/voice-control-alexa-google-siri",
@@ -148,6 +161,11 @@ export default {
     const redirectTarget = PERMANENT_REDIRECTS[url.pathname];
     if (redirectTarget) {
       return Response.redirect(new URL(redirectTarget + url.search, url.origin).toString(), 301);
+    }
+
+    // Legacy WooCommerce product/category URLs: send to the home (mid-range catalog), drop cart params.
+    if (/^\/(producto|categoria-producto|product|product-category|tag|etiqueta|author|feed|wp-content|wp-json)(\/|$)/.test(url.pathname)) {
+      return Response.redirect(new URL("/", url.origin).toString(), 301);
     }
 
     const slashRedirect = trailingSlashRedirect(url.pathname);
