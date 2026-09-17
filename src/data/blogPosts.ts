@@ -20,8 +20,24 @@ import { post as daliIluminacion } from "./posts/dali-protocolo-iluminacion-futu
 import { post as casaVsDispositivos } from "./posts/casa-inteligente-vs-dispositivos-inteligentes";
 import { post as bmsComercial } from "./posts/bms-sistema-gestion-edificios-comercial";
 import { post as bacnetEstandar } from "./posts/bacnet-protocolo-bms-estandar-ashrae";
+import { post as cuantoCuesta } from "./posts/cuanto-cuesta-casa-inteligente-panama";
+import { post as empresasDomotica } from "./posts/empresas-domotica-panama-como-elegir";
+import { post as knxVsControl4 } from "./posts/knx-vs-control4-crestron-savant";
+import { post as hotelesGuia } from "./posts/automatizacion-hoteles-panama-guia";
+import { post as knxObraNueva } from "./posts/knx-obra-nueva-arquitecto-electricista";
+import { post as sinInternet } from "./posts/casa-inteligente-sin-internet-procesamiento-local";
+import { post as restaurantesGimnasios } from "./posts/automatizacion-restaurantes-gimnasios-clinicas-panama";
+import { post as cuantoTarda } from "./posts/cuanto-tarda-instalar-casa-inteligente-panama";
 
 export const blogPosts = [
+  cuantoCuesta,
+  empresasDomotica,
+  knxVsControl4,
+  hotelesGuia,
+  knxObraNueva,
+  sinInternet,
+  restaurantesGimnasios,
+  cuantoTarda,
   bmsComercial,
   bacnetEstandar,
   casaVsDispositivos,
@@ -42,4 +58,4 @@ export const blogPosts = [
   climatizacionTropico,
   guiaPrincipiantes,
   smartOficinas,
-];
+].sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));

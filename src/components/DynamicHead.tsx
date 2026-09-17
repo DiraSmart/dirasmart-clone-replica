@@ -319,8 +319,8 @@ const DynamicHead = () => {
           const title = post.title[lang];
           const excerpt = post.excerpt[lang];
 
-          document.title = `${title} • DiraSmart Blog`;
-          updateMeta('meta[name="description"]', "content", excerpt);
+          document.title = title.length > 52 ? title : `${title} · DiraSmart`;
+          updateMeta('meta[name="description"]', "content", excerpt.length > 158 ? excerpt.slice(0, 155).replace(/\s+\S*$/, "") + "…" : excerpt);
           updateMeta('meta[property="og:title"]', "content", title);
           updateMeta('meta[property="og:description"]', "content", excerpt);
           updateMeta('meta[property="og:type"]', "content", "article");

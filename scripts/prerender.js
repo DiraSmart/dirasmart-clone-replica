@@ -12,6 +12,14 @@ const STATIC_PAGES = ["/", "/about", "/comercial", "/premium", "/reviews", "/blo
 
 // Blog post slugs per language
 const BLOG_SLUGS = [
+  { es: "cuanto-cuesta-casa-inteligente-panama", en: "smart-home-cost-panama" },
+  { es: "empresas-domotica-panama-como-elegir", en: "home-automation-companies-panama-how-to-choose" },
+  { es: "knx-vs-control4-crestron-savant", en: "knx-vs-control4-crestron-savant" },
+  { es: "automatizacion-hoteles-panama-guia", en: "hotel-automation-panama-guide" },
+  { es: "knx-obra-nueva-arquitecto-electricista", en: "knx-new-construction-architect-electrician" },
+  { es: "casa-inteligente-sin-internet-procesamiento-local", en: "smart-home-without-internet-local-processing" },
+  { es: "automatizacion-restaurantes-gimnasios-clinicas-panama", en: "automation-restaurants-gyms-clinics-panama" },
+  { es: "cuanto-tarda-instalar-casa-inteligente-panama", en: "how-long-smart-home-installation-takes-panama" },
   { es: "bms-sistema-gestion-edificios-comercial", en: "bms-building-management-systems" },
   { es: "bacnet-protocolo-bms-estandar-ashrae", en: "bacnet-protocol-bms-standard" },
   { es: "casa-inteligente-vs-dispositivos-inteligentes", en: "smart-devices-vs-smart-home" },

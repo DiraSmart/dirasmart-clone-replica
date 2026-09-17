@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState, ReactNode } from "react";
-import { motion, useInView, useAnimation, Variants } from "framer-motion";
 
 interface AnimatedSectionProps {
   children: ReactNode;
@@ -8,56 +7,40 @@ interface AnimatedSectionProps {
   direction?: "up" | "down" | "left" | "right";
 }
 
-const AnimatedSection = ({ 
-  children, 
-  className = "", 
-  delay = 0,
-  direction = "up" 
-}: AnimatedSectionProps) => {
+/** Reveal-on-scroll without framer-motion: keeps the animation chunk off the home's critical path. */
+const AnimatedSection = ({ children, className = "", delay = 0, direction = "up" }: AnimatedSectionProps) => {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const controls = useAnimation();
-
-  const getInitialPosition = () => {
-    switch (direction) {
-      case "up": return { opacity: 0, y: 50 };
-      case "down": return { opacity: 0, y: -50 };
-      case "left": return { opacity: 0, x: 50 };
-      case "right": return { opacity: 0, x: -50 };
-      default: return { opacity: 0, y: 50 };
-    }
-  };
-
-  const getFinalPosition = () => {
-    switch (direction) {
-      case "up":
-      case "down": return { opacity: 1, y: 0 };
-      case "left":
-      case "right": return { opacity: 1, x: 0 };
-      default: return { opacity: 1, y: 0 };
-    }
-  };
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    if (isInView) {
-      controls.start(getFinalPosition());
-    }
-  }, [isInView, controls]);
+    const el = ref.current;
+    if (!el) return;
+    if (typeof IntersectionObserver === "undefined") { setVisible(true); return; }
+    const io = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); io.disconnect(); } },
+      { rootMargin: "-80px 0px" }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  const hidden =
+    direction === "up" ? "translate3d(0,40px,0)" :
+    direction === "down" ? "translate3d(0,-40px,0)" :
+    direction === "left" ? "translate3d(40px,0,0)" : "translate3d(-40px,0,0)";
 
   return (
-    <motion.div
+    <div
       ref={ref}
-      initial={getInitialPosition()}
-      animate={controls}
-      transition={{ 
-        duration: 0.6, 
-        delay,
-        ease: [0.25, 0.1, 0.25, 1]
-      }}
       className={className}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? "none" : hidden,
+        transition: `opacity 0.6s cubic-bezier(0.25,0.1,0.25,1) ${delay}s, transform 0.6s cubic-bezier(0.25,0.1,0.25,1) ${delay}s`,
+      }}
     >
       {children}
-    </motion.div>
+    </div>
   );
 };
 
