@@ -104,7 +104,7 @@ const Reviews = () => {
                     {TESTIMONIAL_IMAGES[item.key] ? (
                       <img
                         src={TESTIMONIAL_IMAGES[item.key]}
-                        alt=""
+                        alt={item.name}
                         width={44}
                         height={44}
                         loading="lazy"

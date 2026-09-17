@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { PAGE_META_EN, PAGE_META_ES } from "@/data/pageMeta";
+import { BLOG_META_TITLES } from "@/data/blogMetaTitles";
 
 const SITE_URL = "https://dirasmart.com";
 
@@ -319,12 +320,13 @@ const DynamicHead = () => {
           const title = post.title[lang];
           const excerpt = post.excerpt[lang];
 
-          document.title = title.length > 52 ? title : `${title} · DiraSmart`;
+          const shortTitle = BLOG_META_TITLES[post.slug.es]?.[lang] ?? title;
+          document.title = shortTitle.length > 48 ? shortTitle : `${shortTitle} · DiraSmart`;
           updateMeta('meta[name="description"]', "content", excerpt.length > 158 ? excerpt.slice(0, 155).replace(/\s+\S*$/, "") + "…" : excerpt);
-          updateMeta('meta[property="og:title"]', "content", title);
+          updateMeta('meta[property="og:title"]', "content", shortTitle);
           updateMeta('meta[property="og:description"]', "content", excerpt);
           updateMeta('meta[property="og:type"]', "content", "article");
-          updateMeta('meta[name="twitter:title"]', "content", title);
+          updateMeta('meta[name="twitter:title"]', "content", shortTitle);
           updateMeta('meta[name="twitter:description"]', "content", excerpt);
 
           if (post.image) {
