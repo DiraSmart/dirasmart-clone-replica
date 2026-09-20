@@ -20,6 +20,33 @@ export const GOOGLE_REVIEWS_URL = "https://www.google.com/maps?cid=3392890501746
 
 export const TESTIMONIALS: Testimonial[] = [
   {
+    key: "shellyAbadi",
+    name: "Shelly Abadi",
+    role: { es: "Cliente DiraSmart", en: "DiraSmart Client" },
+    text: { es: "Muy atento y muy bonito y profesional trabajo.", en: "Very attentive, and a beautiful, professional job." },
+    rating: 5,
+    initial: "S",
+    source: "google",
+  },
+  {
+    key: "pauletteDayan",
+    name: "Paulette Dayan",
+    role: { es: "Cliente DiraSmart", en: "DiraSmart Client" },
+    text: { es: "Excelente servicio. Súper cumplidos, a tiempo, contestan cualquier cosa que se necesite y excelente producto.", en: "Excellent service. Very reliable, on time, they answer anything you need, and an excellent product." },
+    rating: 5,
+    initial: "P",
+    source: "google",
+  },
+  {
+    key: "markBekhar",
+    name: "Mark Bekhar",
+    role: { es: "Cliente DiraSmart", en: "DiraSmart Client" },
+    text: { es: "El mejor servicio.", en: "Best service ever!" },
+    rating: 5,
+    initial: "M",
+    source: "google",
+  },
+  {
     key: "josephCherem",
     name: "Joseph Cherem",
     role: { es: "Cliente DiraSmart", en: "DiraSmart Client" },
