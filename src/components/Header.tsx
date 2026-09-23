@@ -110,7 +110,7 @@ const Header = () => {
 
           {/* Mobile Navigation */}
           {isMenuOpen && (
-            <nav className="md:hidden py-4 px-4 border-t border-border motion-safe:animate-fade-in">
+            <nav className="md:hidden py-4 px-4 border-t border-border origin-top motion-safe:animate-menu-in">
               <div className="flex flex-col gap-4">
                 {sectionLinks.map((link) => (
                   <button

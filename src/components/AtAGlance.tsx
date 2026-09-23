@@ -96,14 +96,14 @@ const AtAGlance = () => {
         <div className="flex flex-col sm:flex-row gap-3 justify-center mt-10 text-sm">
           <Link
             to={localePath("/comercial")}
-            className="inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-full border border-border bg-background text-foreground font-medium hover:border-primary/40 motion-safe:transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            className="inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-full border border-border bg-background text-foreground font-medium hover:border-primary/40 motion-safe:transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 motion-safe:transition-transform motion-safe:duration-150 motion-safe:ease-out-strong motion-safe:active:scale-[0.97]"
           >
             {es ? "Hoteles, comercios y edificios" : "Hotels, retail and buildings"}
             <span aria-hidden="true">→</span>
           </Link>
           <Link
             to={localePath("/premium")}
-            className="inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-full border border-border bg-background text-foreground font-medium hover:border-primary/40 motion-safe:transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            className="inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-full border border-border bg-background text-foreground font-medium hover:border-primary/40 motion-safe:transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 motion-safe:transition-transform motion-safe:duration-150 motion-safe:ease-out-strong motion-safe:active:scale-[0.97]"
           >
             {es ? "Catálogo KNX Premium" : "Premium KNX catalog"}
             <span aria-hidden="true">→</span>

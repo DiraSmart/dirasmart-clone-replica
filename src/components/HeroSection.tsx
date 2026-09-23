@@ -63,7 +63,7 @@ const HeroSection = () => {
               <Button
                 asChild
                 size="lg"
-                className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6"
+                className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 motion-safe:transition-transform motion-safe:duration-150 motion-safe:ease-out-strong motion-safe:active:scale-[0.97]"
               >
                 <a
                   href={`https://wa.me/50765956439?text=${encodeURIComponent(t("hero.cta.message"))}`}
@@ -78,7 +78,7 @@ const HeroSection = () => {
                 onClick={scrollToDemo}
                 variant="outline"
                 size="lg"
-                className="border-primary bg-white/90 dark:bg-background text-primary hover:bg-primary/10 text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6"
+                className="border-primary bg-white/90 dark:bg-background text-primary hover:bg-primary/10 text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 motion-safe:transition-transform motion-safe:duration-150 motion-safe:ease-out-strong motion-safe:active:scale-[0.97]"
               >
                 {t("hero.ctaSecondary")}
               </Button>

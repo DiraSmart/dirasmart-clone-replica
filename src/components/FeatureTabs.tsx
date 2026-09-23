@@ -3,6 +3,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Smartphone, Moon, Zap, Cpu, Lightbulb, Thermometer, Home, Clock, Calendar, Tablet, Monitor, Pause, Play } from "lucide-react";
 import devicesMockup from "@/assets/devices-mockup.webp";
 import { useLanguage } from "@/contexts/LanguageContext";
+import DeviceFrame from "@/components/DeviceFrame";
 import appMobileImage from "@/assets/app-mobile-main.webp";
 import shabatModeImage from "@/assets/shabat-mode.webp";
 import automationsImage from "@/assets/automations-screen.webp";
@@ -24,10 +25,10 @@ const FeatureCard = ({ icon: Icon, title, desc, colorClass }: {icon: typeof Ther
 };
 
 // Reusable tab content with alternating layout
-const TabPanel = ({ badge, badgeColor, title, description, cards, image, imageAlt, imageClass, reversed }: {
+const TabPanel = ({ badge, badgeColor, title, description, cards, image, imageAlt, imageClass, reversed, frame }: {
   badge: string; badgeColor: "primary" | "accent"; title: string; description: string;
   cards: { icon: typeof Thermometer; title: string; desc: string; colorClass: string }[];
-  image: string; imageAlt: string; imageClass?: string; reversed?: boolean;
+  image: string; imageAlt: string; imageClass?: string; reversed?: boolean; frame?: boolean;
 }) => {
   const textContent = (
     <div className="space-y-6">
@@ -50,14 +51,20 @@ const TabPanel = ({ badge, badgeColor, title, description, cards, image, imageAl
     <div className="flex justify-center items-center">
       <div className="relative">
         <div className={`absolute -inset-8 bg-gradient-to-r ${badgeColor === "accent" ? "from-accent/10 to-primary/10" : "from-primary/10 to-accent/10"} rounded-full blur-3xl opacity-60`} />
-        <img
-          src={image}
-          alt={imageAlt}
-          className={`relative object-contain ${imageClass || "w-auto h-[260px] sm:h-[380px]"}`}
-          width={400}
-          height={380}
-          loading="lazy"
-        />
+        {frame ? (
+          <DeviceFrame className="relative">
+            <img src={image} alt={imageAlt} className="block w-auto h-[300px] sm:h-[420px] object-cover" width={400} height={380} loading="lazy" />
+          </DeviceFrame>
+        ) : (
+          <img
+            src={image}
+            alt={imageAlt}
+            className={`relative object-contain ${imageClass || "w-auto h-[260px] sm:h-[380px]"}`}
+            width={400}
+            height={380}
+            loading="lazy"
+          />
+        )}
       </div>
     </div>
   );
@@ -168,7 +175,7 @@ const FeatureTabs = () => {
           </div>
 
           {/* App Tab — image right */}
-          <TabsContent value="app" className="animate-fade-in">
+          <TabsContent value="app" className="motion-safe:animate-fade-in-fast">
             <TabPanel
               badge={t("features.app.badge")}
               badgeColor="primary"
@@ -185,7 +192,7 @@ const FeatureTabs = () => {
           </TabsContent>
 
           {/* Shabbat Tab — image left (reversed) */}
-          <TabsContent value="shabbat" className="animate-fade-in">
+          <TabsContent value="shabbat" className="motion-safe:animate-fade-in-fast">
             <TabPanel
               badge={t("features.shabbat.badge")}
               badgeColor="accent"
@@ -203,7 +210,7 @@ const FeatureTabs = () => {
           </TabsContent>
 
           {/* Automate Tab — image right */}
-          <TabsContent value="automate" className="animate-fade-in">
+          <TabsContent value="automate" className="motion-safe:animate-fade-in-fast">
             <TabPanel
               badge={t("features.automate.badge")}
               badgeColor="primary"
@@ -216,12 +223,12 @@ const FeatureTabs = () => {
               ]}
               image={automationsImage}
               imageAlt="Automatización del hogar DiraSmart - escenas y programación inteligente"
-              imageClass="w-auto h-[260px] sm:h-[380px] rounded-xl"
+              frame
             />
           </TabsContent>
 
           {/* Devices Tab — image left (reversed) */}
-          <TabsContent value="dispositivos" className="animate-fade-in">
+          <TabsContent value="dispositivos" className="motion-safe:animate-fade-in-fast">
             <TabPanel
               badge={t("features.devices.badge")}
               badgeColor="primary"

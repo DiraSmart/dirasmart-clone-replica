@@ -125,7 +125,7 @@ const BrandLogos = () => {
             {protocols.map((protocol) => (
               <div
                 key={protocol.name}
-                className={`bg-background dark:bg-slate-200 rounded-xl p-3 sm:p-4 flex items-center justify-center border border-border/50 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1${protocol.name === "Modbus" ? " hidden sm:flex" : ""}`}
+                className={`bg-background dark:bg-slate-200 rounded-xl p-3 sm:p-4 flex items-center justify-center border border-border/50 shadow-lg hover:shadow-xl transition-[color,background-color,border-color,opacity,transform,box-shadow] hover:-translate-y-1${protocol.name === "Modbus" ? " hidden sm:flex" : ""}`}
               >
                 <img
                   src={protocol.logo}

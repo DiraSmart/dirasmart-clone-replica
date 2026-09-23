@@ -105,6 +105,7 @@ const TestimonialsCarousel = () => {
             </div>
 
 
+            <div key={currentIndex} className="motion-safe:animate-fade-in-fast">
             {/* Quote */}
             <blockquote className="text-lg md:text-xl text-foreground mb-8 leading-relaxed font-medium relative z-10 max-w-2xl">
               {"“"}{current.text}{"”"}
@@ -127,6 +128,7 @@ const TestimonialsCarousel = () => {
                 <p className="font-semibold text-foreground">{current.name}</p>
                 <p className="text-sm text-muted-foreground">{current.role}</p>
               </div>
+            </div>
             </div>
           </div>
 

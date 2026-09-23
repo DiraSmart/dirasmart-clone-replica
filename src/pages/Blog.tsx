@@ -39,7 +39,7 @@ const Blog = () => {
                 <Link
                   key={post.slug.es}
                   to={localePath(`/blog/${post.slug[language]}`)}
-                  className="group rounded-2xl border border-border/50 bg-card overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+                  className="group rounded-2xl border border-border/50 bg-card overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-[color,background-color,border-color,opacity,transform,box-shadow] duration-300"
                 >
                   {/* Image or gradient header */}
                   <div className={`h-40 bg-gradient-to-br ${post.gradient} relative overflow-hidden`}>
