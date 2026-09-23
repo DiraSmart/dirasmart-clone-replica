@@ -25,9 +25,9 @@ const AnimatedSection = ({ children, className = "", delay = 0, direction = "up"
   }, []);
 
   const hidden =
-    direction === "up" ? "translate3d(0,40px,0)" :
-    direction === "down" ? "translate3d(0,-40px,0)" :
-    direction === "left" ? "translate3d(40px,0,0)" : "translate3d(-40px,0,0)";
+    direction === "up" ? "translate3d(0,24px,0)" :
+    direction === "down" ? "translate3d(0,-24px,0)" :
+    direction === "left" ? "translate3d(24px,0,0)" : "translate3d(-24px,0,0)";
 
   return (
     <div
@@ -35,8 +35,8 @@ const AnimatedSection = ({ children, className = "", delay = 0, direction = "up"
       className={className}
       style={{
         opacity: visible ? 1 : 0,
-        transform: visible ? "none" : hidden,
-        transition: `opacity 0.6s cubic-bezier(0.25,0.1,0.25,1) ${delay}s, transform 0.6s cubic-bezier(0.25,0.1,0.25,1) ${delay}s`,
+        transform: visible ? "none" : "translate3d(0,12px,0)",
+        transition: `opacity 0.5s cubic-bezier(0.23,1,0.32,1) ${delay}s, transform 0.5s cubic-bezier(0.23,1,0.32,1) ${delay}s`,
       }}
     >
       {children}

@@ -131,7 +131,7 @@ async function prerender() {
     await new Promise((r) => setTimeout(r, 1500));
 
     // Get the full rendered HTML
-    const html = stripLazyPreloads(await page.content());
+    const html = stripLazyPreloads(await page.content()).replace(/<html([^>]*)class="([^"]*)\bjs-reveal\b\s*([^"]*)"/, '<html$1class="$2$3"');
 
     // Determine output path
     let outPath;

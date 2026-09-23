@@ -41,6 +41,10 @@
 
     --radius: 0.75rem;
 
+    /* Motion tokens (Emil Kowalski easing set): strong ease-out for entrances, strong in-out for on-screen movement */
+    --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
+
     /* Custom tokens for DiraSmart */
     --gradient-hero: linear-gradient(135deg, hsl(190 90% 50% / 0.1) 0%, hsl(220 40% 13% / 0.05) 100%);
     --shadow-card: 0 4px 20px -4px hsl(220 30% 15% / 0.1);
@@ -124,7 +128,7 @@
   }
 
   .hover-lift {
-    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
+    @apply transition-[transform,box-shadow] duration-300 ease-out-strong hover:-translate-y-1 hover:shadow-lg;
   }
 
   .glass-effect {
@@ -180,5 +184,22 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* ── Reveal-on-scroll (RevealObserver adds .is-visible) ───────────────── */
+@layer utilities {
+  .js-reveal [data-reveal] {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0);
+    transition: opacity 0.7s var(--ease-out-strong), transform 0.7s var(--ease-out-strong);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  .js-reveal [data-reveal="left"] { transform: translate3d(-36px, 0, 0); }
+  .js-reveal [data-reveal="right"] { transform: translate3d(36px, 0, 0); }
+  .js-reveal [data-reveal="scale"] { transform: scale(0.94); }
+  .js-reveal [data-reveal].is-visible { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .js-reveal [data-reveal] { opacity: 1; transform: none; transition: none; }
   }
 }

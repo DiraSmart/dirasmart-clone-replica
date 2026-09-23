@@ -15,9 +15,15 @@ const WhatsAppButton = () => {
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 z-50 transition-all duration-300 hover:scale-110"
+      className="group fixed bottom-6 right-6 z-50 flex items-center gap-3 motion-safe:transition-transform motion-safe:duration-200 motion-safe:ease-out-strong [@media(hover:hover)]:hover:scale-105 motion-safe:active:scale-95"
       aria-label="Contactar por WhatsApp"
     >
+      <span
+        aria-hidden="true"
+        className="hidden sm:inline-block rounded-full bg-background/95 border border-border px-3.5 py-2 text-sm font-medium text-foreground shadow-md motion-safe:animate-label-in motion-safe:opacity-0"
+      >
+        {language === "es" ? "¿Hablamos?" : "Let's talk?"}
+      </span>
       <svg
         className="w-14 h-14 drop-shadow-lg"
         viewBox="700 360 48 48"

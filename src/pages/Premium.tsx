@@ -34,6 +34,7 @@ import sonosLogo from "@/assets/brands/sonos.png";
 import teslaLogo from "@/assets/brands/tesla.png";
 import somfyLogo from "@/assets/brands/somfy.png";
 import hikvisionLogo from "@/assets/brands/hikvision.png";
+import { revealDelay } from "@/lib/reveal";
 
 const WEB3FORMS_KEY = "1cd751d7-540f-4cad-8f38-00d2784ff893";
 const WHATSAPP_NUMBER = "50765956439";
@@ -273,14 +274,14 @@ const Premium = () => {
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-10">
                   <a
                     href="#hablemos"
-                    className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors motion-safe:transition-transform motion-safe:duration-150 motion-safe:ease-out-strong motion-safe:active:scale-[0.97]"
                   >
                     {es ? "Hablemos sobre tu proyecto" : "Let's talk about your project"}
                     <ArrowRight className="w-4 h-4" />
                   </a>
                   <a
                     href="#catalogo"
-                    className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-border bg-card/50 backdrop-blur-sm text-foreground font-medium hover:bg-card transition-colors"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-border bg-card/50 backdrop-blur-sm text-foreground font-medium hover:bg-card transition-colors motion-safe:transition-transform motion-safe:duration-150 motion-safe:ease-out-strong motion-safe:active:scale-[0.97]"
                   >
                     {es ? "Ver catálogo de marcas" : "See brand catalog"}
                   </a>
@@ -369,8 +370,8 @@ const Premium = () => {
               </p>
 
               <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-5 mb-10 opacity-70">
-                {commercialBrandsForBridge.map((b) => (
-                  <img
+                {commercialBrandsForBridge.map((b, _i) => (
+                  <img data-reveal="scale" style={revealDelay(_i)}
                     key={b.name}
                     src={b.src}
                     alt={b.name}
@@ -735,7 +736,7 @@ const Premium = () => {
                     <button
                       type="submit"
                       disabled={formState === "submitting"}
-                      className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-medium hover:bg-primary/90 disabled:opacity-50 transition-colors"
+                      className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-medium hover:bg-primary/90 disabled:opacity-50 transition-colors motion-safe:transition-transform motion-safe:duration-150 motion-safe:ease-out-strong motion-safe:active:scale-[0.97]"
                     >
                       {formState === "submitting" ? (
                         <>
@@ -777,7 +778,7 @@ const Premium = () => {
                   href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-accent text-accent-foreground font-medium hover:bg-accent/90 transition-colors"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-accent text-accent-foreground font-medium hover:bg-accent/90 transition-colors motion-safe:transition-transform motion-safe:duration-150 motion-safe:ease-out-strong motion-safe:active:scale-[0.97]"
                 >
                   {es ? "Escribir por WhatsApp" : "Message on WhatsApp"}
                   <ArrowRight className="w-4 h-4" />

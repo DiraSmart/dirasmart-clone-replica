@@ -64,7 +64,7 @@ const ServicesGrid = () => {
           
 
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-5 leading-tight">
+          <h2 data-reveal className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-5 leading-tight">
             {t("services.title")}{" "}
             <span className="text-gradient">{t("services.titleHighlight")}</span>?
           </h2>
@@ -79,13 +79,13 @@ const ServicesGrid = () => {
             return (
               <div
                 key={service.titleKey}
-                className={`group relative bg-white/5 backdrop-blur-sm rounded-2xl p-7 border border-white/10 transition-all duration-400 hover:-translate-y-1 hover:shadow-md ${
+                className={`group relative bg-white/5 backdrop-blur-sm rounded-2xl p-7 border border-white/10 transition-[color,background-color,border-color,opacity,transform,box-shadow] duration-400 hover:-translate-y-1 hover:shadow-md ${
                 isPrimary ? "hover:border-primary/40 hover:bg-white/10" : "hover:border-accent/40 hover:bg-white/10"} ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
                 style={{ transitionDelay: `${index * 80}ms` }}>
 
                 {/* Icon */}
-                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-all duration-300 group-hover:scale-110 group-hover:shadow-sm ${
+                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-[color,background-color,border-color,opacity,transform,box-shadow] duration-300 group-hover:scale-110 group-hover:shadow-sm ${
                   isPrimary ? "bg-primary/10 text-primary" : "bg-accent/10 text-accent"}`}>
                   <service.icon className="w-6 h-6" strokeWidth={1.5} />
                 </div>

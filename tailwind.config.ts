@@ -75,7 +75,31 @@ export default {
         'card': 'var(--shadow-card)',
         'card-hover': 'var(--shadow-card-hover)',
       },
+      transitionTimingFunction: {
+        'out-strong': 'var(--ease-out-strong)',
+        'in-out-strong': 'var(--ease-in-out-strong)',
+      },
       keyframes: {
+        "menu-in": {
+          "0%": { opacity: "0", transform: "translateY(-6px) scale(0.98)" },
+          "100%": { opacity: "1", transform: "translateY(0) scale(1)" },
+        },
+        "slide-in-right": {
+          "0%": { opacity: "0", transform: "translateX(40px)" },
+          "100%": { opacity: "1", transform: "translateX(0)" },
+        },
+        "slide-in-left": {
+          "0%": { opacity: "0", transform: "translateX(-40px)" },
+          "100%": { opacity: "1", transform: "translateX(0)" },
+        },
+        "fade-in-fast": {
+          "0%": { opacity: "0", transform: "translateY(8px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        "label-in": {
+          "0%": { opacity: "0", transform: "translateX(8px) scale(0.96)" },
+          "100%": { opacity: "1", transform: "translateX(0) scale(1)" },
+        },
         "accordion-down": {
           from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
@@ -118,6 +142,11 @@ export default {
         },
       },
       animation: {
+        "menu-in": "menu-in 180ms var(--ease-out-strong) both",
+        "fade-in-fast": "fade-in-fast 250ms var(--ease-out-strong) both",
+        "slide-in-right": "slide-in-right 380ms var(--ease-out-strong) both",
+        "slide-in-left": "slide-in-left 380ms var(--ease-out-strong) both",
+        "label-in": "label-in 300ms var(--ease-out-strong) 2.5s both",
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-in": "fade-in 0.6s ease-out forwards",

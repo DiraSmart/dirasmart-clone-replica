@@ -49,7 +49,7 @@ const PrivacyFeatures = () => {
 
       <div className="container-custom px-3 sm:px-4 relative z-10">
         <div className="text-center mb-14 md:mb-20">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-5 leading-tight">
+          <h2 data-reveal className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-5 leading-tight">
             {t("privacy.title")}{" "}
             <span className="text-gradient">{t("privacy.titleHighlight")}</span>
           </h2>
@@ -62,16 +62,16 @@ const PrivacyFeatures = () => {
           {features.map((feature, index) => (
             <div
               key={feature.titleKey}
-              className={`group relative transition-all duration-700 ${
+              className={`group relative transition-[color,background-color,border-color,opacity,transform,box-shadow] duration-700 ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
               }`}
-              style={{ transitionDelay: `${index * 120}ms` }}
+              style={{ transitionDelay: `${index * 60}ms` }}
             >
-              <div className="h-full p-6 sm:p-8 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm hover:bg-white/10 hover:border-white/20 transition-all duration-300 flex flex-col gap-5">
+              <div className="h-full p-6 sm:p-8 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm hover:bg-white/10 hover:border-white/20 transition-[color,background-color,border-color,opacity,transform,box-shadow] duration-300 flex flex-col gap-5">
                 {/* Number + Icon row */}
                 <div className="flex items-start justify-between">
                   <div
-                    className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110 ${
+                    className={`w-12 h-12 rounded-xl flex items-center justify-center transition-[color,background-color,border-color,opacity,transform,box-shadow] duration-300 group-hover:scale-110 ${
                       feature.color === "primary"
                         ? "bg-primary/20 text-primary"
                         : "bg-accent/20 text-accent"

@@ -212,7 +212,7 @@ const InteractiveDemo = () => {
     <section id="demo" className="section-padding section-divider bg-gradient-to-br from-primary/5 via-background to-accent/5">
       <div className="container-custom px-3 sm:px-4">
         <div className="text-center mb-8 md:mb-12">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 md:mb-4">
+          <h2 data-reveal className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 md:mb-4">
             {t("demo.title")} <span className="text-gradient">{t("demo.titleHighlight")}</span>
           </h2>
           <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto px-2">
@@ -222,7 +222,7 @@ const InteractiveDemo = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-5xl mx-auto items-stretch">
           {/* AC Control */}
-          <div className="bg-card rounded-2xl p-6 border border-primary/20 hover:border-primary/40 transition-all shadow-card hover:shadow-card-hover flex flex-col">
+          <div className="bg-card rounded-2xl p-6 border border-primary/20 hover:border-primary/40 transition-[color,background-color,border-color,opacity,transform,box-shadow] shadow-card hover:shadow-card-hover flex flex-col">
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-3">
                 <div className={`p-3 rounded-xl ${getACIconBg()} transition-colors`}>
@@ -280,7 +280,7 @@ const InteractiveDemo = () => {
               <button
                 onClick={() => setACMode('off')}
                 aria-label="AC mode: Off"
-                className={`flex-1 flex flex-col items-center gap-1 py-3 px-3 rounded-lg border transition-all ${
+                className={`flex-1 flex flex-col items-center gap-1 py-3 px-3 rounded-lg border transition-[color,background-color,border-color,opacity,transform,box-shadow] ${
                   acMode === 'off' ? 'bg-muted border-muted-foreground/30' : 'bg-card border-border hover:bg-muted/50'
                 }`}
               >
@@ -290,7 +290,7 @@ const InteractiveDemo = () => {
               <button
                 onClick={() => setACMode('cool')}
                 aria-label="AC mode: Cool"
-                className={`flex-1 flex flex-col items-center gap-1 py-3 px-3 rounded-lg border transition-all ${
+                className={`flex-1 flex flex-col items-center gap-1 py-3 px-3 rounded-lg border transition-[color,background-color,border-color,opacity,transform,box-shadow] ${
                   acMode === 'cool' ? 'bg-primary text-primary-foreground border-primary' : 'bg-card border-border hover:bg-muted/50'
                 }`}
               >
@@ -300,7 +300,7 @@ const InteractiveDemo = () => {
               <button
                 onClick={() => setACMode('dry')}
                 aria-label="AC mode: Dry"
-                className={`flex-1 flex flex-col items-center gap-1 py-3 px-3 rounded-lg border transition-all ${
+                className={`flex-1 flex flex-col items-center gap-1 py-3 px-3 rounded-lg border transition-[color,background-color,border-color,opacity,transform,box-shadow] ${
                   acMode === 'dry' ? 'bg-orange-500 text-white border-orange-500' : 'bg-card border-border hover:bg-muted/50'
                 }`}
               >
@@ -316,7 +316,7 @@ const InteractiveDemo = () => {
                   key={speed}
                   onClick={() => setFanSpeedLevel(speed)}
                   disabled={acMode === 'off'}
-                  className={`flex-1 flex flex-col items-center gap-1 py-2 px-2 rounded-lg border transition-all ${
+                  className={`flex-1 flex flex-col items-center gap-1 py-2 px-2 rounded-lg border transition-[color,background-color,border-color,opacity,transform,box-shadow] ${
                     fanSpeed === speed && acMode !== 'off'
                       ? 'bg-primary text-primary-foreground border-primary' 
                       : 'bg-card border-border hover:bg-muted/50 disabled:opacity-40'
@@ -330,7 +330,7 @@ const InteractiveDemo = () => {
           </div>
 
           {/* Lights Control - Ceiling Lamp */}
-          <div className="bg-card rounded-2xl p-6 border border-accent/20 hover:border-accent/40 transition-all shadow-card hover:shadow-card-hover flex flex-col">
+          <div className="bg-card rounded-2xl p-6 border border-accent/20 hover:border-accent/40 transition-[color,background-color,border-color,opacity,transform,box-shadow] shadow-card hover:shadow-card-hover flex flex-col">
             <div className="flex items-center gap-3 mb-6">
             <div className={`p-3 rounded-xl transition-colors ${lightOn ? 'bg-amber-500' : 'bg-muted'}`}>
                 <Sun className={`w-6 h-6 ${lightOn ? 'text-white' : 'text-muted-foreground'}`} />
@@ -397,14 +397,14 @@ const InteractiveDemo = () => {
                 <ellipse cx="100" cy="84" rx="48" ry="5" fill="#44403c" stroke="#3f3f46" strokeWidth="0.5" />
 
                 {/* Inner shade visible surface */}
-                <ellipse cx="100" cy="83" rx="44" ry="4" fill="url(#shadeInner)" className="transition-all duration-300" />
+                <ellipse cx="100" cy="83" rx="44" ry="4" fill="url(#shadeInner)" className="transition-[color,background-color,border-color,opacity,transform,box-shadow] duration-300" />
 
                 {/* Light cone - trapezoid using SVG polygon with gradient */}
                 {lightOn && (
                   <polygon
                     points={`${100 - 42} 88, ${100 + 42} 88, ${100 + 30 + brightness * 0.4} 218, ${100 - 30 - brightness * 0.4} 218`}
                     fill="url(#lightCone)"
-                    className="transition-all duration-500"
+                    className="transition-[color,background-color,border-color,opacity,transform,box-shadow] duration-500"
                   />
                 )}
 
@@ -412,7 +412,7 @@ const InteractiveDemo = () => {
                 {lightOn && (
                   <ellipse cx="100" cy="210" rx={20 + brightness * 0.3} ry="6"
                     fill={`rgba(253, 224, 71, ${brightness / 500})`}
-                    className="transition-all duration-500"
+                    className="transition-[color,background-color,border-color,opacity,transform,box-shadow] duration-500"
                   />
                 )}
               </svg>
@@ -423,7 +423,7 @@ const InteractiveDemo = () => {
               <button
                 onClick={toggleLight}
                 aria-label={lightOn ? "Turn off light" : "Turn on light"}
-                className={`p-4 rounded-full transition-all ${
+                className={`p-4 rounded-full transition-[color,background-color,border-color,opacity,transform,box-shadow] ${
                   lightOn
                     ? 'bg-amber-500 text-white shadow-[0_0_20px_rgba(251,191,36,0.5)]'
                     : 'bg-muted text-muted-foreground hover:bg-muted/80'
@@ -452,7 +452,7 @@ const InteractiveDemo = () => {
           </div>
 
           {/* Blinds Control with Window View */}
-          <div className="bg-card rounded-2xl p-6 border border-primary/20 hover:border-primary/40 transition-all shadow-card hover:shadow-card-hover flex flex-col">
+          <div className="bg-card rounded-2xl p-6 border border-primary/20 hover:border-primary/40 transition-[color,background-color,border-color,opacity,transform,box-shadow] shadow-card hover:shadow-card-hover flex flex-col">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-3">
                 <div className="p-3 rounded-xl bg-primary/20">
@@ -491,7 +491,7 @@ const InteractiveDemo = () => {
               
               {/* Blinds overlay */}
               <div 
-                className="absolute inset-x-0 top-0 z-20 overflow-hidden transition-all duration-100"
+                className="absolute inset-x-0 top-0 z-20 overflow-hidden transition-[color,background-color,border-color,opacity,transform,box-shadow] duration-100"
                 style={{ height: `${100 - blindsLevel}%` }}
               >
                 {/* Create fixed number of slats that fill the container */}
@@ -510,7 +510,7 @@ const InteractiveDemo = () => {
                 onClick={() => animateBlinds('up')}
                 disabled={isAnimating && animationDirection !== 'up'}
                 aria-label="Open blinds"
-                className={`p-3 rounded-xl transition-all ${
+                className={`p-3 rounded-xl transition-[color,background-color,border-color,opacity,transform,box-shadow] ${
                   animationDirection === 'up'
                     ? 'bg-primary text-primary-foreground'
                     : 'bg-muted hover:bg-muted/80 text-foreground'
@@ -522,7 +522,7 @@ const InteractiveDemo = () => {
                 onClick={stopBlinds}
                 disabled={!isAnimating}
                 aria-label="Stop blinds"
-                className="p-3 rounded-xl bg-muted hover:bg-muted/80 text-foreground disabled:opacity-40 transition-all"
+                className="p-3 rounded-xl bg-muted hover:bg-muted/80 text-foreground disabled:opacity-40 transition-[color,background-color,border-color,opacity,transform,box-shadow]"
               >
                 <Square className="w-5 h-5" />
               </button>
@@ -530,7 +530,7 @@ const InteractiveDemo = () => {
                 onClick={() => animateBlinds('down')}
                 disabled={isAnimating && animationDirection !== 'down'}
                 aria-label="Close blinds"
-                className={`p-3 rounded-xl transition-all ${
+                className={`p-3 rounded-xl transition-[color,background-color,border-color,opacity,transform,box-shadow] ${
                   animationDirection === 'down'
                     ? 'bg-primary text-primary-foreground'
                     : 'bg-muted hover:bg-muted/80 text-foreground'
@@ -559,7 +559,7 @@ const InteractiveDemo = () => {
             href={`https://wa.me/50765956439?text=${encodeURIComponent(t("demo.cta.message"))}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-primary to-accent text-white font-medium rounded-full hover:opacity-90 hover:scale-105 transition-all shadow-lg"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-primary to-accent text-white font-medium rounded-full hover:opacity-90 hover:scale-105 transition-[color,background-color,border-color,opacity,transform,box-shadow] shadow-lg"
           >
             {t("demo.cta")}
           </a>

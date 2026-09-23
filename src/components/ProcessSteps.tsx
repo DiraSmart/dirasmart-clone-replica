@@ -58,7 +58,7 @@ const ProcessSteps = () => {
             {steps.map((step, index) =>
             <div
               key={step.titleKey}
-              className={`relative transition-all duration-700 ${
+              className={`relative transition-[color,background-color,border-color,opacity,transform,box-shadow] duration-700 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`
               }
               style={{ transitionDelay: `${index * 150}ms` }}>
@@ -70,7 +70,7 @@ const ProcessSteps = () => {
                   </div>
               }
 
-                <div className={`h-full bg-background rounded-2xl p-7 border border-border/50 hover:border-${step.color}/30 hover:shadow-lg transition-all duration-300 group flex flex-col gap-6`}>
+                <div className={`h-full bg-background rounded-2xl p-7 border border-border/50 hover:border-${step.color}/30 hover:shadow-lg transition-[color,background-color,border-color,opacity,transform,box-shadow] duration-300 group flex flex-col gap-6`}>
                   {/* Top: number + icon */}
                   <div className="flex items-start justify-between">
                     <div
@@ -112,7 +112,7 @@ const ProcessSteps = () => {
 
         {/* Note */}
         <div
-          className={`mt-12 text-center transition-all duration-700 delay-500 ${
+          className={`mt-12 text-center transition-[color,background-color,border-color,opacity,transform,box-shadow] duration-700 delay-500 ${
           isVisible ? "opacity-100" : "opacity-0"}`
           }>
 

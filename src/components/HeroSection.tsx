@@ -3,8 +3,10 @@ import { Button } from "@/components/ui/button";
 import { MessageCircle, Pause, Play } from "lucide-react";
 import ParticleBackground from "./ParticleBackground";
 import { useLanguage } from "@/contexts/LanguageContext";
+import AnimatedCounter from "@/components/AnimatedCounter";
 import appMobileImage from "@/assets/app-mobile.webp";
 import appMobileImage2 from "@/assets/app-mobile-2.webp";
+import { revealDelay } from "@/lib/reveal";
 
 const HeroSection = () => {
   const [currentImage, setCurrentImage] = useState(0);
@@ -51,19 +53,19 @@ const HeroSection = () => {
       <div className="container-custom relative z-10">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center px-4">
           {/* Left Content */}
-          <div className="space-y-6 md:space-y-8 animate-fade-in text-center lg:text-left">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-secondary leading-tight">
+          <div className="space-y-6 md:space-y-8 text-center lg:text-left">
+            <h1 data-reveal style={revealDelay(0)} className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-secondary leading-tight">
               {t("hero.title")}{" "}
               <span className="text-gradient">{t("hero.titleHighlight")}</span>
             </h1>
-            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-lg mx-auto lg:mx-0">
+            <p data-reveal style={revealDelay(2)} className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-lg mx-auto lg:mx-0">
               {t("hero.subtitle")}
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
+            <div data-reveal style={revealDelay(4)} className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
               <Button
                 asChild
                 size="lg"
-                className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6"
+                className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 motion-safe:transition-transform motion-safe:duration-150 motion-safe:ease-out-strong motion-safe:active:scale-[0.97]"
               >
                 <a
                   href={`https://wa.me/50765956439?text=${encodeURIComponent(t("hero.cta.message"))}`}
@@ -78,16 +80,16 @@ const HeroSection = () => {
                 onClick={scrollToDemo}
                 variant="outline"
                 size="lg"
-                className="border-primary bg-white/90 dark:bg-background text-primary hover:bg-primary/10 text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6"
+                className="border-primary bg-white/90 dark:bg-background text-primary hover:bg-primary/10 text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 motion-safe:transition-transform motion-safe:duration-150 motion-safe:ease-out-strong motion-safe:active:scale-[0.97]"
               >
                 {t("hero.ctaSecondary")}
               </Button>
             </div>
 
             {/* Animated Stats */}
-            <div className="flex flex-wrap gap-6 sm:gap-8 pt-4 justify-center lg:justify-start">
+            <div data-reveal style={revealDelay(6)} className="flex flex-wrap gap-6 sm:gap-8 pt-4 justify-center lg:justify-start">
               <div className="text-center">
-                <p className="text-2xl sm:text-3xl font-bold text-primary">{t("hero.stat1.value")}</p>
+                <p className="text-2xl sm:text-3xl font-bold text-primary tabular-nums"><AnimatedCounter end={2500} suffix="+" duration={1600} /></p>
                 <p className="text-xs sm:text-sm text-muted-foreground">{t("hero.stat1.label")}</p>
               </div>
               <div className="text-center">
@@ -95,14 +97,14 @@ const HeroSection = () => {
                 <p className="text-xs sm:text-sm text-muted-foreground">{t("hero.stat2.label")}</p>
               </div>
               <div className="text-center">
-                <p className="text-2xl sm:text-3xl font-bold text-primary">{t("hero.stat3.value")}</p>
+                <p className="text-2xl sm:text-3xl font-bold text-primary tabular-nums"><AnimatedCounter end={100} suffix="%" duration={1600} /></p>
                 <p className="text-xs sm:text-sm text-muted-foreground">{t("hero.stat3.label")}</p>
               </div>
             </div>
           </div>
 
           {/* Right Content - App Image */}
-          <div className="relative flex justify-center motion-safe:animate-fade-in-right order-first lg:order-last">
+          <div data-reveal="right" style={revealDelay(3)} className="relative flex justify-center order-first lg:order-last motion-safe:animate-float">
             {images.map((img, index) => (
               <img
                 key={index}

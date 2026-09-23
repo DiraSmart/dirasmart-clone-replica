@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { blogPosts } from "@/data/blogPosts";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
+import { revealDelay } from "@/lib/reveal";
 
 const Blog = () => {
   const { language, t, localePath } = useLanguage();
@@ -35,11 +36,11 @@ const Blog = () => {
         <section className="pb-20 md:pb-28">
           <div className="container-custom px-4">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-              {blogPosts.map((post) => (
-                <Link
+              {blogPosts.map((post, _i) => (
+                <Link data-reveal style={revealDelay(_i)}
                   key={post.slug.es}
                   to={localePath(`/blog/${post.slug[language]}`)}
-                  className="group rounded-2xl border border-border/50 bg-card overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+                  className="group rounded-2xl border border-border/50 bg-card overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-[color,background-color,border-color,opacity,transform,box-shadow] duration-300 hover-lift"
                 >
                   {/* Image or gradient header */}
                   <div className={`h-40 bg-gradient-to-br ${post.gradient} relative overflow-hidden`}>
