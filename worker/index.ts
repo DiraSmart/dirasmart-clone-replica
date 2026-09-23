@@ -196,7 +196,9 @@ export default {
 
     // /llms-full.txt: every static page + every blog post as one markdown document (llmstxt.org convention).
     if (url.pathname === "/llms-full.txt") {
-      return markdownResponse(renderLlmsFull());
+      const res = markdownResponse(renderLlmsFull());
+      res.headers.set("X-Robots-Tag", "noindex");
+      return res;
     }
 
     const asset = await env.ASSETS.fetch(assetRequest(url.pathname + url.search, request));

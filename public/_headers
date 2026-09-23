@@ -10,3 +10,10 @@
 
 /comercial/*
   Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+
+# AI/agent text files: readable by bots, but not to be indexed as pages (they duplicate page content)
+/llms.txt
+  X-Robots-Tag: noindex
+
+/c65e3cc7d7b7c3a0cb84525b31993156.txt
+  X-Robots-Tag: noindex
