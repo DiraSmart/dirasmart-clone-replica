@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { blogPosts } from "@/data/blogPosts";
 import { Calendar, Clock, ArrowLeft, ArrowRight } from "lucide-react";
+import { revealDelay } from "@/lib/reveal";
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -143,7 +144,7 @@ const BlogPost = () => {
                   </h2>
                   <div className="space-y-4">
                     {post.faq.map((item, i) => (
-                      <div key={i}>
+                      <div data-reveal style={revealDelay(i)} key={i}>
                         <p className="font-semibold text-foreground mb-1">{item.question[language]}</p>
                         <p className="text-muted-foreground leading-relaxed">{item.answer[language]}</p>
                       </div>
@@ -182,11 +183,11 @@ const BlogPost = () => {
                       {language === "es" ? "Artículos relacionados" : "Related articles"}
                     </h3>
                     <div className="grid sm:grid-cols-3 gap-3">
-                      {related.map((r) => (
-                        <Link
+                      {related.map((r, _i) => (
+                        <Link data-reveal style={revealDelay(_i)}
                           key={r.slug.es}
                           to={localePath(`/blog/${r.slug[language]}`)}
-                          className="group p-4 rounded-xl border border-border/50 hover:border-primary/30 transition-colors"
+                          className="group p-4 rounded-xl border border-border/50 hover:border-primary/30 transition-colors hover-lift"
                         >
                           <span className="text-xs text-primary font-medium">{r.category[language]}</span>
                           <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors line-clamp-2 mt-1">

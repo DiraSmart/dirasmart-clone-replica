@@ -14,7 +14,7 @@ const CTABanner = () => {
         <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
       </div>
       <div className="container-custom px-4 relative z-10 text-center">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
+        <h2 data-reveal className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
           {t("cta.title")}
         </h2>
         <p className="text-white/60 max-w-lg mx-auto mb-8 text-sm sm:text-base">

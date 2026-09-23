@@ -8,6 +8,7 @@ import { TESTIMONIAL_IMAGES } from "@/data/testimonialImages";
 
 const TestimonialsCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [dir, setDir] = useState<"left" | "right">("right");
   const [isPaused, setIsPaused] = useState(false);
   const [autoplayDisabled, setAutoplayDisabled] = useState(() =>
     typeof window !== "undefined" &&
@@ -36,10 +37,12 @@ const TestimonialsCarousel = () => {
   }, [currentTestimonials.length, isPaused, autoplayDisabled, currentIndex]);
 
   const goToPrevious = useCallback(() => {
+    setDir("left");
     setCurrentIndex((prev) => (prev - 1 + currentTestimonials.length) % currentTestimonials.length);
   }, [currentTestimonials.length]);
 
   const goToNext = useCallback(() => {
+    setDir("right");
     setCurrentIndex((prev) => (prev + 1) % currentTestimonials.length);
   }, [currentTestimonials.length]);
 
@@ -71,7 +74,7 @@ const TestimonialsCarousel = () => {
           
 
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-5 leading-tight">
+          <h2 data-reveal className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-5 leading-tight">
             {t("testimonials.title")}{" "}
             <span className="text-gradient">{t("testimonials.titleHighlight")}</span>?
           </h2>
@@ -105,7 +108,7 @@ const TestimonialsCarousel = () => {
             </div>
 
 
-            <div key={currentIndex} className="motion-safe:animate-fade-in-fast">
+            <div key={currentIndex} className={dir === "right" ? "motion-safe:animate-slide-in-right" : "motion-safe:animate-slide-in-left"}>
             {/* Quote */}
             <blockquote className="text-lg md:text-xl text-foreground mb-8 leading-relaxed font-medium relative z-10 max-w-2xl">
               {"“"}{current.text}{"”"}

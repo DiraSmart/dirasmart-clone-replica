@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Award, Cpu, Network, Layers, Building2, MessageCircle } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { revealDelay } from "@/lib/reveal";
 
 /**
  * "DiraSmart en resumen": a plain-language entity summary (who we are, where, for whom,
@@ -63,7 +64,7 @@ const AtAGlance = () => {
           <p className="text-xs sm:text-sm font-medium uppercase tracking-[0.2em] text-primary/80 mb-4">
             {es ? "DiraSmart en resumen" : "DiraSmart at a glance"}
           </p>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-5 text-balance">
+          <h2 data-reveal className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-5 text-balance">
             {es ? "La empresa de casas inteligentes en " : "The smart home company in "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
               {es ? "Panamá" : "Panama"}
@@ -77,10 +78,10 @@ const AtAGlance = () => {
         </div>
 
         <dl className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
-          {facts.map((f) => (
-            <div
+          {facts.map((f, _i) => (
+            <div data-reveal style={revealDelay(_i)}
               key={f.title}
-              className="flex items-start gap-4 p-5 rounded-2xl border border-border/60 bg-background motion-safe:transition-colors hover:border-primary/30"
+              className="flex items-start gap-4 p-5 rounded-2xl border border-border/60 bg-background motion-safe:transition-colors hover:border-primary/30 hover-lift"
             >
               <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
                 <f.icon aria-hidden="true" className="w-5 h-5 text-primary" strokeWidth={1.75} />

@@ -35,7 +35,7 @@ const AnimatedSection = ({ children, className = "", delay = 0, direction = "up"
       className={className}
       style={{
         opacity: visible ? 1 : 0,
-        transform: visible ? "none" : hidden,
+        transform: visible ? "none" : "translate3d(0,12px,0)",
         transition: `opacity 0.5s cubic-bezier(0.23,1,0.32,1) ${delay}s, transform 0.5s cubic-bezier(0.23,1,0.32,1) ${delay}s`,
       }}
     >

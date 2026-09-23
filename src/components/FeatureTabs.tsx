@@ -41,7 +41,9 @@ const TabPanel = ({ badge, badgeColor, title, description, cards, image, imageAl
       </div>
       <div className="space-y-3">
         {cards.map((card, i) => (
-          <FeatureCard key={i} icon={card.icon} title={card.title} desc={card.desc} colorClass={card.colorClass} />
+          <div key={i} className="motion-safe:animate-fade-in-fast" style={{ animationDelay: `${i * 70}ms` }}>
+            <FeatureCard icon={card.icon} title={card.title} desc={card.desc} colorClass={card.colorClass} />
+          </div>
         ))}
       </div>
     </div>

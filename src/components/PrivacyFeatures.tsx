@@ -49,7 +49,7 @@ const PrivacyFeatures = () => {
 
       <div className="container-custom px-3 sm:px-4 relative z-10">
         <div className="text-center mb-14 md:mb-20">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-5 leading-tight">
+          <h2 data-reveal className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-5 leading-tight">
             {t("privacy.title")}{" "}
             <span className="text-gradient">{t("privacy.titleHighlight")}</span>
           </h2>

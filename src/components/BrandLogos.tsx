@@ -29,6 +29,7 @@ import geLogo from "@/assets/brands/gel.png";
 import levitonLogo from "@/assets/brands/leviton.png";
 import lutronLogo from "@/assets/brands/lutron.png";
 import googleNestLogo from "@/assets/brands/google-nest.png";
+import { revealDelay } from "@/lib/reveal";
 
 const BrandLogos = () => {
   const { t } = useLanguage();
@@ -89,7 +90,7 @@ const BrandLogos = () => {
       <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
       <div className="container-custom">
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-5 leading-tight">
+          <h2 data-reveal className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-5 leading-tight">
             {t("brands.title")} <span className="text-gradient">{t("brands.titleHighlight")}</span>
           </h2>
           <p className="text-base text-muted-foreground max-w-2xl mx-auto">
@@ -122,8 +123,8 @@ const BrandLogos = () => {
         <div>
           <h3 className="text-center text-lg font-semibold text-muted-foreground mb-6">{t("brands.protocols")}</h3>
           <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-7 gap-3 sm:gap-4 max-w-4xl mx-auto">
-            {protocols.map((protocol) => (
-              <div
+            {protocols.map((protocol, _i) => (
+              <div data-reveal="scale" style={revealDelay(_i)}
                 key={protocol.name}
                 className={`bg-background dark:bg-slate-200 rounded-xl p-3 sm:p-4 flex items-center justify-center border border-border/50 shadow-lg hover:shadow-xl transition-[color,background-color,border-color,opacity,transform,box-shadow] hover:-translate-y-1${protocol.name === "Modbus" ? " hidden sm:flex" : ""}`}
               >

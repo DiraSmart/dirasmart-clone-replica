@@ -19,6 +19,7 @@ import knxLogo from "@/assets/brands/knx-partner.png";
 import zigbeeLogo from "@/assets/brands/zigbee.png";
 import zwaveLogo from "@/assets/brands/zwave.png";
 import modbusLogo from "@/assets/brands/modbus.png";
+import { revealDelay } from "@/lib/reveal";
 
 const ProcessSteps = lazy(() => import("@/components/ProcessSteps"));
 
@@ -268,10 +269,10 @@ const About = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-5xl mx-auto">
               {/* 6 regular pains in 2-col grid (3 clean rows on desktop) */}
-              {pains.map((p) => (
-                <div
+              {pains.map((p, _i) => (
+                <div data-reveal style={revealDelay(_i)}
                   key={p.titleKey}
-                  className="flex items-start gap-4 p-6 rounded-2xl border border-border/60 bg-background motion-safe:transition-colors hover:border-border"
+                  className="flex items-start gap-4 p-6 rounded-2xl border border-border/60 bg-background motion-safe:transition-colors hover:border-border hover-lift"
                 >
                   <div className="w-11 h-11 rounded-xl bg-destructive/10 flex items-center justify-center shrink-0">
                     <p.icon aria-hidden="true" className="w-5 h-5 text-destructive" strokeWidth={1.75} />
@@ -299,8 +300,8 @@ const About = () => {
                   </div>
                   {/* Dead brands list */}
                   <ul className="space-y-2.5 text-sm sm:text-base min-w-[240px]">
-                    {DEAD_BRANDS.map((b) => (
-                      <li key={b.name} className="flex items-baseline justify-between gap-6 border-b border-border/60 pb-2">
+                    {DEAD_BRANDS.map((b, _i) => (
+                      <li data-reveal="left" style={revealDelay(_i)} key={b.name} className="flex items-baseline justify-between gap-6 border-b border-border/60 pb-2">
                         <span className="font-medium text-foreground/80 line-through decoration-destructive/60 decoration-1">
                           {b.name}
                         </span>
@@ -339,6 +340,7 @@ const About = () => {
                 return (
                   <div
                     key={s.titleKey}
+                    data-reveal={reversed ? "right" : "left"}
                     className="grid lg:grid-cols-2 gap-10 lg:gap-20 items-center"
                   >
                     {/* Text side */}

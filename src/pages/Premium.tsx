@@ -34,6 +34,7 @@ import sonosLogo from "@/assets/brands/sonos.png";
 import teslaLogo from "@/assets/brands/tesla.png";
 import somfyLogo from "@/assets/brands/somfy.png";
 import hikvisionLogo from "@/assets/brands/hikvision.png";
+import { revealDelay } from "@/lib/reveal";
 
 const WEB3FORMS_KEY = "1cd751d7-540f-4cad-8f38-00d2784ff893";
 const WHATSAPP_NUMBER = "50765956439";
@@ -369,8 +370,8 @@ const Premium = () => {
               </p>
 
               <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-5 mb-10 opacity-70">
-                {commercialBrandsForBridge.map((b) => (
-                  <img
+                {commercialBrandsForBridge.map((b, _i) => (
+                  <img data-reveal="scale" style={revealDelay(_i)}
                     key={b.name}
                     src={b.src}
                     alt={b.name}

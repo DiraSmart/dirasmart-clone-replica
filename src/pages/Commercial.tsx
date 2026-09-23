@@ -37,6 +37,7 @@ import bacnetLogo from "@/assets/brands/bacnet.svg";
 import daliLogo from "@/assets/brands/dali.png";
 import bmsLogo from "@/assets/brands/bms.png";
 import bmsLogoDark from "@/assets/brands/bms-dark.png";
+import { revealDelay } from "@/lib/reveal";
 
 const WEB3FORMS_KEY = "1cd751d7-540f-4cad-8f38-00d2784ff893";
 
@@ -470,10 +471,10 @@ const Commercial = () => {
             </div>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-7xl mx-auto">
-              {SECTORS.map((s) => (
-                <article
+              {SECTORS.map((s, _i) => (
+                <article data-reveal style={revealDelay(_i)}
                   key={s.id}
-                  className="group rounded-2xl overflow-hidden border border-border/60 bg-background motion-safe:transition-shadow hover:shadow-lg flex flex-col"
+                  className="group rounded-2xl overflow-hidden border border-border/60 bg-background motion-safe:transition-shadow hover:shadow-lg flex flex-col hover-lift"
                 >
                   <div className="aspect-[4/3] relative overflow-hidden bg-muted">
                     <picture>
@@ -526,10 +527,10 @@ const Commercial = () => {
             </div>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
-              {BENEFITS.map((b) => (
-                <div
+              {BENEFITS.map((b, _i) => (
+                <div data-reveal style={revealDelay(_i)}
                   key={b.id}
-                  className="rounded-2xl border border-border/60 bg-background p-6 flex flex-col"
+                  className="rounded-2xl border border-border/60 bg-background p-6 flex flex-col hover-lift"
                 >
                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
                     <b.icon aria-hidden="true" className="w-6 h-6 text-primary" strokeWidth={1.5} />
@@ -697,7 +698,7 @@ const Commercial = () => {
             </div>
             <ol className="grid md:grid-cols-5 gap-5 max-w-6xl mx-auto">
               {STEPS.map((step, i) => (
-                <li key={i} className="flex flex-col p-5 rounded-2xl border border-border/60 bg-background">
+                <li data-reveal style={revealDelay(i)} key={i} className="flex flex-col p-5 rounded-2xl border border-border/60 bg-background hover-lift">
                   <div className="flex items-center gap-3 mb-3">
                     <span
                       aria-hidden="true"
@@ -735,7 +736,7 @@ const Commercial = () => {
 
             <div className="grid sm:grid-cols-2 gap-5 max-w-5xl mx-auto">
               {COMMERCIAL_FAQ.map((item, i) => (
-                <div
+                <div data-reveal style={revealDelay(i)}
                   key={i}
                   className="rounded-2xl border border-border/60 bg-background p-6"
                 >

@@ -5,6 +5,8 @@ import { ThemeProvider } from "next-themes";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import Index from "./pages/Index";
 import ErrorBoundary from "./components/ErrorBoundary";
+import RevealObserver from "./components/RevealObserver";
+import ScrollProgress from "./components/ScrollProgress";
 
 // Lazy load non-critical pages to reduce initial bundle
 const About = lazy(() => import("./pages/About"));
@@ -49,6 +51,8 @@ const AppRoutes = () => (
     <Toaster />
     <ScrollToTop />
     <AnalyticsTracker />
+    <RevealObserver />
+    <ScrollProgress />
     <Suspense fallback={null}>
       <DynamicHead />
     </Suspense>

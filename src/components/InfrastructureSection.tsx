@@ -1,6 +1,7 @@
 import { Wifi, Signal, Router, Network, Cable, CheckCircle2 } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { revealDelay } from "@/lib/reveal";
 
 const InfrastructureSection = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
@@ -91,7 +92,7 @@ const InfrastructureSection = () => {
 
 
 
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground leading-tight">
+            <h2 data-reveal className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground leading-tight">
               {t("infra.title")}{" "}
               <span className="text-gradient">{t("infra.titleHighlight")}</span>
             </h2>
@@ -101,10 +102,10 @@ const InfrastructureSection = () => {
             </p>
 
             <div className="space-y-3 pt-2">
-              {features.map((feature) =>
-              <div
+              {features.map((feature, _i) =>
+              <div data-reveal style={revealDelay(_i)}
                 key={feature.labelKey}
-                className="flex items-center gap-3 p-4 bg-muted/30 rounded-xl border border-border/50 hover:border-primary/30 hover:bg-muted/50 transition-[color,background-color,border-color,opacity,transform,box-shadow]">
+                className="flex items-center gap-3 p-4 bg-muted/30 rounded-xl border border-border/50 hover:border-primary/30 hover:bg-muted/50 transition-[color,background-color,border-color,opacity,transform,box-shadow] hover-lift">
 
                   <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
                     <feature.icon className="w-4 h-4 text-primary" strokeWidth={1.5} />

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Link, useLocation } from "react-router-dom";
@@ -10,6 +10,13 @@ import dirasmartLogoGrey from "@/assets/dirasmart-logo-grey.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
   const { resolvedTheme } = useTheme();
   const { t, pathPrefix, localePath } = useLanguage();
   const location = useLocation();
@@ -49,9 +56,9 @@ const Header = () => {
       >
         {t("a11y.skipToContent")}
       </a>
-      <header className="fixed top-0 left-0 right-0 z-50 glass-effect border-b border-border">
+      <header className={`fixed top-0 left-0 right-0 z-50 glass-effect border-b motion-safe:transition-[box-shadow,border-color] motion-safe:duration-300 ${scrolled ? "border-border shadow-[0_8px_30px_-18px_rgba(0,0,0,0.35)]" : "border-transparent"}`}>
         <div className="container-custom">
-          <div className="flex items-center justify-between h-14 sm:h-16 md:h-20 px-3 sm:px-4">
+          <div className={`flex items-center justify-between px-3 sm:px-4 motion-safe:transition-[height] motion-safe:duration-300 ${scrolled ? "h-14 sm:h-14 md:h-16" : "h-14 sm:h-16 md:h-20"}`}>
             {/* Logo */}
             <Link to={pathPrefix || "/"} className="flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded">
               <img

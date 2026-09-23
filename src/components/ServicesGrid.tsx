@@ -64,7 +64,7 @@ const ServicesGrid = () => {
           
 
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-5 leading-tight">
+          <h2 data-reveal className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-5 leading-tight">
             {t("services.title")}{" "}
             <span className="text-gradient">{t("services.titleHighlight")}</span>?
           </h2>

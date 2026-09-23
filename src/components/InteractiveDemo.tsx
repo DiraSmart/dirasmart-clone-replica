@@ -212,7 +212,7 @@ const InteractiveDemo = () => {
     <section id="demo" className="section-padding section-divider bg-gradient-to-br from-primary/5 via-background to-accent/5">
       <div className="container-custom px-3 sm:px-4">
         <div className="text-center mb-8 md:mb-12">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 md:mb-4">
+          <h2 data-reveal className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 md:mb-4">
             {t("demo.title")} <span className="text-gradient">{t("demo.titleHighlight")}</span>
           </h2>
           <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto px-2">

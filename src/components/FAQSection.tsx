@@ -1,6 +1,7 @@
 import { useId, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { revealDelay } from "@/lib/reveal";
 
 const FAQ_KEYS = [
   { q: "faq.q1", a: "faq.a1" },
@@ -60,7 +61,7 @@ const FAQSection = () => {
       <div className="container-custom px-4">
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">
+          <h2 data-reveal className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">
             {t("faq.title")}{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
               {t("faq.titleHighlight")}
@@ -73,8 +74,10 @@ const FAQSection = () => {
 
         {/* FAQ Grid - 2 columns on desktop */}
         <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-3">
-          {FAQ_KEYS.map(({ q, a }) => (
-            <FAQItem key={q} question={t(q)} answer={t(a)} />
+          {FAQ_KEYS.map(({ q, a }, i) => (
+            <div key={q} data-reveal style={revealDelay(i, 40)}>
+              <FAQItem question={t(q)} answer={t(a)} />
+            </div>
           ))}
         </div>
       </div>
