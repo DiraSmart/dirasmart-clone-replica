@@ -1,7 +1,7 @@
-import { useRef } from 'react';
+import { useRef, useMemo, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Html, RoundedBox } from '@react-three/drei';
-import { Group, PointLight, Vector3, PCFShadowMap } from 'three';
+import { Html, RoundedBox, CameraControls } from '@react-three/drei';
+import { Group, PointLight, Vector3, PCFShadowMap, CanvasTexture, RepeatWrapping, MeshStandardMaterial } from 'three';
 import { HouseSettings, RoomId, roomIds, roomNames } from './experience';
 
 type Props = { settings: HouseSettings; focus: RoomId | null; onSelect: (id: RoomId) => void; hotel?: boolean; reducedMotion: boolean };
@@ -36,6 +36,38 @@ function Kitchen() { return <group>
   <Block at={[-.4, .93, .3]} size={[2.1, .1, 1]} color="#e2dfd3" />
   {[-.95, .2].map(x => <group key={x}><Block at={[x, .53, 1.18]} size={[.42, .1, .42]} color="#4a5b53" radius={.12} /><Block at={[x, .25, 1.18]} size={[.1, .5, .1]} color="#77736b" /></group>)}
  </group>; }
+
+function Plant({ at, scale=1 }: { at:[number,number,number]; scale?:number }) {
+ return <group position={at} scale={scale}><mesh position={[0,.23,0]} castShadow><cylinderGeometry args={[.23,.17,.46,24]}/><meshStandardMaterial color="#b2a18b" roughness={.9}/></mesh>{Array.from({length:9},(_,i)=><group key={i} rotation={[0,i*2.4,0]}><mesh position={[.1,.65+i*.035,0]} rotation={[0,0,-.4]}><cylinderGeometry args={[.012,.018,.85,5]}/><meshStandardMaterial color="#4c6042"/></mesh><mesh position={[.2,.9+i*.035,0]} rotation={[0,0,-.7]} scale={[.12,.33,.075]} castShadow><sphereGeometry args={[1,10,8]}/><meshStandardMaterial color={i%2?'#506b47':'#738568'} roughness={.75}/><group/></mesh></group>)}</group>;
+}
+function OakFloor({width,depth}:{width:number;depth:number}) {
+ const texture=useMemo(()=>{const canvas=document.createElement('canvas');canvas.width=512;canvas.height=512;const c=canvas.getContext('2d')!;c.fillStyle='#9f805a';c.fillRect(0,0,512,512);let seed=18;const random=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296;};for(let row=0;row<8;row++){const y=row*64;c.fillStyle=['#a98b67','#a08461','#b29771','#ad9069'][row%4];c.fillRect(0,y,512,63);for(let i=0;i<110;i++){c.strokeStyle='rgba(63,39,18,'+(random()*.12)+')';c.lineWidth=random()*1.3;c.beginPath();const yy=y+random()*62;c.moveTo(0,yy);c.bezierCurveTo(150,yy+random()*4,350,yy-3,512,yy+2);c.stroke();}c.fillStyle='#786040';c.fillRect((row%3)*160,y,1,64);}const t=new CanvasTexture(canvas);t.wrapS=t.wrapT=RepeatWrapping;t.repeat.set(width/3,depth/3);return t;},[width,depth]);useEffect(()=>()=>texture.dispose(),[texture]);return <mesh position={[0,.052,0]} rotation={[-Math.PI/2,0,0]} receiveShadow><planeGeometry args={[width,depth]}/><meshStandardMaterial map={texture} roughness={.62}/></mesh>;
+}
+function Pendant({at,level}:{at:[number,number,number];level:number}) {return <group position={at}><mesh position={[0,.3,0]}><cylinderGeometry args={[.008,.008,.6,6]}/><meshStandardMaterial color="#34342f"/></mesh><mesh castShadow><cylinderGeometry args={[.08,.29,.22,24,1,true]}/><meshStandardMaterial color="#b08c53" metalness={.65} roughness={.34} side={2}/></mesh><mesh rotation={[-Math.PI/2,0,0]} position={[0,-.105,0]}><circleGeometry args={[.25,24]}/><meshStandardMaterial color="#ffe0a1" emissive="#ffbd62" emissiveIntensity={level/100*3}/></mesh></group>;}
+function Decor({id,hotel,level}:{id:RoomId;hotel?:boolean;level:number}) {return <group>
+{hotel||id==='dormitorio'?<>
+{Array.from({length:19},(_,i)=><Block key={i} at={[-1.42+i*.16,.82,-1.13]} size={[.045,1.55,.04]} color="#8e7254"/>)}
+{[-1.28,1.28].map(x=><Pendant key={x} at={[x,1.5,-.7]} level={level}/>)}
+<group position={[.5,.76,.2]} rotation={[0,0,.1]}><Block at={[0,0,0]} size={[.42,.07,.6]} color="#6a493c"/><Block at={[0,.04,0]} size={[.37,.03,.56]} color="#d6cbb8"/></group>
+<Plant at={[1.5,.1,.9]} scale={.5}/>
+</>:id==='sala'?<>
+<Plant at={[-1.2,.1,-2.3]} scale={.7}/>
+<group position={[1.6,.74,.2]}><Block at={[0,0,0]} size={[.12,.74,1.45]} color="#101c20"/><Block at={[-.07,0,0]} size={[.005,.64,1.32]} color="#263d42"/></group>
+<Block at={[1.52,.2,.2]} size={[.6,.25,2.45]} color="#77563d"/>
+<mesh position={[.67,.53,.15]} rotation={[-Math.PI/2,0,0]}><cylinderGeometry args={[.19,.19,.035,24]}/><meshStandardMaterial color="#b59d75" metalness={.4} roughness={.4}/></mesh>
+<Block at={[.6,.52,-.2]} size={[.42,.035,.35]} color="#d2c4a8"/><Block at={[.62,.56,-.2]} size={[.4,.035,.34]} color="#474e44"/>
+<Pendant at={[.1,2.4,.2]} level={level}/>
+</>:<>
+{[-1.1,-.4,.3].map(x=><Pendant key={x} at={[x,2.25,.3]} level={level}/>)}
+{[-1.25,-.65,-.05,.55].map(x=><Block key={x} at={[x,.44,-.665]} size={[.015,.74,.012]} color="#6b5038"/>)}
+<Block at={[-.6,.983,-1]} size={[.65,.015,.42]} color="#303b3a"/>
+{[-.77,-.44].map(x=><mesh key={x} position={[x,.995,-1]} rotation={[-Math.PI/2,0,0]}><ringGeometry args={[.07,.085,20]}/><meshStandardMaterial color="#8c9998"/></mesh>)}
+<Block at={[.3,.988,-1]} size={[.48,.018,.34]} color="#6e7672"/>
+<mesh position={[.3,1.12,-1.15]}><torusGeometry args={[.12,.015,8,16,Math.PI]}/><meshStandardMaterial color="#bca16d" metalness={.8} roughness={.2}/></mesh>
+<Plant at={[.15,.99,.3]} scale={.22}/>
+</>}
+</group>;}
+
 function Curtain({ open, width, at, reducedMotion }: { open: number; width: number; at: [number, number, number]; reducedMotion: boolean }) {
   const left = useRef<Group>(null), right = useRef<Group>(null);
   useFrame((_, delta) => {
@@ -49,40 +81,31 @@ function Curtain({ open, width, at, reducedMotion }: { open: number; width: numb
 }
 function Room({ id, settings, onSelect, hotel, reducedMotion }: Omit<Props, 'focus'> & { id: RoomId }) {
   const p: [number, number, number] = hotel ? [roomIds.indexOf(id) * 3.8 - 3.8, 0, 0] : centers[id];
-  const light = useRef<PointLight>(null);
+  const light = useRef<PointLight>(null); const strip=useRef<MeshStandardMaterial>(null);
   const size: [number, number] = hotel ? [3.45, 4.4] : id === 'sala' ? [3.7, 6.2] : [3.9, 3];
-  useFrame((_, delta) => { if (light.current) { const target = settings[id].light / 100 * 13; light.current.intensity = reducedMotion ? target : light.current.intensity + (target - light.current.intensity) * (1 - Math.exp(-delta * 4)); } });
+  useFrame((_, delta) => { if(strip.current) strip.current.emissiveIntensity=settings[id].light/100*3; if (light.current) { const target = settings[id].light / 100 * 13; light.current.intensity = reducedMotion ? target : light.current.intensity + (target - light.current.intensity) * (1 - Math.exp(-delta * 4)); } });
   return <group position={p}>
     <mesh position={[0, -.03, 0]} receiveShadow onClick={e => { e.stopPropagation(); onSelect(id); }}><boxGeometry args={[size[0], .15, size[1]]} /><meshStandardMaterial color={id === 'cocina' && !hotel ? '#c5c4b4' : '#b69c78'} /></mesh>
-    {hotel ? <Bed /> : id === 'sala' ? <Sofa /> : id === 'dormitorio' ? <Bed /> : <Kitchen />}
-    <Block at={[0, 1.04, -size[1] / 2]} size={[size[0] + .12, 2.2, .12]} color="#ddd5c4" />
+    <OakFloor width={size[0]} depth={size[1]}/><Decor id={id} hotel={hotel} level={settings[id].light}/>{hotel ? <Bed /> : id === 'sala' ? <Sofa /> : id === 'dormitorio' ? <Bed /> : <Kitchen />}
+    <Block at={[0,-.18,0]} size={[size[0]+.18,.22,size[1]+.18]} color="#343d39"/><Block at={[0, 1.04, -size[1] / 2]} size={[size[0] + .12, 2.2, .12]} color="#ddd5c4" />
     <Block at={[-size[0] / 2, .5, 0]} size={[.12, 1.1, size[1]]} color="#ddd5c4" />
     <Block at={[0, 1, -size[1] / 2 + .08]} size={[size[0] * .8, 1.65, .025]} color="#90a7a1" />
     <Curtain at={[0, 1, -size[1] / 2 + .15]} width={size[0] * .8} open={settings[id].curtains} reducedMotion={reducedMotion} />
     <Block at={[size[0] / 2 - .15, .92, -size[1] / 2 + .18]} size={[.16, .26, .06]} color="#344c47" />
-    <pointLight ref={light} position={[0, 2, 0]} color="#ffd6a0" distance={6} decay={2} />
-    <Html position={[0, .2, size[1] / 2 + .3]} center zIndexRange={[5, 0]}><button className="next-room-pin" onClick={() => onSelect(id)} aria-label={`Explorar ${hotel ? 'habitación ' + (101 + roomIds.indexOf(id)) : roomNames[id]}`}><span />{hotel ? 'Hab. ' + (101 + roomIds.indexOf(id)) : roomNames[id]}</button></Html>
+    <mesh position={[0,1.92,-size[1]/2+.17]}><boxGeometry args={[size[0]*.85,.018,.025]}/><meshStandardMaterial ref={strip} color="#f6cc85" emissive="#ffb45c" emissiveIntensity={2}/></mesh><pointLight ref={light} position={[0, 2, 0]} color="#ffd6a0" distance={6} decay={2} />
+    <Html position={[0, .2, size[1] / 2 + .3]} center zIndexRange={[5, 0]}><button className="next-room-pin" onClick={() => onSelect(id)} aria-label={`Explorar ${hotel ? 'habitación ' + (101 + roomIds.indexOf(id)) : roomNames[id]}`}><span /><b>{String(roomIds.indexOf(id)+1).padStart(2,'0')}</b>{hotel ? 'Hab. ' + (101 + roomIds.indexOf(id)) : roomNames[id]}</button></Html>
   </group>;
 }
-function CameraRig({ focus, hotel, reducedMotion }: Pick<Props, 'focus' | 'hotel' | 'reducedMotion'>) {
-  const target = useRef(new Vector3(-.5, 0, 0));
-  const desired = new Vector3();
-  useFrame(({ camera }, delta) => {
-    const c = focus ? hotel ? [roomIds.indexOf(focus) * 3.8 - 3.8, 0, 0] : centers[focus] : [-.5, 0, 0];
-    desired.set(c[0], .25, c[2]);
-    const damping = reducedMotion ? 1 : 1 - Math.exp(-delta * 2.5);
-    target.current.lerp(desired, damping);
-    desired.set(c[0] + (focus ? 4.4 : 10), focus ? 6 : 10.5, c[2] + (focus ? 6.8 : 12));
-    camera.position.lerp(desired, damping); camera.lookAt(target.current);
-  });
-  return null;
+function CameraRig({focus,hotel,reducedMotion}:Pick<Props,'focus'|'hotel'|'reducedMotion'>){
+ const controls=useRef<CameraControls>(null);
+ useEffect(()=>{const c=focus?(hotel?[roomIds.indexOf(focus)*3.8-3.8,0,0]:centers[focus]):[-.5,0,0];void controls.current?.setLookAt(c[0]+(focus==='sala'?-4.8:focus?5.3:9),focus?5.3:9,c[2]+(focus==='dormitorio'?1.8:focus?6.5:11),c[0],.4,c[2],!reducedMotion);},[focus,hotel,reducedMotion]);
+ return <CameraControls ref={controls} makeDefault minDistance={4} maxDistance={24} minPolarAngle={.25} maxPolarAngle={Math.PI*.48} smoothTime={reducedMotion?0:.9} dollySpeed={.4}/>;
 }
+function Atmosphere({settings,focus}:Pick<Props,'settings'|'focus'>){const sun=useRef<import('three').DirectionalLight>(null);const ambient=useRef<import('three').AmbientLight>(null);useFrame((_,delta)=>{const dim=settings[focus||'sala'].light<40;const k=1-Math.exp(-delta*2);if(sun.current)sun.current.intensity+=( (dim?.25:2.8)-sun.current.intensity)*k;if(ambient.current)ambient.current.intensity+=((dim?.18:.55)-ambient.current.intensity)*k;});return <><ambientLight ref={ambient} intensity={.55}/><hemisphereLight args={['#c9d8de','#80735d',.5]}/><directionalLight ref={sun} position={[-6,12,4]} intensity={2.8} castShadow shadow-mapSize={[2048,2048]} shadow-camera-left={-12} shadow-camera-right={12} shadow-camera-top={10} shadow-camera-bottom={-10} shadow-bias={-.001}/></>;}
 export default function HouseScene(props: Props) {
-  return <Canvas shadows={{ type: PCFShadowMap }} dpr={[1, 1.25]} camera={{ position: [9.5, 10.5, 12], fov: 39 }} gl={{ antialias: true, powerPreference: 'low-power' }} fallback={<p className="next-canvas-fallback">La vista 3D no está disponible en este dispositivo. Puedes explorar los controles desde el panel.</p>}>
-    <color attach="background" args={['#e8e7de']} />
-    <ambientLight intensity={.65} /><hemisphereLight args={['#f7f4e8', '#8a938a', 1]} />
-    <directionalLight position={[-6, 12, 4]} intensity={2} castShadow shadow-mapSize={[1024, 1024]} shadow-camera-left={-12} shadow-camera-right={12} shadow-camera-top={10} shadow-camera-bottom={-10} shadow-bias={-.001} />
-    <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -.3, 0]} receiveShadow><planeGeometry args={[200, 200]} /><meshStandardMaterial color="#e8e7de" roughness={1} /></mesh>
+  return <Canvas shadows={{ type: PCFShadowMap }} dpr={[1, 1.25]} camera={{ position: [8.5, 9, 11], fov: 39 }} gl={{ antialias: true, alpha: true, powerPreference: 'low-power' }} fallback={<p className="next-canvas-fallback">La vista 3D no está disponible en este dispositivo. Puedes explorar los controles desde el panel.</p>}>
+    <Atmosphere settings={props.settings} focus={props.focus}/>
+    <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -.36, 0]} receiveShadow><planeGeometry args={[200, 200]} /><shadowMaterial transparent opacity={.28} /></mesh>
     {roomIds.map(id => <Room key={id} {...props} id={id} />)}
     <CameraRig {...props} />
   </Canvas>;
