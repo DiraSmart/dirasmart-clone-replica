@@ -146,7 +146,7 @@ const PREMIUM_FAQ_SCHEMA_ES = {
     { "@type": "Question", name: "¿Cuánto cuesta una instalación KNX en Panamá?", acceptedAnswer: { "@type": "Answer", text: "Una instalación KNX completa entra en gama alta y depende de la cantidad de puntos de control, pantallas y zonas de clima. Se define en fase de obra o remodelación integral. La consulta y la propuesta inicial no tienen costo; no publicamos tarifas fijas porque cada proyecto se dimensiona sobre planos." } },
     { "@type": "Question", name: "¿KNX necesita un servidor o controlador central?", acceptedAnswer: { "@type": "Answer", text: "No. KNX es un sistema descentralizado: la inteligencia está repartida en cada dispositivo y se comunican por un bus cableado. Un servidor local es opcional para visualización, app y escenas avanzadas, pero la casa funciona sin él. Si un equipo falla, el resto sigue operando." } },
     { "@type": "Question", name: "¿Puedo tener KNX en una casa ya construida?", acceptedAnswer: { "@type": "Answer", text: "KNX requiere bus cableado, por lo que es ideal en fase de planos, obra gris o remodelación integral. Para casas terminadas sin obra ofrecemos la alternativa inalámbrica de gama media (Zigbee, Z-Wave, WiFi) con el mismo servicio y la misma app." } },
-    { "@type": "Question", name: "¿Qué marcas KNX instalan?", acceptedAnswer: { "@type": "Answer", text: "Basalte (Bélgica), Gira, Jung, Hager, Theben y MDT (Alemania), ABB free@home (Suiza) y Lutron HomeWorks (Estados Unidos). Si una marca es KNX o tiene gateway KNX, casi siempre podemos integrarla." } },
+    { "@type": "Question", name: "¿Qué marcas KNX instalan?", acceptedAnswer: { "@type": "Answer", text: "Basalte (Bélgica), Gira, Jung, Hager, Theben y MDT (Alemania), ABB i-bus KNX (Suiza) y Lutron HomeWorks (Estados Unidos). Si una marca es KNX o tiene gateway KNX, casi siempre podemos integrarla." } },
   ],
 };
 
@@ -158,7 +158,7 @@ const PREMIUM_FAQ_SCHEMA_EN = {
     { "@type": "Question", name: "How much does a KNX installation cost in Panama?", acceptedAnswer: { "@type": "Answer", text: "A full KNX installation is high-end and depends on the number of control points, touchscreens and climate zones. It is defined during construction or a full remodel. The consultation and initial proposal are free; we do not publish fixed rates because every project is sized on drawings." } },
     { "@type": "Question", name: "Does KNX need a server or central controller?", acceptedAnswer: { "@type": "Answer", text: "No. KNX is a decentralized system: the intelligence is distributed across every device and they communicate over a wired bus. A local server is optional for visualization, the app and advanced scenes, but the house works without it. If one unit fails, the rest keep running." } },
     { "@type": "Question", name: "Can I have KNX in an already-built house?", acceptedAnswer: { "@type": "Answer", text: "KNX needs a wired bus, so it is ideal at the drawing, shell or full-remodel stage. For finished homes without construction work we offer the mid-range wireless alternative (Zigbee, Z-Wave, WiFi) with the same service and the same app." } },
-    { "@type": "Question", name: "Which KNX brands do you install?", acceptedAnswer: { "@type": "Answer", text: "Basalte (Belgium), Gira, Jung, Hager, Theben and MDT (Germany), ABB free@home (Switzerland) and Lutron HomeWorks (United States). If a brand is KNX or has a KNX gateway, we can almost always integrate it." } },
+    { "@type": "Question", name: "Which KNX brands do you install?", acceptedAnswer: { "@type": "Answer", text: "Basalte (Belgium), Gira, Jung, Hager, Theben and MDT (Germany), ABB i-bus KNX (Switzerland) and Lutron HomeWorks (United States). If a brand is KNX or has a KNX gateway, we can almost always integrate it." } },
   ],
 };
 
@@ -183,7 +183,7 @@ const PREMIUM_SERVICE_SCHEMA = (en: boolean) => ({
   name: "DiraSmart Premium",
   provider: { "@type": "LocalBusiness", name: "DiraSmart", url: SITE_URL, telephone: "+507-6595-6439" },
   areaServed: { "@type": "Country", name: en ? "Panama" : "Panamá" },
-  brand: ["Basalte", "Gira", "Jung", "ABB free@home", "Hager", "Lutron HomeWorks", "Theben", "MDT"].map((name) => ({ "@type": "Brand", name })),
+  brand: ["Basalte", "Gira", "Jung", "ABB i-bus KNX", "Hager", "Lutron HomeWorks", "Theben", "MDT"].map((name) => ({ "@type": "Brand", name })),
   description: en
     ? "Wired, decentralized, cloud-free KNX installations with wall-mounted touchscreens and European brands, the same equipment used in hotels, for high-end residences in Panama."
     : "Instalaciones KNX cableadas, descentralizadas y sin nube, con pantallas en pared y marcas europeas, el mismo equipo que se usa en hoteles, para residencias de alta gama en Panamá.",

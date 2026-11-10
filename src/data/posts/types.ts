@@ -15,4 +15,5 @@ export interface BlogPost {
   icon: string;
   image?: string;
   faq?: FaqItem[];
+  sources?: { title: { es: string; en: string }; url: string }[];
 }

@@ -12,7 +12,7 @@ export const PAGE_META_ES: Record<string, PageMeta> = {
   "/": {
     title: "DiraSmart · Casa Inteligente y Domótica en Panamá",
     description:
-      "Empresa de casas inteligentes en Panamá. KNX Partner certificado, procesamiento 100% local y app propia para hogares, hoteles, comercios y edificios.",
+      "Domótica en Panamá: iluminación, cortinas, aire acondicionado y control desde una app. Soluciones inalámbricas y KNX con instalación y soporte de DiraSmart.",
   },
   "/about": {
     title: "Nosotros · DiraSmart · Casa Inteligente en Panamá",
@@ -22,17 +22,17 @@ export const PAGE_META_ES: Record<string, PageMeta> = {
   "/comercial": {
     title: "Automatización y BMS para Hoteles y Edificios en Panamá",
     description:
-      "Automatización y BMS para hoteles, oficinas, retail y edificios en Panamá. KNX Partner, arquitectura descentralizada, BACnet y DALI, soporte 24/7.",
+      "Automatización de hoteles, comercios y edificios en Panamá. KNX, NETx Automation BMS y control de accesos, con integración según proyecto y soporte local.",
   },
   "/premium": {
-    title: "Instalaciones KNX Premium en Panamá · DiraSmart",
+    title: "KNX en Panamá: automatización premium | DiraSmart",
     description:
-      "Pantallas KNX en pared y marcas como Basalte, Gira, Jung y ABB: el equipo de hoteles, ahora para residencias en Panamá. KNX Partner, sin nube.",
+      "Diseño, instalación y programación KNX en Panamá. Iluminación, cortinas y climatización para residencias. DiraSmart, KNX Gold Partner, con soporte local.",
   },
   "/reviews": {
     title: "Reseñas de Clientes · DiraSmart Panamá",
     description:
-      "Reseñas reales de clientes de DiraSmart en Panamá: hogares, oficinas y residencias automatizadas. Calificación 5.0 en Google con 15 opiniones.",
+      "Opiniones de clientes de DiraSmart en Panamá sobre instalación de domótica, automatización del hogar y soporte. Consulta las reseñas publicadas en Google.",
   },
   "/blog": {
     title: "Blog · DiraSmart · Guías de Smart Home y Domótica",
@@ -45,7 +45,7 @@ export const PAGE_META_EN: Record<string, PageMeta> = {
   "/": {
     title: "DiraSmart · Smart Home Company in Panama",
     description:
-      "Smart home company in Panama. Certified KNX Partner, 100% local processing and a custom app for homes, hotels, retail and buildings.",
+      "Smart home automation in Panama: lighting, curtains, air conditioning and app control. Wireless and KNX solutions with professional installation and support.",
   },
   "/about": {
     title: "About Us · DiraSmart · Smart Homes in Panama",
@@ -55,17 +55,17 @@ export const PAGE_META_EN: Record<string, PageMeta> = {
   "/comercial": {
     title: "Hotel, Office & Building Automation in Panama · DiraSmart",
     description:
-      "Automation and BMS for hotels, offices, retail and buildings in Panama. Certified KNX Partner, decentralized architecture, BACnet and DALI, 24/7 support.",
+      "Automation for hotels, commercial spaces and buildings in Panama. KNX, NETx Automation BMS and access control, with project-specific integration and local support.",
   },
   "/premium": {
-    title: "Premium KNX Installations in Panama · DiraSmart",
+    title: "KNX in Panama: Premium Home Automation | DiraSmart",
     description:
-      "Wall-mounted KNX touchscreens and brands like Basalte, Gira, Jung and ABB: hotel-grade equipment for residences in Panama. Certified KNX Partner, no cloud.",
+      "KNX design, installation and programming in Panama. Lighting, curtains and climate control for residences. DiraSmart, KNX Gold Partner, with local support.",
   },
   "/reviews": {
     title: "Client Reviews · DiraSmart Panama",
     description:
-      "Real reviews from DiraSmart clients in Panama: homes, offices and residences automated with local processing and KNX. Rated 5.0 on Google with 15 reviews.",
+      "DiraSmart customer feedback on home automation installation and support in Panama. Explore customer experiences and read the reviews published on Google.",
   },
   "/blog": {
     title: "Blog · DiraSmart · Smart Home & Automation Guides",

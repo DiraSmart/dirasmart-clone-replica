@@ -9,31 +9,31 @@ export const post: BlogPost = {
   icon: "Award",
   image: "/blog/knx-partner.jpg",
   title: {
-    es: "KNX: El Estándar Mundial de Automatización para Proyectos Premium en Panamá",
-    en: "KNX: The Global Automation Standard for Premium Projects in Panama",
+    es: "KNX en Panamá: qué es y cómo planificar su instalación",
+    en: "KNX in Panama: What It Is and How to Plan an Installation",
   },
   excerpt: {
-    es: "Descubre qué es KNX, por qué es el estándar más confiable del mundo para edificios inteligentes, y cómo DiraSmart es uno de los pocos KNX Partners certificados en Panamá.",
-    en: "Discover what KNX is, why it's the world's most trusted standard for smart buildings, and how DiraSmart is one of the few certified KNX Partners in Panama.",
+    es: "Qué permite controlar KNX, cuándo conviene instalarlo y cómo preparar su proyecto en Panamá. Una guía de DiraSmart, KNX Gold Partner.",
+    en: "What KNX can control, when to install it and how to prepare your project in Panama. A guide from DiraSmart, KNX Gold Partner.",
   },
   content: {
     es: `Cuando se trata de automatización de edificios y hogares de alta gama, hay un nombre que sobresale por encima de todos los demás: KNX. Si estás considerando un sistema de domótica que dure décadas y funcione con la máxima confiabilidad, necesitas conocer este estándar.
 
 ## ¿Qué es KNX?
 
-KNX es el estándar mundial abierto para la automatización de hogares y edificios. Nació en Europa en los años 90 como la fusión de tres protocolos anteriores (EIB, EHS y BatiBUS) y hoy es el único estándar de domótica reconocido como norma internacional (ISO/IEC 14543-3).
+KNX es un estándar abierto para automatización de hogares y edificios, reconocido en la familia de normas ISO/IEC 14543-3. Permite coordinar iluminación, climatización y cortinas mediante equipos certificados de distintos fabricantes.
 
-**¿Qué significa esto en la práctica?** Que un dispositivo KNX fabricado por cualquier marca certificada — ya sea ABB, Schneider Electric, Siemens, Jung, Gira o cualquiera de los más de 500 fabricantes — funcionará perfectamente con cualquier otro dispositivo KNX. Sin adaptadores, sin software propietario, sin sorpresas.
+**¿Qué significa esto en la práctica?** Se pueden combinar productos KNX certificados de distintas marcas. En cada proyecto verificamos sus funciones, parámetros y requisitos; para integrar equipos que no son KNX pueden hacer falta pasarelas o interfaces adicionales.
 
 ## ¿Por qué KNX es diferente?
 
-**Cableado dedicado (bus):** A diferencia de los sistemas que dependen de WiFi o Bluetooth, KNX utiliza su propio cable de datos (un bus de par trenzado). Esto significa que tu sistema de automatización no compite con tu red de internet y es completamente inmune a interferencias inalámbricas.
+**Bus cableado:** En una instalación KNX TP, los equipos se comunican por un bus de par trenzado, sin depender de la cobertura WiFi para esas comunicaciones. KNX también dispone de otros medios de comunicación; elegimos la arquitectura según el proyecto.
 
-**Descentralizado:** En un sistema KNX no hay un "cerebro" central que, si falla, paralice todo. Cada dispositivo tiene su propia inteligencia programada. Si un componente falla, el resto sigue funcionando normalmente.
+**Descentralizado:** Sensores y actuadores pueden ejecutar funciones distribuidas sin depender de un único controlador de habitación. Una falla en el bus, la alimentación o una pasarela puede afectar a los equipos y funciones relacionados: la topología y las protecciones siguen siendo importantes.
 
-**Durabilidad profesional:** Los componentes KNX están diseñados para durar más de 20 años. No estamos hablando de gadgets de consumo que se vuelven obsoletos en 3 años. Es infraestructura seria para propiedades serias.
+**Mantenimiento y ampliación:** El estándar abierto permite planificar sustituciones y ampliaciones con productos compatibles. Conservar el proyecto ETS y la documentación facilita esas intervenciones. La vida útil depende de cada equipo y de sus condiciones de uso.
 
-**Sin dependencia de la nube:** Al igual que la filosofía de DiraSmart, KNX procesa todo localmente. Tu hogar funciona aunque no haya internet, y tus datos nunca salen de tu propiedad.
+**Control local:** Las funciones locales se pueden diseñar para seguir operando sin internet. El acceso remoto, los asistentes de voz y algunos servicios externos pueden requerir conexión y equipos adicionales; lo especificamos en la propuesta.
 
 ## ¿Para quién es KNX?
 
@@ -45,9 +45,9 @@ KNX brilla especialmente en:
 
 **Proyectos nuevos en construcción:** La instalación ideal es durante la fase de construcción, cuando el cableado se integra junto con la infraestructura eléctrica. Aunque también se puede adaptar en renovaciones.
 
-## DiraSmart: KNX Partner certificado en Panamá
+## DiraSmart: KNX Gold Partner en Panamá
 
-Aquí viene lo importante: **DiraSmart es uno de los pocos KNX Partners certificados en Panamá.** Esto no es solo un título — significa que nuestro equipo ha sido entrenado y certificado directamente por la KNX Association, y que cumplimos con los estándares internacionales de diseño, instalación y programación de sistemas KNX.
+**DiraSmart es KNX Gold Partner.** Diseñamos, instalamos y programamos proyectos para casas y apartamentos en Panamá, coordinando el alcance con el propietario, el arquitecto y el electricista.
 
 ¿Por qué esto importa? Porque un sistema KNX mal instalado o mal programado no aprovecha ni la mitad de su potencial. La certificación garantiza que:
 
@@ -66,8 +66,8 @@ En DiraSmart no solo instalamos KNX de forma aislada. Lo integramos con nuestro 
 
 Si estás construyendo o renovando una propiedad en Panamá y buscas un sistema de automatización que:
 
-- Dure más de 20 años sin obsolescencia
-- No dependa de internet ni de servicios en la nube
+- Permita mantenimiento y ampliaciones con productos compatibles
+- Mantenga las funciones locales previstas aunque no haya internet
 - Sea compatible con más de 8,000 productos de 500+ fabricantes
 - Tenga respaldo de un estándar internacional certificado
 - Sea instalado por profesionales certificados
@@ -77,19 +77,19 @@ Entonces KNX con DiraSmart es tu mejor opción. Contáctanos para una consulta g
 
 ## What is KNX?
 
-KNX is the worldwide open standard for home and building automation. It was born in Europe in the 1990s as a merger of three earlier protocols (EIB, EHS, and BatiBUS) and today is the only home automation standard recognized as an international norm (ISO/IEC 14543-3).
+KNX is an open standard for home and building automation, recognized in the ISO/IEC 14543-3 family of standards. It coordinates lighting, climate control and curtains using certified equipment from different manufacturers.
 
-**What does this mean in practice?** That a KNX device manufactured by any certified brand — whether ABB, Schneider Electric, Siemens, Jung, Gira, or any of the 500+ manufacturers — will work seamlessly with any other KNX device. No adapters, no proprietary software, no surprises.
+**What does this mean in practice?** Certified KNX products from different brands can be combined. For each project we check their functions, parameters and requirements; integrating non-KNX equipment may require additional gateways or interfaces.
 
 ## Why is KNX Different?
 
-**Dedicated wiring (bus):** Unlike systems that rely on WiFi or Bluetooth, KNX uses its own data cable (a twisted pair bus). This means your automation system doesn't compete with your internet network and is completely immune to wireless interference.
+**Wired bus:** In a KNX TP installation, devices communicate over a twisted-pair bus without relying on WiFi coverage for those communications. KNX also supports other communication media; we select the architecture for each project.
 
-**Decentralized:** In a KNX system, there is no central "brain" that, if it fails, shuts everything down. Each device has its own programmed intelligence. If one component fails, the rest continues to work normally.
+**Decentralized:** Sensors and actuators can execute distributed functions without relying on a single room controller. A bus, power supply or gateway fault can affect related equipment and functions: topology and protection still matter.
 
-**Professional durability:** KNX components are designed to last over 20 years. We're not talking about consumer gadgets that become obsolete in 3 years. This is serious infrastructure for serious properties.
+**Maintenance and extensions:** The open standard provides options for replacements and extensions using compatible products. Keeping the ETS project and documentation makes this work easier. Service life depends on each device and its operating conditions.
 
-**No cloud dependency:** Just like DiraSmart's philosophy, KNX processes everything locally. Your home works even without internet, and your data never leaves your property.
+**Local control:** Local functions can be designed to keep operating without internet. Remote access, voice assistants and some external services may need connectivity and additional equipment; we specify this in the proposal.
 
 ## Who is KNX For?
 
@@ -101,9 +101,9 @@ KNX shines especially in:
 
 **New construction projects:** The ideal installation is during the construction phase, when wiring is integrated alongside electrical infrastructure. Although it can also be adapted in renovations.
 
-## DiraSmart: Certified KNX Partner in Panama
+## DiraSmart: KNX Gold Partner in Panama
 
-Here's the important part: **DiraSmart is one of the few certified KNX Partners in Panama.** This isn't just a title — it means our team has been trained and certified directly by the KNX Association, and that we comply with international standards for KNX system design, installation, and programming.
+**DiraSmart is a KNX Gold Partner.** We design, install and program projects for homes and apartments in Panama, coordinating the scope with the owner, architect and electrician.
 
 Why does this matter? Because a poorly installed or poorly programmed KNX system doesn't leverage even half its potential. Certification ensures that:
 
@@ -122,14 +122,15 @@ At DiraSmart, we don't just install KNX in isolation. We integrate it with our l
 
 If you're building or renovating a property in Panama and looking for an automation system that:
 
-- Lasts over 20 years without obsolescence
-- Doesn't depend on internet or cloud services
+- Supports maintenance and extensions with compatible products
+- Keeps the planned local functions operating without internet
 - Is compatible with over 8,000 products from 500+ manufacturers
 - Is backed by a certified international standard
 - Is installed by certified professionals
 
 Then KNX with DiraSmart is your best choice. Contact us for a free consultation and discover how we can design the perfect system for your property.`,
   },
+  sources: [{ title: { es: "KNX Association: qué es KNX", en: "KNX Association: what is KNX" }, url: "https://www.knx.org/explore-knx/what-is-knx" }],
   faq: [
     {
       question: {
@@ -137,8 +138,8 @@ Then KNX with DiraSmart is your best choice. Contact us for a free consultation 
         en: "What happens if a device fails in a KNX system?",
       },
       answer: {
-        es: "A diferencia de sistemas con un cerebro central único, KNX es descentralizado: cada dispositivo tiene su propia inteligencia programada. Si un componente falla, el resto del sistema sigue funcionando con normalidad, sin que toda tu automatización se paralice.",
-        en: "Unlike systems with a single central brain, KNX is decentralized: each device has its own programmed intelligence. If one component fails, the rest of the system keeps working normally, without your entire automation shutting down.",
+        es: "Las funciones distribuidas pueden seguir operando, pero el efecto depende del equipo y de la topología. Una falla de alimentación, bus o pasarela puede afectar una zona o las funciones que dependan de ese componente.",
+        en: "Distributed functions may keep operating, but the effect depends on the equipment and topology. A power supply, bus or gateway fault can affect a zone or the functions that depend on that component.",
       },
     },
     {
@@ -147,8 +148,8 @@ Then KNX with DiraSmart is your best choice. Contact us for a free consultation 
         en: "How is KNX different from a WiFi-based home automation system?",
       },
       answer: {
-        es: "KNX utiliza su propio cableado dedicado (un bus de par trenzado) en lugar de depender de WiFi o Bluetooth, por lo que no compite con tu red de internet y es inmune a interferencias inalámbricas. Además, sus componentes están diseñados para durar más de 20 años, mientras que muchos dispositivos WiFi de consumo quedan obsoletos en pocos años.",
-        en: "KNX uses its own dedicated wiring (a twisted-pair bus) instead of relying on WiFi or Bluetooth, so it doesn't compete with your internet network and is immune to wireless interference. Its components are also designed to last over 20 years, while many consumer WiFi devices become obsolete within a few years.",
+        es: "Una instalación KNX TP utiliza un bus cableado para esas comunicaciones. Una solución WiFi usa la red inalámbrica. La elección depende del alcance, el cableado disponible y los requisitos; el funcionamiento local se verifica para cada equipo y sistema.",
+        en: "A KNX TP installation uses a wired bus for those communications. A WiFi solution uses the wireless network. The choice depends on scope, available wiring and requirements; local operation is verified for each device and system.",
       },
     },
     {

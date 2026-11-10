@@ -282,7 +282,7 @@ Between 15% and 30% on HVAC in typical projects, through occupancy control, sche
 
 ${CONTACT_EN}`;
 
-const PREMIUM_ES = `DiraSmart Premium es el catálogo de equipamiento KNX de alta gama que instalamos en hoteles y edificios corporativos, ofrecido para residencias en Panamá: pantallas táctiles KNX en pared, keypads y termostatos de marcas europeas y estadounidenses reconocidas mundialmente, en instalaciones cableadas desde la obra. No es un servicio distinto: es el mismo servicio DiraSmart con el nivel de producto más alto del mercado.
+const PREMIUM_ES = `DiraSmart, KNX Gold Partner, diseña, instala y programa iluminación, cortinas y climatización KNX para casas y apartamentos en Panamá. Planificamos el bus y los equipos con el arquitecto o electricista desde la obra nueva o una remodelación integral, con puesta en marcha y soporte local.
 
 ## Qué incluye
 
@@ -294,7 +294,7 @@ const PREMIUM_ES = `DiraSmart Premium es el catálogo de equipamiento KNX de alt
 
 ## Marcas del catálogo
 
-Basalte (Bélgica, pantallas y keypads), Gira (Alemania, Esprit y Tastsensor 4), Jung (Alemania, LS 990 y LS Zero), ABB free@home (Suiza), Hager (Alemania, tableros y protección), Lutron HomeWorks (Estados Unidos, iluminación premium), Theben (Alemania, termostatos y presencia), MDT (Alemania, actuadores y dimmers). Si una marca es KNX o tiene gateway KNX, casi siempre podemos integrarla.
+Basalte (Bélgica, pantallas y keypads), Gira (Alemania, Esprit y Tastsensor 4), Jung (Alemania, LS 990 y LS Zero), ABB i-bus KNX (Suiza), Hager (Alemania, tableros y protección), Lutron HomeWorks (Estados Unidos, iluminación premium), Theben (Alemania, termostatos y presencia), MDT (Alemania, actuadores y dimmers). Si una marca es KNX o tiene gateway KNX, casi siempre podemos integrarla.
 
 ## Por qué no falla
 
@@ -319,7 +319,7 @@ Toda Panamá: Ciudad de Panamá (Costa del Este, Punta Pacífica y alrededores),
 
 ${CONTACT_ES}`;
 
-const PREMIUM_EN = `DiraSmart Premium is the catalog of high-end KNX equipment we install in hotels and corporate buildings, offered for residences in Panama: wall-mounted KNX touchscreens, keypads and thermostats from world-recognized European and American brands, in wired installations planned from the construction stage. It is not a different service: it is the same DiraSmart service with the highest product tier on the market.
+const PREMIUM_EN = `DiraSmart, KNX Gold Partner, designs, installs and programs KNX lighting, curtains and climate control for houses and apartments in Panama. We coordinate bus wiring and equipment with the architect or electrician during new construction or a full renovation, with commissioning and local support.
 
 ## What it includes
 
@@ -331,7 +331,7 @@ const PREMIUM_EN = `DiraSmart Premium is the catalog of high-end KNX equipment w
 
 ## Catalog brands
 
-Basalte (Belgium, touchscreens and keypads), Gira (Germany, Esprit and Tastsensor 4), Jung (Germany, LS 990 and LS Zero), ABB free@home (Switzerland), Hager (Germany, panels and protection), Lutron HomeWorks (United States, premium lighting), Theben (Germany, thermostats and presence), MDT (Germany, actuators and dimmers). If a brand is KNX or has a KNX gateway, we can almost always integrate it.
+Basalte (Belgium, touchscreens and keypads), Gira (Germany, Esprit and Tastsensor 4), Jung (Germany, LS 990 and LS Zero), ABB i-bus KNX (Switzerland), Hager (Germany, panels and protection), Lutron HomeWorks (United States, premium lighting), Theben (Germany, thermostats and presence), MDT (Germany, actuators and dimmers). If a brand is KNX or has a KNX gateway, we can almost always integrate it.
 
 ## Why it does not fail
 
