@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict';
+import { createSettings, applyScene, updateRoom } from '../src/components/next/experience.ts';
+const initial=createSettings();
+const away=applyScene(initial,'dormitorio','salida');
+assert.equal(away.dormitorio.light,0);
+assert.equal(away.dormitorio.occupied,false);
+assert.deepEqual(away.sala,initial.sala);
+assert.deepEqual(away.cocina,initial.cocina);
+assert.equal(initial.dormitorio.light,80);
+const bedtime=applyScene(away,'sala','descanso');
+assert.equal(bedtime.sala.curtains,0);
+assert.equal(bedtime.dormitorio.occupied,false);
+const bounded=updateRoom(bedtime,'cocina',{temperature:99,curtains:-50,light:120});
+assert.equal(bounded.cocina.temperature,28);
+assert.equal(bounded.cocina.curtains,0);
+assert.equal(bounded.cocina.light,100);
+assert.notStrictEqual(initial.sala,initial.cocina);
+console.log('OK: estados independientes, escenas y límites de control');

@@ -9,6 +9,7 @@ import RevealObserver from "./components/RevealObserver";
 import ScrollProgress from "./components/ScrollProgress";
 
 // Lazy load non-critical pages to reduce initial bundle
+const NextExperience = lazy(() => import('./pages/NextExperience'));
 const About = lazy(() => import("./pages/About"));
 const Blog = lazy(() => import("./pages/Blog"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
@@ -46,17 +47,22 @@ const AnalyticsTracker = () => {
   return null;
 };
 
-const AppRoutes = () => (
+const AppRoutes = () => {
+  const { pathname } = useLocation();
+  const isPreview = pathname === '/nueva' || pathname.startsWith('/nueva/');
+  return (
   <LanguageProvider>
     <Toaster />
     <ScrollToTop />
-    <AnalyticsTracker />
-    <RevealObserver />
-    <ScrollProgress />
-    <Suspense fallback={null}>
-      <DynamicHead />
-    </Suspense>
+    {!isPreview && <>
+      <AnalyticsTracker />
+      <RevealObserver />
+      <ScrollProgress />
+      <Suspense fallback={null}><DynamicHead /></Suspense>
+    </>}
     <Routes>
+      <Route path="/nueva" element={<Suspense fallback={<div>Cargando experiencia…</div>}><NextExperience /></Suspense>} />
+      <Route path="/nueva/comercial" element={<Suspense fallback={<div>Cargando experiencia…</div>}><NextExperience /></Suspense>} />
       {/* Spanish routes (default) */}
       <Route path="/" element={<Index />} />
       <Route path="/about" element={<Suspense fallback={null}><About /></Suspense>} />
@@ -78,6 +84,7 @@ const AppRoutes = () => (
     </Routes>
   </LanguageProvider>
 );
+};
 
 const App = () => (
   <ErrorBoundary>
