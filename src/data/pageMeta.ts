@@ -10,9 +10,9 @@ export interface PageMeta {
 
 export const PAGE_META_ES: Record<string, PageMeta> = {
   "/": {
-    title: "DiraSmart · Casa Inteligente y Domótica en Panamá",
+    title: "Casas inteligentes y domótica en Panamá | DiraSmart",
     description:
-      "Domótica en Panamá: iluminación, cortinas, aire acondicionado y control desde una app. Soluciones inalámbricas y KNX con instalación y soporte de DiraSmart.",
+      "Diseño e instalación de casas inteligentes en Panamá. Domótica inalámbrica y KNX para luces, aire y cortinas, con app y soporte de DiraSmart, KNX Gold Partner.",
   },
   "/about": {
     title: "Nosotros · DiraSmart · Casa Inteligente en Panamá",
@@ -43,9 +43,9 @@ export const PAGE_META_ES: Record<string, PageMeta> = {
 
 export const PAGE_META_EN: Record<string, PageMeta> = {
   "/": {
-    title: "DiraSmart · Smart Home Company in Panama",
+    title: "Smart Homes & Home Automation in Panama | DiraSmart",
     description:
-      "Smart home automation in Panama: lighting, curtains, air conditioning and app control. Wireless and KNX solutions with professional installation and support.",
+      "Smart home design and installation in Panama. Wireless and KNX automation for lighting, AC and curtains, with app control and support from DiraSmart.",
   },
   "/about": {
     title: "About Us · DiraSmart · Smart Homes in Panama",

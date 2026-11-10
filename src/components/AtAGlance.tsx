@@ -15,24 +15,24 @@ const AtAGlance = () => {
   const facts = [
     {
       icon: Award,
-      title: es ? "KNX Partner certificado" : "Certified KNX Partner",
+      title: "KNX Gold Partner",
       desc: es
-        ? "Uno de los pocos integradores certificados por la KNX Association en Panamá. Programación con ETS, acceso a 8,000+ productos."
-        : "One of the few integrators certified by the KNX Association in Panama. ETS programming, access to 8,000+ products.",
+        ? "Diseño y programación con ETS. Seleccionamos productos KNX certificados y documentamos las funciones del proyecto."
+        : "Design and programming with ETS. We select certified KNX products and document the project's functions.",
     },
     {
       icon: Cpu,
-      title: es ? "Procesamiento 100% local" : "100% local processing",
+      title: es ? "Funciones locales" : "Local functions",
       desc: es
-        ? "Todo corre dentro de tu casa o edificio. Sin internet sigue funcionando y ningún dato sale de la propiedad."
-        : "Everything runs inside your home or building. It keeps working without internet and no data leaves the property.",
+        ? "Definimos qué funciones pueden operar sin internet y qué integraciones requieren conexión o servicios externos."
+        : "We define which functions can operate without internet and which integrations need connectivity or external services.",
     },
     {
       icon: Network,
       title: es ? "KNX descentralizado" : "Decentralized KNX",
       desc: es
-        ? "Sin controlador central: cada dispositivo tiene su propia inteligencia. Un fallo puntual no apaga la casa ni el hotel."
-        : "No central controller: every device carries its own intelligence. A single fault never shuts down the home or hotel.",
+        ? "Sensores y actuadores pueden ejecutar funciones distribuidas. Planificamos el bus, la alimentación y las pasarelas según el alcance."
+        : "Sensors and actuators can run distributed functions. We plan the bus, power supplies and gateways for the project scope.",
     },
     {
       icon: Layers,
@@ -52,8 +52,8 @@ const AtAGlance = () => {
       icon: MessageCircle,
       title: es ? "Soporte directo por WhatsApp" : "Direct WhatsApp support",
       desc: es
-        ? "Hablas con quien instaló tu sistema. Consulta inicial y visita técnica sin costo en toda Panamá."
-        : "You talk to the people who installed your system. Free initial consultation and site visit across Panama.",
+        ? "Consulta inicial gratuita y visitas coordinadas. Definimos la cobertura y las condiciones de soporte según tu proyecto."
+        : "Free initial consultation and scheduled site visits. Coverage and support arrangements are defined for your project.",
     },
   ];
 
@@ -72,8 +72,8 @@ const AtAGlance = () => {
           </h2>
           <p className="text-muted-foreground text-base sm:text-lg leading-relaxed text-pretty">
             {es
-              ? "DiraSmart diseña, instala y mantiene casas inteligentes, hoteles, comercios y edificios en toda Panamá. Somos KNX Partner certificado, trabajamos con procesamiento 100% local y cubrimos gama media y alta con un solo proveedor responsable de todo."
-              : "DiraSmart designs, installs and maintains smart homes, hotels, retail spaces and buildings across Panama. We are a certified KNX Partner, we work with 100% local processing and we cover mid-range and high-end with a single provider responsible for everything."}
+              ? "DiraSmart diseña, instala y da soporte a sistemas de domótica para apartamentos y casas en Panamá. Combinamos soluciones inalámbricas y KNX premium, con controles elegidos para cada vivienda. También evaluamos proyectos de automatización comercial y edificios."
+              : "DiraSmart designs, installs and supports home automation for apartments and houses in Panama. We combine wireless and premium KNX solutions with controls selected for each home. We also assess commercial and building automation projects."}
           </p>
         </div>
 
