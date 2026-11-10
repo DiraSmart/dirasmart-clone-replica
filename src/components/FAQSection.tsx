@@ -2,23 +2,7 @@ import { useId, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { revealDelay } from "@/lib/reveal";
-
-const FAQ_KEYS = [
-  { q: "faq.q1", a: "faq.a1" },
-  { q: "faq.q2", a: "faq.a2" },
-  { q: "faq.q3", a: "faq.a3" },
-  { q: "faq.q4", a: "faq.a4" },
-  { q: "faq.q5", a: "faq.a5" },
-  { q: "faq.q6", a: "faq.a6" },
-  { q: "faq.q7", a: "faq.a7" },
-  { q: "faq.q8", a: "faq.a8" },
-  { q: "faq.q9", a: "faq.a9" },
-  { q: "faq.q10", a: "faq.a10" },
-  { q: "faq.q11", a: "faq.a11" },
-  { q: "faq.q12", a: "faq.a12" },
-  { q: "faq.q13", a: "faq.a13" },
-  { q: "faq.q14", a: "faq.a14" },
-];
+import { HOME_FAQ } from "@/data/homeAutomation";
 
 const FAQItem = ({ question, answer }: { question: string; answer: string }) => {
   const [open, setOpen] = useState(false);
@@ -41,6 +25,7 @@ const FAQItem = ({ question, answer }: { question: string; answer: string }) => 
       <div
         id={panelId}
         role="region"
+        aria-hidden={!open}
         className={`grid motion-safe:transition-[grid-template-rows,opacity] motion-safe:duration-300 ease-in-out ${open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
       >
         <div className="overflow-hidden">
@@ -54,7 +39,7 @@ const FAQItem = ({ question, answer }: { question: string; answer: string }) => 
 };
 
 const FAQSection = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   return (
     <section id="faq" className="py-16 md:py-24">
@@ -74,9 +59,9 @@ const FAQSection = () => {
 
         {/* FAQ Grid - 2 columns on desktop */}
         <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-3">
-          {FAQ_KEYS.map(({ q, a }, i) => (
-            <div key={q} data-reveal style={revealDelay(i, 40)}>
-              <FAQItem question={t(q)} answer={t(a)} />
+          {HOME_FAQ.map(({ question, answer }, i) => (
+            <div key={question.es} data-reveal style={revealDelay(i, 40)}>
+              <FAQItem question={question[language]} answer={answer[language]} />
             </div>
           ))}
         </div>

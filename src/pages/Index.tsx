@@ -6,7 +6,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import AnimatedSection from "@/components/AnimatedSection";
 
 // Lazy load below-fold sections for faster mobile FCP/LCP
-const ServicesGrid = lazy(() => import("@/components/ServicesGrid"));
+const HomeAutomationSolutions = lazy(() => import("@/components/HomeAutomationSolutions"));
 const FeatureTabs = lazy(() => import("@/components/FeatureTabs"));
 const InteractiveDemo = lazy(() => import("@/components/InteractiveDemo"));
 const BrandLogos = lazy(() => import("@/components/BrandLogos"));
@@ -28,7 +28,7 @@ const Index = () => {
 
         <Suspense fallback={null}>
           <AnimatedSection>
-            <ServicesGrid />
+            <HomeAutomationSolutions />
           </AnimatedSection>
 
           <AnimatedSection delay={0.1}>

@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { MessageCircle, Pause, Play } from "lucide-react";
 import ParticleBackground from "./ParticleBackground";
 import { useLanguage } from "@/contexts/LanguageContext";
-import AnimatedCounter from "@/components/AnimatedCounter";
 import appMobileImage from "@/assets/app-mobile.webp";
 import appMobileImage2 from "@/assets/app-mobile-2.webp";
 import { revealDelay } from "@/lib/reveal";
@@ -54,6 +53,7 @@ const HeroSection = () => {
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center px-4">
           {/* Left Content */}
           <div className="space-y-6 md:space-y-8 text-center lg:text-left">
+            <p className="text-xs sm:text-sm font-medium uppercase tracking-[0.18em] text-primary">{t("hero.eyebrow")}</p>
             <h1 data-reveal style={revealDelay(0)} className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-secondary leading-tight">
               {t("hero.title")}{" "}
               <span className="text-gradient">{t("hero.titleHighlight")}</span>
@@ -89,7 +89,7 @@ const HeroSection = () => {
             {/* Animated Stats */}
             <div data-reveal style={revealDelay(6)} className="flex flex-wrap gap-6 sm:gap-8 pt-4 justify-center lg:justify-start">
               <div className="text-center">
-                <p className="text-2xl sm:text-3xl font-bold text-primary tabular-nums"><AnimatedCounter end={2500} suffix="+" duration={1600} /></p>
+                <p className="text-xl sm:text-2xl font-bold text-primary">{t("hero.stat1.value")}</p>
                 <p className="text-xs sm:text-sm text-muted-foreground">{t("hero.stat1.label")}</p>
               </div>
               <div className="text-center">
@@ -97,14 +97,14 @@ const HeroSection = () => {
                 <p className="text-xs sm:text-sm text-muted-foreground">{t("hero.stat2.label")}</p>
               </div>
               <div className="text-center">
-                <p className="text-2xl sm:text-3xl font-bold text-primary tabular-nums"><AnimatedCounter end={100} suffix="%" duration={1600} /></p>
+                <p className="text-xl sm:text-2xl font-bold text-primary">{t("hero.stat3.value")}</p>
                 <p className="text-xs sm:text-sm text-muted-foreground">{t("hero.stat3.label")}</p>
               </div>
             </div>
           </div>
 
           {/* Right Content - App Image */}
-          <div data-reveal="right" style={revealDelay(3)} className="relative flex justify-center order-first lg:order-last motion-safe:animate-float">
+          <div data-reveal="right" style={revealDelay(3)} className="relative flex justify-center motion-safe:animate-float">
             {images.map((img, index) => (
               <img
                 key={index}

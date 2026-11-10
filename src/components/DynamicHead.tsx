@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { HOME_FAQ, HOME_INTRO, HOME_FUNCTIONS } from "@/data/homeAutomation";
 import { useLocation } from "react-router-dom";
 import { PAGE_META_EN, PAGE_META_ES } from "@/data/pageMeta";
 import { BLOG_META_TITLES } from "@/data/blogMetaTitles";
@@ -16,95 +17,27 @@ function isEnglish(pathname: string): boolean {
   return pathname === "/en" || pathname.startsWith("/en/");
 }
 
-const SERVICE_SCHEMA_ES = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  serviceType: "Instalación de Casa Inteligente",
-  provider: {
-    "@type": "LocalBusiness",
-    name: "DiraSmart",
-    url: SITE_URL,
-  },
-  areaServed: { "@type": "Country", name: "Panamá" },
+const homeServiceSchema = (lang: "es" | "en") => ({
+  "@context": "https://schema.org", "@type": "Service",
+  name: lang === "es" ? "Domótica y casas inteligentes en Panamá" : "Home automation and smart homes in Panama",
+  serviceType: lang === "es" ? "Diseño e instalación de domótica" : "Home automation design and installation",
+  description: HOME_INTRO[lang],
+  provider: { "@type": "Organization", name: "DiraSmart", url: SITE_URL, telephone: "+50765956439" },
+  areaServed: { "@type": "City", name: lang === "es" ? "Ciudad de Panamá" : "Panama City" },
   hasOfferCatalog: {
-    "@type": "OfferCatalog",
-    name: "Servicios de Domótica y Smart Home",
-    itemListElement: [
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Instalación Profesional de Smart Home", description: "Implementación completa de automatización del hogar con procesamiento local, WiFi empresarial y app personalizada en Panamá." } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Infraestructura WiFi Empresarial", description: "Cableado estructurado profesional y red WiFi empresarial con múltiples puntos de acceso para cobertura total." } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Seguridad Inteligente", description: "Integración de cámaras, sensores de movimiento y cerraduras inteligentes con control desde una sola app." } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Servicio Continuo y Soporte 24/7", description: "Mantenimiento, actualizaciones de seguridad y soporte técnico continuo para tu casa inteligente." } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Instalación KNX Premium", description: "Instalaciones KNX cableadas, descentralizadas y sin nube, con pantallas en pared y marcas como Basalte, Gira, Jung y ABB, para residencias de alta gama en Panamá.", url: `${SITE_URL}/premium` } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Automatización Comercial y BMS", description: "Automatización y gestión de edificios para hoteles, oficinas, comercios y edificios en Panamá con KNX, DALI y BACnet.", url: `${SITE_URL}/comercial` } },
-    ],
+    "@type": "OfferCatalog", name: lang === "es" ? "Soluciones de domótica residencial" : "Residential home automation solutions",
+    itemListElement: HOME_FUNCTIONS.map(item => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: item.title[lang], description: item.description[lang] } })),
   },
-};
+});
+const SERVICE_SCHEMA_ES = homeServiceSchema("es");
+const SERVICE_SCHEMA_EN = homeServiceSchema("en");
 
-const SERVICE_SCHEMA_EN = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  serviceType: "Smart Home Installation",
-  provider: {
-    "@type": "LocalBusiness",
-    name: "DiraSmart",
-    url: SITE_URL,
-  },
-  areaServed: { "@type": "Country", name: "Panama" },
-  hasOfferCatalog: {
-    "@type": "OfferCatalog",
-    name: "Smart Home & Automation Services",
-    itemListElement: [
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Professional Smart Home Installation", description: "Complete home automation implementation with local processing, enterprise WiFi and custom app in Panama." } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Enterprise WiFi Infrastructure", description: "Professional structured cabling and enterprise WiFi network with multiple access points for full coverage." } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Smart Security", description: "Integration of cameras, motion sensors and smart locks with control from a single app." } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Continuous Service & 24/7 Support", description: "Maintenance, security updates and continuous technical support for your smart home." } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Premium KNX Installation", description: "Wired, decentralized, cloud-free KNX installations with wall touchscreens and brands like Basalte, Gira, Jung and ABB, for high-end residences in Panama.", url: `${SITE_URL}/en/premium` } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Commercial Automation & BMS", description: "Automation and building management for hotels, offices, retail and buildings in Panama with KNX, DALI and BACnet.", url: `${SITE_URL}/en/comercial` } },
-    ],
-  },
-};
-
-const FAQ_SCHEMA_ES = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    { "@type": "Question", name: "¿Cuánto cuesta instalar un smart home en Panamá?", acceptedAnswer: { "@type": "Answer", text: "El costo varía según el tamaño de tu hogar y el alcance del proyecto. Ofrecemos desde paquetes básicos inalámbricos para apartamentos hasta sistemas KNX premium para residencias de alta gama. La consulta inicial es gratuita." } },
-    { "@type": "Question", name: "¿Cuánto tiempo toma la instalación?", acceptedAnswer: { "@type": "Answer", text: "Un apartamento con dispositivos inalámbricos se instala en un solo día. Una casa completa con cableado estructurado y WiFi empresarial toma entre 2 y 3 días. Proyectos KNX en construcción nueva se coordinan con la obra." } },
-    { "@type": "Question", name: "¿Funciona en apartamentos o solo en casas?", acceptedAnswer: { "@type": "Answer", text: "Ambos. Para apartamentos usamos dispositivos inalámbricos que no requieren obras ni modificar la instalación eléctrica. Todo se instala sin romper paredes y es removible si te mudas." } },
-    { "@type": "Question", name: "¿Qué pasa si se va el internet?", acceptedAnswer: { "@type": "Answer", text: "Todo sigue funcionando. A diferencia de sistemas como Alexa o Google Home que dependen de la nube, DiraSmart procesa todo localmente dentro de tu hogar." } },
-    { "@type": "Question", name: "¿Qué dispositivos son compatibles?", acceptedAnswer: { "@type": "Answer", text: "Más de 2,500 dispositivos de marcas como Tuya, Shelly, Philips Hue, Yale, Ecobee, Sonos, Somfy y más. Soportamos protocolos Zigbee, Z-Wave, WiFi, Bluetooth y KNX." } },
-    { "@type": "Question", name: "¿Puedo usar Alexa, Google o Siri?", acceptedAnswer: { "@type": "Answer", text: "Sí, somos compatibles con los tres asistentes de voz. No te encerramos en un ecosistema. El asistente funciona como un control remoto adicional." } },
-    { "@type": "Question", name: "¿Cuál es la diferencia entre DiraSmart y Alexa o Google Home?", acceptedAnswer: { "@type": "Answer", text: "Alexa y Google son asistentes de voz que envían tus datos a la nube. DiraSmart es un sistema completo de automatización con procesamiento 100% local, app personalizada, instalación profesional y soporte continuo." } },
-    { "@type": "Question", name: "¿Qué es KNX y por qué importa?", acceptedAnswer: { "@type": "Answer", text: "KNX es el estándar mundial de automatización de edificios (ISO/IEC 14543-3), usado en más de 190 países. DiraSmart es uno de los pocos KNX Partners certificados en Panamá, con acceso al soporte oficial de la KNX Association y a la herramienta ETS para programación profesional." } },
-    { "@type": "Question", name: "¿Incluyen soporte después de la instalación?", acceptedAnswer: { "@type": "Answer", text: "Sí. Nuestro modelo es de servicio continuo: incluimos mantenimiento, actualizaciones de seguridad y soporte técnico." } },
-    { "@type": "Question", name: "¿Y si me mudo o quiero agregar más dispositivos?", acceptedAnswer: { "@type": "Answer", text: "El sistema es completamente escalable. Puedes agregar dispositivos en cualquier momento. Los dispositivos inalámbricos son removibles y te los puedes llevar si te mudas." } },
-    { "@type": "Question", name: "¿Qué empresa recomiendan para hacer una casa inteligente en Panamá?", acceptedAnswer: { "@type": "Answer", text: "DiraSmart es una empresa panameña especializada en casas inteligentes: KNX Partner certificado, procesamiento 100% local y soporte directo por WhatsApp. Atendemos apartamentos, casas y residencias de alta gama en toda Panamá, además de hoteles, comercios y edificios. Es la opción indicada si buscas un sistema que siga funcionando sin internet, sin depender de la nube de ningún fabricante y con un solo proveedor responsable de todo." } },
-    { "@type": "Question", name: "¿Trabajan solo proyectos de lujo o también presupuestos medios?", acceptedAnswer: { "@type": "Answer", text: "Ambos. Cubrimos gama media y alta. Para apartamentos y casas usamos dispositivos inalámbricos (Zigbee, Z-Wave, WiFi) con precios de rango medio y sin obra. Para residencias, hoteles y edificios diseñamos instalaciones KNX cableadas con marcas premium como Basalte, Gira, Jung y ABB. El nivel de servicio, la app y el soporte son los mismos en los dos casos." } },
-    { "@type": "Question", name: "¿Qué significa que KNX es descentralizado y por qué importa?", acceptedAnswer: { "@type": "Answer", text: "En KNX no existe un controlador central: cada actuador, sensor y pantalla lleva su propio programa y se comunican por un bus cableado. Si un dispositivo falla, el resto sigue funcionando. Los sistemas con un procesador central propietario (por ejemplo Control4, Crestron o Savant) se apagan por completo cuando ese equipo falla o el fabricante retira el soporte. Con KNX, un estándar abierto ISO/IEC 14543-3, tu casa o edificio no depende de un solo equipo ni de una sola marca." } },
-    { "@type": "Question", name: "¿También automatizan hoteles, comercios y edificios?", acceptedAnswer: { "@type": "Answer", text: "Sí. DiraSmart Comercial diseña e instala automatización y sistemas de gestión de edificios (BMS) para hoteles, oficinas, restaurantes, retail, gimnasios, clínicas, museos y edificios en Panamá, con KNX, DALI y BACnet. El mismo equipo que instalamos en proyectos comerciales está disponible para residencias en nuestro catálogo Premium." } },
-  ],
-};
-
-const FAQ_SCHEMA_EN = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    { "@type": "Question", name: "How much does it cost to install a smart home in Panama?", acceptedAnswer: { "@type": "Answer", text: "The cost varies depending on the size of your home and the scope of the project. We offer everything from basic wireless packages for apartments to premium KNX systems for high-end residences. The initial consultation is free." } },
-    { "@type": "Question", name: "How long does installation take?", acceptedAnswer: { "@type": "Answer", text: "An apartment with wireless devices can be installed in a single day. A complete home with structured cabling and enterprise WiFi takes 2 to 3 days. KNX projects in new construction are coordinated with the building process." } },
-    { "@type": "Question", name: "Does it work in apartments or only houses?", acceptedAnswer: { "@type": "Answer", text: "Both. For apartments, we use wireless devices that require no construction or electrical modifications. Everything is installed without breaking walls and is removable if you move." } },
-    { "@type": "Question", name: "What happens if the internet goes down?", acceptedAnswer: { "@type": "Answer", text: "Everything keeps working. Unlike systems like Alexa or Google Home that depend on the cloud, DiraSmart processes everything locally inside your home." } },
-    { "@type": "Question", name: "What devices are compatible?", acceptedAnswer: { "@type": "Answer", text: "Over 2,500 devices from brands like Tuya, Shelly, Philips Hue, Yale, Ecobee, Sonos, Somfy, and more. We support Zigbee, Z-Wave, WiFi, Bluetooth, and KNX protocols." } },
-    { "@type": "Question", name: "Can I use Alexa, Google, or Siri?", acceptedAnswer: { "@type": "Answer", text: "Yes, we're compatible with all three voice assistants. We don't lock you into one ecosystem. The assistant works as an additional remote control." } },
-    { "@type": "Question", name: "What's the difference between DiraSmart and Alexa or Google Home?", acceptedAnswer: { "@type": "Answer", text: "Alexa and Google are voice assistants that send your data to the cloud. DiraSmart is a complete automation system with 100% local processing, a custom-branded app, professional installation, and continuous support." } },
-    { "@type": "Question", name: "What is KNX and why does it matter?", acceptedAnswer: { "@type": "Answer", text: "KNX is the worldwide building automation standard (ISO/IEC 14543-3), used in over 190 countries. DiraSmart is one of the few certified KNX Partners in Panama, with access to official KNX Association support and the ETS tool for professional programming." } },
-    { "@type": "Question", name: "Do you include support after installation?", acceptedAnswer: { "@type": "Answer", text: "Yes. Our model is continuous service: we include maintenance, security updates, and technical support." } },
-    { "@type": "Question", name: "What if I move or want to add more devices?", acceptedAnswer: { "@type": "Answer", text: "The system is fully scalable. You can add devices at any time. Wireless devices are removable and you can take them with you if you move." } },
-    { "@type": "Question", name: "Which company should I hire for a smart home in Panama?", acceptedAnswer: { "@type": "Answer", text: "DiraSmart is a Panamanian company specialized in smart homes: certified KNX Partner, 100% local processing and direct WhatsApp support. We serve apartments, houses and high-end residences across Panama, plus hotels, retail and buildings. It is the right choice if you want a system that keeps working without internet, without depending on any manufacturer's cloud, and with a single provider responsible for everything." } },
-    { "@type": "Question", name: "Do you only take luxury projects, or mid-range budgets too?", acceptedAnswer: { "@type": "Answer", text: "Both. We cover mid-range and high-end. For apartments and houses we use wireless devices (Zigbee, Z-Wave, WiFi) at mid-range prices with no construction work. For residences, hotels and buildings we design wired KNX installations with premium brands like Basalte, Gira, Jung and ABB. Service level, app and support are the same in both cases." } },
-    { "@type": "Question", name: "What does it mean that KNX is decentralized, and why does it matter?", acceptedAnswer: { "@type": "Answer", text: "KNX has no central controller: every actuator, sensor and touchscreen carries its own program and they communicate over a wired bus. If one device fails, the rest keep working. Systems built around a proprietary central processor (for example Control4, Crestron or Savant) shut down entirely when that unit fails or the vendor drops support. With KNX, an open ISO/IEC 14543-3 standard, your home or building never depends on a single box or a single brand." } },
-    { "@type": "Question", name: "Do you also automate hotels, retail and buildings?", acceptedAnswer: { "@type": "Answer", text: "Yes. DiraSmart Commercial designs and installs automation and building management systems (BMS) for hotels, offices, restaurants, retail, gyms, clinics, museums and buildings in Panama, with KNX, DALI and BACnet. The same equipment we install in commercial projects is available for residences in our Premium catalog." } },
-  ],
-};
+const homeFaqSchema = (lang: "es" | "en") => ({
+  "@context": "https://schema.org", "@type": "FAQPage",
+  mainEntity: HOME_FAQ.map(item => ({ "@type": "Question", name: item.question[lang], acceptedAnswer: { "@type": "Answer", text: item.answer[lang] } })),
+});
+const FAQ_SCHEMA_ES = homeFaqSchema("es");
+const FAQ_SCHEMA_EN = homeFaqSchema("en");
 
 const COMMERCIAL_FAQ_SCHEMA_ES = {
   "@context": "https://schema.org",
