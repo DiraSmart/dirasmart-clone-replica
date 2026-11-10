@@ -1,9 +1,11 @@
-# DiraSmart: propuesta interactiva
+# Nueva propuesta visual
 
-Rutas de desarrollo: `/nueva` (hogares) y `/nueva/comercial` (comercial). La portada actual se conserva. No se ha desplegado ni fusionado esta propuesta.
+Rutas: `/nueva` y `/nueva/comercial`. Reconstrucción editorial a pantalla completa, con interiores fotorrealistas conceptuales, selección de sala/cocina/suite, escenas independientes, iluminación simulada y temperatura por espacio.
 
-Ejecutar `npm ci` y `npm run dev`. Validar con `npx tsc -p tsconfig.app.json --noEmit`, `npm run build:no-prerender` y `node --experimental-strip-types scripts/check-next-experience.ts` (Node 22+).
+La propuesta actual usa imágenes prerenderizadas y transiciones; no es navegación 3D libre. La sala tiene una imagen nocturna independiente con cortinas cerradas; cocina y suite usan atenuación de imagen para las escenas. La climatización es solo un valor ilustrativo. No hay integración real con equipos, PMS o NETx. El contenido comercial todavía es una adaptación conceptual.
 
-Modelo 3D conceptual construido con geometría local; selección de espacios, cámara animada, luz y cortinas, controles de temperatura y escenas independientes. La temperatura es un valor de demostración, sin simulación térmica ni conexión a equipos. Inalámbrico y KNX tienen contenidos diferenciados; comercial presenta sectores y habitaciones. No hay conexión real a NETx o PMS.
+Imágenes generadas con la herramienta integrada ImageGen y convertidas a WebP, en `public/next-luxe/`: living.webp, living-night.webp, kitchen.webp, bedroom.webp. Dirección de los prompts: interiores de un penthouse contemporáneo de lujo en Panamá al anochecer, nogal, travertino, lino marfil, detalles bronce, iluminación indirecta cálida, ventanas a vegetación tropical y skyline. Kitchen y bedroom usan living como referencia de continuidad. Living-night conserva composición y muebles y modifica solo iluminación y cortinas.
 
-Carga 3D opcional en móvil, controles disponibles sin WebGL, reducción de movimiento y metadatos noindex. La dirección artística y el modelo arquitectónico se revisarán antes del lanzamiento. Publicar exige revisión explícita del propietario.
+Validar con `npx tsc -p tsconfig.app.json --noEmit`, `npm run build:no-prerender`. Para probar: `npm run dev`, abrir `/nueva`.
+
+No se ha desplegado. Revisión del propietario antes de fusionar o lanzar.

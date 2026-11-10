@@ -9,7 +9,7 @@ import RevealObserver from "./components/RevealObserver";
 import ScrollProgress from "./components/ScrollProgress";
 
 // Lazy load non-critical pages to reduce initial bundle
-const NextExperience = lazy(() => import('./pages/NextExperience'));
+const NextExperience = lazy(() => import('./pages/LuxeExperience'));
 const About = lazy(() => import("./pages/About"));
 const Blog = lazy(() => import("./pages/Blog"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
