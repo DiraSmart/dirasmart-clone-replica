@@ -2,7 +2,6 @@ import { blogPosts } from "../src/data/blogPosts";
 import { getPageMarkdown, STATIC_MARKDOWN_PATHS } from "../src/data/pageMarkdown";
 
 const VALID_ROUTES = new Set(["/", "/about", "/blog", "/comercial", "/premium", "/reviews", "/en", "/en/about", "/en/blog", "/en/comercial", "/en/premium", "/en/reviews"]);
-const VALID_PREFIXES = ["/blog/", "/en/blog/"];
 
 const PERMANENT_REDIRECTS: Record<string, string> = {
   "/blog/knx-partner-panama-automatizacion-premium": "/blog/knx-panama-automatizacion-premium",
@@ -113,7 +112,16 @@ function renderLlmsFull(): string {
 
 function isValidRoute(pathname: string): boolean {
   if (VALID_ROUTES.has(pathname)) return true;
-  return VALID_PREFIXES.some((prefix) => pathname.startsWith(prefix) && pathname.length > prefix.length);
+  const found = findPost(pathname);
+  return !!found && pathname === `${found.lang === "en" ? "/en" : ""}/blog/${found.post.slug[found.lang]}`;
+}
+
+function missingPage(pathname: string, status: 404 | 410 = 404): Response {
+  const en = pathname === "/en" || pathname.startsWith("/en/");
+  return new Response(`<!doctype html><html lang="${en ? "en" : "es"}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>${en ? "Page not found" : "Página no encontrada"} | DiraSmart</title></head><body><main><h1>${en ? "This page is not available" : "Esta página no está disponible"}</h1><p>${en ? "Explore our smart home and building automation services." : "Conozca nuestros servicios de domótica y automatización de edificios."}</p><a href="${en ? "/en" : "/"}">${en ? "Go to DiraSmart" : "Ir a DiraSmart"}</a></main></body></html>`, {
+    status,
+    headers: { "content-type": "text/html; charset=utf-8", "X-Robots-Tag": "noindex" },
+  });
 }
 
 function trailingSlashRedirect(pathname: string): string | null {
@@ -169,9 +177,19 @@ export default {
       return Response.redirect(new URL(redirectTarget + url.search, url.origin).toString(), 301);
     }
 
-    // Legacy WooCommerce product/category URLs: send to the home (mid-range catalog), drop cart params.
+    // Retired WordPress URLs have no equivalent replacement. Do not redirect unrelated URLs to home.
     if (/^\/(producto|categoria-producto|product|product-category|tag|etiqueta|author|feed|wp-content|wp-json)(\/|$)/.test(url.pathname)) {
-      return Response.redirect(new URL("/", url.origin).toString(), 301);
+      return missingPage(url.pathname, 410);
+    }
+
+    // Resolve every translated blog alias, including aliases with a trailing slash.
+    const normalizedPath = url.pathname.replace(/\/$/, "");
+    const foundPost = findPost(normalizedPath);
+    if (foundPost) {
+      const canonicalPath = `${foundPost.lang === "en" ? "/en" : ""}/blog/${foundPost.post.slug[foundPost.lang]}`;
+      if (url.pathname !== canonicalPath) {
+        return Response.redirect(new URL(canonicalPath + url.search, url.origin).toString(), 301);
+      }
     }
 
     const slashRedirect = trailingSlashRedirect(url.pathname);
@@ -217,16 +235,7 @@ export default {
         return withCharset(await env.ASSETS.fetch(assetRequest("/index.html", request)));
       }
 
-      const indexResponse = await env.ASSETS.fetch(assetRequest("/index.html", request));
-      const headers = new Headers(indexResponse.headers);
-      const contentType = headers.get("content-type");
-      if (contentType && contentType.startsWith("text/html") && !contentType.includes("charset")) {
-        headers.set("content-type", `${contentType}; charset=utf-8`);
-      }
-      return new Response(indexResponse.body, {
-        status: 410,
-        headers,
-      });
+      return missingPage(url.pathname);
     }
 
     return asset;

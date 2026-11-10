@@ -20,6 +20,17 @@ const BlogPost = () => {
 
   const prevPost = postIndex > 0 ? blogPosts[postIndex - 1] : null;
   const nextPost = postIndex < blogPosts.length - 1 ? blogPosts[postIndex + 1] : null;
+  const commercialTopics = new Set([
+    "automatizacion-hoteles-panama-guia", "bms-sistema-gestion-edificios-comercial",
+    "bacnet-protocolo-bms-estandar-ashrae", "smart-home-oficinas-negocios",
+    "automatizacion-restaurantes-gimnasios-clinicas-panama", "dali-protocolo-iluminacion-futuro",
+  ]);
+  const premiumTopics = new Set([
+    "knx-panama-automatizacion-premium", "knx-vs-control4-crestron-savant",
+    "knx-obra-nueva-arquitecto-electricista",
+  ]);
+  const servicePath = premiumTopics.has(post.slug.es) ? "/premium" : commercialTopics.has(post.slug.es) ? "/comercial" : "/";
+  const es = language === "es";
 
   const renderInline = (text: string): (string | JSX.Element)[] => {
     const nodes: (string | JSX.Element)[] = [];
@@ -135,6 +146,40 @@ const BlogPost = () => {
               <article className="py-8">
                 {renderContent(post.content[language])}
               </article>
+
+              {post.sources?.length ? (
+                <div className="mb-8 text-sm text-muted-foreground">
+                  <h2 className="font-semibold text-foreground mb-2">{es ? "Fuentes técnicas" : "Technical sources"}</h2>
+                  <ul className="space-y-2">
+                    {post.sources.map((source) => <li key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-4">{source.title[language]}</a></li>)}
+                  </ul>
+                </div>
+              ) : null}
+
+              <aside aria-label={es ? "Servicio relacionado" : "Related service"} className="my-8 rounded-2xl border border-primary/20 bg-primary/5 p-6">
+                <h2 className="text-xl font-bold text-foreground mb-3">
+                  {servicePath === "/premium"
+                    ? (es ? "¿Está planificando un proyecto KNX en Panamá?" : "Planning a KNX project in Panama?")
+                    : servicePath === "/comercial"
+                      ? (es ? "Automatización para su operación en Panamá" : "Automation for your business in Panama")
+                      : (es ? "De la idea a su casa inteligente" : "From an idea to your smart home")}
+                </h2>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                  {servicePath === "/premium"
+                    ? (es ? "DiraSmart, KNX Gold Partner, diseña y programa iluminación, cortinas y climatización para obra nueva y remodelaciones. Conozca el servicio, las opciones de control y cómo preparar su proyecto." : "DiraSmart, KNX Gold Partner, designs and programs lighting, curtains and climate control for new construction and renovations. Explore the service, control options and project planning.")
+                    : servicePath === "/comercial"
+                      ? (es ? "Explore soluciones para hoteles, oficinas, comercios y edificios: control por zonas, gestión energética e integración BMS según los equipos e interfaces disponibles." : "Explore solutions for hotels, offices, commercial spaces and buildings: zone control, energy management and BMS integration based on available equipment and interfaces.")
+                      : (es ? "Conozca nuestras soluciones inalámbricas y KNX, el proceso de instalación y el soporte para hogares en Panamá." : "Explore wireless and KNX solutions, the installation process and smart home support in Panama.")}
+                </p>
+                <Link to={localePath(servicePath)} className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded">
+                  {servicePath === "/premium"
+                    ? (es ? "Diseño e instalación KNX en Panamá" : "KNX design and installation in Panama")
+                    : servicePath === "/comercial"
+                      ? (es ? "Automatización comercial y BMS en Panamá" : "Commercial automation and BMS in Panama")
+                      : (es ? "Soluciones de domótica en Panamá" : "Home automation solutions in Panama")}
+                  <ArrowRight aria-hidden="true" className="w-4 h-4" />
+                </Link>
+              </aside>
 
               {/* FAQ */}
               {post.faq && post.faq.length > 0 ? (

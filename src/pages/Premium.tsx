@@ -85,24 +85,24 @@ const reliabilityReasons = [
     icon: ShieldCheck,
     title: { es: "Estándar ISO certificado", en: "ISO-certified standard" },
     desc: {
-      es: "KNX es un protocolo abierto certificado por ISO desde hace más de 30 años. No depende de un fabricante. Si una empresa cierra, tu casa sigue funcionando.",
-      en: "KNX is an open ISO-certified protocol for 30+ years. No vendor lock-in. If a company closes, your home keeps working.",
+      es: "KNX es un estándar abierto de automatización reconocido en la familia de normas ISO/IEC 14543-3. Permite elegir productos certificados de distintas marcas y planificar futuras ampliaciones.",
+      en: "KNX is an open automation standard recognized in the ISO/IEC 14543-3 family of standards. It offers a choice of certified products from different brands and options for future extensions.",
     },
   },
   {
     icon: Building2,
-    title: { es: "Descentralizado, sin punto único de falla", en: "Decentralized, no single point of failure" },
+    title: { es: "Funciones distribuidas", en: "Distributed functions" },
     desc: {
-      es: "No hay servidor ni controlador central que pueda apagar toda la casa. Cada pantalla, sensor y actuador ejecuta su propia lógica sobre el bus KNX. Si un equipo falla, el resto sigue funcionando.",
-      en: "No server or central controller can shut down the whole house. Every screen, sensor and actuator runs its own logic on the KNX bus. If one unit fails, the rest keep working.",
+      es: "Sensores y actuadores pueden ejecutar funciones locales sin un único controlador central. El diseño del bus, la alimentación y las pasarelas determina el alcance de una posible avería.",
+      en: "Sensors and actuators can run local functions without a single central controller. Bus design, power supplies and gateways determine the impact of a potential fault.",
     },
   },
   {
     icon: WifiOff,
-    title: { es: "Sin nube, sin internet", en: "No cloud, no internet" },
+    title: { es: "Control local", en: "Local control" },
     desc: {
-      es: "Bus cableado dedicado. Si tu internet se cae, las pantallas siguen controlando todo. Si el fabricante apaga sus servidores, no te enteras.",
-      en: "Dedicated wired bus. If your internet drops, the panels keep controlling everything. If the manufacturer shuts down servers, you don't even notice.",
+      es: "Las funciones locales previstas pueden seguir operando sin internet. El acceso remoto, la voz y determinados servicios externos se evalúan por separado según sus requisitos.",
+      en: "The planned local functions can keep operating without internet. Remote access, voice and certain external services are assessed separately based on their requirements.",
     },
   },
   {
@@ -119,7 +119,7 @@ const catalogBrands = [
   { name: "Basalte", origin: "Bélgica", focus: { es: "Pantallas y keypads", en: "Touchscreens & keypads" } },
   { name: "Gira", origin: "Alemania", focus: { es: "Esprit, Tastsensor 4", en: "Esprit, Tastsensor 4" } },
   { name: "Jung", origin: "Alemania", focus: { es: "LS 990, LS Zero", en: "LS 990, LS Zero" } },
-  { name: "ABB free@home", origin: "Suiza", focus: { es: "Sistema KNX integrado", en: "Integrated KNX system" } },
+  { name: "ABB i-bus KNX", origin: "Suiza", focus: { es: "Sistema KNX integrado", en: "Integrated KNX system" } },
   { name: "Hager", origin: "Alemania", focus: { es: "Tableros y protección", en: "Panels & protection" } },
   { name: "Lutron HomeWorks", origin: "Estados Unidos", focus: { es: "Iluminación premium", en: "Premium lighting" } },
   { name: "Theben", origin: "Alemania", focus: { es: "Termostatos y presencia", en: "Thermostats & presence" } },
@@ -158,8 +158,8 @@ const PREMIUM_FAQ = [
   {
     question: { es: "¿Qué marcas KNX instalan?", en: "Which KNX brands do you install?" },
     answer: {
-      es: "Basalte (Bélgica), Gira, Jung, Hager, Theben y MDT (Alemania), ABB free@home (Suiza) y Lutron HomeWorks (Estados Unidos). Si una marca es KNX o tiene gateway KNX, casi siempre podemos integrarla.",
-      en: "Basalte (Belgium), Gira, Jung, Hager, Theben and MDT (Germany), ABB free@home (Switzerland) and Lutron HomeWorks (United States). If a brand is KNX or has a KNX gateway, we can almost always integrate it.",
+      es: "Basalte (Bélgica), Gira, Jung, Hager, Theben y MDT (Alemania), ABB i-bus KNX (Suiza) y Lutron HomeWorks (Estados Unidos). Si una marca es KNX o tiene gateway KNX, casi siempre podemos integrarla.",
+      en: "Basalte (Belgium), Gira, Jung, Hager, Theben and MDT (Germany), ABB i-bus KNX (Switzerland) and Lutron HomeWorks (United States). If a brand is KNX or has a KNX gateway, we can almost always integrate it.",
     },
   },
 ];
@@ -256,20 +256,20 @@ const Premium = () => {
                 <h1 className="font-bold text-[clamp(2.25rem,5.5vw,4.25rem)] leading-[1.05] tracking-[-0.02em] text-foreground mb-6 text-balance">
                   {es ? (
                     <>
-                      El equipamiento de hoteles y edificios.{" "}
-                      <span className="text-gradient">Ahora en tu casa.</span>
+                      Automatización KNX en Panamá.{" "}
+                      <span className="text-gradient">Diseñada para tu hogar.</span>
                     </>
                   ) : (
                     <>
-                      The equipment from hotels and buildings.{" "}
-                      <span className="text-gradient">Now in your home.</span>
+                      KNX home automation in Panama.{" "}
+                      <span className="text-gradient">Designed around you.</span>
                     </>
                   )}
                 </h1>
                 <p className="text-base sm:text-lg text-muted-foreground leading-[1.55] max-w-xl text-pretty mb-8">
                   {es
-                    ? "Pantallas KNX en pared, marcas reconocidas mundialmente, instalación cableada y descentralizada desde la obra. El mismo equipo enterprise-grade que instalamos en hoteles de Panamá, en formato residencial."
-                    : "Wall-mounted KNX touchscreens, world-recognized brands, wired and decentralized installation from the construction stage. The same enterprise-grade equipment we install in Panama hotels, in residential form."}
+                    ? "Diseñamos, instalamos y programamos iluminación, cortinas y climatización KNX para casas y apartamentos. Planificamos el bus y los equipos con tu arquitecto o electricista, desde la obra nueva o una remodelación integral, con puesta en marcha y soporte en Panamá."
+                    : "We design, install and program KNX lighting, curtains and climate control for houses and apartments. We coordinate bus wiring and equipment with your architect or electrician during construction or a full renovation, with commissioning and support in Panama."}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-10">
                   <a
@@ -290,7 +290,7 @@ const Premium = () => {
                 <div className="flex items-center gap-3 text-xs text-muted-foreground">
                   <img src={knxPartnerBadge} alt="KNX Partner" className="h-8 w-auto" />
                   <span>
-                    {es ? "Partner certificado KNX desde 2026" : "KNX-certified partner since 2026"}
+                    {es ? "DiraSmart · KNX Gold Partner" : "DiraSmart · KNX Gold Partner"}
                   </span>
                 </div>
               </motion.div>
@@ -365,8 +365,8 @@ const Premium = () => {
               </h2>
               <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto leading-relaxed mb-10">
                 {es
-                  ? "Llevamos años especificando KNX, DALI y BACnet en proyectos comerciales. El catálogo Premium residencial es exactamente el mismo equipo — adaptado a una casa."
-                  : "We've spent years specifying KNX, DALI and BACnet in commercial projects. The Premium residential catalog is exactly the same equipment — adapted for a home."}
+                  ? "KNX, DALI y BACnet permiten plantear soluciones residenciales y comerciales. Seleccionamos los equipos y las integraciones según las necesidades de cada espacio."
+                  : "KNX, DALI and BACnet support residential and commercial solutions. We select equipment and integrations around the requirements of each space."}
               </p>
 
               <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-5 mb-10 opacity-70">
@@ -481,18 +481,18 @@ const Premium = () => {
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-5">
                 {es ? (
                   <>
-                    Un sistema <span className="text-gradient">que no falla</span>.
+                    Confiabilidad <span className="text-gradient">desde el diseño</span>.
                   </>
                 ) : (
                   <>
-                    A system <span className="text-gradient">that doesn't fail</span>.
+                    Reliability <span className="text-gradient">by design</span>.
                   </>
                 )}
               </h2>
               <p className="text-muted-foreground text-base md:text-lg leading-relaxed">
                 {es
-                  ? "Por qué este equipamiento funciona año tras año mientras los kits de smart home WiFi colapsan."
-                  : "Why this equipment keeps working year after year while WiFi smart home kits collapse."}
+                  ? "Una instalación bien dimensionada, con funciones locales, documentación y opciones para ampliarla."
+                  : "A properly sized installation with local functions, documentation and options for future extensions."}
               </p>
             </motion.div>
 
@@ -785,7 +785,7 @@ const Premium = () => {
                 </a>
                 <div className="mt-5 pt-5 border-t border-border flex items-center gap-2 text-xs text-muted-foreground">
                   <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-                  {es ? "En línea — responde en ~12 min." : "Online — replies in ~12 min."}
+                  {es ? "Atención directa por WhatsApp." : "Direct support on WhatsApp."}
                 </div>
               </motion.div>
             </div>
